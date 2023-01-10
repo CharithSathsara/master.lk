@@ -72,7 +72,7 @@ include_once '../common/header.php';
             <div class="card-01">
                 <p>Physics</p><br>
                 <div class="card-content">
-                    <p><?= $dashboardController->getNoOfQuestions("Physics") ; ?> Questions</p><br>
+                    <p><?= $dashboardController->getNoOfQuestions("Physics") ; ?> Questions Questions</p><br>
                     <input class="add-question-btn" type="submit" onclick="redirect('viewPhysicsModelQuestions')" value="Model Paper">
                     <br>
                     <input class="add-question-btn" type="submit" onclick="redirect('viewPhysicsPastQuestions')" value="Past Paper">
