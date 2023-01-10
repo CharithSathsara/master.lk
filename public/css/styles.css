@@ -1,0 +1,210 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.content {
+
+}
+.main-card{
+    background:white;
+    border-radius: 15px;
+    width: 70vw;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 1px 1px 4px 4px #DCDCDC;
+}
+.card-01{
+    background:#F4C430;
+    border-radius: 15px;
+    padding: 20px;
+    width: 30vw;
+    margin: 30px;
+    color: aliceblue;
+}
+.card-02{
+    background:black;
+    border-radius: 15px;
+    padding: 20px;
+    width: 30vw;
+    margin: 30px;
+    color: aliceblue;
+}
+.main {
+    width:85%;
+    font-size: 28px; /* Increased text to enable scrolling */
+    float: right;
+    z-index: 1;
+}
+#dashboard-container{
+    margin: 120px 40px 100px 30px;
+}
+#title{
+    margin-top: 0;
+    font-size: 18px;
+    color:#0b2e5e;
+}
+.sidenav {
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 10vh;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+}
+.header{
+    height: 10vh;
+    width: 100vw;
+    top: 0;
+    position:fixed ;
+    background-color: #008CBA;
+}
+.container-01,.container-02{
+    display: flex;
+    justify-content: center;
+}
+.card-content{
+    display: grid;
+    justify-content: center;
+}
+button{
+    background-color: #008CBA;
+    border: 2px solid #008CBA;
+    padding: 10px;
+    border-radius: 7px;
+    font-weight: bold;
+    color: white;
+    margin: 10px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+.subheading{
+    /*text-align: left;*/
+    /*!*position: relative;*!*/
+    /*margin-bottom: 10px;*/
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.subheading:after{
+    content:"";
+    flex:1 1;
+    border-bottom: 2px solid #D9D9D9 ;
+    margin:auto;
+}
+
+
+/*.subheading:before{
+    content:'';
+    display:block;
+    height:3px;
+    background:gray;
+    position:absolute;
+    left:120px;
+    right:0;
+    top:50%;
+}*/
+
+.main-card:hover, .card-01:hover, .card-02:hover{
+    cursor: pointer;
+    transform: scale(1.009);
+    transition: all 0.3s ease;
+}
+.add-question-btn {
+    background-color: #008CBA;
+    border: 2px solid #008CBA;
+    padding: 10px;
+    border-radius: 7px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+.add-question-btn:hover, input[type=submit]:hover, button:hover {
+    background-color: white;
+    color: #008CBA;
+    font-weight: bold;
+}
+
+input[type=text], input[type=password], input[type=date], input[type=tel] {
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: 1px solid #818181;
+    border-radius: 7px;
+    background: #EDECEC;
+    box-sizing: border-box;
+    width: 25vw;
+}
+select{
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: 1px solid #818181;
+    border-radius: 7px;
+    background: #EDECEC;
+    box-sizing: border-box;
+}
+input[type=submit] {
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: 1px solid #818181;
+    border-radius: 7px;
+    background: dodgerblue;
+    box-sizing: border-box;
+    font-weight: bold;
+    cursor: pointer;
+    transition-duration: 0.4s;
+    color: #DCDCDC;
+}
+textarea {
+    width: 100%;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #DCDCDC;
+    font-size: 16px;
+    resize: none;
+}
+.form-inline{
+    width: 100%;
+    display: inline-block;
+    justify-content: right;
+}
+#welcome{
+    margin-top: 3vh;
+    font-size: 50px;
+    font-family: "Comic Sans MS";
+}
+#login-heading, #register-heading{
+
+    font-size: 30px;
+    font-family: "Comic Sans MS";
+}
+#add_question-heading{
+    margin-top: 3vh;
+    font-size: 20px;
+    font-family: "Comic Sans MS";
+}
+#login-form, #register-form{
+    margin: 5vh;
+}
+#to-register{
+    margin-top: 10vh;
+}
+#add-question-form{
+    font-weight: normal;
+    font-size: 20px;
+}
