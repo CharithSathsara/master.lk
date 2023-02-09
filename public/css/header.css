@@ -41,11 +41,7 @@ body,html{
     margin-right:40px;
 }
 
-<<<<<<< HEAD
 button, input[type="submit"]{
-=======
-button{
->>>>>>> origin/master
 	background: none;
 	color: inherit;
 	border: none;
@@ -68,7 +64,6 @@ button{
     margin-left: 10px;
 }
 
-<<<<<<< HEAD
 #logout-confirm{
     width: 25%;
     background-color: white;
@@ -112,5 +107,3 @@ button{
 }
 
 
-=======
->>>>>>> origin/master

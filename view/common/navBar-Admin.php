@@ -1,7 +1,6 @@
 <?php
 
 include_once('../../config/app.php');
-<<<<<<< HEAD
 // include_once('../../controller/authController/authentication/Authentication.php');
 // include_once('../../controller/authController/authorization/Authorization.php');
 
@@ -9,9 +8,6 @@ include_once('../../config/app.php');
 // Authentication::userAuthentication();
 // //User Authorization
 // Authorization::authorizingAdmin();
-=======
-
->>>>>>> origin/master
 
 ?>
 
@@ -56,11 +52,7 @@ include_once('../../config/app.php');
                 </li>
                 <hr id="nav-hr">
                 <li class="nav-item"  id="profile">
-<<<<<<< HEAD
                     <a href="../common/profile.php">
-=======
-                    <a href="">
->>>>>>> origin/master
                         <div class="list-item">
                             <img src="../../public/icons/profile.svg" class="list-icon">
                             <p class="list-text">Profile</p>

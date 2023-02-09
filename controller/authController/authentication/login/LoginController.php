@@ -11,7 +11,6 @@ class LoginController{
 
     }
 
-<<<<<<< HEAD
     public function login($username_email, $password){
 
         // Reads data from the database
@@ -42,31 +41,10 @@ class LoginController{
                 return false;
             }
     
-=======
-    public function login($username, $password){
-
-        $query = "SELECT * FROM user WHERE username='$username'";
-        $response = $this->connection->query($query);
-
-        if($response->num_rows > 0){
-
-            $data = $response->fetch_assoc();
-
-            if(password_verify($password, $data['password'])){
-                $this->userAuthentication($data);
-                return true;
-            }else {
-                redirect("Password is Incorrect", "view/authentication/login.php");
-            }
-
-        }else{
-            redirect("User Name is Incorrect", "view/authentication/login.php");
->>>>>>> origin/master
         }
 
     }
 
-<<<<<<< HEAD
     private function userAuthentication($user_data){
 
         $_SESSION['authenticated'] = true;
@@ -82,41 +60,6 @@ class LoginController{
 
     }
 
-=======
-    private function userAuthentication($data){
-
-        $_SESSION['authenticated'] = true;
-        $_SESSION['auth_role'] = $data['userType'];
-        $_SESSION['auth_user'] = [
-            'userId' => $data['userId'],
-            'userEmail' => $data['email'],
-            'userName' => $data['userName'],
-            'fName' => $data['firstName'],
-            'lName' => $data['lastName'],
-        ];
-
-
-    }
-
-    //In here we unset session values
-    public function logout(){
-
-        if(isset($_SESSION['authenticated']) === TRUE){
-
-            if($_SESSION['auth_role'] == "TEACHER"){
-                unset($_SESSION['subject']);
-            }
-
-            unset($_SESSION['authenticated']);
-            unset($_SESSION['auth_user']);
-            unset($_SESSION['auth_role']);
-            return true;
-        }else{
-            return false;
-        }
-
-    }
->>>>>>> origin/master
 
     public static function isLoggedIn(){
 

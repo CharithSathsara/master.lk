@@ -14,7 +14,6 @@ class Topic{
 
     }
 
-<<<<<<< HEAD
     public static function getTopics($connection,$subject,$lesson){
 
         $query1 = "SELECT subjectId FROM subject WHERE subjectTitle='$subject'";
@@ -49,6 +48,4 @@ class Topic{
     }
 
 
-=======
->>>>>>> origin/master
 }

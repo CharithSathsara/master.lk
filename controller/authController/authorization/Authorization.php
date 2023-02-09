@@ -20,11 +20,7 @@ class Authorization{
         if($_SESSION['auth_role'] === "ADMIN"){
             return true;
         }else{
-<<<<<<< HEAD
             redirect("You Are not Authorized as an Admin","view/authentication/index.php");
-=======
-            redirect("You are not authorized as an Admin","view/authorization/unauthorizedAccess.php");
->>>>>>> origin/master
         }
 
     }
@@ -35,11 +31,7 @@ class Authorization{
 
             return true;
         }else{
-<<<<<<< HEAD
             redirect("You Are not Authorized as an TEACHER","view/authentication/index.php");
-=======
-            redirect("You are not authorized as a TEACHER","view/authorization/unauthorizedAccess.php");
->>>>>>> origin/master
         }
 
     }
@@ -49,11 +41,7 @@ class Authorization{
         if($_SESSION['auth_role'] === "CONTENTCREATOR"){
             return true;
         }else{
-<<<<<<< HEAD
             redirect("You Are not Authorized as an CONTENT CREATOR","view/authentication/index.php");
-=======
-            redirect("You qre not authorized as a CONTENT CREATOR","view/authorization/unauthorizedAccess.php");
->>>>>>> origin/master
         }
 
     }
@@ -63,11 +51,7 @@ class Authorization{
         if($_SESSION['auth_role'] === "STUDENT"){
             return true;
         }else{
-<<<<<<< HEAD
             redirect("You Are not Authorized as an STUDENT","view/authentication/index.php");
-=======
-            redirect("You are not Authorized as a STUDENT","view/authorization/unauthorizedAccess.php");
->>>>>>> origin/master
         }
 
     }

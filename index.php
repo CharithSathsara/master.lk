@@ -12,12 +12,8 @@
 <?php
 
 include('./config/app.php');
-<<<<<<< HEAD
 // redirect("redirect to login page", "view/authentication/index.php");
 redirect("", "view/authentication/index.php");
-=======
-redirect("", "view/authentication/login.php");
->>>>>>> origin/master
 
 ?>
 
