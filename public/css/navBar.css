@@ -30,7 +30,11 @@ body{
 }
 
 #role{
+<<<<<<< HEAD
     /* text-transform: lowercase; */
+=======
+    text-transform: lowercase;
+>>>>>>> origin/master
     color:#219ebc;
     margin-top:5px;
 }

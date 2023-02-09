@@ -1,5 +1,6 @@
 <?php
 
+<<<<<<< HEAD
 if(isset($_SESSION['restrict-error-message'])){
     echo "<script>alert('Warning : ".$_SESSION['restrict-error-message']."')</script>";
     unset($_SESSION['restrict-error-message']);
@@ -35,3 +36,11 @@ if(isset($_SESSION['change-photo-error'])){
  //     unset($_SESSION['popup-message']); -->
  // } -->
 
+=======
+if(isset($_SESSION['message'])){
+    echo "<p style='color: #CA0123'>".$_SESSION['message']."</p>";
+    unset($_SESSION['message']);
+}
+
+?>
+>>>>>>> origin/master

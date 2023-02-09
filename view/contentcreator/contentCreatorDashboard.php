@@ -24,6 +24,7 @@ Authentication::userAuthentication();
 //User Authorization
 Authorization::authorizingContentCreator();
 
+<<<<<<< HEAD
 include_once('../common/header.php');
 
 ?>
@@ -47,6 +48,23 @@ include_once('../common/header.php');
 </header>
 
 <h1>Welcome To Content Creator Dashboard</h1>
+=======
+include_once '../common/header.php';
+
+?>
+
+<div class="content">
+
+    <?php include_once '../common/navBar-Teacher.php'; ?>
+
+    <div class="main">
+
+        <div id="dashboard-container">
+            <h1>Welcome To Content Creator Dashboard</h1>
+        </div>
+
+    </div>
+>>>>>>> origin/master
 
 </body>
 </html>

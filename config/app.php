@@ -2,7 +2,11 @@
 
 session_start();
 include_once('DatabaseConnection.php');
+<<<<<<< HEAD
 $db_connection = new DatabaseConnection();
+=======
+$db_connection =  new DatabaseConnection();
+>>>>>>> origin/master
 
 const SITE_URL = 'http://localhost/master.lk/';
 
@@ -20,8 +24,13 @@ function base_url($slug){
     echo SITE_URL.$slug;
 }
 
+<<<<<<< HEAD
 function esc($word){
     return addslashes($word);
+=======
+function validateInput($connection, $input){
+    return mysqli_real_escape_string($connection, $input);
+>>>>>>> origin/master
 }
 
 function redirect($message, $page){
@@ -33,6 +42,7 @@ function redirect($message, $page){
     exit(0);
 }
 
+<<<<<<< HEAD
 function login_error_redirect($message, $page){
 
     $redirectTo = SITE_URL.$page;
@@ -70,4 +80,6 @@ function popup_redirect($message, $page){
 }
 
 
+=======
+>>>>>>> origin/master
 ?>

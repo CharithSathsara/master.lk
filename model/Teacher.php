@@ -18,6 +18,17 @@ class Teacher{
 
     }
 
+<<<<<<< HEAD
+=======
+    public static function deleteQuestion($connection, $question_id){
+
+        $query = "DELETE FROM question WHERE questionId = $question_id";
+        $data = $connection->query($query);
+
+        return $data;
+    }
+
+>>>>>>> origin/master
     public static function viewQuestions($connection, $subject, $topic, $type){
 
         $query = "SELECT * FROM question WHERE subjectId = (SELECT subjectId From subject WHERE subjectTitle = '$subject') 
@@ -35,6 +46,10 @@ class Teacher{
         $query = "SELECT subjectTitle FROM subject WHERE subjectId = (SELECT subjectId FROM teacher WHERE teacherId = $teacherId)";
 
         $data = $connection->query($query);
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
         $subject = $data->fetch_assoc();
 
         if($subject){

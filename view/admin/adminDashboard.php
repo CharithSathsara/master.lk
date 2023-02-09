@@ -12,6 +12,7 @@
 <?php
 
 include_once('../../config/app.php');
+<<<<<<< HEAD
 include_once('../../controller/authController/authentication/Authentication.php');
 include_once('../../controller/authController/authorization/Authorization.php');
 
@@ -19,11 +20,19 @@ include_once('../../controller/authController/authorization/Authorization.php');
 //$authentication = new Authentication();
 //$authentication->authorizingAdmin();
 
+=======
+include('../../controller/adminController/dashboardController/AdminDashboardController.php');
+include('../../model/Admin.php');
+include_once('../../controller/authController/authentication/Authentication.php');
+include_once('../../controller/authController/authorization/Authorization.php');
+
+>>>>>>> origin/master
 //User Authentication
 Authentication::userAuthentication();
 //User Authorization
 Authorization::authorizingAdmin();
 
+<<<<<<< HEAD
 include_once('../common/header.php');
 include_once('../common/navBar-Admin.php');
 
@@ -48,6 +57,23 @@ include_once('../common/navBar-Admin.php');
 </header>
 
 <h1>Admin Dashboard</h1>
+=======
+include_once '../common/header.php';
+
+?>
+
+<div class="content">
+
+    <?php include_once '../common/navBar-Teacher.php'; ?>
+
+    <div class="main">
+
+        <div id="dashboard-container">
+            <h1>Welcome To Admin Dashboard</h1>
+        </div>
+
+    </div>
+>>>>>>> origin/master
 
 </body>
 </html>
