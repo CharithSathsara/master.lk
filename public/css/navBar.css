@@ -1,28 +1,15 @@
-<<<<<<< HEAD
 body {
-=======
-body{
->>>>>>> origin/master
     margin: 0;
     padding: 0;
     font-family: 'Open Sans', sans-serif;
 }
 
-<<<<<<< HEAD
 .nav {
     width: 15%;
     height: 100%;
     float: left;
     position: fixed;
     overflow: auto;
-=======
-.nav{
-    width: 15%;
-    height: 100%;
-    float: left;
-    position:fixed;
-    overflow:auto;
->>>>>>> origin/master
     background-color: #D9D9D9;
     margin: 0;
     padding: 0;
@@ -30,7 +17,6 @@ body{
     z-index: 1;
 }
 
-<<<<<<< HEAD
 .prof-detail {
     margin-top: 180px;
 }
@@ -62,39 +48,6 @@ ul {
     background-color: #D9D9D9;
     height: 40px;
     margin-bottom: 5px;
-=======
-.prof-detail{
-    margin-top:180px;
-}
-
-#prof-pic{
-    width: 40%;
-}
-
-#user-name{
-    margin:10px 0 0 0;
-}
-
-#role{
-    /* text-transform: lowercase; */
-    color:#219ebc;
-    margin-top:5px;
-}
-
-ul{
-    padding-left: 0;
-}
-
-.nav-items{
-    margin-top:35px;
-    text-align: center;
-}
-
-.nav-item{
-    background-color: #D9D9D9;
-    height:40px;
-    margin-bottom:5px;
->>>>>>> origin/master
 }
 
 /* #dashboard{
@@ -109,24 +62,15 @@ ul{
     background-color: #D9D9D9;
 } */
 
-<<<<<<< HEAD
 li {
     list-style-type: none;
 }
 
 li a {
-=======
-li{
-    list-style-type: none;
-}
-
-li a{
->>>>>>> origin/master
     display: block;
     text-decoration: none;
 }
 
-<<<<<<< HEAD
 .list-item {
     width: 70%;
     margin: 0 auto;
@@ -154,32 +98,4 @@ li a{
 
 hr {
     border: 1px solid #808080;
-=======
-.list-item{
-    width:70%;
-    margin:0 auto;
-}
-
-.list-icon{
-
-    width:25px;
-    height:25px;
-    float:left;
-    margin-right:20px;
-    padding:7px 0;
-
-}
-
-.list-text{
-
-    margin:0;
-    color:black;
-    float: left;
-    padding:8px 0;
-}
-
-
-hr{
-    border:1px solid #808080;
->>>>>>> origin/master
 }

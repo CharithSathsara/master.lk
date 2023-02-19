@@ -9,18 +9,12 @@
     background:white;
     border-radius: 15px;
     width: 70vw;
-<<<<<<< HEAD
     /*margin: 10px;*/
     /*padding: 10px;*/
-=======
-    margin: 10px;
-    padding: 10px;
->>>>>>> origin/master
     text-align: center;
     box-shadow: 1px 1px 4px 4px #DCDCDC;
 }
 .card-01{
-<<<<<<< HEAD
     background:#0b2e5e;
     border-radius: 15px;
     padding: 20px;
@@ -28,20 +22,11 @@
     margin: 20px;
     color: aliceblue;
     height:250px;
-=======
-    background:#F4C430;
-    border-radius: 15px;
-    padding: 20px;
-    width: 30vw;
-    margin: 30px;
-    color: aliceblue;
->>>>>>> origin/master
 }
 .card-02{
     background:black;
     border-radius: 15px;
     padding: 20px;
-<<<<<<< HEAD
     width: 31vw;
     margin: 20px;
     color: aliceblue;
@@ -56,12 +41,6 @@
     font-size: 22px ;
 }
 
-=======
-    width: 30vw;
-    margin: 30px;
-    color: aliceblue;
-}
->>>>>>> origin/master
 .main {
     width:85%;
     font-size: 28px; /* Increased text to enable scrolling */
@@ -104,7 +83,6 @@
 .container-01,.container-02{
     display: flex;
     justify-content: center;
-<<<<<<< HEAD
     height: 150px;
     padding: 0;
 }
@@ -115,9 +93,6 @@
     margin-right: auto;
 }
 
-=======
-}
->>>>>>> origin/master
 .card-content{
     display: grid;
     justify-content: center;
@@ -165,7 +140,6 @@ button{
 
 .main-card:hover, .card-01:hover, .card-02:hover{
     cursor: pointer;
-<<<<<<< HEAD
     /*transform: scale(1.009);*/
     /*transition: all 0.3s ease;*/
 }
@@ -213,28 +187,6 @@ input[type=submit]:hover{
 }
 
 input[type=text] {
-=======
-    transform: scale(1.009);
-    transition: all 0.3s ease;
-}
-.add-question-btn {
-    background-color: #008CBA;
-    border: 2px solid #008CBA;
-    padding: 10px;
-    border-radius: 7px;
-    font-weight: bold;
-    color: white;
-    cursor: pointer;
-    transition-duration: 0.4s;
-}
-.add-question-btn:hover, input[type=submit]:hover, button:hover {
-    background-color: white;
-    color: #008CBA;
-    font-weight: bold;
-}
-
-input[type=text], input[type=password], input[type=date], input[type=tel] {
->>>>>>> origin/master
     padding: 12px 20px;
     margin: 8px 0;
     border: 1px solid #818181;
@@ -261,11 +213,7 @@ input[type=submit] {
     font-weight: bold;
     cursor: pointer;
     transition-duration: 0.4s;
-<<<<<<< HEAD
     /*color: #DCDCDC;*/
-=======
-    color: #DCDCDC;
->>>>>>> origin/master
 }
 textarea {
     width: 100%;
@@ -294,13 +242,8 @@ textarea {
 }
 #add_question-heading{
     margin-top: 3vh;
-<<<<<<< HEAD
     font-size: 16px;
     font-weight: bold;
-=======
-    font-size: 20px;
-    font-family: "Comic Sans MS";
->>>>>>> origin/master
 }
 #login-form, #register-form{
     margin: 5vh;
@@ -312,7 +255,6 @@ textarea {
     font-weight: normal;
     font-size: 20px;
 }
-<<<<<<< HEAD
 
 #title-navigate{
     margin-top:0;
@@ -360,5 +302,3 @@ textarea {
     width:300px;
 }
 
-=======
->>>>>>> origin/master

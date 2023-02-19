@@ -41,11 +41,7 @@ body,html{
     margin-right:40px;
 }
 
-<<<<<<< HEAD
 button {
-=======
-button, input[type="submit"]{
->>>>>>> origin/master
 	background: none;
 	color: inherit;
 	border: none;

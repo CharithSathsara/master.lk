@@ -1,6 +1,5 @@
 <?php
 
-<<<<<<< HEAD
 class Teacher {
 
     /**
@@ -12,21 +11,12 @@ class Teacher {
 
         try {
             $query = "INSERT INTO `question` (`questionId`, `question`, `opt01`, `opt02`, `opt03`, `opt04`, `opt05`, 
-=======
-class Teacher{
-
-    public static function addQuestion($question, $answer1, $answer2, $answer3, $answer4, $answer5,
-                                       $correctAnswer, $answerDescription, $type, $subject, $topicId, $teacherId, $connection){
-
-        $query = "INSERT INTO `question` (`questionId`, `question`, `opt01`, `opt02`, `opt03`, `opt04`, `opt05`, 
->>>>>>> origin/master
                                           `correctAnswer`, `answerDescription`, `questionType`, `topicId`, `teacherId`, `subjectId`) 
                   VALUES (NULL, '$question', '$answer1', '$answer2', '$answer3', '$answer4', '$answer5', $correctAnswer, 
                           '$answerDescription', '$type', 
                           $topicId, 
                           $teacherId,
                           (SELECT subjectId From subject WHERE subjectTitle = '$subject'))";
-<<<<<<< HEAD
 
             $data = $connection->query($query);
 
@@ -83,17 +73,11 @@ class Teacher{
             echo '<script>console.error("' . $errorMessage . '")</script>';
             return false;
         }
-=======
-        $data = $connection->query($query);
-
-        return $data;
->>>>>>> origin/master
 
     }
 
     public static function viewQuestions($connection, $subject, $topic, $type){
 
-<<<<<<< HEAD
         try {
             $query = "SELECT * FROM question WHERE subjectId = (SELECT subjectId From subject WHERE subjectTitle = '$subject') 
                                          AND topicId = (SELECT topicId From topic WHERE topicTitle = '$topic') 
@@ -112,21 +96,11 @@ class Teacher{
             echo '<script>console.error("' . $errorMessage . '")</script>';
             return false;
         }
-=======
-        $query = "SELECT * FROM question WHERE subjectId = (SELECT subjectId From subject WHERE subjectTitle = '$subject') 
-                                         AND topicId = (SELECT topicId From topic WHERE topicTitle = '$topic') 
-                                         AND questionType = '$type'";
-
-        $data = $connection->query($query);
-
-        return $data;
->>>>>>> origin/master
 
     }
 
     public static function getTeacherSubject($connection, $teacherId){
 
-<<<<<<< HEAD
         try {
             $query = "SELECT subjectTitle FROM subject WHERE subjectId = (SELECT subjectId FROM teacher WHERE teacherId = $teacherId)";
             $data = $connection->query($query);
@@ -201,26 +175,13 @@ class Teacher{
         } catch (Exception $e) {
             $errorMessage = "An error occurred while fetching student feedbacks: " . $e->getMessage();
             echo '<script>console.error("' . $errorMessage . '")</script>';
-=======
-        $query = "SELECT subjectTitle FROM subject WHERE subjectId = (SELECT subjectId FROM teacher WHERE teacherId = $teacherId)";
-
-        $data = $connection->query($query);
-        $subject = $data->fetch_assoc();
-
-        if($subject){
-            return $subject['subjectTitle'];
-        }else{
->>>>>>> origin/master
             return false;
         }
 
     }
-<<<<<<< HEAD
     /**
      * End of
      * @author Charith Sathsara section
      */
-=======
->>>>>>> origin/master
 
 }

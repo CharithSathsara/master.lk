@@ -30,8 +30,4 @@ class DatabaseConnection{
 
 }
 
-<<<<<<< HEAD
 ?>
-=======
-?>
->>>>>>> origin/master

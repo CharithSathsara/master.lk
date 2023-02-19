@@ -2,7 +2,6 @@
 
 class Topic{
 
-<<<<<<< HEAD
     /**
      * Author:
      * @author Charith Sathsara
@@ -33,19 +32,6 @@ class Topic{
      * End of
      * @author Charith Sathsara section
      */
-=======
-    public static function getAllTopics($connection, $subject){
-
-        $query = "SELECT topicId, topicTitle From topic 
-                  WHERE lessonId IN (SELECT lessonId From lesson 
-                                     WHERE subjectId = (SELECT subjectId From subject  
-                                                        WHERE subjectTitle = '$subject'))";
-        $data = $connection->query($query);
-
-        return $data;
-
-    }
->>>>>>> origin/master
 
     public static function getTopics($connection,$subject,$lesson){
 

@@ -32,10 +32,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         if($_SESSION['auth_role'] == "ADMIN"){
             popup_redirect("Logged In Successfully !", "view/admin/adminDashboard.php");
         }else if($_SESSION['auth_role'] == "TEACHER"){
-<<<<<<< HEAD
             $_SESSION['subject'] = Teacher::getTeacherSubject($db_connection->getConnection(), $_SESSION['auth_user']['userId']);
-=======
->>>>>>> origin/master
             popup_redirect("Logged In Successfully !", "view/teacher/teacherDashboard.php");
         }else if($_SESSION['auth_role'] == "CONTENTCREATOR"){
             popup_redirect("Logged In Successfully !", "view/contentcreator/contentCreatorDashboard.php");

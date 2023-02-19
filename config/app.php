@@ -20,13 +20,10 @@ function base_url($slug){
     echo SITE_URL.$slug;
 }
 
-<<<<<<< HEAD
 function validateInput($connection, $input){
     return mysqli_real_escape_string($connection, $input);
 }
 
-=======
->>>>>>> origin/master
 function esc($word){
     return addslashes($word);
 }
@@ -77,8 +74,4 @@ function popup_redirect($message, $page){
 }
 
 
-<<<<<<< HEAD
 ?>
-=======
-?>
->>>>>>> origin/master
