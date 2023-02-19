@@ -16,8 +16,13 @@
 <?php
 
 include_once('../../config/app.php');
+<<<<<<< HEAD
 // include_once('../../controller/authController/authentication/Authentication.php');
 // include_once('../../controller/authController/authorization/Authorization.php');
+=======
+include_once('../../controller/authController/authentication/Authentication.php');
+include_once('../../controller/authController/authorization/Authorization.php');
+>>>>>>> origin/master
 include_once('../common/header.php');
 
 if($_SESSION['auth_role']=='STUDENT'){
@@ -36,9 +41,15 @@ include_once('../../model/Student.php');
 
 
 //User Authentication
+<<<<<<< HEAD
 // Authentication::userAuthentication();
 // //User Authorization
 // Authorization::authorizingStudent();
+=======
+Authentication::userAuthentication();
+//User Authorization
+Authorization::authorizingStudent();
+>>>>>>> origin/master
 
 $profileInfoController = new profileInfoController();
 

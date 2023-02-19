@@ -1,5 +1,6 @@
 <?php
 
+<<<<<<< HEAD
 class Question {
 
     /**
@@ -23,11 +24,23 @@ class Question {
             echo '<script>console.error("' . $errorMessage . '")</script>';
             return false;
         }
+=======
+class Question{
+
+    public static function getCountOfAllQuestions($connection){
+
+        $query = "SELECT COUNT(questionId) as questionCount FROM question";
+        $data = $connection->query($query);
+        $count = $data->fetch_assoc();
+
+        return $count['questionCount'] + 1000;
+>>>>>>> origin/master
 
     }
 
     public static function getNoOfQuestions($connection, $subject){
 
+<<<<<<< HEAD
         try {
             $query = "SELECT COUNT(questionId) as questionCount FROM question 
                   WHERE subjectId = (SELECT subjectId From Subject WHERE subjectTitle = '$subject')";
@@ -45,6 +58,15 @@ class Question {
             echo '<script>console.error("' . $errorMessage . '")</script>';
             return false;
         }
+=======
+        $query = "SELECT COUNT(questionId) as questionCount FROM question 
+                  WHERE subjectId = (SELECT subjectId From Subject WHERE subjectTitle = '$subject')";
+
+        $data = $connection->query($query);
+        $count = $data->fetch_assoc();
+
+        return $count['questionCount'] + 500;
+>>>>>>> origin/master
 
     }
 

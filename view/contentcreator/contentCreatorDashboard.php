@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+<<<<<<< HEAD
 
 <head>
     <meta charset="UTF-8">
@@ -22,6 +23,18 @@
 <body>
 
     <?php
+=======
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Content Creator Dashboard</title>
+</head>
+<body>
+
+<?php
+>>>>>>> origin/master
 
 include_once('../../config/app.php');
 include_once('../../controller/authController/authentication/Authentication.php');
@@ -36,6 +49,7 @@ Authentication::userAuthentication();
 //User Authorization
 Authorization::authorizingContentCreator();
 
+<<<<<<< HEAD
 include_once '../common/header.php';
 @include '../common/navBar-ContentCreator.php';
 
@@ -171,3 +185,31 @@ include_once '../common/header.php';
 </body>
 
 </html>
+=======
+include_once('../common/header.php');
+
+?>
+
+<header>
+    <nav>
+        <ul>
+            <?php if(isset($_SESSION['authenticated'])) : ?>
+                <li>
+                    <form action="../../controller/authController/authentication/login/login.php" method="post">
+                        <button type="submit" name="logout"><?= $_SESSION['auth_user']['userEmail'] ?> </button>
+                    </form>
+                </li>
+            <?php else : ?>
+                <li>
+                    <button><a href="<?php base_url('view/authentication/index.php') ?>"> Login </a></button>
+                </li>
+            <?php endif; ?>
+        </ul>
+    </nav>
+</header>
+
+<h1>Welcome To Content Creator Dashboard</h1>
+
+</body>
+</html>
+>>>>>>> origin/master

@@ -1,5 +1,6 @@
 <?php
 
+<<<<<<< HEAD
 class Student {
 
     /**
@@ -30,6 +31,9 @@ class Student {
      * End of
      * @author Charith Sathsara section
      */
+=======
+class Student{
+>>>>>>> origin/master
 
     public static function getProfileDataStudent($connection){
 

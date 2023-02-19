@@ -2,6 +2,7 @@
 
 class Lesson{
 
+<<<<<<< HEAD
     /**
      * Author:
      * @author Charith Sathsara
@@ -30,6 +31,8 @@ class Lesson{
      * @author Charith Sathsara section
      */
 
+=======
+>>>>>>> origin/master
     public static function getLessons($connection,$subject){
 
         $query1 = "SELECT subjectId FROM subject WHERE subjectTitle='$subject'";

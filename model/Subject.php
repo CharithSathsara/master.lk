@@ -1,5 +1,6 @@
 <?php
 
+<<<<<<< HEAD
 class Subject {
 
     /**
@@ -29,6 +30,9 @@ class Subject {
      * End of
      * @author Charith Sathsara section
      */
+=======
+class Subject{
+>>>>>>> origin/master
 
     public static function getSubjectPrice($connection,$subject){
 
@@ -40,6 +44,22 @@ class Subject {
 
     }
 
+<<<<<<< HEAD
+=======
+
+    public static function getSubjectTitle($connection, $subjectId){
+
+        $query = "SELECT subjectTitle from subject where subjectId = '$subjectId'";
+
+        $data = $connection->query($query);
+
+        $subject = $data->fetch_assoc();
+
+        return $subject['subjectTitle'];
+
+    }
+
+>>>>>>> origin/master
     public static function addToCart($connection,$subject){
 
         $userId = $_SESSION['auth_user']['userId'];

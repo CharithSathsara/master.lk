@@ -30,7 +30,11 @@ if(isset($_POST['add-question'])){
     if($data){
         redirect("Question Added Successfully","view/teacher/teacherDashboard.php");
     }else{
+<<<<<<< HEAD
         redirect("Something Went Wrong while Adding a Question","view/teacher/question/addQuestion.php");
+=======
+        redirect("Something Went Wrong","view/teacher/question/addQuestion.php");
+>>>>>>> origin/master
     }
 
 }

@@ -2,8 +2,12 @@
 
 class Admin{
 
+<<<<<<< HEAD
     public static function getAllTeachers($connection)
     {
+=======
+    public static function getAllTeachers($connection){
+>>>>>>> origin/master
 
         $query = "SELECT * FROM user WHERE userType = 'TEACHER'";
 
@@ -21,6 +25,7 @@ class Admin{
 
         $subject = $data->fetch_assoc();
 
+<<<<<<< HEAD
         if ($subject) {
             return $subject['subjectTitle'];
         } else {
@@ -132,5 +137,14 @@ class Admin{
             exit();
 
         }
+=======
+        if($subject){
+            return $subject['subjectTitle'];
+        }else{
+            return false;
+        }
+
+    }
+>>>>>>> origin/master
 
 }
