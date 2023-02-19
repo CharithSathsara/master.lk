@@ -1,0 +1,367 @@
+body{
+    background-color: #EDECEC;
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+#main-card{
+    height: 60%;
+    width: 60%;
+    background-color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    z-index: 1;
+    border-radius:20px;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+/* Login Section */
+
+ul{
+    list-style-type: none;
+    padding:0;
+}
+
+ul li{
+    padding-left: 30px;
+}
+
+#login-list-item{
+    border-left: 6px solid #f49f0a;
+}
+
+#signup-list-item{
+    border-left: 6px solid #ffffff;
+}
+
+.main-card-icons{
+    width:30px;
+    height:30px;
+    left: 0;
+
+    right: 0;
+    margin: auto;
+}
+
+#login h2, #signup h2{
+    margin:10px 0 0 0;
+    color: black;
+}
+
+#login-nav{
+    flex: 3;
+    margin-right: 60px;
+}
+
+
+#login a, #signup a{
+    width:100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 80px 0px 80px 0px;
+}
+
+a{
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#login-form-container{
+    flex:2;   
+}
+
+#login-form-container h3{
+    margin:0 0 30px 0;
+}
+
+input[type=text] , input[type=password], input[type=email],input[type=number],input[type=date]{
+    border:none;
+    border-radius: 4px;
+    color : #808080;
+    background-color: #EDECEC;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    margin-bottom: 15px;
+    width:80%;
+}
+
+#togglePassword{margin-left: -30px; 
+cursor: pointer;}
+/* #login-password{
+    margin-bottom:5px;
+} */
+
+#remember-me-section{
+    float: left;
+    margin:0;
+
+}
+
+#remember-me{
+    margin-left: 0;
+    border: 2px solid #219ebc;
+    border-radius: 2px;
+}
+
+#remember-me-text{
+    font-size: 13px;
+    margin:0;
+    position: absolute;
+    color:#219ebc;
+}
+
+#forgot-password{
+    float: right;
+    padding-right: 57px;
+    font-size: 13px;
+    margin:0;
+}
+
+#forgot-password a{
+    color:#219ebc;
+}
+
+#login-error {
+    font-size: 13px;
+    color: red;
+    height:25px;
+    margin-top: 10px
+}
+
+#login-error h4{
+    margin: 0;
+}
+
+#login-button{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    margin-bottom: 10px;
+    margin-top: 25px;
+    width:83.5%;
+    border:none;
+    border-radius: 4px;
+    background-color: #219ebc;
+    color:white;
+}
+
+#no-account{
+    font-size: 14px;
+    color:#808080;
+    float: right;
+    padding-right: 100px;
+}
+
+#no-account a{
+    color:#f49f0a;
+}
+
+#master-card{
+    visibility:visible;
+    background-color:#219ebc;
+    height: 75%;
+    width: 25%;
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    margin-left: 30%;
+    border-radius:20px;
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#master-title{
+    background-color:white;
+    width : 60%;
+    height :10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+}
+
+#master-title img{
+    height :90%;
+}
+
+#master-image{
+    height: 60%;
+    width:100%;
+}
+
+#master-image img{
+    height: 100%;
+    width:100%;
+}
+
+#about-us{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction:column;
+}
+
+#about-us p{
+    margin:0;
+    color:white;
+}
+
+
+#about-us img{
+    width:20px; 
+    height:20px;
+}
+
+/* Signup Section */
+
+#signup-card{
+    visibility:hidden;
+    height: 60%;
+    width: 60%;
+    background-color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    z-index: 3;
+    border-radius:20px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border: 2px solid #219ebc;
+    margin-left: 469px;
+    width:759px;
+}
+
+#signup-content{
+    padding-top: 25px;
+    padding-left: 65px;
+    padding-right: 20px;
+}
+
+#signup-first{
+    float:left;
+    width:50%;
+}
+
+#signup-second{
+    float:right;
+    width:50%;
+}
+
+#signup-button{
+    border:none;
+    border-radius: 4px;
+    color : #ffffff;
+    background-color: #219ebc;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    margin-bottom: 10px;
+    width:83.5%;
+    /* display: inline-block; */
+}
+
+#signup-error {
+    font-size: 13px;
+    color: red;
+    height:20px;
+    margin-bottom: 12px;
+    /* display: inline-block; */
+    visibility: visible;
+}
+
+#signup-error h4{
+    margin:0;
+}
+
+/* Forgot Password Section */
+
+#forgot-pw-card{
+    visibility:hidden;
+    height: 60%;
+    width: 60%;
+    background-color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    z-index: 1;
+    border-radius:20px;
+    display:flex;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+#forgot-pw-form-container{
+    width:33%;
+    float:right;
+    margin-left: auto;
+    margin-right: 0;
+    padding-right: 40px;
+    margin-top: 40px;
+}
+
+#show-email{
+    border:none;
+    border-radius: 4px;
+    color : #808080;
+    background-color: #EDECEC;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 10px;
+    margin-bottom: 15px;
+    width:94%;
+}
+
+#verifying-email{
+    margin:0;
+}
+
+#verify-email-button{
+    border:none;
+    border-radius: 4px;
+    color : #ffffff;
+    background-color: #219ebc;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    margin-bottom: 10px;
+    width:97.5%;
+}
+
+#forgot-pw-form-container p{
+    font-size: 15px;
+}
+
+#forgot-pw-form-container a{
+    text-align: center;
+    color: #f49f0a;
+}
+
+#signup-success{
+    position: fixed;
+    bottom: 30px;
+    right: 0;
+    width: 100%;
+}
+
+
+
+

@@ -1,0 +1,328 @@
+.main-container{
+    /*background-color: #F4C430;*/
+    height: 90vh;
+    width: 85vw;
+    margin-left: 15vw;
+    margin-top: 5vh;
+}
+
+.container-1 p{
+    /*background-color: #F4C430;*/
+    color: #0b2e5e;
+    font-weight: bold;
+    font-size: 25px;
+    /*padding: 10px;*/
+    width: 50%;
+    padding-top: 60px;
+    padding-left: 60px;
+}
+
+.container-1{
+    /*background-color: red;*/
+    /*margin-top: 5%;*/
+    height: 15%;
+}
+
+.container-2 {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    /*background-color: #F4C430;*/
+}
+
+.container-2 p{
+    font-weight: bold;
+    /*background-color: #F4C430;*/
+    padding-left: 30px;
+    font-size: 20px;
+}
+
+.container-2:after{
+    content: "";
+    flex: 1 1;
+    border-bottom: 2px solid #D9D9D9;
+    margin: auto;
+}
+
+.styled-table tr{
+    padding: 10px;
+    background-color: #D9D9D9;
+    /*margin-right: 20px;*/
+}
+
+th{
+    border-radius: 10px;
+    /*padding-top: 10px;*/
+}
+
+.styled-table{
+    width: 90%;
+    border-collapse: separate;
+    border-spacing: 0 20px;
+}
+
+.get-AllSlip table{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 80px;
+}
+
+#accept{
+    color: green;
+    font-weight: bold;
+    font-size: 18px;
+    width: 250px;
+}
+
+.td-1{
+    font-weight: bold;
+    font-size: 18px;
+    color: #111111;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 50px;
+}
+
+#reject{
+    color: red;
+    font-weight: bold;
+    font-size: 18px;
+    width: 100px;
+
+}
+
+#user_fullName{
+    width: 500px;
+}
+#ViewSlip{
+    width: 250px;
+}
+
+
+.access-popBox{
+    background-color: rgba(0,0,0,0.6);
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    display: none;
+    justify-content: center;
+    z-index: 100;
+}
+
+.accessPop{
+    width: 550px;
+    height: 300px;
+    background-color: white;
+    margin-top: 300px;
+    border-radius: 20px;
+    position: fixed;
+}
+
+.access-popBox .accessHead{
+    /*background-color: #F4C430;*/
+    display: flex;
+    flex-direction: row;
+    width: 400px;
+    margin-top: 40px;
+    margin-left: 20px;
+}
+
+.access-popBox .accessHead img{
+    width: 40px;
+    height: 40px;
+    margin-left: 50px;
+    margin-right: 30px;
+    margin-top: 10px;
+}
+
+.access-popBox .accessHead h4{
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.access-popBox .accessBody p{
+    /*background-color: #F4C430;*/
+    margin-left: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.access-popBox .access-button{
+    /*background-color: #F4C430;*/
+    display: flex;
+    flex-direction: row;
+}
+
+.access-popBox .access-button .no-button{
+    /*padding-right: 20px;*/
+    /*padding-left: 20px;*/
+
+    background-color: #0b2e5e;
+    color: white;
+    width: 75px;
+    height: 30px;
+    border-radius: 8px;
+    padding-top: 10px;
+    padding-left: 50px;
+    margin-left: 200px;
+    margin-right: 40px;
+}
+
+
+.access-popBox .access-button .yes-button{
+    background-color: orange;
+    color: white;
+    width: 100px;
+    height: 30px;
+    border-radius: 8px;
+    padding-top: 10px;
+    padding-left: 20px;
+}
+
+/*reject button*/
+
+.reject-popBox{
+    background-color: rgba(0,0,0,0.6);
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    display: none;
+    justify-content: center;
+    z-index: 100;
+}
+
+.rejectPop{
+    width: 550px;
+    height: 300px;
+    background-color: white;
+    margin-top: 300px;
+    border-radius: 20px;
+    position: fixed;
+}
+
+.reject-popBox .rejectHead{
+    /*background-color: #F4C430;*/
+    display: flex;
+    flex-direction: row;
+    width: 400px;
+    margin-top: 40px;
+    margin-left: 20px;
+}
+
+.reject-popBox .rejectHead img{
+    width: 60px;
+    height: 40px;
+    margin-left: 50px;
+    margin-right: 30px;
+    margin-top: 10px;
+}
+
+.reject-popBox .rejectHead h4{
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.reject-popBox .rejectBody p{
+    /*background-color: #F4C430;*/
+    margin-left: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.reject-popBox .reject-button{
+    /*background-color: #F4C430;*/
+    display: flex;
+    flex-direction: row;
+}
+
+.reject-popBox .reject-button .no-button{
+    /*padding-right: 20px;*/
+    /*padding-left: 20px;*/
+
+    background-color: #0b2e5e;
+    color: white;
+    width: 75px;
+    height: 30px;
+    border-radius: 8px;
+    padding-top: 10px;
+    padding-left: 50px;
+    margin-left: 200px;
+    margin-right: 40px;
+}
+
+
+.reject-popBox .reject-button .yes-button{
+    background-color: orange;
+    color: white;
+    width: 100px;
+    height: 30px;
+    border-radius: 8px;
+    padding-top: 10px;
+    padding-left: 20px;
+}
+
+/*view payment slip*/
+
+.viewSlip-popBox{
+    background-color: rgba(0,0,0,0.6);
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    display: none;
+    justify-content: center;
+    z-index: 100;
+}
+
+.viewSlipPop{
+    width: 600px;
+    height: 60vh;
+    background-color: white;
+    margin-top: 150px;
+    border-radius: 20px;
+    position: fixed;
+}
+
+.viewSlip-popBox .viewSlipHead{
+    /*background-color: #F4C430;*/
+    display: flex;
+    flex-direction: row;
+    width: 400px;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.viewSlip-popBox .viewSlipHead img{
+    width: 30px;
+    height: 30px;
+    margin-left: 27vw;
+    /*margin-right: 30px;*/
+    margin-top: 10px;
+    cursor: pointer;
+    position: relative;
+}
+
+.viewSlip-popBox .viewSlipHead h4{
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 5px;
+    position: absolute;
+    margin-left: 20px;
+    /*margin-right: 100px;*/
+    /*padding-right: 50px;*/
+}
+
+.viewSlip-popBox .viewSlipBody img{
+    /*margin-left: 10px;*/
+    margin-top: 50px;
+    width: 600px;
+    height: 350px;
+}
+
+.tableRow-1{
+    display: flex;
+}
+
+

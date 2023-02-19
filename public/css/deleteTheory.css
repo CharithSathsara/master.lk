@@ -1,0 +1,102 @@
+.popup2-title {
+    margin-left: 9%;
+    margin-top: -2.5%;
+    margin-bottom: 6%;
+    font-size: 18px;
+}
+
+#popup2 {
+    position: fixed;
+    top: 49%;
+    left: 51.44%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    width: 600px;
+    padding: 50px;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+    background: #fff;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s;
+}
+
+
+
+
+.close-btn {
+    text-decoration: none;
+    float: right;
+    margin-top: -4%;
+}
+
+#popup2.active {
+    top: 50%;
+    left: 51.44%;
+    width: 35%;
+    height: 15%;
+    visibility: visible;
+    opacity: 1;
+    border-radius: 8px;
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s;
+
+}
+
+.delete-alert {
+    float: left;
+    margin-top: -3.5%;
+    margin-right: 1%;
+}
+
+.delete-confirmation-btns {
+    float: right;
+}
+
+#deleteTheory-Yes-btn {
+    background: rgba(33, 158, 188);
+    padding: 1.7%;
+    width: 180px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    margin: 10px;
+    text-decoration: none;
+}
+
+#deleteTheory-Yes-btn:hover {
+    background: rgb(244 159 10);
+    color: white;
+}
+
+#deleteTheory-No-btn {
+    background: rgb(244 159 10);
+    padding: 1.7%;
+    width: 180px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    margin: 10px;
+    text-decoration: none;
+}
+
+#deleteTheory-No-btn:hover {
+
+    background: rgba(33, 158, 188);
+    color: white;
+}

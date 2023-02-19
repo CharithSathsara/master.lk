@@ -1,0 +1,153 @@
+#student-dashboard-container{
+    width:85%;
+    height: 100%;
+    float: right;
+    z-index: 1;
+
+}
+
+#student-dashboard{
+    margin: 120px 40px 100px 30px;
+}
+
+#title{
+    margin-top:0;
+    font-size:18px;
+    color:#0b2e5e;
+    /* margin-left: 5px; */
+}
+
+.sub-title{
+    margin-top:30px;
+    display: flex;
+    flex-direction: row;
+}
+
+.sub-title:after {
+    content: "";
+    flex: 1 1;
+    border-bottom: 2px solid #D9D9D9;
+    margin: auto;
+}
+
+#my-subjects-container{
+    /* background-color:aquamarine; */
+    margin-top:35px;
+    height:auto;
+    display: flex;
+    align-items: flex-start;
+}
+
+.subject-card{
+    display: inline-block;
+    width: 20%;
+    height: auto;
+    margin-right: 30px;
+    border-radius: 10px;
+    position: relative;
+}
+
+#chemistry{
+    background-color:#219ebc;
+}
+
+#physics{
+    background-color:#f49f0a;
+}
+
+.card-title{
+    color: #fff;
+    font-size:17px;
+    margin-left: 15px;
+    height: 30px;
+}
+
+.lesson-container{
+    /* position: absolute;
+    bottom: 0; */
+    width:100%;
+    margin-top: 150px;
+    height: auto;
+}
+
+.lesson-container a{
+    text-decoration: none;
+    color: black;
+}
+
+.lesson{
+    background-color:#EDECEC;
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 40px;
+    border-radius: 5px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.lesson-title{
+    margin-top:0;
+    margin-bottom: 0;
+    padding:8px 0;
+}
+
+.goToLesson-button{
+    width:100%;
+}
+
+#progress-container{
+    /* background-color:aquamarine; */
+    margin-top:35px;
+    height:350px;
+}
+
+.progress-card{
+    display:inline-block;
+    width: 47%;
+    height: 100%;
+    /* height:350px; */
+    border-radius: 10px;
+    position: relative;
+}
+/* 
+.progress-title{
+    margin-top:0;
+} */
+
+#completion-card{
+    background-color:#0b2e5e;
+    margin-right: 30px;
+}
+
+#scores-card{
+    background-color:black;
+}
+
+.progress-title{
+    color: #fff;
+    font-size:17px;
+    margin-left: 15px;
+}
+
+#badge-container{
+    margin-top:35px;
+    height:350px;
+    background-color:#EDECEC;
+    border-radius: 10px;
+    width:97%;
+}
+
+#rec-container{
+    margin-top:35px;
+    height:350px;
+    background-color:#219ebc;
+    border-radius: 10px;
+    width:97%;
+}
+
+/* temporary */
+
+.progress-img{
+    height: 250px;
+    margin: 0 auto;
+}

@@ -1,0 +1,776 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    /*background-color: #008CBA;*/
+}
+
+/*.header{*/
+/*    height: 10vh;*/
+/*    background-color: brown;*/
+/*    margin-top: 0;*/
+/*}*/
+
+/*.navBar{*/
+/*    height: 90vh;*/
+/*    width: 15vh;*/
+/*    background-color: #111111;*/
+/*    margin-top: 0;*/
+/*    margin-left: 0;*/
+/*}*/
+
+.section-3{
+    /*background-color: aqua;*/
+    width: 85%;
+    height: 100%;
+    float: right;
+    z-index: 1;
+
+}
+
+/*td{*/
+/*    !*padding: 10px;*!*/
+/*    !*padding-right: 50px;*!*/
+/*    !*padding-left: 20px;*!*/
+/*    column-gap: 30px;*/
+/*}*/
+
+/*tr{*/
+/*    border: 1px solid red;*/
+/*    width: 100%;*/
+/*}*/
+
+.but-teacher{
+    background-color: orange;
+    color: white;
+    padding: 5px;
+    margin: 0;
+    border-radius: 6px;
+    width: 150px;
+}
+
+.but-content{
+    background-color: orange;
+    color: white;
+    padding: 5px;
+    margin: 0;
+    border-radius: 6px;
+    width: 175px;
+}
+.but-teacher:hover,.but-content:hover{
+    background-color: #0b2e5e ;
+    color: white;
+}
+
+.getTeacher .td-1{
+    padding-left: 20px;
+    padding-right: 400px;
+}
+
+.dashboard-text p{
+    font-size:18px;
+    margin-top: 0;
+    color: #0b2e5e;
+    font-weight: bold;
+}
+
+#adminDashboardContainer{
+    margin: 120px 40px 100px 30px;
+}
+
+.teacher-1 {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+}
+
+.teacher-1 p{
+    font-weight: bold;
+}
+
+.teacher-1:after{
+    content: "";
+    flex: 1 1;
+    border-bottom: 2px solid #D9D9D9;
+    margin: auto;
+}
+
+.content-1{
+   margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+}
+
+.content-1 p{
+    font-weight: bold;
+}
+
+.content-1:after{
+    content: "";
+    flex: 1 1;
+    border-bottom: 2px solid #D9D9D9;
+    margin: auto;
+}
+
+/*.getTeacher tr{*/
+/*    width: 100%;*/
+/*}*/
+
+.td-2{
+}
+
+.td-2 img{
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.styled-table tr{
+    padding: 10px;
+}
+th{
+    border-radius: 10px;
+}
+
+.styled-table{
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 20px;
+}
+
+.getTeacher table{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/*.styled-table {*/
+/*    border-collapse: collapse;*/
+/*    margin: 25px 0;*/
+/*    font-size: 0.9em;*/
+/*    font-family: sans-serif;*/
+/*    min-width: 400px;*/
+/*    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);*/
+/*}*/
+
+/*.styled-table .td-2,.td-1{*/
+/*    padding: 15px 0;*/
+/*}*/
+
+/*.styled-table tbody tr {*/
+/*    border-bottom: 1px solid red;*/
+/*}*/
+
+/*.getTeacher .but{*/
+/*    margin-right: 20px;*/
+/*}*/
+
+/*.anchor .but{*/
+/*    right: 20px;*/
+/*}*/
+
+.getContentCreator .styled-table{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.getContentCreator .td-1{
+    padding-left: 20px;
+    padding-right: 409px;
+}
+
+.anchor-1 {
+   /*float: right;*/
+    margin-left: 85%;
+}
+
+.anchor-2{
+    margin-left: 83%;
+}
+
+#adminDashboardContainer tr{
+    background-color: #D9D9D9;
+}
+
+#adminDashboardContainer td{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+/*#adminDashboardContainer table,tr{*/
+/*    border: none;*/
+/*}*/
+
+.popup{
+    /*background-color: rgba(0,0,0,0.6);*/
+    /*height: 100%;*/
+    /*width: 100%;*/
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*display: none;*/
+    /*justify-content: center;*/
+    /*z-index: 100;*/
+
+    background-color: rgba(0,0,0,0.6);
+    height: 150vh;
+    width: 98.9vw;
+    position: absolute;
+    top: 0;
+    display: none;
+    justify-content: center;
+    z-index: 100;
+}
+
+.popup-update{
+    /*background-color: rgba(0,0,0,0.6);*/
+    /*height: 150vh;*/
+    /*width: 100vw;*/
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*display: none;*/
+    /*justify-content: center;*/
+    /*z-index: 100;*/
+
+
+    background-color: rgba(0,0,0,0.6);
+    height: 150vh;
+    width: 99vw;
+    position: absolute;
+    top: 0;
+    display: none;
+    justify-content: center;
+    margin-left: -16.5vw;
+    z-index: 100;
+}
+
+.popup-update .closeTeacher-Icon{
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    margin-left: 34.5vw;
+    margin-top: 15px;
+}
+
+.popup-UpdateTeacher{
+    height: 450px;
+    width: 700px;
+    background-color: white;
+    /*padding: 20px;*/
+    border-radius: 10px;
+    position: fixed;
+    margin-top: 200px;
+    margin-left: 100px;
+}
+
+.popup-AddTeacher{
+    height: 520px;
+    width: 700px;
+    background-color: white;
+    /*padding: 20px;*/
+    border-radius: 10px;
+    position: fixed;
+    margin-top: 180px;
+    margin-left: 100px;
+    /*padding-left: 200px;*/
+    /*padding-bottom: 50px;*/
+}
+
+
+
+.addTeach-form .subb-button{
+    /*margin-bottom: 50px;*/
+}
+
+.close-Icons{
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    padding-left: 670px;
+    padding-top: 10px;
+}
+
+.forms{
+    width: 100%;
+    display :flex;
+    justify-content:center;
+    align-items:flex-start;
+}
+
+.addTeach-form{
+    max-width: 650px;
+    width :100%;
+    /*background-color: #8A8AFF;*/
+    display: grid;
+    grid-template-columns: 200px 200px;
+    grid-row: auto auto;
+    grid-column-gap: 100px;
+    grid-row-gap: 20px;
+    /*grid-gap: 50px;*/
+    /*justify-content:space-around ;*/
+    /*!*align-items:center;*!*/
+    /*flex-direction: row;*/
+
+    padding:25px;
+    margin-left:0;
+}
+
+#subjects{
+    /*margin-left: 10vw;*/
+}
+
+.UpdateTeach-form{
+    max-width: 650px;
+    width :100%;
+    /*background-color: #8A8AFF;*/
+    display: grid;
+    grid-template-columns: 200px 200px;
+    grid-row: auto auto;
+    grid-column-gap: 100px;
+    grid-row-gap: 20px;
+    padding-left: 35px;
+    padding-top: 10px;
+}
+
+.UpdateTeach-form label{
+    color: black;
+}
+
+.addTeach-form label{
+    color: black;
+    /*padding-left: 20px;*/
+}
+
+input[type="email"],input[type="password"],input[type="text"],input[type="date"]{
+    width : 250px;
+    height :40px;
+    margin:5px 30px;
+    padding:0 15px;
+    border:none;
+    border-radius: 6px;
+    background-color: rgba(117, 114, 114, 0.31);
+}
+textarea{
+    width : 230px;
+    height :40px;
+    margin:5px 30px;
+    padding-top: 20px;
+    padding-left: 50px;
+    border:none;
+    border-radius: 6px;
+    background-color: rgba(117, 114, 114, 0.31);
+}
+
+.selectSub{
+    text-align: center;
+    /*margin-left: 0px;*/
+    margin-right: 90px;
+}
+
+
+
+.addTeach-form input[type="submit"]{
+    width: 130px;
+    height: 35px;
+    /*padding: 40px 50px;*/
+    /*margin-top: 10px;*/
+    margin-bottom: 10px;
+    margin-left: 470px;
+    cursor: pointer;
+    border: none;
+    background-color: #0b2e5e;
+    /*color: white;*/
+    /*transition:all 0.3s ease-in;*/
+    /*-webkit-transition:all 0.3s ease-in;*/
+    /*-moz-transition:all 0.3s ease-in;*/
+    /*-ms-transition:all 0.3s ease-in;*/
+    /*-o-transition:all 0.3s ease-in;*/
+    border-radius: 10px;
+}
+
+.UpdateTeach-form input[type="submit"]{
+    width: 130px;
+    height: 35px;
+    /*padding: 20px 50px;*/
+    /*padding-top: ;*/
+    /*color: white;*/
+    margin-top: 80px;
+    /*margin-bottom: 10px;*/
+    margin-left: 175px;
+    cursor: pointer;
+    border: none;
+    background-color: #0b2e5e;
+    /*color: white;*/
+    /*transition:all 0.3s ease-in;*/
+    /*-webkit-transition:all 0.3s ease-in;*/
+    /*-moz-transition:all 0.3s ease-in;*/
+    /*-ms-transition:all 0.3s ease-in;*/
+    /*-o-transition:all 0.3s ease-in;*/
+    border-radius: 10px;
+}
+
+.UpdateTeach-form input[type="submit"]:hover{
+    background-color: orange;
+}
+
+#updateTeacherSubmit{
+    background-color: #0b2e5e;
+    color: white;
+    border-radius: 10px;
+}
+
+#updateTeacherSubmit:hover{
+    background-color: orange;
+
+}
+
+.subb-Update{
+    width: 130px;
+    height: 35px;
+    /*padding: 20px 50px;*/
+    /*margin-top: 10px;*/
+    /*margin-bottom: 10px;*/
+    /*margin-left: 50px;*/
+    cursor: pointer;
+    border: none;
+    background-color: #0b2e5e;
+    margin-left: 27vw;
+
+}
+/*.subb-button{*/
+/*    background-color: orange;*/
+/*}*/
+
+.addTeach-form input[type="submit"]:hover{
+    background-color:orange;
+    color: white;
+}
+
+.addTeacherText h4{
+    padding-left: 40px;
+    font-weight: bold;
+}
+
+.selectSub label{
+    width: 250px;
+    /*background-color: red;*/
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-left: 35px;
+}
+
+.selectSub select{
+    background-color: rgba(117, 114, 114, 0.31);
+    padding: 5px;
+    border-radius: 10px;
+    margin-left: -60px;
+    /*margin-bottom: 60px;*/
+}
+
+.addTeach-form input[type="submit"]{
+    background-color: #0b2e5e;
+    color: white;
+}
+
+.popup-update h4{
+    padding-bottom: 5px;
+    /*padding-top: 15px;*/
+}
+
+.UpdateTeach-form select{
+    margin-bottom: 200px;
+    margin-left: 180px;
+}
+
+.popup-delete{
+    /*background-color: rgba(0,0,0,0.6);*/
+    /*height: 100%;*/
+    /*width: 100%;*/
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*display: none;*/
+    /*justify-content: center;*/
+    /*z-index: 100;*/
+
+    background-color: rgba(0,0,0,0.6);
+    height: 150vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    display: none;
+    justify-content: center;
+    z-index: 100;
+    margin-left: -17.5vw;
+
+}
+
+.delete-teacherPop{
+    width: 450px;
+    height: 200px;
+    background-color: white;
+    margin-left: 200px;
+    margin-top: 300px;
+    border-radius: 20px;
+    position: fixed;
+}
+
+.delete-headerPop{
+    display: flex;
+    flex-direction: row;
+    padding-top: 20px;
+    padding-left: 20px;
+}
+
+.delete-teacherPop img{
+    width: 40px;
+    height:30px;
+    padding-right: 10px;
+}
+
+.deletePop-teacherBody{
+    /*background-color: #0b2e5e;*/
+    width: 350px;
+    padding: 5px;
+    margin-left: 20px;
+    margin-top: 35px;
+}
+.deletePop-teacherBody p{
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.deletePop-teacherButton .deleteYes-button{
+    background-color: #0b2e5e;
+    color: white;
+    width: 100px;
+    height: 30px;
+    border-radius: 8px;
+    margin-right: 10px;
+    margin-left: 200px;
+    margin-top: 30px;
+}
+
+.deletePop-teacherButton .deleteNo-button{
+    background-color: orange;
+    color: white;
+    width: 100px;
+    height: 30px;
+    border-radius: 8px;
+}
+
+/*.deletePop-teacherButton{*/
+/*    background-color: red;*/
+/*}*/
+
+.popup-UpdateTeacher .UpdateTeacher-button{
+    cursor: pointer;
+}
+
+.popup-addContentCreator{
+    background-color: rgba(0,0,0,0.6);
+    height: 150vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    display: none;
+    justify-content: center;
+    z-index: 100;
+
+}
+
+.add-contentCreatorPop{
+    /*width: max-width: 200px;*/
+    /*width :100%;*/
+    width: 700px;
+    height: 520px;
+    background-color: white;
+    margin-top: 200px;
+    border-radius: 20px;
+    position: fixed;
+}
+
+.popup-addContentCreator .update-ContentCreatorHeaderPop{
+    /*background-color: #F4C430;*/
+    background-size: contain;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+
+}
+
+.popup-addContentCreator .update-ContentCreatorHeaderPop h4{
+    margin-top: 10px;
+    overflow-wrap: normal;
+    /*background-color: red;*/
+    margin-left: 20px;
+    font-weight: bold;
+    font-size: 15px;
+    position: absolute;
+    /*font-size: 10px;*/
+}
+
+.popup-addContentCreator .update-ContentCreatorHeaderPop img{
+    width: 30px;
+    height: 30px;
+    margin-left: 650px;
+    cursor: pointer;
+    position: relative;
+
+
+}
+
+.update-contentCreatorForm{
+    /*background-color: red;*/
+    /*margin-left: 100px;*/
+    /*margin-top: 15px;*/
+}
+
+.update-ContentCreatorPop{
+    background-color: rgba(0,0,0,0.6);
+    height: 150vh;
+    width: 99vw;
+    position: absolute;
+    top: 0;
+    display: none;
+    justify-content: center;
+    z-index: 100;
+    margin-left: -16.5vw;
+}
+
+.update-ContentCreatorPop .updatePop-contentCreator{
+    width: 700px;
+    height: 475px;
+    background-color: white;
+    margin-top: 200px;
+    border-radius: 20px;
+    position: fixed;
+}
+
+.update-ContentCreatorPop .updatePop-contentCreatorHeader{
+    background-size: contain;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+}
+
+.update-ContentCreatorPop .updatePop-contentCreatorHeader h4{
+    margin-top: 10px;
+    overflow-wrap: normal;
+    /*background-color: red;*/
+    margin-left: 20px;
+    font-weight: bold;
+    font-size: 15px;
+    position: absolute;
+}
+
+.update-ContentCreatorPop .updatePop-contentCreatorHeader img{
+    width: 30px;
+    height: 30px;
+    margin-left: 650px;
+    cursor: pointer;
+    position: relative;
+}
+
+.update-contentCreatorForm .UpdateContentCreator-form{
+    max-width: 650px;
+    width :100%;
+    /*background-color: #8A8AFF;*/
+    display: grid;
+    grid-template-columns: 200px 200px;
+    /*grid-row: auto auto;*/
+    grid-column-gap: 100px;
+    grid-row-gap: 20px;
+    padding-left: 38px;
+    padding-top: 10px;
+}
+
+/*Delete Content Creator Pop Box*/
+
+.popup-deleteContent{
+    /*background-color: rgba(0,0,0,0.6);*/
+    /*height: 100%;*/
+    /*width: 100%;*/
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*display: none;*/
+    /*justify-content: center;*/
+    /*z-index: 100;*/
+
+    background-color: rgba(0,0,0,0.6);
+    height: 150vh;
+    width: 98.9vw;
+    position: absolute;
+    top: 0;
+    display: none;
+    justify-content: center;
+    z-index: 100;
+    margin-left: -16.5vw;
+
+}
+
+.delete-contentPop{
+    width: 450px;
+    height: 200px;
+    background-color: white;
+    margin-left: 200px;
+    margin-top: 300px;
+    border-radius: 20px;
+    position: fixed;
+}
+
+.delete-headerContentPop{
+    display: flex;
+    flex-direction: row;
+    padding-top: 20px;
+    padding-left: 20px;
+}
+
+.delete-headerContentPop img{
+    width: 40px;
+    height:30px;
+    padding-right: 10px;
+}
+
+.deletePop-contentBody{
+    /*background-color: #0b2e5e;*/
+    width: 350px;
+    padding: 5px;
+    margin-left: 20px;
+    margin-top: 35px;
+}
+.deletePop-contentBody p{
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.deletePop-contentButton .deleteContentYes-button{
+    background-color: #0b2e5e;
+    color: white;
+    width: 100px;
+    height: 30px;
+    border-radius: 8px;
+    margin-right: 10px;
+    margin-left: 200px;
+    margin-top: 30px;
+}
+
+.deletePop-contentButton .deleteContentNo-button{
+    background-color: orange;
+    color: white;
+    width: 100px;
+    height: 30px;
+    border-radius: 8px;
+}
+
+
+
+
+
+
+
+
+

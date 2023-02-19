@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px black;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn1">Button 1</button>
+    <button id="btn2">Button 2</button>
+
+    <div id="popup1" class="popup">
+        <p>This is popup 1</p>
+        <button class="close">Close</button>
+    </div>
+
+    <div id="popup2" class="popup">
+        <p>This is popup 2</p>
+        <button class="close">Close</button>
+    </div>
+
+    <script>
+        const btn1 = document.getElementById("btn1");
+        const btn2 = document.getElementById("btn2");
+        const popup1 = document.getElementById("popup1");
+        const popup2 = document.getElementById("popup2");
+
+        btn1.addEventListener("click", function () {
+            popup1.style.display = (popup1.style.display === "none") ? "block" : "none";
+        });
+
+        btn2.addEventListener("click", function () {
+            popup2.style.display = (popup2.style.display === "none") ? "block" : "none";
+        });
+
+        popup1.getElementsByClassName("close")[0].addEventListener("click", function () {
+            popup1.style.display = "none";
+        });
+
+        popup2.getElementsByClassName("close")[0].addEventListener("click", function () {
+            popup2.style.display = "none";
+        });
+    </script>
+
+</body>
+
+</html>

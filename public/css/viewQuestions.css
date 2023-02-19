@@ -1,0 +1,50 @@
+table {
+    width: 80vw;
+    padding: 5px;
+}
+table p {
+    display: inline-block;
+}
+
+td,th {
+    border: 3px solid gray;
+    border-radius: 7px;
+    padding: 15px;
+    font-size: 1vw;
+    font-weight: bold;
+}
+
+
+#title{
+    margin-top: 0;
+    font-size: 18px;
+    color:#0b2e5e;
+}
+
+.buttons {
+    display: flex;
+    justify-content: right;
+}
+
+input[type=submit] {
+    padding: 12px 20px;
+    margin: 8px 0;
+    border-radius: 5px;
+    background: #219ebc;
+    box-sizing: border-box;
+    font-weight: bold;
+    cursor: pointer;
+    transition-duration: 0.4s;
+    color: #DCDCDC;
+}
+
+#delete-btn {
+    background: #f49f0a;
+    margin-left: 10px;
+}
+
+#delete-btn:hover {
+    background-color: white;
+    color: #f49f0a;
+    font-weight: bold;
+}

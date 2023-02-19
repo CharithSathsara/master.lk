@@ -1,0 +1,177 @@
+/* Reset */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+/* common */
+body{
+    /*background-color: rgb(60, 79, 192);*/
+    width: 100%;
+    min-height: 100vh;
+    display :flex;
+    justify-content:center;
+    align-items:center;
+    padding:10px;
+}
+
+p,input,button{
+    font-size: 1rem;
+}
+
+/* form */
+.forms{
+    width: 100%;
+    display :flex;
+    justify-content:center;
+    align-items:flex-start;
+}
+
+.register{
+    max-width: 330px;
+    width :100%;
+    background-color: rgb(42, 162, 210);
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    padding:25px;
+    margin: 0 10px;
+}
+
+.addTeach{
+    max-width: 400px;
+    width :100%;
+    background-color: #8A8AFF;
+    display: flex;
+    justify-content:center;
+    /*align-items:center;*/
+    flex-direction:column;
+    padding:25px;
+    margin: 0 10px;
+    margin-right: 200px;
+    margin-left: 0px;
+    border-radius: 20px;
+}
+
+.addTeach label{
+    color: black;
+}
+
+/* input */
+input[type="email"],input[type="password"],input[type="text"],input[type="date"]{
+    width : 100%;
+    height :40px;
+    margin:5px 0;
+    padding:0 10px;
+    border:none;
+    border-radius: 6px;
+}
+input[type="submit"]{
+    width: 100%;
+    padding: 10px 30px;
+    margin-top: 10px;
+    cursor: pointer;
+    border: none;
+    background-color:orange;
+    color: white;
+    transition:all 0.3s ease-in;
+    -webkit-transition:all 0.3s ease-in;
+    -moz-transition:all 0.3s ease-in;
+    -ms-transition:all 0.3s ease-in;
+    -o-transition:all 0.3s ease-in;
+    border-radius: 10px;
+}
+
+input[type="submit"]:hover{
+    background-color:#0b2e5e;
+    color: white;
+}
+/*select*/
+select{
+    width : 110px;
+    height :30px;
+    margin:5px 0;
+    padding:0 10px;
+    border:none;
+}
+
+textarea{
+    width : 100%;
+    height :90px;
+    margin:5px 0;
+    padding:0 10px;
+    border:none;
+    border-radius: 6px;
+}
+
+/* container*/
+.container{
+    display: flex;
+    justify-content: center;
+}
+
+/* Signup button */
+button{
+    width: 100%;
+    padding: 10px 30px;
+    margin-top: 10px;
+    cursor: pointer;
+    border: none;
+    background-color:orange;
+    color: white;
+    transition:all 0.3s ease-in;
+    -webkit-transition:all 0.3s ease-in;
+    -moz-transition:all 0.3s ease-in;
+    -ms-transition:all 0.3s ease-in;
+    -o-transition:all 0.3s ease-in;
+}
+
+button:hover{
+    background-color:white;
+    color: black;
+}
+
+.selectSub{
+    text-align: left;
+    margin-left: 0px;
+    margin-right: 90px;
+}
+
+.teachrHead{
+    font-family: Arial;
+    font-size: 35px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    color: black;
+}
+
+.AddteacherImage{
+    margin-left: 200px;
+    padding-bottom: 0px;
+}
+.container{
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction: row;
+    margin-right: 200px;
+}
+
+.teacherImage{
+    width: 500px;
+    height: 500px;
+    padding-bottom: 0px;
+}
+.addTeacherText p {
+    padding-left: 280px;
+    font-size: 40px;
+    font-weight: 900;
+    color: #0b2e5e;
+    font-family: Georgia;
+}
+
