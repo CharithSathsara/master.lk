@@ -7,7 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../../../public/css/styles.css?<?php echo time(); ?>">
     <link rel="stylesheet" href="../../../public/css/viewQuestions.css?<?php echo time(); ?>">
-    <link rel="stylesheet" href="../../../public/css/updateQuestionForm.css?<?php echo time(); ?>">
     <title>Physics Past Questions</title>
 </head>
 <body>
