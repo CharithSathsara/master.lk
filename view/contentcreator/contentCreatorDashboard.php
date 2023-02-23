@@ -101,6 +101,7 @@ include_once '../common/header.php';
                                 src="../../public/icons/edit.png" alt="edit" id="editImg" width="16px"
                                 height="16px"></a>
                     </td>
+
                     <td class="row-icon"><a href="#" onclick="toggle2()"><img src="../../public/icons/delete.png"
                                 alt="delete" id="deleteImg" width="16px" height="16px"></a>
 
@@ -146,6 +147,8 @@ include_once '../common/header.php';
 
 
     </div>
+
+    <!-- Delete Theory Content Confirmation Popup -->
     <div id="setDeleteTheoryPopup">
         <div id="popup2">
 
