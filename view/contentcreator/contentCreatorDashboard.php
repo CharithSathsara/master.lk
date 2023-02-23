@@ -116,7 +116,7 @@ include_once '../common/header.php';
         </div>
     </div>
     </div>
-    <!-- Add New Title Popup -->
+
     <div id="popup1">
         <div id="getAddTopicPopup">
             <a href="#" class="close-btn" onclick="toggle1()">&times;</a>
