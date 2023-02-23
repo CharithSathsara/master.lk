@@ -37,5 +37,6 @@ include_once('../../config/app.php');
     ?>
 
     <script src="../../public/js/popup.js"></script>
+    <!-- just checking -->
 </body>
 </html>
