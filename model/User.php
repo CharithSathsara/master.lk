@@ -22,14 +22,24 @@ class User{
 
         $userId = $_SESSION['auth_user']['userId'];
 
-        $query = "SELECT image FROM user WHERE userId='$userId'";
+        $query = "SELECT * FROM user WHERE userId='$userId'";
 
         $result = $connection->query($query);
+        $row = $result->fetch_assoc();
 
-        if($result->num_rows > 0){
-            $row = $result->fetch_assoc();
+        if($result && mysqli_num_rows($result) > 0){
+
             return $row['image'];
+        }else{
+            return false;
         }
+//         $stmt = $connection->prepare($query);
+// $stmt->bind_param('s', $userId);
+// $stmt->execute();
+// $result = $stmt->get_result();
+// $row = $result->fetch_array();
+// return $row['image'];
+
 
     }
 
@@ -118,6 +128,37 @@ class User{
             return $data['dob'];
         }else{
             return false;
+        }
+
+    }
+
+    public static function changeUserInfo($connection,$first_name, $last_name, $dob, $address_first, $address_second, $telephone, $email, $username){
+
+        $userId = $_SESSION['auth_user']['userId'];
+
+        $query = "UPDATE user 
+        SET firstName = '$first_name', 
+            lastName = '$last_name',
+            addLine01 = '$address_first',
+            addLine02 = '$address_second',
+            mobile = '$telephone',
+            email = '$email',
+            userName = '$username'
+        WHERE userId = '$userId' ;";
+
+        $result = $connection->query($query);
+
+        $query2 = "UPDATE student 
+        SET dob = '$dob', 
+        WHERE userId = '$userId' ;";
+
+        $result2 = $connection->query($query2);
+
+        if($result && $result2){
+            return true;
+        }else{
+            return false;
+            
         }
 
     }

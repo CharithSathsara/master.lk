@@ -55,13 +55,11 @@ $profileInfoController = new profileInfoController();
                 <b><p class="card-title">Profile Photo</p></b>
                 <button onclick="getPhotoUpdatePopup()" class="edit-button">
                     <img src="../../public/icons/edit.svg" class="edit-icon">
-                </button>
-                <!-- <object data="../../public/img/default-profPic.png" type="image/png" id="profile-photo"> -->
-                <img id="profile-photo" src="data:image/jpg;charset=utf8;base64,
+                </button><br>
                 <?php 
-                include_once "../../controller/profileController/profilePhotoViewController.php" ?> 
-                onerror="this.onerror=null; this.src='../../public/img/default-profPic.png'" />
-                <!-- </object> -->
+                include('../../controller/profileController/profilePhotoViewController.php');
+                ?>
+
             </div>
 
             <div class="photo-password-card" id="password-card">
@@ -69,6 +67,8 @@ $profileInfoController = new profileInfoController();
                 <button onclick="getPwUpdatePopup()" class="edit-button">
                     <img src="../../public/icons/edit-black.svg" class="edit-icon" id="pw-edit-icon">
                 </button>
+                <br>
+                <img src="../../public/icons/password.svg" id="pw-img">
             </div>
 
         </div>
@@ -82,8 +82,15 @@ $profileInfoController = new profileInfoController();
                 <div id="first-info-sec">
                     <p class="profile-info-tag">First Name</p>
                     <p class="profile-info-data"><?= $profileInfoController->getProfileData("firstName") ; ?></p>
-                    <p class="profile-info-tag">Date of Birth</p>
-                    <p class="profile-info-data"><?= $profileInfoController->getProfileDataStudent() ; ?></p>
+
+                    <?php 
+                        if($_SESSION['auth_role']=='STUDENT'){
+                            echo"
+                            <p class='profile-info-tag'>Date of Birth</p>
+                            <p class='profile-info-data'>".$profileInfoController->getProfileDataStudent()."</p>
+                            ";
+                        }
+                    ?>
                     <p class="profile-info-tag">Address Line 01</p>
                     <p class="profile-info-data"><?= $profileInfoController->getProfileData("addLine01") ; ?></p>
                     <p class="profile-info-tag">Email</p>
@@ -146,7 +153,7 @@ $profileInfoController = new profileInfoController();
                 <?php include "../../controller/authController/message.php"?>
             </div>
 
-            <input type="submit" name="submit" value="Save" id="photo-upload-submit">
+            <input type="submit" name="submit" value="Save" id="pw-upload-submit">
         </form>
     </div>
 </div>
@@ -157,18 +164,18 @@ $profileInfoController = new profileInfoController();
         <button onclick="closeProfileInfoPopup()" class="close-button">
             <img src="../../public/icons/close.svg" class="close-icon">
         </button><br><br>
-        <form action="../../controller/profileController/profileInfoController.php" method="post" id="change-profile-info-form" name="change-profile-info-form" >
+        <form action="../../controller/profileController/profileInfoUpdateController.php" method="post" id="change-profile-info-form" name="change-profile-info-form" >
             <div id="change-info-sec-first">
-                <input type="text" id="first-name" name="first-name" placeholder="First Name: <?= $profileInfoController->getProfileData('firstName') ; ?>" oninput="inputChange()"><br>
-                <input type="text" id="last-name" name="last-name" placeholder="Last Name: <?= $profileInfoController->getProfileData("lastName") ; ?>" oninput="inputChange()"><br>
-                <input type="text" placeholder="DOB: <?= $profileInfoController->getProfileDataStudent() ; ?>" name="dob" onfocus="(this.type='date')" onblur="(this.type='text')" oninput="inputChange()">
-                <input type="text" id="address-first" name="address-first" placeholder="Address Line 01: <?= $profileInfoController->getProfileData("addLine01") ; ?>" oninput="inputChange()"><br>
-                <input type="text" id="address-second" name="address-second" placeholder="Address Line 02: <?= $profileInfoController->getProfileData("addLine02") ; ?>" oninput="inputChange()">
+                <input type="text" id="first-name" name="first-name" oninput="inputChange()" value="<?= $profileInfoController->getProfileData('firstName') ; ?>"><br>
+                <input type="text" id="last-name" name="last-name" oninput="inputChange()" value="<?= $profileInfoController->getProfileData('lastName') ; ?>"><br>
+                <input type="text" name="dob" onfocus="(this.type='date')" onblur="(this.type='text')" oninput="inputChange()" value="<?= $profileInfoController->getProfileDataStudent() ; ?>">
+                <input type="text" id="address-first" name="address-first"  oninput="inputChange()" value="<?= $profileInfoController->getProfileData('addLine01') ; ?>"><br>
+                <input type="text" id="address-second" name="address-second" oninput="inputChange()" value="<?= $profileInfoController->getProfileData('addLine02') ; ?>">
             </div>
             <div id="change-info-sec-second">
-                <input type="text" id="telephone" name="telephone" placeholder="Telephone: <?= $profileInfoController->getProfileData("mobile") ; ?>" oninput="inputChange()"><br>
-                <input type="email" id="email" name="email" placeholder="Email: <?= $profileInfoController->getProfileData("email") ; ?>" oninput="inputChange()"><br>
-                <input type="text" id="username" name="username" placeholder="Username: <?= $profileInfoController->getProfileData("userName") ; ?>" oninput="inputChange()"><br>
+                <input type="text" id="telephone" name="telephone"  oninput="inputChange()" value="<?= $profileInfoController->getProfileData('mobile') ; ?>"><br>
+                <input type="email" id="email" name="email" oninput="inputChange()" value="<?= $profileInfoController->getProfileData('email') ; ?>"><br>
+                <input type="text" id="username" name="username"  oninput="inputChange()" value="<?= $profileInfoController->getProfileData('userName') ; ?>"><br>
                 <button id="profile-info-update-button" type="submit" >Save</button>
             </div>
 

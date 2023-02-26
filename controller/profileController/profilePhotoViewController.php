@@ -18,7 +18,12 @@ public function getProfilePhoto(){
 
     if($data){
         // return $data;
-        echo 'base64_encode('.$data.')';
+        // echo 'base64_encode('.$data.')';
+        // echo '<img src="data:image/jpeg;base64,'.base64_encode($data).'"/>';
+        // echo '<img src="data:image/jpeg;base64,'.base64_encode($data->load()) .'" />';
+        echo '<img id="profile-pic" src="data:image/jpg;base64,'.base64_encode($data).'" alt="Profile Picture"/>';
+    }else{
+        return false;
     }
 
 }

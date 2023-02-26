@@ -1,7 +1,3 @@
-/* body {
-    overflow: hidden;
-  } */
-
 #profile-container{
     width:85%;
     height: 100vh;
@@ -37,8 +33,24 @@
     margin-right: 8px;
 }
 
+#profile-pic{
+    height:300px;
+    width: 300px;
+    position: absolute;
+    color: white;
+}
+
 #password-card{
     background-color:#f49f0a;
+}
+
+#pw-img{
+    height: 150px;
+    position: absolute;
+    opacity: .50;
+    margin: 0 auto;
+    right: 38%;
+    top: 25%;
 }
 
 .card-title{
@@ -185,6 +197,8 @@ input[type=file] {
     border-radius: 5px;
     color:#fff;
     margin-top: 10px;
+    border: none;
+    cursor: pointer;
 }
 
 #photo-upload-form{
@@ -193,13 +207,13 @@ input[type=file] {
 
 .page-mask{
     background: rgba(0, 0, 0, 0.5);
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 14;
-  display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 14;
+    display: none;
 }
 
 #change-password-popup{
@@ -261,8 +275,6 @@ input[type=password],input[type=text],input[type=email]{
 
 #second-info-sec{
     display: inline-block;
-    position: absolute;
-    top: 59px;
 }
 
 .profile-info-tag{
@@ -279,16 +291,19 @@ input[type=password],input[type=text],input[type=email]{
 }
 
 #info-sec{
-    display: inline-block;
+    display: flex;
+    height: 75%;
+    width: 50%;
 }
 
 #img-sec{
-    display: inline-block;
+    position: absolute;
+    top: 80px;
+    left: 700px;
 }
 
 #profile-image{
     height: 250px;
-    margin-left: 350px;
 }
 
 #change-profile-info-popup{

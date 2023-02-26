@@ -35,28 +35,6 @@ if(isset($_POST["submit"])){
         
 }
 
-// class profilePhotoController{
 
-//     public $connection;
-
-//     public function __construct(){
-
-//         $db_connection = new DatabaseConnection();
-//         $this->connection = $db_connection->getConnection();
-
-//     }
-
-
-//     public function getProfilePhoto(){
-
-//         $data = User::getProfilePhoto($this->connection);
-
-//         if($data){
-//             return $data;
-//         }
-
-//     }
-
-// }
 
 ?>
