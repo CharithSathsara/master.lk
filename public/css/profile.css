@@ -188,7 +188,7 @@ input[type=file] {
     background: black;
   }
 
-#photo-upload-submit{
+#photo-upload-submit,#pw-upload-submit{
     width: 160px;
     height: 40px;
     left: 20px;
