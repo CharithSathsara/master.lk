@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>New Subjects</title>
+    <title>Cart</title>
     <link rel="stylesheet" href="../../public/css/cart.css?<?php echo time(); ?>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -137,7 +137,9 @@ $viewCartController = new viewCartController();
                 ?>
             </div>
         </div>
-            <button id="checkout-btn" type="submit"><span><img src="../../public/icons/checkout.svg" class="checkout-icon"></span>Checkout</button>
+            <a href="../../view/student/checkout.php">
+                <button id="checkout-btn" type="submit"><span><img src="../../public/icons/checkout.svg" class="checkout-icon"></span>Checkout</button>
+            </a>
         </div>
     </div>
 </div>
