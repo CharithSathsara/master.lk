@@ -20,7 +20,7 @@
 <body>
     <?php
 
-include_once('../../config/app.php');
+
 include_once('../../controller/authController/authentication/Authentication.php');
 include_once('../../controller/authController/authorization/Authorization.php');
 include('../../controller/contentCreatorController/theoryContentController/viewTheoryContentController.php');
