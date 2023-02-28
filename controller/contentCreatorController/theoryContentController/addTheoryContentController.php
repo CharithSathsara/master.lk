@@ -10,18 +10,13 @@ if(isset($_POST['add-btn'])){
     $sectionContent = validateInput($db_connection->getConnection(), $_POST['sectionContent']);
    
 
-    //Method One
-    //$addQuestionController = new AddQuestionController();
-    //$data = $addQuestionController->addQuestion($subject, $topic, $type, $question, $answer1, $answer2, $answer3, $answer4, $answer5,
-                                        //$correctAnswer, $answerDescription);
-
-    //Method Two
+    
     $data = ContentCreator::AddTheoryContents($selectTopic, $sectionNo, $visibility, $sectionContent, $_SESSION['auth_user']['userId'], $db_connection->getConnection());
 
     if($data){
-        redirect("Theory Content Added Successfully","view/teacher/teacherDashboard.php");
+        redirect("Theory Content Added Successfully","../../view/contentcreator/contentCreatorDashboard.php");
     }else{
-        redirect("Something Went Wrong while Adding the Theory Content","view/teacher/question/addQuestion.php");
+        redirect("Something Went Wrong while Adding the Theory Content","../../view/contentcreator/addTheory.php");
     }
 
 }

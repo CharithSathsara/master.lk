@@ -12,6 +12,7 @@ class ViewTheoryContentController{
 
         $db_connection = new DatabaseConnection();
         $this->connection = $db_connection->getConnection();
+        $_SESSION['subject'] = ContentCreator::getContentCreatorSubject($this->connection, $_SESSION['auth_user']['userId']);
 
     }
 
