@@ -21,7 +21,7 @@
 
 #cart-container{
     width:30%;
-    height:500px;
+    height:350px;
     margin-right: 100px;
     z-index: 10;
     display: inline-block;
@@ -104,6 +104,10 @@
     border-radius: 5px;
     color:#fff;
     margin-right: 15px;
+}
+
+.payment-btns:hover{
+    background-color:black;
 }
 
 #option-container{

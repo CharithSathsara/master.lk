@@ -81,6 +81,7 @@ $viewCartController = new viewCartController();
             $data = $viewCartController->viewCart();
 
             if($data){
+                $_SESSION['no-items']=false;
                 foreach($data as $row){
 
                     $title = $viewCartController->getSubjectTitle($row['subjectId']);
@@ -99,6 +100,7 @@ $viewCartController = new viewCartController();
                             <p id='empty-cart-text'>No Items</p>
                             </div>";
                 echo $noItems;
+                $_SESSION['no-items']=true;
             }
 
         ?>
@@ -141,5 +143,20 @@ $viewCartController = new viewCartController();
                 <button id="checkout-btn" type="submit"><span><img src="../../public/icons/checkout.svg" class="checkout-icon"></span>Checkout</button>
             </a>
         </div>
+
+        <?php
+            if($_SESSION['no-items']){
+                echo"
+                <style>
+                    #checkout-btn{
+                        background-color:#808080;
+                        pointer-events: none;
+                    }
+
+                </style>
+                ";
+            }
+        ?>
+
     </div>
 </div>

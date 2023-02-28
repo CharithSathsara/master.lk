@@ -50,4 +50,32 @@ class Cart{
 
     }
 
+    public static function existsInCart($connection,$subject){
+
+        $userId = $_SESSION['auth_user']['userId'];
+
+        $query1 = "SELECT cartId from cart where studentId = '$userId' limit 1 ";
+        $data = $connection->query($query1);
+        $data_set1 = $data->fetch_assoc();
+
+        $cartId = $data_set1['cartId'];
+
+        $query2 = "SELECT subjectId from subject where subjectTitle = '$subject' limit 1 ";
+        $data = $connection->query($query2);
+        $data_set2 = $data->fetch_assoc();
+
+        $subjectId = $data_set2['subjectId'];
+
+        $query3 = "SELECT * from cart_subject where cartId='$cartId' AND subjectId='$subjectId' limit 1";
+        $result = $connection->query($query3);
+
+        if($result && mysqli_num_rows($result) > 0){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
+
 }

@@ -133,6 +133,10 @@
     margin-top: 87px;
 }
 
+#checkout-btn:hover{
+    background-color:black;
+}
+
 .checkout-icon{
     height:25px;
     vertical-align:middle;

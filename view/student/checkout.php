@@ -123,9 +123,6 @@ $viewCartController = new viewCartController();
                 
                         ?>
                     </div>
-                    <!-- </div>
-                        <button id="checkout-btn" type="submit"><span><img src="../../public/icons/checkout.svg" class="checkout-icon"></span>Checkout</button>
-                    </div> -->
                 </div>
             </div>
 
