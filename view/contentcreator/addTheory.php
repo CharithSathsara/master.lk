@@ -8,7 +8,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Add New Theory Content</title>
     <link rel="stylesheet" href="../../public/css/addTheory.css">
-    <?php echo time(); ?>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
@@ -50,7 +49,7 @@ include_once '../common/header.php';
                     </p>
                     <div>
                         <form
-                            action="../../../controller/contentCreatorController/theoryContentController/addTheoryContentController.php"
+                            action="../../controller/contentCreatorController/theoryContentController/addTheoryContentController.php"
                             enctype="multipart/form-data" method="post">
 
 
@@ -94,7 +93,7 @@ include_once '../common/header.php';
 
                             <div class="btns">
                                 <a href="contentCreatorDashboard.php" class="back-btn">Back</a>
-                                <input type="submit" name="add-btn" value="Add" id="add-btn" class="add-btn">
+                                <button type="submit" name="add-btn" id="add-btn" class="add-btn">Add</button>
 
                             </div>
                         </form>
