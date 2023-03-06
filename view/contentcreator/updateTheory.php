@@ -19,9 +19,10 @@
 <body>
     <?php
 
-include_once('../../config/app.php');
+
 include_once('../../controller/authController/authentication/Authentication.php');
 include_once('../../controller/authController/authorization/Authorization.php');
+include('../../controller/contentCreatorController/theoryContentController/viewTheoryContentController.php');
 
 //check user authenticated or not
 //$authentication = new Authentication();
@@ -35,6 +36,8 @@ Authorization::authorizingContentCreator();
 include_once '../common/header.php';
 @include '../common/navBar-ContentCreator.php';
 
+$viewTheoryContentController = new ViewTheoryContentController();
+
 ?>
 
     <div class="content">
@@ -46,34 +49,56 @@ include_once '../common/header.php';
                         <hr class="hr-line">
                     </p>
                     <div>
-                        <form action="" method="post">
+                        <form action="" method="get">
                             <div class="selectSection">
                                 <label class="sectionNo-label">Section No:</label>
                                 <input type="text" id="sectionNo" name="sectionNo" required>
+                                <input type="submit" name="view-btn" value="View" id="view-btn" class="view-btn">
                             </div>
-                            <div class="visibility">Visibility:
-                                <input type="radio" value="Visible" name="radio-visibility" id="radio-visibility"
-                                    required />
-                                <label for="visible">Visible</label>
-                                <input type="radio" value="Not Visisble" name="radio-visibility" id="radio-visibility"
-                                    required />
-                                <label for="not visible">Not Visible</label>
 
-                            </div>
+                        </form>
+
+
+                        <form
+                            action="../../controller/contentCreatorController/theoryContentController/updateTheoryContentController.php"
+                            method="post">
+
 
                             <div class="textContent">
-                                <!-- <input type="text" id="sectionContent" name="sectionContent" -->
-                                <!-- placeholder="Add Text Content Here" required> -->
-                                <textarea name="editor2" id="editor2" rows="10"
-                                    cols="50">Add Text Content Here</textarea>
+                                <?php
+
+                            if(isset($_GET['view-btn'])){
+                                $content = $viewTheoryContentController->viewGivenNoContent( $_GET['sectionNo']);
+                                if(mysqli_num_rows($content) > 0){
+                                    foreach($content as $row){
+                            ?>
+
+                                <textarea name="editor2" id="editor2"><?=$row['content'] ?></textarea>
+                                <div class="visibility">Visibility:
+                                    <input type="radio" value="Visible" name="radio-visibility" id="radio-visibility"
+                                        required />
+                                    <label for="visible">Visible</label>
+                                    <input type="radio" value="Not Visisble" name="radio-visibility"
+                                        id="radio-visibility" required />
+                                    <label for="not visible">Not Visible</label>
+
+                                </div>
+                                <?php   }
+                                }
+                                }
+                                ?>
+
+
+
                             </div>
+
+
 
                             <div class="btns">
                                 <a href="contentCreatorDashboard.php" class="back-btn">Back</a>
                                 <input type="submit" name="add-btn" value="Update" id="updateTheory-btn"
                                     class="updateTheory-btn">
-
-
+                            </div>
                         </form>
                     </div>
 
@@ -83,11 +108,9 @@ include_once '../common/header.php';
 
         </div>
 
-    </div>
-
-    <script>
-    CKEDITOR.replace('editor2');
-    </script>
+        <script>
+        CKEDITOR.replace('editor2');
+        </script>
 </body>
 
 </html>

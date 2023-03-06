@@ -1,18 +1,20 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../../../public/css/styles.css?<?php echo time(); ?>">
     <link rel="stylesheet" href="../../../public/css/viewQuestions.css?<?php echo time(); ?>">
     <link rel="stylesheet" href="../../../public/css/updateQuestionForm.css?<?php echo time(); ?>">
     <title>Chemistry Past Questions</title>
 </head>
+
 <body>
 
-<?php
+    <?php
 
 include_once('../../../controller/authController/authentication/Authentication.php');
 include_once('../../../controller/authController/authorization/Authorization.php');
@@ -29,27 +31,31 @@ include_once '../../common/header.php';
 
 ?>
 
-<div class="content">
+    <div class="content">
 
-    <?php include_once '../../common/navBar-Teacher.php'; ?>
+        <?php include_once '../../common/navBar-Teacher.php'; ?>
 
-    <div class="main">
+        <div class="main">
 
-        <div id="dashboard-container">
+            <div id="dashboard-container">
 
-<!--        <p id="title"><a href="#">Chemistry > </a><a href="#">Past Paper</a></p>-->
-            <b><p id="title-navigate"><span id="subject-shortcut"><a href="../teacherDashboard.php">Chemistry</a></span>&nbsp;&nbsp;>&nbsp;&nbsp;Past Paper</p></b>
-        <p class="subheading">Questions &nbsp;&nbsp;&nbsp;</p>
-        <br>
+                <!--        <p id="title"><a href="#">Chemistry > </a><a href="#">Past Paper</a></p>-->
+                <b>
+                    <p id="title-navigate"><span id="subject-shortcut"><a
+                                href="../teacherDashboard.php">Chemistry</a></span>&nbsp;&nbsp;>&nbsp;&nbsp;Past Paper
+                    </p>
+                </b>
+                <p class="subheading">Questions &nbsp;&nbsp;&nbsp;</p>
+                <br>
 
-        <div style="margin-right: 100px;">
+                <div style="margin-right: 100px;">
 
-            <form action="" method="get">
+                    <form action="" method="get">
 
-                <label for="topic" id="label-topic">Select Topic :</label>
-                <select name="topic" id="topic-selection">
+                        <label for="topic" id="label-topic">Select Topic :</label>
+                        <select name="topic" id="topic-selection">
 
-                    <?php
+                            <?php
 
                     $topics = $viewQuestionController->getAllTopics("Chemistry");
 
@@ -59,17 +65,17 @@ include_once '../../common/header.php';
 
                     ?>
 
-                </select>
+                        </select>
 
-                <input type="submit" class="" name="view-questions" onclick="" value="Get Questions">
+                        <input type="submit" class="" name="view-questions" onclick="" value="Get Questions">
 
-            </form>
-            <br>
-            <br>
+                    </form>
+                    <br>
+                    <br>
 
-            <table id="table">
+                    <table id="table">
 
-                <?php
+                        <?php
 
                 if(isset($_GET['view-questions'])){
 
@@ -81,39 +87,42 @@ include_once '../../common/header.php';
                         foreach($questions as $row){
                             ?>
 
-                            <tr>
-                                <td>
-                                    <input type="hidden" name="questionId" value=<?=$row['questionId'] ?>><br>
-                                    Question : <p class="question"><?=$row['question'] ?></p>
-                                    <br>
-                                    <br>
-                                    1) <p class="option1"><?=$row['opt01'] ?></p>
-                                    <br>
-                                    2) <p class="option2"><?=$row['opt02'] ?></p>
-                                    <br>
-                                    3) <p class="option3"><?=$row['opt03'] ?></p>
-                                    <br>
-                                    4) <p class="option4"><?=$row['opt04'] ?></p>
-                                    <br>
-                                    5) <p class="option5"><?=$row['opt05'] ?></p>
-                                    <br>
-                                    <br>
-                                    Correct Answer : <p class="correct-answer"><?=$row['correctAnswer'] ?></p>
-                                    <br>
-                                    <br>
-                                    Description : <p class="description"><?=$row['answerDescription'] ?></p>
-                                    <br>
-                                    <br>
-                                    <div class="buttons">
-                                        <input type="submit" class="update-button" name="update-question-btn" id="update-question-btn" value="Update">
-                                        <a href="../../../controller/teacherController/questionController/deleteQuestionController.php?question_id=<?php echo $row['questionId'] ?>">
-                                            <input type="submit" id="delete-btn" name="delete-question" onclick="" value="Delete">
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
+                        <tr>
+                            <td>
+                                <input type="hidden" name="questionId" value=<?=$row['questionId'] ?>><br>
+                                Question : <p class="question"><?=$row['question'] ?></p>
+                                <br>
+                                <br>
+                                1) <p class="option1"><?=$row['opt01'] ?></p>
+                                <br>
+                                2) <p class="option2"><?=$row['opt02'] ?></p>
+                                <br>
+                                3) <p class="option3"><?=$row['opt03'] ?></p>
+                                <br>
+                                4) <p class="option4"><?=$row['opt04'] ?></p>
+                                <br>
+                                5) <p class="option5"><?=$row['opt05'] ?></p>
+                                <br>
+                                <br>
+                                Correct Answer : <p class="correct-answer"><?=$row['correctAnswer'] ?></p>
+                                <br>
+                                <br>
+                                Description : <p class="description"><?=$row['answerDescription'] ?></p>
+                                <br>
+                                <br>
+                                <div class="buttons">
+                                    <input type="submit" class="update-button" name="update-question-btn"
+                                        id="update-question-btn" value="Update">
+                                    <a
+                                        href="../../../controller/teacherController/questionController/deleteQuestionController.php?question_id=<?php echo $row['questionId'] ?>">
+                                        <input type="submit" id="delete-btn" name="delete-question" onclick=""
+                                            value="Delete">
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
 
-                            <?php
+                        <?php
                         }
 
                     }else{
@@ -131,17 +140,17 @@ include_once '../../common/header.php';
 
                 ?>
 
-            </table>
+                    </table>
 
-            <!--Update Question Form-->
-            <?php include_once '../../teacher/question/updateQuestionForm.php'; ?>
+                    <!--Update Question Form-->
+                    <?php include_once '../../teacher/question/updateQuestionForm.php'; ?>
 
-            <script src="../../../public/js/updateQuestionForm.js"></script>
+                    <script src="../../../public/js/updateQuestionForm.js"></script>
 
-        </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
 </body>
-</html>
 
+</html>

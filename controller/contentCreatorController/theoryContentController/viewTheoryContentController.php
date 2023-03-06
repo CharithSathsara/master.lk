@@ -1,6 +1,6 @@
 <?php
 
-
+include('../../config/app.php');
 include('../../model/ContentCreator.php');
 include('../../model/Topic.php');
 
@@ -16,22 +16,20 @@ class ViewTheoryContentController{
 
     }
 
-    public function viewTheoryContents($subject, $topic){
-
-        try {
-            $data = ContentCreator::ViewTheoryContents($this->connection, $subject, $topic);
-
-            if($data){
-                return $data;
-            }else{
-                throw new Exception("Error: can not get Theory Contents of $subject subject : topic $topic");
-            }
-        } catch(Exception $e) {
-            $errorMessage = "An error occurred while getting Theory Contents of $subject subject : topic $topic " . $e->getMessage();
-            echo '<script>console.error("' . $errorMessage . '")</script>';
-            return false;
+    public function viewTheoryContents($topicId){
+    
+            $data = ContentCreator::ViewTheoryContents($topicId, $this->connection);
+        if($data){
+            return $data;
         }
 
+    }
+    
+    public function viewGivenNoContent($sectionNo){
+        $data = ContentCreator::ViewToUpdateTheoryContents($sectionNo, $this->connection);
+        if($data){
+            return $data;
+        }
     }
 
     public function getAllTopics($subject){

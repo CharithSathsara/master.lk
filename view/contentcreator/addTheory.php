@@ -50,7 +50,7 @@ include_once '../common/header.php';
                     <div>
                         <form
                             action="../../controller/contentCreatorController/theoryContentController/addTheoryContentController.php"
-                            enctype="multipart/form-data" method="post">
+                            method="post">
 
 
                             <div class="selectSubject">
@@ -59,7 +59,7 @@ include_once '../common/header.php';
                             </div>
                             <div class="selectTopic">
                                 <label class="topic-label">Select Topic:</label>
-                                <select id="selecttopic" name="selectTopic" required>
+                                <select id="selecttopic" name="topicId" style="margin-right: 8vw" required>
                                     <?php
 
                                 $topics = $viewTheoryContentController->getAllTopics($_SESSION['subject']);
@@ -69,7 +69,9 @@ include_once '../common/header.php';
                                 }
 
                                 ?>
+
                                 </select>
+
                             </div>
                             <div class="selectSection">
                                 <label class="sectionNo-label">Section No:</label>
@@ -84,11 +86,12 @@ include_once '../common/header.php';
                                 <label for="not visible">Not Visible</label>
 
                             </div>
+
+
                             <div class="textContent">
                                 <!-- <input type="text" id="sectionContent" name="sectionContent" -->
                                 <!-- placeholder="Add Text Content Here" required> -->
-                                <textarea name="editor1" id="editor1" rows="10" cols="50"
-                                    class="ckeditor">Add Text Content Here</textarea>
+                                <textarea name="editor1" id="editor1" class="ckeditor">Add Text Content Here</textarea>
                             </div>
 
                             <div class="btns">

@@ -23,9 +23,10 @@
 
     <?php
 
-include_once('../../config/app.php');
+
 include_once('../../controller/authController/authentication/Authentication.php');
 include_once('../../controller/authController/authorization/Authorization.php');
+include('../../controller/contentCreatorController/theoryContentController/viewTheoryContentController.php');
 
 //check user authenticated or not
 //$authentication = new Authentication();
@@ -35,6 +36,8 @@ include_once('../../controller/authController/authorization/Authorization.php');
 Authentication::userAuthentication();
 //User Authorization
 Authorization::authorizingContentCreator();
+
+$viewTheoryContentController = new ViewTheoryContentController();
 
 include_once '../common/header.php';
 @include '../common/navBar-ContentCreator.php';
@@ -50,32 +53,33 @@ include_once '../common/header.php';
             </div>
             <div class="select">
 
-                <form action="" class="view-form" method="POST">
-                    <div class="selectSubject">Select Subject:
-                        <input type="radio" value="Physics" name='radio' id='physics' />
-                        <label for="physics">Physics</label>
-                        <input type="radio" value="Chemistry" name='radio' id='chemistry' />
-                        <label for="chemistry">Chemistry</label>
+                <form action="" class="view-form" method="get">
+                    <div class="selectSubject">
+                        <p id="add_theory-heading">You Can View Theory Content of the <?= $_SESSION['subject']; ?>
+                            subject:</p>
                     </div>
 
-                    <br>
+
                     <div class="selectTopic">
                         <div class="selecttopic">
                             <label class="topicLabel">Select Topic:</label>
-                            <select id="selecttopic" name="selectTopic">
-                                <option value="Organic Introduction">Organic Introduction</option>
-                                <option value="IUPAC Nomenclature">IUPAC Nomenclature</option>
-                                <option value="S Block">S Block</option>
-                                <option value="P Block">P Block</option>
-                                <option value="Force and Motion">Force and Motion</option>
-                                <option value="Work, Energy and Power">Work, Energy and Power</option>
+                            <select id="selecttopic" name="selectTopic" style="margin-right: 8vw" required>
+                                <?php
+
+                                $topics = $viewTheoryContentController->getAllTopics($_SESSION['subject']);
+                                
+                                foreach($topics as $topic){
+                                    echo "<option value=\"{$topic['topicId']}\">{$topic['topicTitle']}</option>";
+                                }
+                                
+                                ?>
                             </select>
 
 
                             <input type="submit" name="view-btn" value="View" id="view-btn" class="view-btn">
                         </div>
 
-                        <br><br>
+                        <br>
                     </div>
                     <div class="add-btns">
                         <ul class="btn-list">
@@ -94,9 +98,19 @@ include_once '../common/header.php';
 
 
             <table class="content-table">
+                <?php
+
+            if(isset($_GET['view-btn'])){
+                $content = $viewTheoryContentController->viewTheoryContents( $_GET['selectTopic']);
+                if(mysqli_num_rows($content) > 0){
+                foreach($content as $row){
+            ?>
 
                 <tr class="sectionTable">
-                    <td class="sectionRow">Section No.</td>
+                    <td class="sectionRow">Section
+                        No.<?=$row['contentId']?><br><?=$row['content']?><br><i style="font-size:12px ;">Published at
+                            <?=$row['date_published']?></i>
+                    </td>
                     <td class="row-icon"><a href="../../view/contentcreator/updateTheory.php"><img
                                 src="../../public/icons/edit.png" alt="edit" id="editImg" width="16px"
                                 height="16px"></a>
@@ -109,7 +123,10 @@ include_once '../common/header.php';
                     </td>
 
                 </tr>
-
+                <?php   }
+                    }
+            }
+                ?>
 
             </table>
             <br><br><br><br><br><br>

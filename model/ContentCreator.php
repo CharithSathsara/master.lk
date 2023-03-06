@@ -23,67 +23,46 @@ try {
 
 }
 
-public static function ViewTheoryContents($connection, $subject, $topic){
+public static function ViewTheoryContents($topicId, $connection){
 
-    try {
-        $query = "SELECT * FROM question WHERE subjectId = (SELECT subjectId From subject WHERE subjectTitle = '$subject') 
-                                     AND topicId = (SELECT topicId From topic WHERE topicTitle = '$topic')";
+    $select = "SELECT * FROM  topic_content WHERE topicId = '$topicId'; ";
+        
+        $data = $connection->query($select);
 
-        $data = $connection->query($query);
-
-        if($data){
-            return $data;
-        }else{
-            throw new Exception("Error: Unable to view questions");
-        }
-
-    } catch (Exception $e) {
-        $errorMessage = "Error viewing questions: " . $e->getMessage();
-        echo '<script>console.error("' . $errorMessage . '")</script>';
-        return false;
-    }
+        return $data;
 
 }
 
 
-public static function AddTheoryContents($selectTopic, $sectionNo, $visibility, $sectionContent, $contentCreatorId, $connection){
+public static function AddTheoryContents( $sectionNo, $selectTopic,$sectionContent, $visibility,  $contentCreatorId, $connection){
    
-    $select1 = "SELECT topicId FROM topic WHERE topicTitle = '$selectTopic'";
+    
     $select2 = "SELECT contentId FROM topic_content WHERE contentId = '$sectionNo'";
     
-    $result1 = mysqli_query($connection, $select1);
+
     $result2 = mysqli_query($connection, $select2);
  
     if(mysqli_num_rows($result2) > 0){
-        redirect("Section No. Already Exists!","view/contentcreator/addTheory.php");
-     }
- else{
-    try {
-    $row = mysqli_fetch_array($result1);
-       $_SESSION['topicID'] = $row['topicId'];
-       $topicID = $_SESSION['topicID'];
-       if($visibility== "Visible"){
-            $visibility = 1;
-            }
-        elseif($visibility== "Not Visible"){
-            $visibility = 0;
-            }
-        $insert = "INSERT INTO topic_content (contentId, topicId , content, visibility) VALUES ('$sectionNo','$topicID','$sectionContent','$visibility')";
-
+        popup_redirect("Section No. Already Exists!","view/contentcreator/addTheory.php");
+      }
+  else{
+        
+        if($visibility== "Visible"){
+             $visibility = 1;
+             }
+         elseif($visibility== "Not Visible"){
+             $visibility = 0;
+             }
+        $insert = "INSERT INTO topic_content (contentId, topicId , content, visibility, creatorId) VALUES ('$sectionNo','$selectTopic','$sectionContent','$visibility','$contentCreatorId')";
+        
         $data = $connection->query($insert);
-        if($data){
-            return $data;
-            }else{
-            throw new Exception("Error: Unable to add Theory Content");
-            }
-        }catch(Exception $e) {
-            $errorMessage = "An error occurred while adding Theory Content: " . $e->getMessage();
-            echo '<script>console.error("' . $errorMessage . '")</script>';
-            return false;
-            }
+
+        return $data;
+        }
+        
      
     }
-}
+
 
 
 public static function DeleteTheoryContents($connection, $section_no){
@@ -140,4 +119,16 @@ public static function UpdateTheoryContents($connection, $selectTopic, $sectionN
         }
 
     }
+    
+    public static function ViewToUpdateTheoryContents($sectionNo,$connection){
+        
+        $select = "SELECT content FROM  topic_content WHERE contentId = '$sectionNo'; ";
+        
+        $data = $connection->query($select);
+
+        return $data;
+        
+
+}
+
 }
