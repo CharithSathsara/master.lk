@@ -189,9 +189,9 @@ include_once '../common/header.php';
                     <input type="submit" name="deleteTheory-Yes-btn" value="Yes" id="deleteTheory-Yes-btn"
                         class="deleteTheory-Yes-btn">
                     <input type="submit" name="deleteTheory-No-btn" value="No" id="deleteTheory-No-btn"
-                        class="deleteTheory-No-btn">
+                        class="deleteTheory-No-btn" onclick="toggle2()">
                 </div>
-
+            </form>
 
         </div>
     </div>

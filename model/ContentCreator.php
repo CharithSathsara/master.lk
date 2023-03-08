@@ -69,58 +69,34 @@ public static function AddTheoryContents( $sectionNo, $selectTopic,$sectionConte
 
 public static function DeleteTheoryContents($connection, $section_no){
 
-    try {
-        $query = "DELETE FROM topic_content WHERE contentId = $section_no";
-        $data = $connection->query($query);
+
+        $delete = "DELETE FROM topic_content WHERE contentId = $section_no";
+        $data = $connection->query($delete);
 
         if($data){
             return $data;
-        }else{
-            throw new Exception("Error: Unable to delete question");
         }
-    } catch(Exception $e) {
-        $errorMessage = "An error occurred while delete question: " . $e->getMessage();
-        echo '<script>console.error("' . $errorMessage . '")</script>';
-        return false;
-    }
 }
 
-public static function UpdateTheoryContents($connection, $selectTopic, $sectionNo, $visibility, $sectionContent, $contentCreatorId){
+public static function UpdateTheoryContents($sectionNo, $sectionContent, $visibility,$connection){
+        
+    if($visibility== "Visible"){
+        $visibility = 1;
+        }
+    elseif($visibility== "Not Visible"){
+        $visibility = 0;
+        }
+        
+        $update = "UPDATE topic_content  SET content = '$sectionContent' , visibility = '$visibility'  WHERE  topic_content.contentId = '$sectionNo';";
+        
 
-        try {
-            $select1 = "SELECT topicId FROM topic WHERE topicTitle = '$selectTopic'";
-            $result1 = mysqli_query($connection, $select1);
-            $row = mysqli_fetch_array($result1);
-            if($row>0){
-                $_SESSION['topicID'] = $row['topicId'];
-                $topicID = $_SESSION['topicID'];
-                if($visibility== "Visible"){
-                 $visibility = 1;
-                 }
-             elseif($visibility== "Not Visible"){
-                 $visibility = 0;
-                 }
-                 }
-           
-            $query = "UPDATE topic_content
-                      SET contentId = '$sectionNo', topicId = '$topicID' , content = '$sectionContent', visibility = '$visibility' 
-                      WHERE contentId = $sectionNo";
-
-            $data = $connection->query($query);
+            $data = $connection->query($update);
 
             if($data){
                 return $data;
-            }else{
-                throw new Exception("Error: Unable to update Theory Content");
             }
 
-        } catch (Exception $e) {
-            $errorMessage = "Error updating the Theory Content: " . $e->getMessage();
-            echo '<script>console.error("' . $errorMessage . '")</script>';
-            return false;
-        }
-
-    }
+}
     
     public static function ViewToUpdateTheoryContents($sectionNo,$connection){
         

@@ -106,6 +106,8 @@ $viewTheoryContentController = new ViewTheoryContentController();
         <script>
         CKEDITOR.replace('editor2');
         </script>
+
+
 </body>
 
 </html>
