@@ -8,7 +8,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Content Creator Dashboard</title>
     <link rel="stylesheet" href="../../public/css/addTheory.css">
-    <?php echo time(); ?>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
@@ -50,12 +49,6 @@ $viewTheoryContentController = new ViewTheoryContentController();
                     </p>
                     <div>
                         <form action="" method="get">
-                            <div class="selectSection">
-                                <label class="sectionNo-label">Section No:</label>
-                                <input type="text" id="sectionNo" name="sectionNo" required>
-                                <input type="submit" name="view-btn" value="View" id="view-btn" class="view-btn">
-                            </div>
-
                         </form>
 
 
@@ -67,13 +60,14 @@ $viewTheoryContentController = new ViewTheoryContentController();
                             <div class="textContent">
                                 <?php
 
-                            if(isset($_GET['view-btn'])){
-                                $content = $viewTheoryContentController->viewGivenNoContent( $_GET['sectionNo']);
+                            
+                                $content = $viewTheoryContentController->viewGivenNoContent( $_SESSION['contentId']);
                                 if(mysqli_num_rows($content) > 0){
                                     foreach($content as $row){
-                            ?>
-
+                            
+                                ?>
                                 <textarea name="editor2" id="editor2"><?=$row['content'] ?></textarea>
+                                <br>
                                 <div class="visibility">Visibility:
                                     <input type="radio" value="Visible" name="radio-visibility" id="radio-visibility"
                                         required />
@@ -85,18 +79,19 @@ $viewTheoryContentController = new ViewTheoryContentController();
                                 </div>
                                 <?php   }
                                 }
-                                }
+                                
                                 ?>
 
 
 
                             </div>
+                            <br>
 
 
 
                             <div class="btns">
                                 <a href="contentCreatorDashboard.php" class="back-btn">Back</a>
-                                <input type="submit" name="add-btn" value="Update" id="updateTheory-btn"
+                                <input type="submit" name="update-btn" value="Update" id="updateTheory-btn"
                                     class="updateTheory-btn">
                             </div>
                         </form>

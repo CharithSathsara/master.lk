@@ -3,7 +3,18 @@
 include('../../../config/app.php');
 include_once('../../../model/ContentCreator.php');
 
+class UpdateTheoryContentController{
 
+    public $connection;
+
+    public function __construct(){
+
+        $db_connection = new DatabaseConnection();
+        $this->connection = $db_connection->getConnection();
+        
+
+    }
+}
 if(isset($_POST['view-btn'])){
 
     $sectionNo = validateInput($db_connection->getConnection(), $_POST['sectionNo']);

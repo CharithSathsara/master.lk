@@ -63,7 +63,7 @@
     font-family: Arial, Helvetica, sans-serif;
     margin-left: 25px;
     padding-left: 0%;
-    padding-top: 1.8%;
+    padding-top: 0.8%;
     width: 57%;
 
 
@@ -142,12 +142,12 @@
 .btn-list {
     float: right;
     /* background-color: blanchedalmond; */
-    margin-top: -120px;
+    margin-top: -95px;
     margin-right: 80px;
 }
 
 .content-table {
-    width: 90%;
+    width: 95%;
     padding: 2%;
     margin-top: -33px;
     margin-left: 4px;
@@ -169,27 +169,25 @@
 
 .row-icon {
     vertical-align: top;
-    width: 4%;
+    width: 5%;
+    margin-left: 25px;
 }
 
-.container .error-msg {
-    margin: 10px 20px 20px 50px;
-    display: block;
-    font-size: 14px;
-    font-weight: bold;
-    background: crimson;
-    color: #fff;
-    border-radius: 5px;
-    padding: 5px;
-    width: 20%;
-    text-align: center;
+#deleteImg,
+#editImg {
+    border-radius: 4px;
+    margin-left: 25px;
 }
 
 
-
-.image-1 {
+#fixed-image1 {
     position: fixed;
-    top: 47%;
-    right: 16%;
-    opacity: 0.8;
+    bottom: 60px;
+    right: 258px;
+    z-index: -1;
+    width: 30%;
+    height: auto;
+    opacity: 0.7;
+    background-repeat: no-repeat;
+    background-size: cover;
 }

@@ -24,12 +24,14 @@ try {
 }
 
 public static function ViewTheoryContents($topicId, $connection){
-
-    $select = "SELECT * FROM  topic_content WHERE topicId = '$topicId'; ";
+    $select = "SELECT topic_content.contentId, topic_content.content, topic_content.date_published, user.firstName, user.lastName
+    FROM topic_content
+    INNER JOIN user
+    ON topic_content.creatorId = user.userId WHERE topicId = '$topicId'";
         
-        $data = $connection->query($select);
+    $data = $connection->query($select);
 
-        return $data;
+    return $data;
 
 }
 
@@ -122,11 +124,13 @@ public static function UpdateTheoryContents($connection, $selectTopic, $sectionN
     
     public static function ViewToUpdateTheoryContents($sectionNo,$connection){
         
-        $select = "SELECT content FROM  topic_content WHERE contentId = '$sectionNo'; ";
+        $select = "SELECT contentId , content FROM  topic_content WHERE contentId = '$sectionNo'; ";
         
         $data = $connection->query($select);
 
-        return $data;
+        if($data){
+            return $data;
+        }
         
 
 }

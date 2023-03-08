@@ -97,6 +97,10 @@ include_once '../common/header.php';
             </div>
 
 
+            <img src="../../public/img/fixed-img1.svg" id="fixed-image1">
+
+
+
             <table class="content-table">
                 <?php
 
@@ -107,17 +111,21 @@ include_once '../common/header.php';
             ?>
 
                 <tr class="sectionTable">
-                    <td class="sectionRow">Section
-                        No.<?=$row['contentId']?><br><?=$row['content']?><br><i style="font-size:12px ;">Published at
-                            <?=$row['date_published']?></i>
+                    <td class="sectionRow" style="font-size: 14px;"><b>Section
+                            No.<?=$row['contentId']?></b><br><?=$row['content']?><br><i
+                            style="font-size:12px;">Published at
+                            <?=$row['date_published']?> by <?=$row['firstName']?> <?=$row['lastName']?></i>
                     </td>
-                    <td class="row-icon"><a href="../../view/contentcreator/updateTheory.php"><img
-                                src="../../public/icons/edit.png" alt="edit" id="editImg" width="16px"
-                                height="16px"></a>
-                    </td>
+                    <form action="" method="get">
+                        <?php $_SESSION['contentId'] = $row['contentId']?>
+                        <td class="row-icon"><a href="../../view/contentcreator/updateTheory.php"><img
+                                    src="../../public/icons/edit.png" alt="edit" id="editImg" name="editImg"
+                                    width="27px" height="27px"></a>
+                        </td>
+                    </form>
 
                     <td class="row-icon"><a href="#" onclick="toggle2()"><img src="../../public/icons/delete.png"
-                                alt="delete" id="deleteImg" width="16px" height="16px"></a>
+                                alt="delete" id="deleteImg" width="27px" height="27px"></a>
 
 
                     </td>
@@ -129,7 +137,7 @@ include_once '../common/header.php';
                 ?>
 
             </table>
-            <br><br><br><br><br><br>
+            <br><br><br><br>
         </div>
     </div>
     </div>

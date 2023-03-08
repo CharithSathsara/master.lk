@@ -87,6 +87,7 @@ include_once '../common/header.php';
 
                             </div>
 
+                            <img src="../../public/img/addTheory1.svg" id="fixed-image2">
 
                             <div class="textContent">
                                 <!-- <input type="text" id="sectionContent" name="sectionContent" -->
