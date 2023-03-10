@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Student Dashboard</title>
     <link rel="stylesheet" href="../../public/css/studentDashboard.css?<?php echo time(); ?>">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
@@ -57,7 +58,7 @@ $studentSubjectController = new studentSubjectController();
 
             <div id='physics' class='subject-card'>
                     <b><p class='card-title'>Physics</p></b>
-                    <!-- completion bar here -->
+                    <!-- completion bar here --> 
                     <div class='lesson-container'>
                         <?=$lessonController->getLessons("Physics")?>
                     </div>
@@ -119,6 +120,9 @@ $studentSubjectController = new studentSubjectController();
     }
 
 ?>
+
+<script src="../../public/js/studentDashboard.js"></script>
+
 
 </body>
 </html>

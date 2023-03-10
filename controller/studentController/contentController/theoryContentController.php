@@ -1,6 +1,6 @@
 <?php
 
-class studentSubjectController{
+class theoryContentController{
 
     public $connection;
 
@@ -11,17 +11,20 @@ class studentSubjectController{
 
     }
 
-    public function hasBought($subject){
 
-        $data = Student::hasBought($this->connection,$subject);
+    public function getTheoryContent($subject,$lesson,$topic){
+
+        $data = Theory::getTheoryContent($this->connection,$subject,$lesson,$topic);
 
         if($data){
-            return true;
+            return;
         }else{
             return false;
         }
 
     }
+
+
 }
 
 ?>

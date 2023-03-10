@@ -36,7 +36,7 @@ $topicController = new topicController();
 
 <div id="lessons-feedbacks-container">
     <div id="lessons-feedbacks">
-        <b><p id="title"><span id="subject-shortcut"><a href="studentDashboard.php">Chemistry</a></span>&nbsp;&nbsp;>&nbsp;&nbsp;Organic Chemistry</p></b>
+        <b><p id="title"><span id="subject-shortcut"><a href="studentDashboard.php">Chemistry</a></span>&nbsp;&nbsp;>&nbsp;&nbsp;<?=$_SESSION['current-lesson'];?></p></b>
         <b><p class="sub-title">Topics&nbsp;&nbsp;&nbsp;</p></b>
 
         <div class='topics-container'>
