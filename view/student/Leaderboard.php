@@ -8,8 +8,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Leaderboard</title>
     <hr class="hr-line">
-    <link rel="stylesheet" href="../../public/css/leaderboard.css">
-    <?php echo time(); ?>">
+    <!-- <link rel="stylesheet" href="../../public/css/leaderboard.css"> -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
@@ -32,8 +32,10 @@ Authentication::userAuthentication();
 //User Authorization
 Authorization::authorizingStudent();
 
-include_once '../common/header.php';
-@include '../common/navBar-Student.php';
+$leaderBoardController = new LeaderBoardController();
+
+// include_once '../common/header.php';
+// @include '../common/navBar-Student.php';
 
 ?>
     <div class="content">
@@ -43,6 +45,7 @@ include_once '../common/header.php';
 
                 <div class="leaderboard">
                     <table>
+
                         <thead>
                             <tr>
                                 <td></td>
@@ -54,51 +57,28 @@ include_once '../common/header.php';
                                 </td>
                             </tr>
                         </thead>
+
                         <tbody>
+                            <?php
+                            $_SESSION['selectedTopic'] = "Force and Motion";
+                            $i = 0;
+
+                        $leaderboard = $leaderBoardController->modelQuizLeaderBoard( $_SESSION['selectedTopic']);
+                        if(mysqli_num_rows($leaderboard) > 0){
+                        foreach($leaderboard as $row){
+                        ?>
                             <tr>
-                                <td id="winner">1</td>
-                                <td><img src="../../public/img/User1.jpg">
-                                    <p> Jose Brag</p>
+                                <td id="winner">
+                                    <?echo (i+1);?>
+                                </td>
+                                <td>
+                                    <p> <?=$row['firstName']?> <?=$row['lastName']?></p>
                                 </td>
                                 <td>98</td>
 
                             </tr>
 
-                            <tr>
-                                <td id="runner-up">2</td>
-                                <td><img src="../../public/img/User2.jpg">
-                                    <p> Lily Simons</p>
-                                </td>
-                                <td>96</td>
 
-                            </tr>
-
-                            <tr>
-                                <td id="second-runner-up">3</td>
-                                <td><img src="../../public/img/User3.jpg">
-                                    <p> Tom Higgle</p>
-                                </td>
-                                <td>91</td>
-
-                            </tr>
-
-                            <tr>
-                                <td>4</td>
-                                <td><img src="../../public/img/User4.jpg">
-                                    <p> Alex Roger</p>
-                                </td>
-                                <td>85</td>
-
-                            </tr>
-
-                            <tr>
-                                <td>5</td>
-                                <td><img src="../../public/img/User5.jpg">
-                                    <p> Mavie Ruth</p>
-                                </td>
-                                <td>82</td>
-
-                            </tr>
                         </tbody>
                     </table>
                     <div class="gif-container">

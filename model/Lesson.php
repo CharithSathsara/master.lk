@@ -57,6 +57,21 @@ class Lesson{
         return;
 
     }
+    
+    public static function getSubjectLessons($connection,$subject){
 
+        
+        $query1 = "SELECT subjectId FROM subject WHERE subjectTitle='$subject'";
+        $result1 = $connection->query($query1);
+        $data1 = $result1->fetch_assoc();
+        $subjectId = $data1['subjectId'];
+
+        $query2 = "SELECT lessonId, lessonName FROM lesson WHERE subjectId='$subjectId'";
+        $result2 = $connection->query($query2);
+
+            if($result2){
+                return $result2;
+            }
+}
 
 }

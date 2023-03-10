@@ -147,20 +147,21 @@ include_once '../common/header.php';
             <a href="#" class="close-btn" onclick="toggle1()">&times;</a>
             <p class="popup1-title"><b>Add New Title</b></p>
             <form action="" class="addTopic-form" method="POST">
-                <div class="selectSub">Select Subject:
-                    <select id="select-Sub" name="select-Sub">
-                        <option value="Physics">Physics</option>
-                        <option value="Chemistry">Chemistry</option>
-                    </select>
+                <div class="selectSub">
+                    <p id="add_theory-heading">You Can Add Topics to <?= $_SESSION['subject']; ?>
+                        Subject:</p>
                 </div>
-                <div class="selectlesson">Select Topic:
+                <div class="selectlesson">Select Lesson:
                     <select id="selectlesson" name="selectLesson">
-                        <option value="Organic Introduction">Organic Introduction</option>
-                        <option value="IUPAC Nomenclature">IUPAC Nomenclature</option>
-                        <option value="S Block">S Block</option>
-                        <option value="P Block">P Block</option>
-                        <option value="Force and Motion">Force and Motion</option>
-                        <option value="Work, Energy and Power">Work, Energy and Power</option>
+                        <?php
+
+                    $lessons = $viewTheoryContentController->getAllLessons($_SESSION['subject']);
+                    
+                    foreach($lessons as $lesson){
+                        echo "<option value=\"{$lesson['lessonId']}\">{$lesson['lessonName']}</option>";
+                    }
+
+                    ?>
                     </select>
                 </div>
                 <div class="topic-title">Topic Title :
