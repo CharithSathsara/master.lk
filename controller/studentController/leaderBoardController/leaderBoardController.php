@@ -18,7 +18,7 @@ class LeaderBoardController{
 
     public function modelQuizLeaderBoard($topicId){
     
-            $data = ContentCreator::ViewTheoryContents($topicId, $this->connection);
+        $data = Leaderboard :: getmodelQuizLeaderBoard($topicId, $this->connection);
         if($data){
             return $data;
         }

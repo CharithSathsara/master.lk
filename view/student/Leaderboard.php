@@ -60,23 +60,27 @@ $leaderBoardController = new LeaderBoardController();
 
                         <tbody>
                             <?php
-                            $_SESSION['selectedTopic'] = "Force and Motion";
+                            $_SESSION['selectedTopicId'] = 2;
                             $i = 0;
 
-                        $leaderboard = $leaderBoardController->modelQuizLeaderBoard( $_SESSION['selectedTopic']);
+                        $leaderboard = $leaderBoardController->modelQuizLeaderBoard( $_SESSION['selectedTopicId']);
                         if(mysqli_num_rows($leaderboard) > 0){
                         foreach($leaderboard as $row){
                         ?>
                             <tr>
                                 <td id="winner">
-                                    <?echo (i+1);?>
+                                    <?echo ($i+1);?>
                                 </td>
                                 <td>
                                     <p> <?=$row['firstName']?> <?=$row['lastName']?></p>
                                 </td>
-                                <td>98</td>
+                                <td><?=$row['score']?></td>
 
                             </tr>
+                            <?php   }
+                            }
+                            
+                            ?>
 
 
                         </tbody>
