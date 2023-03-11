@@ -28,6 +28,12 @@ class Theory{
                 echo"
                     <p>".$row_data['content']."</p><br>
                 ";
+                if(!($row_data['image']==null)){
+                    $to_echo = "<img class='content-img' src='data:image/jpg;charset=utf8;base64,";
+                    $to_echo .= base64_encode($row_data['image']);
+                    $to_echo .= "'/><br>";
+                    echo $to_echo;
+                }
             }
             return true;
         }else{
@@ -45,3 +51,5 @@ class Theory{
     
 
 }
+
+?>

@@ -1,7 +1,9 @@
 <?php
 
 include_once('../../config/app.php');
-
+include('../../controller/profileController/profilePhotoViewController.php');
+include('../../model/User.php');
+$profilePhotoViewController = new profilePhotoViewController();
 
 ?>
 
@@ -22,7 +24,10 @@ include_once('../../config/app.php');
 <body>
     <div id="student-nav" class="nav">
         <div class="prof-detail">
-            <img src="../../public/img/default-profPic.png" id="prof-pic"><br>
+            <div class="circle">
+                <?=$profilePhotoViewController->getProfilePhoto();?>
+            </div>
+
             <p id="user-name"><?= $_SESSION['auth_user']['userFirstName'] ?>&nbsp;<?= $_SESSION['auth_user']['userLastName'] ?></p>
             <p id="role"><?= $_SESSION['auth_role']?></p>
         </div>

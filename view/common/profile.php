@@ -16,8 +16,6 @@
 <?php
 
 include_once('../../config/app.php');
-// include_once('../../controller/authController/authentication/Authentication.php');
-// include_once('../../controller/authController/authorization/Authorization.php');
 include_once('../common/header.php');
 
 if($_SESSION['auth_role']=='STUDENT'){
@@ -26,21 +24,20 @@ if($_SESSION['auth_role']=='STUDENT'){
     include_once('./navBar-Admin.php');
 }else if($_SESSION['auth_role']=='TEACHER'){
     include_once('./navBar-Teacher.php');
-}else{
+}else if($_SESSION['auth_role']=='CONTENTCREATOR'){
     include_once('./navBar-ContentCreator.php');
 }
 
-include_once('../../controller/profileController/profileInfoController.php');
-include_once('../../model/User.php');
-include_once('../../model/Student.php');
+include('../../controller/profileController/profileInfoController.php');
+// include('../../controller/profileController/profilePhotoViewController.php');
+// include('../../model/User.php');
+include('../../model/Student.php');
 
 
-//User Authentication
-// Authentication::userAuthentication();
-// //User Authorization
-// Authorization::authorizingStudent();
 
 $profileInfoController = new profileInfoController();
+// $profilePhotoViewController = new profilePhotoViewController();
+
 
 
 ?>
@@ -52,13 +49,19 @@ $profileInfoController = new profileInfoController();
         <div id="photo-password-container">
 
             <div class="photo-password-card" id="profilePhoto-card">
-                <b><p class="card-title">Profile Photo</p></b>
+                <b><p class="card-title" id="profile-photo-title">Profile Photo</p></b>
+                <!-- <button onclick="getPhotoUpdatePopup()" class="edit-button">
+                    <img src="../../public/icons/edit.svg" class="edit-icon">
+                </button><br> -->
                 <button onclick="getPhotoUpdatePopup()" class="edit-button">
                     <img src="../../public/icons/edit.svg" class="edit-icon">
-                </button><br>
-                <?php 
-                include('../../controller/profileController/profilePhotoViewController.php');
-                ?>
+                </button>
+                <button onclick="getRemovePhotoPopup()" class="remove-button">
+                    <img src="../../public/icons/remove.svg" class="edit-icon">
+                </button>
+                <div class="circle" id="circle">
+                    <?=$profilePhotoViewController->getProfilePhoto();?>
+                </div>
 
             </div>
 
@@ -135,6 +138,20 @@ $profileInfoController = new profileInfoController();
             </div>
             <input type="submit" name="submit" value="Upload" id="photo-upload-submit">
         </form>
+    </div>
+</div>
+
+<div class="page-mask" id="page-mask-photo-remove">
+    <div id="photo-remove-popup">
+        <p id="update-photo-password-title">Do you want to remove your profile photo?</p>
+        <button onclick="closeRemovePhotoPopup()" class="close-button">
+            <img src="../../public/icons/close.svg" class="close-icon">
+        </button><br>
+        <form action="../../controller/profileController/profilePhotoRemoveController.php" method="post" enctype="multipart/form-data" id="photo-remove-form">
+            <button type="submit" name="remove-yes" value="Yes" id="photo-remove-yes">Yes</button>
+        </form>
+        <button name="remove-no" id="photo-remove-no" onclick="closeRemovePhotoPopup()">No</button>
+        
     </div>
 </div>
 

@@ -112,7 +112,9 @@ div.scrollmenu {
     margin: 0 auto;
 }
 
-.test-questions{
-    height:100px;
-    background-color: #EDECEC;
+.content-img{
+    width: 30%;
+    margin: 0 auto;
+    display: block;
 }
+

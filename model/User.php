@@ -18,27 +18,43 @@ class User{
 
     }
 
+    public static function removeProfilePhoto($connection){
+
+        $userId = $_SESSION['auth_user']['userId'];
+
+        $query = "UPDATE user SET image = null WHERE userId='$userId'";
+
+        $result = $connection->query($query);
+
+        if($result){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
     public static function getprofilePhoto($connection){
 
         $userId = $_SESSION['auth_user']['userId'];
 
-        $query = "SELECT * FROM user WHERE userId='$userId'";
+        $query = "SELECT image FROM user WHERE userId='$userId'";
 
         $result = $connection->query($query);
         $row = $result->fetch_assoc();
 
-        if($result && mysqli_num_rows($result) > 0){
+        if($row['image']!=null){
 
-            return $row['image'];
+            $to_echo = "<img id='profile-pic' src='data:image/jpg;charset=utf8;base64,";
+            $to_echo .= base64_encode($row['image']);
+            $to_echo .= "'/>";
+            echo $to_echo;
+
+            return true;
         }else{
+            echo "<img id='profile-pic' src='../../public/img/default-profPic.png'/>";
             return false;
         }
-//         $stmt = $connection->prepare($query);
-// $stmt->bind_param('s', $userId);
-// $stmt->execute();
-// $result = $stmt->get_result();
-// $row = $result->fetch_array();
-// return $row['image'];
 
 
     }
@@ -165,3 +181,5 @@ class User{
 
 
 }
+
+?>

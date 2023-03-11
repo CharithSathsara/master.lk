@@ -33,15 +33,31 @@
     margin-right: 8px;
 }
 
-#profile-pic{
-    height:300px;
-    width: 300px;
-    position: absolute;
-    color: white;
-}
+
+.circle{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto;
+ }
+
+ #circle{
+    width: 200px;
+    height: 200px;
+ }
+
+ .circle img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+ }
 
 #password-card{
     background-color:#f49f0a;
+    position: absolute;
+    width: 39.7%;
+    height: 48.5%;
 }
 
 #pw-img{
@@ -60,6 +76,10 @@
     display: inline-block;
 }
 
+#profile-photo-title{
+    margin-bottom: 30px;
+}
+
 #pw-card-title{
     color:black;
 }
@@ -67,6 +87,12 @@
 .edit-button{
     display: inline-block;
     position: absolute;
+    right: 0;
+    top:0; 
+}
+
+.remove-button{
+    display: inline-block;
     right: 0;
     top:0;
 }
@@ -98,6 +124,62 @@
     margin-right: auto;
     margin-top: 230px;
 }
+
+#photo-remove-popup{
+    z-index: 15;
+    position: absolute;
+    height: 170px;
+    width: 450px;
+    background-color: white;
+    border-radius: 10px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 300px;
+}
+
+#photo-remove-form{
+    display: inline-block;
+}
+
+#photo-remove-yes{
+    display: inline-block;
+    width: 160px;
+    height: 40px;
+    left: 20px;
+    top: 20px;
+    background-color:#219ebc;
+    border-radius: 5px;
+    color:#fff;
+    margin-top: 35px;
+    border: none;
+    cursor: pointer;
+    margin-left: 60px;
+    margin-right: 10px;
+}
+
+/* #photo-remove-yes:hover{
+    background-color:black;
+} */
+
+#photo-remove-no{
+    display: inline-block;
+    width: 160px;
+    height: 40px;
+    left: 20px;
+    top: 20px;
+    background-color: #f49f0a;
+    border-radius: 5px;
+    color:#fff;
+    margin-top: 35px;
+    border: none;
+    cursor: pointer;
+}
+
+/* #photo-remove-no:hover{
+    background-color:black;
+} */
 
 #update-photo-password-title{
     display: inline-block;
