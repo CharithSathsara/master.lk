@@ -1,6 +1,6 @@
 <?php
 
-include('../../config/app.php');
+include_once('../../config/app.php');
 include('../../model/Student.php');
 include('../../model/Leaderboard.php');
 
@@ -19,6 +19,15 @@ class LeaderBoardController{
     public function modelQuizLeaderBoard($topicId){
     
         $data = Leaderboard :: getmodelQuizLeaderBoard($topicId, $this->connection);
+        if($data){
+            return $data;
+        }
+
+    }
+    
+    public function pastQuizLeaderBoard($topicId){
+    
+        $data = Leaderboard :: getpastQuizLeaderBoard($topicId, $this->connection);
         if($data){
             return $data;
         }
