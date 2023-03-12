@@ -122,5 +122,25 @@ class User{
 
     }
 
+    public static function getUserName($connection, $userId){
+
+        try {
+            $query = "SELECT firstName, lastName FROM user WHERE userId = $userId";
+            $data = $connection->query($query);
+            $user = $data->fetch_assoc();
+
+            if($user){
+                return $user['firstName'].' '.$user['lastName'];
+            }else{
+                throw new Exception("Error: Unable to fetch user name");
+            }
+        } catch(Exception $e) {
+            $errorMessage = "An error occurred while fetching user name: " . $e->getMessage();
+            echo '<script>console.error("' . $errorMessage . '")</script>';
+            return false;
+        }
+
+    }
+
 
 }

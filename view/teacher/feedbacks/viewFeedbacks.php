@@ -34,7 +34,6 @@ $viewFeedbackController = new ViewFeedbackController();
 
         <div id="dashboard-container">
             <p id="title"><b>Feedbacks</b></p>
-            <p class="subheading"></p>
         </div>
 
         <?php
