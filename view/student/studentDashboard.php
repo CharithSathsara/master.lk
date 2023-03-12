@@ -29,11 +29,13 @@ include_once('../common/navBar-Student.php');
 include_once('../common/header.php');
 include_once('../../controller/studentController/dashboardController/lessonController.php');
 include_once('../../controller/studentController/dashboardController/studentSubjectController.php');
+include_once('../../controller/studentController/dashboardController/subjectProgressController.php');
 include_once('../../model/Student.php');
 include_once('../../model/Lesson.php');
 
 $lessonController = new lessonController();
 $studentSubjectController = new studentSubjectController();
+$subjectProgressController = new subjectProgressController();
 
 ?>
 
@@ -47,7 +49,23 @@ $studentSubjectController = new studentSubjectController();
         
             <div id='chemistry' class='subject-card'>
                     <b><p class='card-title'>Chemistry</p></b>
-                    <!-- completion bar here -->
+
+                    <div class="progress-container">
+                        <label id="progress-value-text"><?=$subjectProgressController->getSubjectProgress('Chemistry');?>%</label>
+                        <progress id="progress-bar" value="<?=$subjectProgressController->getSubjectProgress('Chemistry');?>" max="100">
+                            <div class="progress-value">
+                                <span class="progress-perc"><?=$subjectProgressController->getSubjectProgress('Chemistry');?>%</span>
+                            </div>
+                        </progress>
+                    </div>
+
+                    <!-- <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-value"><span><??>%</span></div>
+                        </div>
+                    </div> -->
+                    
+
                     <div class='lesson-container'>
                         <?=$lessonController->getLessons("Chemistry");
                         // $_SESSION['lesson']=$row_data['lessonName'];
@@ -58,7 +76,16 @@ $studentSubjectController = new studentSubjectController();
 
             <div id='physics' class='subject-card'>
                     <b><p class='card-title'>Physics</p></b>
-                    <!-- completion bar here --> 
+
+                    <div class="progress-container">
+                        <label id="progress-value-text"><?=$subjectProgressController->getSubjectProgress('Physics');?>%</label>
+                        <progress id="progress-bar" value="<?=$subjectProgressController->getSubjectProgress('Physics');?>" max="100">
+                            <div class="progress-value">
+                                <span class="progress-perc"><?=$subjectProgressController->getSubjectProgress('Physics');?>%</span>
+                            </div>
+                        </progress>
+                    </div>
+                    
                     <div class='lesson-container'>
                         <?=$lessonController->getLessons("Physics")?>
                     </div>
