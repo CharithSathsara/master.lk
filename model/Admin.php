@@ -97,20 +97,7 @@ class Admin{
 
         }
 
-        public static function updateTeacherDetails($fname,$lname,$address1,$address2,$number,$email,$username,$password,$subject,$connection){
 
-            $passHash = password_hash($password , PASSWORD_DEFAULT);
-
-            $query = "UPDATE user SET userName ='$username' password ='$passHash' ,firstName='$fname',lastName='$lname',email= '$email' ,mobile= '$number' ,addLine01= '$address1' ,addLine02= '$address2'";
-
-            $data = $connection->query($query);
-
-            if($data){
-
-            }
-
-
-        }
 
         public static function getAdminDetails($userId,$connection){
 
@@ -132,5 +119,9 @@ class Admin{
             exit();
 
         }
+
+
+
+
 
 }

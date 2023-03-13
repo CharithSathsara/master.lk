@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../../public/css/nadunCSS/adminDashboard.css">
+    <link rel="stylesheet" href="../../public/css/adminDashboard.css">
 
     <title>Admin Dashboard</title>
 </head>
@@ -15,9 +15,13 @@
 
     include_once('../../config/app.php');
     include('../../controller/adminController/dashboardController/AdminDashboardController.php');
+    include ('../../controller/adminController/dashboardController/allSubjectController.php');
+    include ('../../controller/adminController/dashboardController/deleteTeacherController.php');
     include('../../model/Admin.php');
+    include ('../../model/Subject.php');
+    include ('../../model/Teacher.php');
     include_once('../common/header.php');
-    include_once ('../common/navBar-Admin.php');
+    include_once('../common/navBar-Admin.php');
     ?>
 
         <div class="section-3">
@@ -31,89 +35,37 @@
                 </div>
                 <div class="getTeacher">
                     <table  class="styled-table"  cellspacing="0">
-                        <tbody>
+<!--                        <tbody>-->
                         <?php
 
                         $adminDashboardController = new AdminDashboardController();
-
                         $teachers = $adminDashboardController->getAllTeachers();
 
                         if($teachers){
                             foreach($teachers as $teacher){
+
+                                $teacherId = $teacher['userId'];
+                                $subject = $adminDashboardController->getTeacherSubject($teacherId);
                                 ?>
                                 <tr>
                                     <td class="td-1"><?= $teacher['firstName'] ." ". $teacher['lastName'] ?></td>
-                                    <?php
+                                <div class="pass-para">
+                                    <label class="user-id"> <?=  $teacher['userId'] ?> </label>
+                                    <label class="first-name"> <?=  $teacher['firstName'] ?> </label>
+                                    <label class="last-name"><?= $teacher['lastName'] ?></label>
+                                    <label class="address-1"> <?=  $teacher['addLine01'] ?> </label>
+                                    <label class="address-2"> <?=  $teacher['addLine02'] ?> </label>
+                                    <label class="telephone-number"> <?=  $teacher['mobile'] ?> </label>
+                                    <label class="email"> <?=  $teacher['email'] ?> </label>
+                                    <label class="userName"> <?=  $teacher['userName'] ?> </label>
+                                </div>
 
-                                    $teacherId = $teacher['userId'];
-                                    $subject = $adminDashboardController->getTeacherSubject($teacherId);
-
-                                    ?>
                                     <td class="td-1"><?= $subject ?></td>
 <!--    Update teacher button   -->
                                     <td class="td-2"><button class="Update-teacher" id="but-UpdateTeacher" ><img src="../../public/img/update.svg"></button></td>
 <!-- Delete teacher button -->
                                     <td class="td-2"><button class="delete-teacher" id="but-deleteTeacher" ><img src="../../public/img/delete.svg"></button></td>
                                 </tr>
-                                    <div id="popup-update" class="popup-update">
-                                        <div class="popup-UpdateTeacher">
-                                            <img src="../../public/img/close.png" class="closeTeacher-Icon" alt="close">
-
-                                            <div class="container">
-                                                <div class="section1">
-                                                    <div class="addTeacherText">
-                                                        <h4>Update Teacher</h4>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Teacher Update form -->
-                                            <div class="forms-div">
-
-                                                <form class="UpdateTeach-form" action="../../controller/adminController/dashboardController/updateTeacherController.php?id=<?= $teacher['userId'] ?>" method="POST" id="UpdateTeacher-form">
-                                                    <!--                <label class="teachrHead"><b>Add Teacher</b></label>-->
-                                                    <input type="text" name="fname" placeholder="Full Name" value=<?= $teacher['firstName'] ?> required>
-                                                    <input type="text" name="lname" placeholder="Last Name" value=<?= $teacher['lastName'] ?> required>
-                                                    <input type="text" name="address1" placeholder="Address Line 1" value=<?= $teacher['addLine01'] ?> required>
-                                                    <input type="text" name="address2" placeholder="Address Line 2" value=<?= $teacher['addLine02'] ?> required>
-                                                    <input type="text" name="number" placeholder="Telephone Number" value=<?= $teacher['mobile'] ?> required>
-                                                    <input type="email" name="email" placeholder="Email" value=<?= $teacher['email'] ?> required>
-                                                    <input type="text" name="username" placeholder="User name" value=<?= $teacher['userName'] ?> required>
-                                                    <input type="password" name="password" placeholder="Password"  required>
-                                                    <div class="selectSub">
-                                                        <label>Select the Subject : </label>
-                                                        <select name="subjects" id="subject" >
-                                                            <!--            <option value="">Select Subject</option>-->
-                                                            <option value="Chemistry">Chemistry</option>
-                                                            <option value="Physics">Physics</option>
-                                                        </select>
-                                                    </div>
-                                                    <!--                        <textarea name="qualification" placeholder="Qualification"></textarea>-->
-                                                    <input type="submit" name="updateteacher-button" value="Save" class="subb-Update" id="updateTeacherSubmit">
-                                                </form>
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-<!--    Delete Teacher    -->
-<!-- Delete confirmation box -->
-
-                                    <div class="popup-delete" id="Delete-teacherPop">
-                                        <div class="delete-teacherPop">
-                                            <div class="delete-headerPop">
-                                                <img src="../../public/img/important.png" id="closeDelete-popBox">
-                                                <h3>Delete Confirmation</h3>
-                                            </div>
-                                            <div class="deletePop-teacherBody">
-                                                <p>Are you sure you want to delete this Teacher?</p>
-                                            </div>
-
-                                            <div class="deletePop-teacherButton">
-                                                <button class="deleteYes-button" id="deleteYes-btn">Yes</button>
-                                                <button class="deleteNo-button" id="deleteNo-btn">No</button>
-                                            </div>
-                                        </div>
-                                    </div>
 
                                 <?php
                             }
@@ -121,8 +73,24 @@
                             echo "No Record Found";
                         }
                                ?>
-                        </tbody>
+<!--                        </tbody>-->
                     </table>
+
+
+
+                    <!--   Update teacher Form-->
+                    <?php include_once '../admin/dashboard/updateTeacher.php';?>
+
+                    <!-- Update teacher pop up js script -->
+                    <script src="../../public/js/updateTeacher.js"></script>
+
+                    <!--   Delete teacher-->
+                    <?php include_once '../admin/dashboard/deleteTeacher.php'?>
+
+                    <!--  Delete teacher JS-->
+                    <script src="../../public/js/deleteTecher.js"></script>
+
+
                     <div class="anchor-1">
                         <button class="but-teacher" id="but-AddTeacher">Add Teacher</button>
                     </div>
@@ -228,92 +196,18 @@
              </div>
         </div>
 
-<!-- Add teacher page pop up box -->
+    <!-- Add teacher page pop up box -->
+     <?php include_once '../admin/dashboard/addTeacher.php';?>
 
-        <div class="popup">
-            <div class="popup-AddTeacher">
-                <img src="../../public/img/close.png" class="close-Icons" alt="close">
-
-                <div class="container">
-                    <div class="section1">
-                        <div class="addTeacherText">
-                            <h4>Add New Teacher</h4>
-                        </div>
-                    </div>
-                </div>
-<!-- Teacher Add form -->
-                <div class="forms-div">
-
-                    <form class="addTeach-form" action="../../controller/adminController/dashboardController/addTeacherController.php" method="POST">
-                        <!--                <label class="teachrHead"><b>Add Teacher</b></label>-->
-                        <input type="text" name="fname" placeholder="Full Name" required>
-                        <input type="text" name="lname" placeholder="Last Name" required>
-                        <input type="text" name="address1" placeholder="Address Line 1" required>
-                        <input type="text" name="address2" placeholder="Address Line 2" required>
-                        <input type="text" name="number" placeholder="Telephone Number" required>
-                        <input type="email" name="email" placeholder="Email" required>
-                        <input type="text" name="username" placeholder="User name" required>
-                        <input type="password" name="password" placeholder="Password" required>
-                        <div class="selectSub">
-                            <label >Select the Subject : </label>
-                            <select name="subjects" id="subjects" style="margin-left: 10vw" >
-                                <!--            <option value="">Select Subject</option>-->
-                                <option value="Chemistry">Chemistry</option>
-                                <option value="Physics">Physics</option>
-                            </select>
-                        </div>
-                        <textarea name="qualification" placeholder="Qualification"></textarea>
-                        <input type="submit" name="addteacher-button" value="Save" class="subb-button">
-                    </form>
-                </div>
-
-            </div>
-        </div>
-
-<!-- Update teacher details -->
+    <!-- Add Teacher pop up box js script -->
+    <script src="../../public/js/addTeacher.js"></script>
 
 
+    <!--  Add content creator popup box  -->
+    <?php include_once '../admin/dashboard/addContentcreator.php';?>
 
-
-
-
-
-<!--  Add content creator popup box  -->
-        <div class="popup-addContentCreator">
-            <div class="add-contentCreatorPop">
-                <div class="update-ContentCreatorHeaderPop">
-                        <h4>Add New Content Creator</h4>
-                        <img src="../../public/img/close.png" class="CloseContentPop">
-                </div>
-<!-- Add content creator popup form  -->
-                <div class="update-contentCreatorForm">
-                    <div class="forms-div">
-
-                        <form class="UpdateTeach-form" action="../../controller/adminController/dashboardController/addTeacherController.php" method="POST">
-                            <!--                <label class="teachrHead"><b>Add Teacher</b></label>-->
-                            <input type="text" name="fname" placeholder="Full Name" required>
-                            <input type="text" name="lname" placeholder="Last Name" required>
-                            <input type="text" name="address1" placeholder="Address Line 1" required>
-                            <input type="text" name="address2" placeholder="Address Line 2" required>
-                            <input type="text" name="number" placeholder="Telephone Number" required>
-                            <input type="email" name="email" placeholder="Email" required>
-                            <input type="text" name="username" placeholder="User name" required>
-                            <input type="password" name="password" placeholder="Password" required>
-                            <div class="selectSub">
-                                <label>Select the Subject : </label>
-                                <select name="subjects" id="subjects" >
-                                    <!--            <option value="">Select Subject</option>-->
-                                    <option value="Chemistry">Chemistry</option>
-                                    <option value="Physics">Physics</option>
-                                </select>
-                            </div>
-                            <!--                        <textarea name="qualification" placeholder="Qualification"></textarea>-->
-                            <input type="submit" name="updateteacher-button" value="Save" class="subb-Update" style="color: #D9D9D9">
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- Add Content Creator pop up box js script -->
+    <script src="../../public/js/addContentcreator.js"></script>
 
 
 
@@ -334,100 +228,6 @@
 
             //     document.querySelector(".popup-deleteContent").style.display ="none";
             // })
-        </script>
-
-<!-- Add Teacher pop up box js script -->
-        <script>
-            document.getElementById("but-AddTeacher").addEventListener("click",function (){
-                document.querySelector(".popup").style.display ="flex";
-                // document.querySelector("body").style.backgroundColor="rgba(0,0,0,0.6)";
-            })
-
-            document.querySelector(".close-Icons").addEventListener("click",function (){
-                document.querySelector(".popup").style.display ="none";
-            })
-        </script>
-
-<!-- Update teacher pop up js script -->
-
-        <script>
-            // document.getElementById("but-UpdateTeacher").addEventListener("click",function (){
-            //     document.querySelector(".popup-update").style.display ="flex";
-            //     document.querySelector("body").style.backgroundColor ="rgba(0,0,0,0.6)";
-            // })
-            //
-            // document.querySelector(".closeIcon").addEventListener("click",function (){
-            //     document.querySelector(".popup-update").style.display ="none";
-            // })
-            const form = document.getElementById("popup-update");
-            const updateTeacherButton = document.querySelectorAll(".Update-teacher");
-
-            // Loop through the update buttons and add a click event to each one
-            updateTeacherButton.forEach(button => {
-                button.addEventListener("click", () => {
-                    // Toggle the form visibility
-                    if (form.style.display === "none") {
-                        form.style.display = "flex";
-                    } else {
-                        form.style.display = "none";
-                    }
-                });
-            });
-
-            document.querySelector(".closeTeacher-Icon").addEventListener("click",function (){
-                document.querySelector(".popup-update").style.display ="none";
-            });
-
-        </script>
-
-<!-- Delete teacher pop up js script -->
-
-        <script>
-            document.getElementById("but-deleteTeacher").addEventListener("click",function () {
-                document.querySelector(".popup-delete").style.display = "flex";
-                // document.querySelector("body").style.backgroundColor = "rgba(0,0,0,0.35)";
-                // document.querySelector("body").style.zIndex = "100";
-            })
-
-            document.getElementById("deleteNo-btn").addEventListener("click",function (){
-                document.querySelector(".popup-delete").style.display="none";
-            })
-
-            document.getElementById("deleteYes-btn").addEventListener("click",function (){
-                document.querySelector(".popup-delete").style.display="none";
-            })
-
-            // const form = document.getElementById("Delete-teacherPop");
-            // const updateTeacherButton = document.querySelectorAll(".delete-teacher");
-            //
-            // // Loop through the update buttons and add a click event to each one
-            // updateTeacherButton.forEach(button => {
-            //     button.addEventListener("click", () => {
-            //         // Toggle the form visibility
-            //         if (form.style.display === "none") {
-            //             form.style.display = "flex";
-            //         } else {
-            //             form.style.display = "none";
-            //         }
-            //     });
-            // });
-            //
-            // document.getElementById("closeDelete-popBox").addEventListener("click",function (){
-            //     document.querySelector(".popup-delete").style.display ="none";
-            // });
-        </script>
-
-    <!-- Add Content Creator pop up box js script -->
-
-        <script>
-            document.getElementById("but-content").addEventListener("click",function (){
-                document.querySelector(".popup-addContentCreator").style.display ="flex";
-                // document.querySelector("body").style.backgroundColor ="rgba(0,0,0,0.6)";
-            })
-
-            document.querySelector(".CloseContentPop").addEventListener("click",function (){
-                document.querySelector(".popup-addContentCreator").style.display ="none";
-            })
         </script>
 
 <!--    update content creator popup box js script-->

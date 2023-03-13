@@ -94,5 +94,22 @@ class Subject {
         }
     }
 
+    public static function getAllSubject($connection){
 
+        $query = "SELECT * FROM subject";
+
+        $data = $connection->query($query);
+
+        if ($data) {
+
+            return $data;
+
+//            echo "<script>";
+//            echo "consol.log($data)";
+//            echo "</script>";
+        }
+//        else{
+//            echo "Error";
+//        }
+    }
 }

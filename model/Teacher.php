@@ -184,4 +184,43 @@ class Teacher {
      * @author Charith Sathsara section
      */
 
+
+    public static function updateTeacherDetails($fname,$lname,$address1,$address2,$number,$email,$username,$userId,$subject,$connection){
+
+
+        $query = "UPDATE user 
+                  SET userName ='$username' ,firstName='$fname',lastName='$lname',email= '$email' ,mobile= '$number' ,addLine01= '$address1' ,addLine02= '$address2'
+                  WHERE userId ='$userId'";
+
+        $data = $connection->query($query);
+
+        if($data){
+
+            $query2 = "SELECT subjectId  FROM subject WHERE subjectTitle = '$subject'";
+            $data2 = $connection->query($query2);
+
+            $result = $data2->fetch_assoc();
+            $subjectId = $result['subjectId'];
+
+            $query3 = "UPDATE teacher
+                       SET subjectId = '$subjectId'
+                       WHERE teacherId ='$userId'";
+
+            $data3 = $connection->query($query3);
+
+                      return $data3;
+                 }else{
+                     return false;
+                      }
+    }
+
+    public static function deleteTeacher($userId,$connection){
+        $query = "DELETE FROM user WHERE userId = '$userId'";
+
+        $result = $connection->query($query);
+
+        if($result){
+            return $result;
+        }
+    }
 }
