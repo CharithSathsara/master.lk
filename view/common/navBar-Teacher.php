@@ -1,8 +1,20 @@
 <?php
 
-include_once('../../config/app.php');
-include('../../controller/profileController/profilePhotoViewController.php');
-include('../../model/User.php');
+// Get the absolute path of the current directory
+$currentDir = __DIR__;
+
+// Include the files using the dynamic path
+include_once $currentDir . '/../../config/app.php';
+include_once $currentDir . '/../../controller/profileController/profilePhotoViewController.php';
+include_once $currentDir . '/../../model/User.php';
+
+//include_once('../../../config/app.php');
+////include_once get_include_url('config/app.php');
+//include('../../../controller/profileController/profilePhotoViewController.php');
+////include get_include_url('controller/profileController/profilePhotoViewController.php');
+//include('../../../model/User.php');
+////include_once get_include_url('model/User.php');
+
 $profilePhotoViewController = new profilePhotoViewController();
 
 ?>
@@ -62,6 +74,14 @@ $profilePhotoViewController = new profilePhotoViewController();
                         <div class="list-item" >
                             <img src=<?= base_url('public/icons/feedbacks.svg') ?> class="list-icon">
                             <p class="list-text">Feedbacks</p>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item"  id="feedbacks">
+                    <a href=<?= base_url('view/teacher/q_and_a_forum/forum_teacher.php') ?>>
+                        <div class="list-item" >
+                            <img src=<?= base_url('public/icons/feedbacks.svg') ?> class="list-icon">
+                            <p class="list-text">Q and A Forum</p>
                         </div>
                     </a>
                 </li>

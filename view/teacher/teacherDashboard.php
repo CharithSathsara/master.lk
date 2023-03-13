@@ -51,17 +51,13 @@ include_once '../common/header.php';
 
         ?>
 
-        <p class="subheading">Questions &nbsp;&nbsp;&nbsp;</p>
-
-        <br>
+        <p class="subheading">Questions &nbsp;&nbsp;&nbsp;</p><br>
 
         <section class="container-01">
 
             <div class="main-card">
                 <?php include('../../controller/authController/message.php') ?>
-                <br>
                 <h3><?= $dashboardController->getCountOfAllQuestions() ; ?> Questions are in the system </h3>
-
                 <input class="add-question-btn" id="add-question-btn" type="submit" onclick="redirect('addQuestion')" value="Add New Question">
             </div>
 
@@ -70,18 +66,18 @@ include_once '../common/header.php';
         <section class="container-02">
 
             <div class="card-01">
-                <b><p class="card-topic" id="card-topic-phy">Physics</p></b><br>
+                <b><p class="card-topic" id="card-topic-phy">Physics</p></b>
                 <div class="card-content">
-                    <p id="no-of-questions-phy" class="no-of-questions"><?= $dashboardController->getNoOfQuestions("Physics") ; ?> Questions</p><br>
+                    <p id="no-of-questions-phy" class="no-of-questions"><?= $dashboardController->getNoOfQuestions("Physics") ; ?> Questions</p>
                     <input class="add-question-btn" type="submit" onclick="redirect('viewPhysicsModelQuestions')" value="Model Paper">
                     <input class="add-question-btn" type="submit" onclick="redirect('viewPhysicsPastQuestions')" value="Past Paper">
                 </div>
             </div>
 
             <div class="card-02">
-                <b><p class="card-topic">Chemistry</p></b><br>
+                <b><p class="card-topic">Chemistry</p></b>
                 <div class="card-content">
-                    <p id="no-of-questions-chem" class="no-of-questions"><?= $dashboardController->getNoOfQuestions("Chemistry") ; ?> Questions</p><br>
+                    <p id="no-of-questions-chem" class="no-of-questions"><?= $dashboardController->getNoOfQuestions("Chemistry") ; ?> Questions</p>
                     <input class="add-question-btn" type="submit" onclick="redirect('viewChemistryModelQuestions')" value="Model Paper">
                     <input class="add-question-btn" type="submit" onclick="redirect('viewChemistryPastQuestions')" value="Past Paper">
                 </div>
@@ -90,9 +86,7 @@ include_once '../common/header.php';
         </section>
 
         </div>
-
     </div>
-
 </div>
 
 </body>
