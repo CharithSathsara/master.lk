@@ -100,11 +100,30 @@ $subjectProgressController = new subjectProgressController();
         <div id="progress-container">
             <div class="progress-card" id="completion-card">
                 <b><p class="progress-title">Completion</p></b>
-                <img src="../../public/img/completion-graph.PNG" id="completion-img" class="progress-img">
+                
+                <div class="completion">
+                    <div class="outer">
+                        <div class="inner">
+                            <div id="number">
+                                65%
+                            </div>
+                        </div>
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
+                        <defs>
+                            <linearGradient id="GradientColor">
+                                <stop offset="0%" stop-color="#e91e63" />
+                                <stop offset="100%" stop-color="#673ab7" />
+                            </linearGradient>
+                        </defs>
+                        <circle cx="70" cy="70" r="60" stroke-linecap="round" />
+                    </svg>
+                </div>
+
             </div>
             <div class="progress-card" id="scores-card">
                 <b><p class="progress-title">Scores</p></b>
-                <img src="../../public/img/scores-graph.PNG" id="scores-img" class="progress-img">
+                
             </div>
         </div>
 

@@ -1,15 +1,4 @@
-// let btn = document.getElementById("goToLesson-button");
- 
-// btn.addEventListener("click", () => {
- 
-//     let btnValue = btn.value;
- 
-//     $.post('../../controller/studentController/dashboardController/selectLessonController.php', {
-//         btnValue: btnValue
-//     }, (response) => {
-//         console.log(response);
-//     });
-// });
+
 
 function selectLesson(btn){
 
@@ -27,3 +16,14 @@ function selectLesson(btn){
 
 
 }
+
+// let number = document.getElementById("number");
+// let counter = 0;
+// setInterval(() =>{
+//     if(counter == 65){
+//         clearInterval();
+//     }else{
+//         counter += 1;
+//         number.innerHTML = counter + "%";
+//     }
+// },20);
