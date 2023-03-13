@@ -28,11 +28,13 @@ Authorization::authorizingStudent();
 
 include('../../controller/studentController/newSubjectsController/subjectController.php');
 include('../../controller/studentController/newSubjectsController/viewCartController.php');
+include('../../controller/studentController/newSubjectsController/cartController.php');
 include('../../model/Subject.php');
 include('../../model/Cart.php');
 
 $subjectController = new subjectController();
 $viewCartController = new viewCartController();
+$cartController = new cartController();
 
 ?>
 
@@ -43,11 +45,25 @@ $viewCartController = new viewCartController();
         <div class="subject-container">
             <div class="subject-description-card" id="phy-subject-description-card">
                 <b><p class="sub-card-title">Physics</p></b>
-                <div class="add-to-cart-container" id="phy-add-to-cart-container">
-                    <form action="../../controller/studentController/newSubjectsController/addToCartController.php" method="post">
-                        <b><button class="add-to-cart-btn" name="add-to-cart-phy" type="submit"><span><img src="../../public/icons/cart.svg" class="cart-icon"></span>Add to Cart</button></b>
-                    </form>
-                </div>
+                <?php
+                if(!($cartController->existsInCart("Physics"))){
+                    echo"
+                    <div class='add-to-cart-container' id='phy-add-to-cart-container'>
+                        <form action='../../controller/studentController/newSubjectsController/addToCartController.php' method='post'>
+                            <b><button class='add-to-cart-btn' name='add-to-cart-phy' type='submit'><span><img src='../../public/icons/cart.svg' class='cart-icon'></span>Add to Cart</button></b>
+                        </form>
+                    </div>
+                    ";
+
+                }else{
+                    echo"
+                    <div class='added-to-cart-container' id='phy-add-to-cart-container'>
+                        <b><p class='added-to-cart-text'>Added to Cart</p></b>
+                    </div>
+                    ";
+                }
+
+                ?>
             </div>
             <div class="subject-description">
                 <p class="sub-text">Physics is the natural science that studies matter, its fundamental constituents, its motion and behavior through space and time, 
@@ -58,11 +74,25 @@ $viewCartController = new viewCartController();
         <div class="subject-container">
             <div class="subject-description-card" id="chem-subject-description-card">
                 <b><p class="sub-card-title">Chemistry</p></b>
-                <div class="add-to-cart-container" id="chem-add-to-cart-container">
-                    <form action="../../controller/studentController/newSubjectsController/addToCartController.php" method="post">
-                        <b><button class="add-to-cart-btn" name="add-to-cart-chem" type="submit"><span><img src="../../public/icons/cart.svg" class="cart-icon"></span>Add to Cart</button></b>
-                    </form>
-                </div>
+                <?php
+                if(!($cartController->existsInCart("Chemistry"))){
+                    echo"
+                    <div class='add-to-cart-container' id='chem-add-to-cart-container'>
+                        <form action='../../controller/studentController/newSubjectsController/addToCartController.php' method='post'>
+                            <b><button class='add-to-cart-btn' name='add-to-cart-chem' type='submit'><span><img src='../../public/icons/cart.svg' class='cart-icon'></span>Add to Cart</button></b>
+                        </form>
+                    </div>
+                    ";
+
+                }else{
+                    echo"
+                    <div class='added-to-cart-container' id='chem-add-to-cart-container'>
+                        <b><p class='added-to-cart-text'>Added to Cart</p></b>
+                    </div>
+                    ";
+                }
+
+                ?>
             </div>
             <div class="subject-description">
                 <p class="sub-text">Chemistry is the scientific study of the properties and behavior of matter. It is a natural science that covers the elements that 

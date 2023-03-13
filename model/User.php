@@ -18,6 +18,22 @@ class User{
 
     }
 
+    public static function removeProfilePhoto($connection){
+
+        $userId = $_SESSION['auth_user']['userId'];
+
+        $query = "UPDATE user SET image = null WHERE userId='$userId'";
+
+        $result = $connection->query($query);
+
+        if($result){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
     public static function getprofilePhoto($connection){
 
         $userId = $_SESSION['auth_user']['userId'];
@@ -25,11 +41,21 @@ class User{
         $query = "SELECT image FROM user WHERE userId='$userId'";
 
         $result = $connection->query($query);
+        $row = $result->fetch_assoc();
 
-        if($result->num_rows > 0){
-            $row = $result->fetch_assoc();
-            return $row['image'];
+        if($row['image']!=null){
+
+            $to_echo = "<img id='profile-pic' src='data:image/jpg;charset=utf8;base64,";
+            $to_echo .= base64_encode($row['image']);
+            $to_echo .= "'/>";
+            echo $to_echo;
+
+            return true;
+        }else{
+            echo "<img id='profile-pic' src='../../public/img/default-profPic.png'/>";
+            return false;
         }
+
 
     }
 
@@ -142,5 +168,39 @@ class User{
 
     }
 
+    public static function changeUserInfo($connection,$first_name, $last_name, $dob, $address_first, $address_second, $telephone, $email, $username){
+
+
+        $userId = $_SESSION['auth_user']['userId'];
+
+        $query = "UPDATE user 
+        SET firstName = '$first_name', 
+            lastName = '$last_name',
+            addLine01 = '$address_first',
+            addLine02 = '$address_second',
+            mobile = '$telephone',
+            email = '$email',
+            userName = '$username'
+        WHERE userId = '$userId' ;";
+
+        $result = $connection->query($query);
+
+        $query2 = "UPDATE student 
+        SET dob = '$dob', 
+        WHERE userId = '$userId' ;";
+
+        $result2 = $connection->query($query2);
+
+        if($result && $result2){
+            return true;
+        }else{
+            return false;
+            
+        }
+
+    }
+
 
 }
+
+?>

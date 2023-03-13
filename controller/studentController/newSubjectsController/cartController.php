@@ -22,6 +22,20 @@ class cartController{
 
     }
 
+    public function existsInCart($subject){
+
+        $data = Cart::existsInCart($this->connection,$subject);
+
+        if($data){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
+
+
 }
 
 ?>

@@ -1,53 +1,35 @@
-#select-subjects-container{
+#checkout-container{
     width:85%;
     height: 100vh;
     float: right;
-    background-image: url("../img/cart-bg.svg");
-    background-repeat: no-repeat;
-    background-position: 17% 55%;
-    background-size: 600px;
 }
 
-#select-subjects{
+#checkout{
     margin: 140px 40px 100px 30px;
     z-index: 1;
 }
 
+#title{
+    margin-top:0;
+    font-size:18px;
+    color:#0b2e5e;
+}
+
+#title a{
+    color:#0b2e5e;
+}
+
 #cart-container{
     width:30%;
-    height:500px;
+    height:350px;
     margin-right: 100px;
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
-    border-radius:10px;
     z-index: 10;
-    float: right;
+    display: inline-block;
+
 }
 
 #cart-body{
     height:20%;
-}
-
-#cart-topic-container{
-    width:100%;
-    margin-bottom: 40px;
-}
-
-#cart-topic{
-    display: inline-block;
-    position: relative;
-    width:85%;
-    margin-top: 20px;
-    margin-bottom: 0;
-    vertical-align: super;
-    margin-left: 15px;
-    font-size:17px;
-}
-
-#close-icon{
-    display: inline-block;
-    position: relative;
-    height:25px;
-    margin-top: 20px;
 }
 
 .cart-item{
@@ -91,13 +73,6 @@
     margin-right: 10px;
 }
 
-.close-round-icon{
-    display: inline-block;
-    position: relative;
-    height:18px;
-    vertical-align: sub;
-}
-
 #cart-total-container{
     bottom: 0;
     height: 50px;
@@ -120,7 +95,7 @@
 
 }
 
-#checkout-btn{
+.payment-btns{
     width: 160px;
     height: 40px;
     left: 20px;
@@ -128,22 +103,30 @@
     background-color:#219ebc;
     border-radius: 5px;
     color:#fff;
-    float: right;
     margin-right: 15px;
-    margin-top: 87px;
 }
 
-#checkout-btn:hover{
+.payment-btns:hover{
     background-color:black;
 }
 
-.checkout-icon{
-    height:25px;
-    vertical-align:middle;
-    margin-right: 8px;
+#option-container{
+    display: inline-block;
+    height: 450px;
+    width: 40%;
+    position: absolute;
 }
 
-.remove-item-form{
-    display: inline-block;
-    position: relative;
+a{
+    text-decoration: none;
+}
+
+#payment-img{
+    height: 250px;
+    margin-top: 70px;
+    float: right;
+}
+
+#payment-title{
+    margin-top:15px;
 }

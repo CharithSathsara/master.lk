@@ -1,6 +1,6 @@
 <?php
 
-class studentSubjectController{
+class subjectProgressController{
 
     public $connection;
 
@@ -11,12 +11,12 @@ class studentSubjectController{
 
     }
 
-    public function hasBought($subject){
+    public function getSubjectProgress($subject){
 
-        $data = Student::hasBought($this->connection,$subject);
+        $data = Student::getSubjectProgress($this->connection,$subject);
 
         if($data){
-            return true;
+            return $data;
         }else{
             return false;
         }

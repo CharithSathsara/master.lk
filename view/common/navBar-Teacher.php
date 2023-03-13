@@ -1,3 +1,12 @@
+<?php
+
+include_once('../../config/app.php');
+include('../../controller/profileController/profilePhotoViewController.php');
+include('../../model/User.php');
+$profilePhotoViewController = new profilePhotoViewController();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,13 +19,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 
-    <title>Teacher Navigation Bar</title>
+    <title></title>
 </head>
 
 <body>
     <div id="teacher-nav" class="nav">
         <div class="prof-detail">
-            <img src=<?= base_url('public/img/default-profPic.png') ?> id="prof-pic"><br>
+            <div class="circle">
+                <?=$profilePhotoViewController->getProfilePhoto();?>
+            </div>
             <p id="user-name"><?= $_SESSION['auth_user']['userFirstName'] ?>&nbsp;<?= $_SESSION['auth_user']['userLastName'] ?></p>
             <p id="role"><?= $_SESSION['auth_role']?></p>
         </div>
