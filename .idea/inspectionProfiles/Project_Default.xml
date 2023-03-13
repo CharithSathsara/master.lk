@@ -3,16 +3,9 @@
     <option name="myName" value="Project Default" />
     <inspection_tool class="DuplicatedCode" enabled="true" level="WEAK WARNING" enabled_by_default="true">
       <Languages>
-        <language minSize="65" name="HTML" />
-<<<<<<< HEAD
-        <language minSize="87" name="PHP" />
-=======
-        <language minSize="98" name="PHP" />
->>>>>>> origin/master
+        <language minSize="210" name="JavaScript" />
+        <language minSize="131" name="PHP" />
       </Languages>
     </inspection_tool>
-    <inspection_tool class="HtmlFormInputWithoutLabel" enabled="false" level="WARNING" enabled_by_default="false" />
-    <inspection_tool class="PhpRedundantClosingTagInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
-    <inspection_tool class="PhpUnnecessaryLocalVariableInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
   </profile>
 </component>

@@ -41,18 +41,19 @@ class Lesson{
         $result2 = $connection->query($query2);
         
         while($row_data = mysqli_fetch_array($result2)){
-            // echo "<form method='post' action='../../controller/dasboardController/studentSubjectController.php' name='selectsubejct-form' id='selectsubejct-form'>
-            //         <button class='goToLesson-button' type='submit'>
-            //             <div class='lesson'>
-            //                 <p class='lesson-title'>".$row_data['lessonName']."</p>
-            //             </div>
-            //         </button>
-            //     </form>";
-            echo "<a href ='../../view/student/topicsAndFeedbacks.php'>
-            <div class='lesson'>
-                <p class='lesson-title'>".$row_data['lessonName']."</p>
-            </div>
-            </a>";
+            echo " 
+                    <a href='../../view/student/topicsAndFeedbacks.php' class='goToLesson-button' type='submit' key='".$row_data['lessonName']."' onclick='selectLesson(this)'>
+                        <div class='lesson'>
+                            <p class='lesson-title'>".$row_data['lessonName']."</p>
+                        </div>
+                    </a>
+                
+                "; 
+            // echo "<a href ='../../view/student/topicsAndFeedbacks.php'>
+            // <div class='lesson'>
+            //     <p class='lesson-title'>".$row_data['lessonName']."</p>
+            // </div>
+            // </a>";
         }
         return;
 

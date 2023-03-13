@@ -4,7 +4,7 @@ include('../../../config/app.php');
 include('../../../model/Teacher.php');
 include('../../../model/Topic.php');
 
-class ViewQuestionsController{
+class ViewQuestionsController {
 
     public $connection;
 

@@ -1,6 +1,9 @@
 <?php
 
 include_once('../../config/app.php');
+include('../../controller/profileController/profilePhotoViewController.php');
+include('../../model/User.php');
+$profilePhotoViewController = new profilePhotoViewController();
 
 
 ?>
@@ -24,15 +27,18 @@ include_once('../../config/app.php');
 <body>
     <div id="cc-nav" class="nav">
         <div class="prof-detail">
-            <img src="../../public/img/default-profPic.png" id="prof-pic"><br>
+            <div class="circle">
+                <?=$profilePhotoViewController->getProfilePhoto();?>
+            </div>
+
             <p id="user-name">
                 <?= $_SESSION['auth_user']['userFirstName'] ?>&nbsp;<?= $_SESSION['auth_user']['userLastName'] ?></p>
-            <p id="role"><?= $_SESSION['auth_role']?></p>
+                <p id="role"><?= $_SESSION['auth_role']?></p>
         </div>
         <div class="nav-items">
             <ul>
                 <li class="nav-item" id="dashboard">
-                    <a href="">
+                    <a href="../contentcreator/contentCreatorDashboard.php">
                         <div class="list-item">
                             <img src="../../public/icons/dashboard.svg" class="list-icon">
                             <p class="list-text">Dashboard</p>
@@ -49,7 +55,7 @@ include_once('../../config/app.php');
                 </li>
                 <hr id="nav-hr">
                 <li class="nav-item" id="profile">
-                    <a href="../../view/common/profile.php">
+                    <a href="../common/profile.php">
                         <div class="list-item">
                             <img src="../../public/icons/profile.svg" class="list-icon">
                             <p class="list-text">Profile</p>

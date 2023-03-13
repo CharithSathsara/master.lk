@@ -23,8 +23,15 @@ class lessonController{
 
     }
 
-
+    public function selectLesson(){
+        $lesson = mysqli_real_escape_string($this->connection,$_POST['lesson']);
+        $_SESSION['current-lesson'] = $lesson;
+        die();
+        // redirect("", "view/student/topicsAndFeedbacks.php");
+    }
 
 }
+
+
 
 ?>

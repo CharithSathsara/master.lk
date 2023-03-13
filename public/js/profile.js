@@ -2,10 +2,18 @@ function getPhotoUpdatePopup(){
     document.getElementById("page-mask-photo").style.display = "block";
 }
 
+function getRemovePhotoPopup(){
+    document.getElementById("page-mask-photo-remove").style.display = "block";
+}
+
 function closePhotoUpdatePopup(){
     document.getElementById("page-mask-photo").style.display = "none";
     document.getElementById("change-photo-error").innerHTML = null;
     document.getElementById("change-pw-error").innerHTML = null;
+}
+
+function closeRemovePhotoPopup(){
+    document.getElementById("page-mask-photo-remove").style.display = "none";
 }
 
 function getPwUpdatePopup(){

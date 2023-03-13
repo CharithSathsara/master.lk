@@ -2,25 +2,28 @@
 
 class profilePhotoViewController{
 
-public $connection;
+    public $connection;
 
-public function __construct(){
+    public function __construct(){
 
-    $db_connection = new DatabaseConnection();
-    $this->connection = $db_connection->getConnection();
+        $db_connection = new DatabaseConnection();
+        $this->connection = $db_connection->getConnection();
 
-}
+    }
 
 
-public function getProfilePhoto(){
+    public function getProfilePhoto(){
 
-    $data = User::getProfilePhoto($this->connection);
+        $data = User::getProfilePhoto($this->connection);
 
-    if($data){
-        // return $data;
-        echo 'base64_encode('.$data.')';
+        if($data){
+            return;
+        }else{
+            return false;
+        }
+
     }
 
 }
 
-}
+?>

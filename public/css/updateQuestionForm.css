@@ -1,53 +1,86 @@
-#update-question-form {
-    background-color: white;
-    border: 1px solid gray;
-    border-radius: 10px;
-    display: none;
+.close-form {
+    display: inline-block;
+    right: 0;
+    position: absolute;
+}
+
+.close-icon {
+    height:25px;
+    right: 0;
+    position: absolute;
+    margin-right: 5px;
+}
+
+.page-mask {
+    background: rgba(0, 0, 0, 0.5);
     position: fixed;
-    transform: translate(-50%, -50%);top: 50%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 14;
+    display: none;
+}
+
+#update-question-form {
+    z-index: 15;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
     left: 50%;
     width: 55vw;
-    height: 70vh;
     padding: 20px;
-    box-shadow: 0px 0px 10px gray;
-    font-family: Arial, sans-serif;
-}
-
-#close-form {
-    position: fixed;
-    top: 1px;
-    right: 1px;
-}
-
-.closeTeacher-Icon{
-    cursor: pointer;
-    width: 30px;
-    height: 30px;
-    margin-left: 34.5vw;
-    margin-top: 5px;
+    background-color: white;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 input[type=text] {
     padding: 12px 20px;
-    border: 1px solid #818181;
-    border-radius: 7px;
-    background: #EDECEC;
+    color : #808080;
+    border-radius: 4px;
+    background-color: #EDECEC;
     box-sizing: border-box;
     margin-bottom: 10px;
     width:20vw;
 }
 
 textarea {
-    margin-bottom: 10px;
-    margin-top: 25px;
+    color : #808080;
+    border-radius: 4px;
+    background-color: #EDECEC;
     width:55vw;"
 }
 
 label {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: bold;
 }
 
 select {
-    width: 10vw;
+    color : #808080;
+    border-radius: 4px;
+    background-color: #EDECEC;
+    width: 12vw;
 }
+
+#update-question-title{
+    font-size: 20px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+#update-question-error{
+    height: 40px;
+    width: 80%;
+    margin: auto;
+}
+
+#update-question-error p{
+    font-size: 14px;
+    color: red;
+    margin: 0 auto;
+}
+
+

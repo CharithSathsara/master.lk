@@ -29,6 +29,7 @@ updateButtons.forEach(function(updateButton) {
         document.querySelector('#update-description').value = description;
 
         // Show the update form
+        document.getElementById("page-mask-update-question").style.display = "block";
         document.querySelector('#update-question-form').style.display = 'block';
 
     });
@@ -37,4 +38,5 @@ updateButtons.forEach(function(updateButton) {
 // Close the popup form
 document.getElementById("close-form").addEventListener("click", function() {
     document.getElementById("update-question-form").style.display = "none";
+    document.getElementById("page-mask-update-question").style.display = "none";
 });
