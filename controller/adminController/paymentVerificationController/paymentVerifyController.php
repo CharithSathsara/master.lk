@@ -13,10 +13,20 @@ class paymentVerifyController
 
         public function getAllPaymentSlip(){
 
-            $data = Admin::getAllPaymentSlip($this->connection);
+            $data = slipPayment::getAllPaymentSlip($this->connection);
 
             if($data){
                 return $data;
             }
         }
+
+        public  function getStudentName($studentID){
+
+            $data = Student::getStudentName($this->connection,$studentID);
+
+            if($data){
+                return $data;
+            }
+        }
+
     }

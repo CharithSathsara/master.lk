@@ -4,16 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../public/css/paymentVerification.css">
+    <link rel="stylesheet" href="../../../public/css/paymentVerification.css">
     <title>Payments</title>
 </head>
 <body>
     <?php
-    include_once('../../config/app.php');
-    include('../../controller/adminController/paymentVerificationController/paymentVerifyController.php');
-    include('../../model/Admin.php');
-    include_once('../common/header.php');
-    include_once ('../common/navBar-Admin.php');
+    include_once('../../../config/app.php');
+    include('../../../controller/adminController/paymentVerificationController/paymentVerifyController.php');
+    include('../../../model/slipPayment.php');
+    include('../../../model/Admin.php');
+    include('../../../model/Student.php');
+    include_once('../../common/header.php');
+    include_once('../../common/navBar-Admin.php');
     ?>
 
     <div class="main-container">
@@ -28,40 +30,34 @@
         <div class="get-AllSlip">
 
             <table class="styled-table">
+                <tbody>
+                    <?php
+                        $paymentSlips = new paymentVerifyController();
+                        $slips = $paymentSlips->getAllPaymentSlip();
 
-                    <tr id="tableRow-1">
-                        <td class="td-1" id="user_fullName">Janith Heshara</td>
-                        <td class="td-1" id="ViewSlip"><button id="view-PaymentSlipButton">View Slip</button></td>
-                        <td class="td-2" id="accept"><button id="accept-PaymentSlipButton">Accept</button></td>
-                        <td class="td-2" id="reject"><button id="reject-PaymentSlipButton">Reject</button></td>
+                        foreach ($slips as $slip){
+                                echo "<pre>";
+                                print_r($slip);
+                                echo "</pre>";
+                            $name = $paymentSlips->getStudentName($slip['studentId']);
+                            ?>
+                    <tr> <?php
+                        //$name = $paymentSlips->getStudentName($slip['studentId']);
+                        // echo "<pre>";
+                        // print_r($name);
+                        //echo "</pre>";
+                    ?>
+                        <td class="td-1" id="user_fullName"><?= $name; ?></td>
+                        <td class="td-2" id="user_fullName"><?= $slip['date']; ?></td>
+                        <td class="td-3" id="ViewSlip"><button id="view-PaymentSlipButton">View Slip</button></td>
+                        <td class="td-4" id="accept"><button id="accept-PaymentSlipButton">Accept</button></td>
+                        <td class="td-5" id="reject"><button id="reject-PaymentSlipButton">Reject</button></td>
                     </tr>
+             <?php   } ?>
 
 
-                <tr id="tableRow-2">
-                    <td class="td-1" id="user_fullName">Dilanka Hesara</td>
-                    <td class="td-1" id="ViewSlip"><button>View Slip</button></td>
-                    <td class="td-2" id="accept"><button>Accept</button></td>
-                    <td class="td-2" id="reject"><button id="rejectPaymentSlipButton">Reject</button></td>
-                </tr>
-
-                <tr>
-                    <td class="td-1" id="user_fullName">Rushin Sandeepane</td>
-                    <td class="td-1" id="ViewSlip"><button>View Slip</button></td>
-                    <td class="td-2" id="accept"><button>Accept</button></td>
-                    <td class="td-2" id="reject"><button>Reject<button></td>
-                </tr>
-
-                <tr>
-                    <td class="td-1" id="user_fullName">Kavindu Nadeejaya</td>
-                    <td class="td-1" id="ViewSlip"><button>View Slip</button></td>
-                    <td class="td-2" id="accept"><button>Accept<button></td>
-                    <td class="td-2" id="reject"><button>Reject<button></td>
-                </tr>
+                </tbody>
             </table>
-<!--            --><?php
-//                $adminPaymentVerificationController = new paymentVerifyController();
-//
-//            ?>
 
         </div>
     </div>
@@ -69,7 +65,7 @@
     <div class="access-popBox">
         <div class="accessPop">
             <div class="accessHead">
-                <img src="../../public/img/verify.png">
+                <img src="../../../public/img/verify.png">
                 <h4>Verify Payment</h4>
             </div>
 
@@ -93,7 +89,7 @@
     <div class="reject-popBox">
         <div class="rejectPop">
             <div class="rejectHead">
-                <img src="../../public/img/exclamationIcon.png">
+                <img src="../../../public/img/exclamationIcon.png">
                 <h4>Reject Payment</h4>
             </div>
 
@@ -118,13 +114,13 @@
         <div class="viewSlipPop">
             <div class="viewSlipHead">
                 <h4>Payment Slip</h4>
-                <img src="../../public/img/close.png" id="close-viewSlipButton">
+                <img src="../../../public/img/close.png" id="close-viewSlipButton">
 
             </div>
 
             <div class="viewSlipBody">
 
-                <img src="../../public/img/paymentSlip.jpg">
+                <img src="../../../public/img/paymentSlip.jpg">
             </div>
         </div>
     </div>

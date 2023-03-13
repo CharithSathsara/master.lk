@@ -3,6 +3,7 @@
 include('../../../config/app.php');
 require_once('AdminDashboardController.php');
 require_once('../../../model/Admin.php');
+require_once('../../../model/Subject.php');
 
 if(isset($_POST['addteacher-button'])){
 
@@ -19,11 +20,11 @@ if(isset($_POST['addteacher-button'])){
 
     $data = Admin::addTeacher($fname,$lname,$address1,$address2,$number,$email,$username,$password,$subject,$db_connection->getConnection());
 
+    $id = $_GET['id'];
     if($data){
-        header("Location: ../../../view/admin/adminDashboard.php");
+       header('Location: ../../../view/admin/adminDashboard.php');
     }else{
-        header("Location: ../../../view/admin/addTeacher.php");
+        header("Location: ../../../view/admin/dashboard/addTeacher.php");
     }
-
 }
 ?>

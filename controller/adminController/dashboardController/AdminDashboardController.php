@@ -52,16 +52,6 @@ class AdminDashboardController{
     }
 
 
-//    public  function getAllSubject($connection){
-//
-//        $allSubject = Admin::getAllSubject($this->connection);
-//
-//            if ($allSubject){
-//                return $allSubject;
-//        }
-//    }
-
-
 }
 
 ?>

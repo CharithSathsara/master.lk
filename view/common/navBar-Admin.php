@@ -1,7 +1,7 @@
 <?php
 
 include_once('../../config/app.php');
-session_start();
+//session_start();
 
 ?>
 
@@ -11,7 +11,7 @@ session_start();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../public/css/navBar.css?<?php echo time(); ?>">
+    <link rel="stylesheet" href="<?= base_url('public/css/navBar.css') ?>?<?php echo time(); ?>">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,33 +22,33 @@ session_start();
 <body>
 <div id="admin-nav" class="nav">
     <div class="prof-detail">
-        <img src="../../public/img/default-profPic.png" id="prof-pic"><br>
+        <img src="<?= base_url('public/img/default-profPic.png') ?>" id="prof-pic"><br>
         <p id="user-name"><?= $_SESSION['auth_user']['userFirstName'] ?>&nbsp;<?= $_SESSION['auth_user']['userLastName'] ?></p>
         <p id="role"><?= $_SESSION['auth_role']?></p>
     </div>
     <div class="nav-items">
         <ul>
             <li class="nav-item"  id="dashboard">
-                <a href="../admin/adminDashboard.php">
+                <a href=<?= base_url('view/admin/adminDashboard.php') ?>>
                     <div class="list-item" >
-                        <img src="../../public/icons/dashboard.svg" class="list-icon">
+                        <img src="<?= base_url('public/icons/dashboard.svg') ?>" class="list-icon">
                         <p class="list-text">Dashboard</p>
                     </div>
                 </a>
             </li>
             <li class="nav-item"  id="payments">
-                <a href="../admin/paymentVarification.php">
+                <a href=<?= base_url('view/admin/payment/paymentVarification.php') ?>>
                     <div class="list-item" >
-                        <img src="../../public/icons/payments.svg" class="list-icon">
+                        <img src="<?= base_url('public/icons/payments.svg') ?>" class="list-icon">
                         <p class="list-text">Payments</p>
                     </div>
                 </a>
             </li>
             <hr id="nav-hr">
             <li class="nav-item"  id="profile">
-                <a href="../common/profile.php">
+                <a href=<?= base_url('view/common/profile.php') ?>>
                     <div class="list-item">
-                        <img src="../../public/icons/profile.svg" class="list-icon">
+                        <img src="<?= base_url('public/icons/profile.svg') ?>" class="list-icon">
                         <p class="list-text">Profile</p>
                     </div>
                 </a>
