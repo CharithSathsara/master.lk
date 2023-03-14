@@ -27,12 +27,12 @@ $studentForumController = new StudentForumController();
 
 <div class="content">
 
-    <?php include_once '../../common/navBar-Teacher.php'; ?>
+    <?php include_once '../../common/navBar-Student.php'; ?>
 
     <div class="main" id="main">
 
         <div id="dashboard-container">
-            <p id="title"><b>Real-time Q&amp;A Forum(Student Side)</b></p>
+            <p id="title"><b>Q&amp;A Forum</b></p>
         </div>
 
         <div id="container" class="container"></div>
@@ -71,7 +71,7 @@ $studentForumController = new StudentForumController();
                     </optgroup>
                 </select>
                 <input type="text" id="new-question" name="new-question" placeholder="Ask Your Question?">
-                <button type="submit">Ask</button>
+                <button type="submit" class="submit-btn">Ask</button>
             </form>
         </div>
         <script src="../../../public/js/q_and_a_forum_student.js"></script>

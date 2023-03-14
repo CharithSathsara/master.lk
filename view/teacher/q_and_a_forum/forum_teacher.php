@@ -29,7 +29,7 @@ Authorization::authorizingTeacher();
     <div class="main" id="main">
 
         <div id="dashboard-container">
-            <p id="title"><b>Real-time Q&amp;A Forum(Teacher Side)</b></p>
+            <p id="title"><b>Q&amp;A Forum</b></p>
         </div>
 
         <div id="container" class="container"></div>

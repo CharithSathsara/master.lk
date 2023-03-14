@@ -54,6 +54,14 @@ $profilePhotoViewController = new profilePhotoViewController();
                         </div>
                     </a>
                 </li>
+                <li class="nav-item"  id="q&aForum">
+                    <a href=<?= base_url('view/student/q_and_a_forum/forum_student.php') ?>>
+                        <div class="list-item" >
+                            <img src=<?= base_url('public/icons/q&a.svg') ?> class="list-icon">
+                            <p class="list-text">Q and A Forum</p>
+                        </div>
+                    </a>
+                </li>
                 <hr id="nav-hr">
                 <li class="nav-item"  id="profile">
                     <a href=<?= base_url('view/common/profile.php') ?> onclick="changeToProfile()">

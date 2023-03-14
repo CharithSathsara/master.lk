@@ -57,7 +57,7 @@ include_once '../common/header.php';
 
             <div class="main-card">
                 <?php include('../../controller/authController/message.php') ?>
-                <h3><?= $dashboardController->getCountOfAllQuestions() ; ?> Questions are in the system </h3>
+                <h3><span class="no-of-qs"><?= $dashboardController->getCountOfAllQuestions() ; ?></span> &nbsp;Questions Are in the System </h3>
                 <input class="add-question-btn" id="add-question-btn" type="submit" onclick="redirect('addQuestion')" value="Add New Question">
             </div>
 
@@ -68,7 +68,7 @@ include_once '../common/header.php';
             <div class="card-01">
                 <b><p class="card-topic" id="card-topic-phy">Physics</p></b>
                 <div class="card-content">
-                    <p id="no-of-questions-phy" class="no-of-questions"><?= $dashboardController->getNoOfQuestions("Physics") ; ?> Questions</p>
+                    <p id="no-of-questions-phy" class="no-of-questions"><span class="no-of-qs"><?= $dashboardController->getNoOfQuestions("Physics") ; ?></span> Questions</p>
                     <input class="add-question-btn" type="submit" onclick="redirect('viewPhysicsModelQuestions')" value="Model Paper">
                     <input class="add-question-btn" type="submit" onclick="redirect('viewPhysicsPastQuestions')" value="Past Paper">
                 </div>
@@ -77,7 +77,7 @@ include_once '../common/header.php';
             <div class="card-02">
                 <b><p class="card-topic">Chemistry</p></b>
                 <div class="card-content">
-                    <p id="no-of-questions-chem" class="no-of-questions"><?= $dashboardController->getNoOfQuestions("Chemistry") ; ?> Questions</p>
+                    <p id="no-of-questions-chem" class="no-of-questions"><span class="no-of-qs"><?= $dashboardController->getNoOfQuestions("Chemistry") ; ?></span> Questions</p>
                     <input class="add-question-btn" type="submit" onclick="redirect('viewChemistryModelQuestions')" value="Model Paper">
                     <input class="add-question-btn" type="submit" onclick="redirect('viewChemistryPastQuestions')" value="Past Paper">
                 </div>

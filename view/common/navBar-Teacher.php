@@ -63,19 +63,19 @@ $profilePhotoViewController = new profilePhotoViewController();
                         </div>
                     </a>
                 </li>
+                <li class="nav-item"  id="q&aForum">
+                    <a href=<?= base_url('view/teacher/q_and_a_forum/forum_teacher.php') ?>>
+                        <div class="list-item" >
+                            <img src=<?= base_url('public/icons/q&a.svg') ?> class="list-icon">
+                            <p class="list-text">Q and A Forum</p>
+                        </div>
+                    </a>
+                </li>
                 <li class="nav-item"  id="feedbacks">
                     <a href=<?= base_url('view/teacher/feedbacks/viewFeedbacks.php') ?>>
                         <div class="list-item" >
                             <img src=<?= base_url('public/icons/feedbacks.svg') ?> class="list-icon">
                             <p class="list-text">Feedbacks</p>
-                        </div>
-                    </a>
-                </li>
-                <li class="nav-item"  id="feedbacks">
-                    <a href=<?= base_url('view/teacher/q_and_a_forum/forum_teacher.php') ?>>
-                        <div class="list-item" >
-                            <img src=<?= base_url('public/icons/feedbacks.svg') ?> class="list-icon">
-                            <p class="list-text">Q and A Forum</p>
                         </div>
                     </a>
                 </li>
