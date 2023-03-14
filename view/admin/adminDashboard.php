@@ -13,10 +13,8 @@
 
     <?php
 
-    include_once ('../../config/app.php');
     include_once('../../controller/adminController/dashboardController/AdminDashboardController.php');
-    include_once ('../../controller/adminController/dashboardController/allSubjectController.php');
-    include_once ('../../controller/adminController/dashboardController/deleteTeacherController.php');
+
     include_once('../../model/Admin.php');
     include_once ('../../model/Subject.php');
     include_once ('../../model/Teacher.php');
@@ -79,13 +77,13 @@
 
 
                     <!--   Update teacher Form-->
-                    <?php include_once '../admin/dashboard/updateTeacher.php';?>
+                    <?php include_once 'dashboard/updateTeacher.php';?>
 
                     <!-- Update teacher pop up js script -->
                     <script src="../../public/js/updateTeacher.js"></script>
 
                     <!--   Delete teacher-->
-                    <?php include_once '../admin/dashboard/deleteTeacher.php'?>
+                    <?php include_once 'dashboard/deleteTeacher.php'?>
 
                     <!--  Delete teacher JS-->
                     <script src="../../public/js/deleteTecher.js"></script>
@@ -197,14 +195,14 @@
         </div>
 
     <!-- Add teacher page pop up box -->
-     <?php include_once '../admin/dashboard/addTeacher.php';?>
+     <?php include_once 'dashboard/addTeacher.php';?>
 
     <!-- Add Teacher pop up box js script -->
     <script src="../../public/js/addTeacher.js"></script>
 
 
     <!--  Add content creator popup box  -->
-    <?php include_once '../admin/dashboard/addContentcreator.php';?>
+    <?php include_once 'dashboard/addContentcreator.php';?>
 
     <!-- Add Content Creator pop up box js script -->
     <script src="../../public/js/addContentcreator.js"></script>

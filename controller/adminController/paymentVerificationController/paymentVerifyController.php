@@ -1,5 +1,9 @@
 <?php
 
+$currentDir = __DIR__;
+
+include_once $currentDir.'\..\..\..\config\app.php';
+
 class paymentVerifyController
     {
         public $connection;

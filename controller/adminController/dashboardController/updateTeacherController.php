@@ -1,7 +1,5 @@
 <?php
 include_once('../../../config/app.php');
-//    require_once('AdminDashboardController.php');
-//    require_once('../../../model/Admin.php');
 include_once('../../../model/Teacher.php');
 
     if(isset($_POST['updateteacher-button'])){

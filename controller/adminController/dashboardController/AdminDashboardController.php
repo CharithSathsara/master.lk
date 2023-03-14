@@ -1,22 +1,9 @@
 <?php
 
-//$currentDir = __DIR__;
-//
-//include_once('../../config/app.php');
-//include_once ('../../model/Teacher.php');
-//include_once ('../../model/Admin.php');
-//include_once ('../../model/Subject.php');
+$currentDir = __DIR__;
 
-
-//// Get the absolute path of the current directory
-//$currentDir = __DIR__;
-//
-//// Include the files using the dynamic path
-//include_once $currentDir . '../../../config/app.php';
-//include_once $currentDir . '../../../model/Teacher.php';
-//include_once $currentDir . '../../../model/Admin.php';
-//
-
+include_once $currentDir.'\..\..\..\config\app.php';
+include_once $currentDir.'\..\..\..\model\Admin.php';
 
 
 class AdminDashboardController{

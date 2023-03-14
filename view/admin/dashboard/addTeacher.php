@@ -14,6 +14,9 @@
 <?php
 //    include ('../../../config/app.php');
 
+    $currentDir = __DIR__;
+    include_once $currentDir . '\..\..\..\controller\adminController\dashboardController\allSubjectController.php';
+
     $allSubject = new allSubjectController();
     $subjects = $allSubject->getAllSubject();
 ?>

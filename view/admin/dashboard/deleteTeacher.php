@@ -1,11 +1,3 @@
-<?php
-include_once ('../../config/app.php');
-include_once ('../../model/Teacher.php');
-include_once ('../../controller/adminController/dashboardController/deleteTeacherController.php');
-
-?>
-
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -18,6 +10,13 @@ include_once ('../../controller/adminController/dashboardController/deleteTeache
     <title>Admin Dashboard</title>
 </head>
     <body>
+
+    <?php
+
+    $currentDir = __DIR__;
+    include_once $currentDir . '\..\..\..\controller\adminController\dashboardController\deleteTeacherController.php';
+
+    ?>
 
 
 
