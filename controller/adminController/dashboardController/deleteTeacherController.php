@@ -1,8 +1,14 @@
 <?php
-include_once ('../../../config/app.php');
-include_once ('../../../model/Teacher.php');
+//include_once ('../../../config/app.php');
+//include_once ('../../../model/Teacher.php');
 
-    if(isset($_POST['DeleteTeacher-btn'])){
+
+include_once('../../config/app.php');
+include_once('../../model/Teacher.php');
+include_once('../../controller/adminController/dashboardController/deleteTeacherController.php');
+
+
+if(isset($_POST['DeleteTeacher-btn'])){
 
             $userId = validateInput($db_connection->getConnection(),$_POST['userId']);
             //$userId = $_POST['userId'];

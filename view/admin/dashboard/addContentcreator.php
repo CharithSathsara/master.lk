@@ -15,22 +15,22 @@
     <div class="add-contentCreatorPop">
         <div class="update-ContentCreatorHeaderPop">
             <h4>Add New Content Creator</h4>
-            <img src="../../../public/img/close.png" class="CloseContentPop">
+            <img src="<?= base_url('public/img/close.png') ?>" class="CloseContentPop">
         </div>
         <!-- Add content creator popup form  -->
         <div class="update-contentCreatorForm">
             <div class="forms-div">
 
-                <form class="UpdateTeach-form" action="../../../controller/adminController/dashboardController/addTeacherController.php" method="POST">
+                <form class="UpdateTeach-form" action="<?= base_url('controller/adminController/dashboardController/addContentCreatorController.php?id=23') ?>" method="POST">
                     <!--                <label class="teachrHead"><b>Add Teacher</b></label>-->
-                    <input type="text" name="fname" placeholder="Full Name" required>
-                    <input type="text" name="lname" placeholder="Last Name" required>
-                    <input type="text" name="address1" placeholder="Address Line 1" required>
-                    <input type="text" name="address2" placeholder="Address Line 2" required>
-                    <input type="text" name="number" placeholder="Telephone Number" required>
-                    <input type="email" name="email" placeholder="Email" required>
-                    <input type="text" name="username" placeholder="User name" required>
-                    <input type="password" name="password" placeholder="Password" required>
+                    <input type="text" name="fname" placeholder="Full Name" >
+                    <input type="text" name="lname" placeholder="Last Name" >
+                    <input type="text" name="address1" placeholder="Address Line 1" >
+                    <input type="text" name="address2" placeholder="Address Line 2" >
+                    <input type="text" name="number" placeholder="Telephone Number" >
+                    <input type="email" name="email" placeholder="Email" >
+                    <input type="text" name="username" placeholder="User name" >
+                    <input type="password" name="password" placeholder="Password" >
                     <div class="selectSub">
                         <label>Select the Subject : </label>
                         <select name="subjects" id="subjects" >

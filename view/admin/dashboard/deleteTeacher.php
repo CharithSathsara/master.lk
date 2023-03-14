@@ -1,9 +1,4 @@
-<?php
-include_once ('../../config/app.php');
-include_once ('../../model/Teacher.php');
-include_once ('../../controller/adminController/dashboardController/deleteTeacherController.php');
 
-?>
 
 
 <!doctype html>
