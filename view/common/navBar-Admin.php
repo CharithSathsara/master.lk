@@ -33,8 +33,6 @@ $profilePhotoViewController = new profilePhotoViewController();
             <?=$profilePhotoViewController->getProfilePhoto();?>
         </div>
 
-        <img src="<?= base_url('public/img/default-profPic.png') ?>" id="prof-pic"><br>
-
         <p id="user-name"><?= $_SESSION['auth_user']['userFirstName'] ?>&nbsp;<?= $_SESSION['auth_user']['userLastName'] ?></p>
         <p id="role"><?= $_SESSION['auth_role']?></p>
     </div>

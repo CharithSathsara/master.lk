@@ -1,8 +1,9 @@
 <?php
 
-include_once('../../config/app.php');
-include('../../controller/profileController/profilePhotoViewController.php');
-include('../../model/User.php');
+include_once('../../../config/app.php');
+include('../../../controller/profileController/profilePhotoViewController.php');
+include('../../../model/User.php');
+
 $profilePhotoViewController = new profilePhotoViewController();
 
 ?>
