@@ -1,9 +1,9 @@
 <?php
 
-include('../../../config/app.php');
-require_once('AdminDashboardController.php');
-require_once('../../../model/Admin.php');
-require_once('../../../model/Subject.php');
+include_once('../../../config/app.php');
+//require_once('AdminDashboardController.php');
+include_once('../../../model/Admin.php');
+//require_once('../../../model/Subject.php');
 
 if(isset($_POST['addteacher-button'])){
 

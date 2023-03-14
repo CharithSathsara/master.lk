@@ -13,13 +13,13 @@
 
     <?php
 
-    include_once('../../config/app.php');
-    include('../../controller/adminController/dashboardController/AdminDashboardController.php');
-    include ('../../controller/adminController/dashboardController/allSubjectController.php');
-    include ('../../controller/adminController/dashboardController/deleteTeacherController.php');
-    include('../../model/Admin.php');
-    include ('../../model/Subject.php');
-    include ('../../model/Teacher.php');
+    include_once ('../../config/app.php');
+    include_once('../../controller/adminController/dashboardController/AdminDashboardController.php');
+    include_once ('../../controller/adminController/dashboardController/allSubjectController.php');
+    include_once ('../../controller/adminController/dashboardController/deleteTeacherController.php');
+    include_once('../../model/Admin.php');
+    include_once ('../../model/Subject.php');
+    include_once ('../../model/Teacher.php');
     include_once('../common/header.php');
     include_once('../common/navBar-Admin.php');
     ?>
@@ -62,9 +62,9 @@
 
                                     <td class="td-1"><?= $subject ?></td>
 <!--    Update teacher button   -->
-                                    <td class="td-2"><button class="Update-teacher" id="but-UpdateTeacher" ><img src="../../public/img/update.svg"></button></td>
+                                    <td class="td-2"><button class="Update-teacher" id="but-UpdateTeacher" onclick="showUpdateTeacherForm('<?php echo $teacher['userId']; ?>','<?php echo  $teacher['firstName']; ?>','<?php echo $teacher['lastName']; ?>','<?php echo  $teacher['addLine01']; ?>','<?php echo  $teacher['addLine02']; ?>','<?php echo  $teacher['mobile']; ?>','<?php echo  $teacher['email']; ?>')"><img src="../../public/img/update.svg"></button></td>
 <!-- Delete teacher button -->
-                                    <td class="td-2"><button class="delete-teacher" id="but-deleteTeacher" ><img src="../../public/img/delete.svg"></button></td>
+                                    <td class="td-2"><button class="delete-teacher" id="but-deleteTeacher" onclick="showDeleteTeacherForm('<?php echo $teacher['userId']; ?>')" ><img src="../../public/img/delete.svg"></button></td>
                                 </tr>
 
                                 <?php

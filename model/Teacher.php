@@ -185,11 +185,11 @@ class Teacher {
      */
 
 
-    public static function updateTeacherDetails($fname,$lname,$address1,$address2,$number,$email,$username,$userId,$subject,$connection){
+    public static function updateTeacherDetails($fname,$lname,$address1,$address2,$number,$email,$userId,$subject,$connection){
 
 
         $query = "UPDATE user 
-                  SET userName ='$username' ,firstName='$fname',lastName='$lname',email= '$email' ,mobile= '$number' ,addLine01= '$address1' ,addLine02= '$address2'
+                  SET firstName='$fname',lastName='$lname',email= '$email' ,mobile= '$number' ,addLine01= '$address1' ,addLine02= '$address2'
                   WHERE userId ='$userId'";
 
         $data = $connection->query($query);

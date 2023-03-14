@@ -1,3 +1,11 @@
+<?php
+include_once ('../../config/app.php');
+include_once ('../../model/Teacher.php');
+include_once ('../../controller/adminController/dashboardController/deleteTeacherController.php');
+
+?>
+
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -11,7 +19,9 @@
 </head>
     <body>
 
-         <div class="popup-delete" id="Delete-teacherPop">
+
+
+         <div class="popup-delete" id="Delete-teacherPopBox">
             <div class="delete-teacherPop">
                 <div class="delete-headerPop">
                     <img src="<?= base_url('public/img/important.png') ?>" id="closeDelete-popBox">
@@ -22,7 +32,7 @@
                 </div>
 
                 <div class="deletePop-teacherButton">
-                    <form action="<?= base_url('controller/adminController/dashboardController/deleteTeacherController.php') ?>>" method="post">
+                    <form action="<?= base_url('controller/adminController/dashboardController/deleteTeacherController.php') ?>" method="post">
                         <input type="hidden" name="userId" id="teacherUserId">
                         <input type="submit" class="deleteYes-button" id="deleteYes-btn" value="Yes" name="DeleteTeacher-btn">
                     </form>
