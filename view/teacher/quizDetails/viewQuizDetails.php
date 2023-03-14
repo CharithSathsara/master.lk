@@ -57,16 +57,16 @@ include_once '../../common/header.php';
             <section class="container-02">
 
                 <div class="card-01">
-                    <p class="card-topics">Physics</p><br>
+                    <p class="card-topics">Physics</p>
                     <div class="card-content">
-                        <p class="quiz-attention"><?= $quizDetailsController->getNoOfQuizAttendees("Physics") ; ?> attended quizzes</p><br>
+                        <p class="quiz-attention"><?= $quizDetailsController->getNoOfQuizAttendees("Physics") ; ?> attended quizzes</p>
                     </div>
                 </div>
 
                 <div class="card-02">
-                    <p class="card-topics">Chemistry</p><br>
+                    <p class="card-topics">Chemistry</p>
                     <div class="card-content">
-                        <p class="quiz-attention"><?= $quizDetailsController->getNoOfQuizAttendees("Chemistry") ; ?> attended quizzes</p><br>
+                        <p class="quiz-attention"><?= $quizDetailsController->getNoOfQuizAttendees("Chemistry") ; ?> attended quizzes</p>
                     </div>
                 </div>
 

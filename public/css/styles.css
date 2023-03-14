@@ -1,10 +1,4 @@
-*{
-    margin: 0;
-    padding: 0;
-}
-.content {
 
-}
 .main-card{
     background:white;
     border-radius: 15px;
@@ -97,17 +91,7 @@
     display: grid;
     justify-content: center;
 }
-button{
-    background-color: #008CBA;
-    border: 2px solid #008CBA;
-    padding: 10px;
-    border-radius: 7px;
-    font-weight: bold;
-    color: white;
-    margin: 10px;
-    cursor: pointer;
-    transition-duration: 0.4s;
-}
+
 .subheading{
     /*text-align: left;*/
     /*!*position: relative;*!*/
@@ -245,12 +229,7 @@ textarea {
     font-size: 16px;
     font-weight: bold;
 }
-#login-form, #register-form{
-    margin: 5vh;
-}
-#to-register{
-    margin-top: 10vh;
-}
+
 #add-question-form{
     font-weight: normal;
     font-size: 20px;
@@ -260,15 +239,6 @@ textarea {
     margin-top:0;
     font-size:18px;
     color:#0b2e5e;
-}
-
-#title-navigate span a{
-    text-decoration:none;
-    color:#0b2e5e;
-}
-
-#subject-shortcut{
-    height:10px;
 }
 
 #label-topic{

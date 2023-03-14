@@ -1,8 +1,13 @@
 <?php
 
-include_once('../../config/app.php');
-include('../../controller/profileController/profilePhotoViewController.php');
-include('../../model/User.php');
+// Get the absolute path of the current directory
+$currentDir = __DIR__;
+
+// Include the files using the dynamic path
+include_once $currentDir . '/../../config/app.php';
+include_once $currentDir . '/../../controller/profileController/profilePhotoViewController.php';
+include_once $currentDir . '/../../model/User.php';
+
 $profilePhotoViewController = new profilePhotoViewController();
 
 
