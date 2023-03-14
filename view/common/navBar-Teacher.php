@@ -8,12 +8,6 @@ include_once $currentDir . '/../../config/app.php';
 include_once $currentDir . '/../../controller/profileController/profilePhotoViewController.php';
 include_once $currentDir . '/../../model/User.php';
 
-//include_once('../../../config/app.php');
-////include_once get_include_url('config/app.php');
-//include('../../../controller/profileController/profilePhotoViewController.php');
-////include get_include_url('controller/profileController/profilePhotoViewController.php');
-//include('../../../model/User.php');
-////include_once get_include_url('model/User.php');
 
 $profilePhotoViewController = new profilePhotoViewController();
 

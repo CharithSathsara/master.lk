@@ -1,3 +1,4 @@
+
 .main-card{
     background: #D9D9D9;
     border-radius: 15px;
@@ -43,7 +44,7 @@
 
 .main {
     width:85%;
-    font-size: 28px; /* Increased text to enable scrolling */
+    font-size: 28px; 
     float: right;
     z-index: 1;
 }
@@ -94,9 +95,6 @@
 }
 
 .subheading{
-    /*text-align: left;*/
-    /*!*position: relative;*!*/
-    /*margin-bottom: 10px;*/
     margin-top: 30px;
     display: flex;
     flex-direction: row;

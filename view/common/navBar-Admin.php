@@ -1,15 +1,19 @@
+
 <?php
 
-include_once('../../config/app.php');
+// Get the absolute path of the current directory
+$currentDir = __DIR__;
 
-include('../../controller/profileController/profilePhotoViewController.php');
-include('../../model/User.php');
+// Include the files using the dynamic path
+include_once $currentDir . '/../../config/app.php';
+include_once $currentDir . '/../../controller/profileController/profilePhotoViewController.php';
+include_once $currentDir . '/../../model/User.php';
+
 $profilePhotoViewController = new profilePhotoViewController();
-
-//session_start();
 
 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -32,8 +36,6 @@ $profilePhotoViewController = new profilePhotoViewController();
         <div class="circle">
             <?=$profilePhotoViewController->getProfilePhoto();?>
         </div>
-
-        <img src="<?= base_url('public/img/default-profPic.png') ?>" id="prof-pic"><br>
 
         <p id="user-name"><?= $_SESSION['auth_user']['userFirstName'] ?>&nbsp;<?= $_SESSION['auth_user']['userLastName'] ?></p>
         <p id="role"><?= $_SESSION['auth_role']?></p>

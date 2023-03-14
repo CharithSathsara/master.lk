@@ -14,6 +14,9 @@
 <?php
 //    include ('../../../config/app.php');
 
+    $currentDir = __DIR__;
+    include_once $currentDir . '\..\..\..\controller\adminController\dashboardController\allSubjectController.php';
+
     $allSubject = new allSubjectController();
     $subjects = $allSubject->getAllSubject();
 ?>
@@ -32,7 +35,7 @@
             </div>
             <!-- Teacher Add form -->
             <div class="forms-div">
-                <form class="addTeach-form" action="<?= base_url('controller/adminController/dashboardController/addTeacherController.php?id=23') ?>" method="POST">
+                <form class="addTeach-form" action="<?= base_url('controller/adminController/dashboardController/addTeacherController.php') ?>" method="POST">
                     <input type="text" name="fname" placeholder="Full Name" required>
                     <input type="text" name="lname" placeholder="Last Name" required>
                     <input type="text" name="address1" placeholder="Address Line 1" required>

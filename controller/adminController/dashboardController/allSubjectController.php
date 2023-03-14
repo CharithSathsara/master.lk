@@ -1,5 +1,11 @@
 <?php
 
+$currentDir = __DIR__;
+
+include_once $currentDir.'\..\..\..\config\app.php';
+include_once $currentDir.'\..\..\..\model\Subject.php';
+
+
 class allSubjectController
 {
     public $connection;
