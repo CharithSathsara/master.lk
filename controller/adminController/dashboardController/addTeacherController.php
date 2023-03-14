@@ -1,9 +1,9 @@
 <?php
 
-include_once('../../../config/app.php');
-//require_once('AdminDashboardController.php');
-include_once('../../../model/Admin.php');
-//require_once('../../../model/Subject.php');
+$currentDir = __DIR__;
+
+include_once $currentDir.'\..\..\..\config\app.php';
+include_once $currentDir.'\..\..\..\model\Admin.php';
 
 if(isset($_POST['addteacher-button'])){
 

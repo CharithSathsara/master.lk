@@ -1,11 +1,10 @@
 <?php
-//include_once ('../../../config/app.php');
-//include_once ('../../../model/Teacher.php');
 
+$currentDir = __DIR__;
 
-include_once('../../config/app.php');
-include_once('../../model/Teacher.php');
-include_once('../../controller/adminController/dashboardController/deleteTeacherController.php');
+include_once $currentDir.'\..\..\..\config\app.php';
+include_once $currentDir.'\..\..\..\model\Teacher.php';
+
 
 
 if(isset($_POST['DeleteTeacher-btn'])){

@@ -1,6 +1,3 @@
-
-
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -13,6 +10,13 @@
     <title>Admin Dashboard</title>
 </head>
     <body>
+
+    <?php
+
+    $currentDir = __DIR__;
+    include_once $currentDir . '\..\..\..\controller\adminController\dashboardController\deleteTeacherController.php';
+
+    ?>
 
 
 
