@@ -1,5 +1,14 @@
 <?php
 
+
+
+$currentDir = __DIR__;
+
+include_once $currentDir.'\..\..\..\config\app.php';
+include_once $currentDir.'\..\..\..\model\Admin.php';
+
+
+
 class AdminDashboardController{
 
     public $connection;

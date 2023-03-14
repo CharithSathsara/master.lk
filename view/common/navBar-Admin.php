@@ -1,3 +1,4 @@
+
 <?php
 
 // Get the absolute path of the current directory
@@ -12,6 +13,7 @@ $profilePhotoViewController = new profilePhotoViewController();
 
 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">

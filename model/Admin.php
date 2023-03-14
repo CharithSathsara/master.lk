@@ -120,6 +120,39 @@ class Admin{
 
         }
 
+        public static function addContentCreator($fname,$lname,$address1,$address2,$number,$email,$username,$password,$subject,$connection){
+
+            $passHash = password_hash($password, PASSWORD_DEFAULT);
+
+            $query = "INSERT INTO user(userName ,password ,firstName,lastName,email ,mobile,addLine01,addLine02,userType) VALUES ('$username','$passHash','$fname','$lname','$email','$number','$address1','$address2','CONTENTCREATOR')";
+
+            $data = $connection->query($query);
+
+            if($data){
+
+                $query1 = "SELECT userId FROM user WHERE email='$email'";
+                $data1 = $connection->query($query1);
+
+                $result = $data1->fetch_assoc();
+                $teacherId = $result['userId'];
+
+                $query2 = "SELECT subjectId FROM subject WHERE subjectTitle='$subject'";
+
+                $data2 = $connection->query($query2);
+                $result = $data2->fetch_assoc();
+                $subjectId = $result['subjectId'];
+
+                $queryToTeacher = "INSERT INTO contentcreator(teacherId,subjectId) VALUES ('$teacherId','$subjectId')";
+
+                $dataSubject = $connection->query($queryToTeacher);
+
+                return $dataSubject;
+            } else{
+                return false;
+            }
+
+        }
+
 
 
 
