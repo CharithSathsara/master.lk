@@ -1,8 +1,6 @@
 <?php
 
 class User {
-<<<<<<< HEAD
-=======
 
     public static function login($connection, $username_email, $password){
 
@@ -70,7 +68,7 @@ class User {
         }
 
     }
->>>>>>> singleton-design-pattern
+
 
     public static function setprofilePhoto($connection,$imgContent){
 

@@ -2,10 +2,6 @@
 
 include('../../config/app.php');
 include_once('../../model/User.php');
-// include('../../message.php');
-
-// $loginController = new LoginController();
-
 
 if(isset($_POST["submit"])){
 
