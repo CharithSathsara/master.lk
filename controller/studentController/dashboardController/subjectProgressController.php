@@ -2,11 +2,11 @@
 
 class subjectProgressController{
 
-    public $connection;
+    private $connection;
 
     public function __construct(){
 
-        $db_connection = new DatabaseConnection();
+        $db_connection = DatabaseConnection::getInstance();
         $this->connection = $db_connection->getConnection();
 
     }

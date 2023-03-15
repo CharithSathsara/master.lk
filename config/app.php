@@ -2,21 +2,12 @@
 
 session_start();
 include_once('DatabaseConnection.php');
-$db_connection = new DatabaseConnection();
+$db_connection = DatabaseConnection::getInstance();
 
 const SITE_URL = 'http://localhost/master.lk/';
 
-/*
-meaning of slug
-
-COMPUTING
-a part of a URL which identifies a particular page on a website
-in a form readable by users.
-*/
-
 function base_url($slug){
-
-    //SITE_URL.$slug concatenating
+    // SITE_URL.$slug concatenating
     echo SITE_URL.$slug;
 }
 
@@ -72,6 +63,5 @@ function popup_redirect($message, $page){
     header("Location: $redirectTo");
     exit(0);
 }
-
 
 ?>

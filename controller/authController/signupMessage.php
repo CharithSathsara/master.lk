@@ -5,5 +5,4 @@ if(isset($_SESSION['signup-error-message'])){
     // unset($_SESSION['signup-error-message']);
 }
 
-
 ?>

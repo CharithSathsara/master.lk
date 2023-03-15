@@ -4,13 +4,13 @@ include('../../../config/app.php');
 include('../../../model/Teacher.php');
 include('../../../model/Subject.php');
 
-class ViewStudentDetailsController{
+class ViewStudentDetailsController {
 
-    public $connection;
+    private $connection;
 
     public function __construct(){
 
-        $db_connection = new DatabaseConnection();
+        $db_connection = DatabaseConnection::getInstance();
         $this->connection = $db_connection->getConnection();
 
     }

@@ -1,6 +1,6 @@
 <?php
 
-class Authorization{
+class Authorization {
 
     public static function authorizingAdmin(){
 
@@ -15,7 +15,6 @@ class Authorization{
     public static function authorizingTeacher(){
 
         if($_SESSION['auth_role'] === "TEACHER"){
-
             return true;
         }else{
             restrict_access_redirect("You are not authorized as a Teacher","view/authorization/unauthorizedAccess.php");

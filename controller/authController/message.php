@@ -20,18 +20,3 @@ if(isset($_SESSION['change-photo-error'])){
     // unset($_SESSION['change-photo-error']);
 }
 
-// if(isset($_SESSION['message'])){
-//     // echo "<h4>".$_SESSION['message']."</h4>";
-//     unset($_SESSION['message']);
-// }
-
-// if(isset($_SESSION['popup-message'])){
-//     echo "<style>
-//     #popup-container{
-//         display:block;
-//     }
-//     </style>";
-    // echo"<p><?=$_SESSION['popup-message']
- //     unset($_SESSION['popup-message']); -->
- // } -->
-

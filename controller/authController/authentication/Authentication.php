@@ -1,6 +1,6 @@
 <?php
 
-class Authentication{
+class Authentication {
 
     public static function userAuthentication(){
         

@@ -15,7 +15,6 @@ if(isset($_POST['submit-update-question'])){
     $correctAnswer = validateInput($db_connection->getConnection(), $_POST['correctAnswer']);
     $updateDescription = validateInput($db_connection->getConnection(), $_POST['updateDescription']);
 
-    //Method Two
     $data = Teacher::updateQuestion($db_connection->getConnection(), $questionId, $updateQuestion, $updateOption1, $updateOption2, $updateOption3, $updateOption4,
                                     $updateOption5, $correctAnswer, $updateDescription);
 

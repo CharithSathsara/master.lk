@@ -1,19 +1,15 @@
 <?php
 
 include('../../../../config/app.php');
-include_once('LogoutController.php');
-
-
-$logoutController = new LogoutController();
-
+include('../../../../model/User.php');
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
-$isLogoutSuccess = $logoutController->logout();
+    $isLogoutSuccess = User::logout();
 
-if($isLogoutSuccess){
-    popup_redirect("Logged out successfully", 'view/authentication/index.php');
-}
+    if($isLogoutSuccess){
+        popup_redirect("Logged out successfully", 'view/authentication/index.php');
+    }
 
 }
 

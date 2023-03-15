@@ -6,13 +6,13 @@ include('../../../model/Student.php');
 include('../../../model/Subject.php');
 include('../../../model/Lesson.php');
 
-class ViewFeedbackController{
+class ViewFeedbackController {
 
-    public $connection;
+    private $connection;
 
     public function __construct(){
 
-        $db_connection = new DatabaseConnection();
+        $db_connection = DatabaseConnection::getInstance();
         $this->connection = $db_connection->getConnection();
 
     }

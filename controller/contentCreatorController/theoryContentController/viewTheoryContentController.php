@@ -6,11 +6,11 @@ include('../../model/Topic.php');
 
 class ViewTheoryContentController{
 
-    public $connection;
+    private $connection;
 
     public function __construct(){
 
-        $db_connection = new DatabaseConnection();
+        $db_connection = DatabaseConnection::getInstance();
         $this->connection = $db_connection->getConnection();
         $_SESSION['subject'] = ContentCreator::getContentCreatorSubject($this->connection, $_SESSION['auth_user']['userId']);
 
