@@ -16,7 +16,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"> -->
 
     <title>Home</title>
 </head>
@@ -67,6 +66,11 @@
 
                 <button id="login-button" type="submit" name="login">Log In</button>
                 <p id="no-account">Don't have an account? <a onclick="getSignup()">Sign Up</a></p>
+                <div id="home-sec">
+                    <a href="../../index.php" >
+                        <p id="home-text"><b>Back to Home</b></p>
+                    </a>
+                </div>
             </form>
         </div>
 
@@ -78,13 +82,9 @@
         </div>
         <br>
         <div id="master-image">
-            <img src="../../public/img/master.svg" alt="Logo">
+            <img src="../../public/img/master-new.svg" alt="Logo">
         </div>
         <br>
-        <div id="about-us">
-            <p>About Us</p>
-            <img src="../../public/icons/dropdown.svg">
-        </div>
     </div>
 
     <!-- Signup Section -->

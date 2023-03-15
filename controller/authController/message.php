@@ -1,9 +1,9 @@
 <?php
 
-if(isset($_SESSION['restrict-error-message'])){
-    echo "<script>alert('Warning : ".$_SESSION['restrict-error-message']."')</script>";
-    unset($_SESSION['restrict-error-message']);
-}
+// if(isset($_SESSION['restrict-error-message'])){
+//     echo "<script>alert('Warning : ".$_SESSION['restrict-error-message']."')</script>";
+//     unset($_SESSION['restrict-error-message']);
+// }
 
 if(isset($_SESSION['login-error-message'])){
     echo "<h4>".$_SESSION['login-error-message']."</h4>";
