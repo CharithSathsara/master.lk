@@ -1,7 +1,7 @@
 <?php
 
 
-class SignupController{
+class SignupController {
 
     private $connection;
 
@@ -12,7 +12,7 @@ class SignupController{
 
     }
 
-    public function does_email_exist($email){
+    public function does_email_exist($email) {
 
         $query = "SELECT email FROM user WHERE email = '$email' LIMIT 1";
         $data = $this->connection->query($query);

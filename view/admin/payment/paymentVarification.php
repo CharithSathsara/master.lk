@@ -9,13 +9,14 @@
 </head>
 <body>
     <?php
-    include_once('../../../config/app.php');
+
     include('../../../controller/adminController/paymentVerificationController/paymentVerifyController.php');
     include('../../../model/slipPayment.php');
     include('../../../model/Admin.php');
     include('../../../model/Student.php');
     include_once('../../common/header.php');
     include_once('../../common/navBar-Admin.php');
+
     ?>
 
     <div class="main-container">

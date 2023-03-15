@@ -1,6 +1,6 @@
 <?php
 
-class User{
+class User {
 
     public static function setprofilePhoto($connection,$imgContent){
 
