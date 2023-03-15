@@ -136,7 +136,7 @@
     color: #555;
 }
 
-button[type="submit"] {
+.submit-btn {
     background-color: #0b2e5e;
     color: #fff;
     width: 7vw;

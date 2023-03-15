@@ -49,7 +49,7 @@ include_once '../../common/header.php';
             <section class="container-01">
 
                 <div class="main-card">
-                    <h3 id="quiz-participation-count"><?= $quizDetailsController->getNoOfAttendees() ; ?> students have engaged in the quizzes </h3>
+                    <h3 id="quiz-participation-count"><span class="attendance-no"><?= $quizDetailsController->getNoOfAttendees() ; ?></span> Students Have Engaged in the Quizzes </h3>
                 </div>
 
             </section>
@@ -57,16 +57,16 @@ include_once '../../common/header.php';
             <section class="container-02">
 
                 <div class="card-01">
-                    <p class="card-topics">Physics</p>
+                    <b><p class="card-topics">Physics</p></b>
                     <div class="card-content">
-                        <p class="quiz-attention"><?= $quizDetailsController->getNoOfQuizAttendees("Physics") ; ?> attended quizzes</p>
+                        <p class="quiz-attention"><span class="attendance-no"><?= $quizDetailsController->getNoOfQuizAttendees("Physics") ; ?></span> Students Attended in Quizzes</p>
                     </div>
                 </div>
 
                 <div class="card-02">
-                    <p class="card-topics">Chemistry</p>
+                    <b><p class="card-topics">Chemistry</p></b>
                     <div class="card-content">
-                        <p class="quiz-attention"><?= $quizDetailsController->getNoOfQuizAttendees("Chemistry") ; ?> attended quizzes</p>
+                        <p class="quiz-attention"><span class="attendance-no"><?= $quizDetailsController->getNoOfQuizAttendees("Chemistry") ; ?></span> Students Attended in Quizzes</p>
                     </div>
                 </div>
 

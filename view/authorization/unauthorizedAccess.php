@@ -5,51 +5,33 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Unauthorized Access Error</title>
 
-    <style>
-        body{
-            font-family: "Comic Sans MS";
-            background: #00CED1;
-        }
-        #error-page{
-            position: absolute;
-            top: 5%;
-            left: 5%;
-            right: 5%;
-            bottom: 5%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #008CBA;
-            border-radius: 7px;
-            box-shadow: 0px 5px 10px rgba(0,0,0,0.1);
-        }
-        .content h1.header{
-            font-size: 5vw;
-            color: #CA0123;
-        }
+    <title>403 Error</title>
 
-    </style>
+    <link rel="stylesheet" href="../../public/css/unauthorizedAccess.css?<?php echo time(); ?>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 
 </head>
 <body>
 
-<?php
+    <?php
 
-include_once('../../config/app.php');
+    include_once('../../config/app.php');
 
-?>
+    ?>
 
-<div id="error-page">
-
-    <div class="content">
-        <h1 class="header">401 Unauthorized</h1>
-        <h2><?php include('../../controller/authController/message.php') ?></h2>
-        <img src="../../public/img/master_with_title.png" style="width: 35vw">
+    <div id="header">
+        <img src="../../public/img/FullMasterLogo.svg" id="logo">
     </div>
 
-</div>
+    <div id="error-page">
+        <img src="../../public/img/403 Error Forbidden-amico.svg" id="error-img">
+        <p id="no-access-text">403 - Access Denied!</p>
+        <p id="reason"><?=$_SESSION['restrict-error-message']?></p>
+        <button id="back-btn" onclick="history.back()"><b>Go Back</b></button>
+    </div>
 
 </body>
 </html>

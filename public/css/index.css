@@ -3,6 +3,26 @@ body{
     font-family: 'Open Sans', sans-serif;
 }
 
+#home-sec{
+    text-align: center;
+}
+
+#home-sec a{
+    height: 100%;
+    width: 100%;
+    display: block;
+}
+
+#home-text{
+    display: inline-block;
+    color: #219ebc;
+    text-decoration: none;
+    margin: 0 60px 0 0;
+}
+
+#home-text:hover{
+    color: black;
+}
 
 #main-card{
     height: 60%;
@@ -146,8 +166,8 @@ cursor: pointer;}
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 10px;
-    margin-bottom: 10px;
-    margin-top: 25px;
+    margin-bottom: 0px;
+    margin-top: 10px;
     width:83.5%;
     border:none;
     border-radius: 4px;
@@ -168,7 +188,7 @@ cursor: pointer;}
 
 #master-card{
     visibility:visible;
-    background-color:#219ebc;
+    background-color:white;
     height: 75%;
     width: 25%;
     position: absolute;
@@ -188,7 +208,7 @@ cursor: pointer;}
 #master-title{
     background-color:white;
     width : 60%;
-    height :10%;
+    height :13%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -202,6 +222,7 @@ cursor: pointer;}
 #master-image{
     height: 60%;
     width:100%;
+    z-index: 5;
 }
 
 #master-image img{
@@ -214,17 +235,6 @@ cursor: pointer;}
     justify-content: center;
     align-items: center;
     flex-direction:column;
-}
-
-#about-us p{
-    margin:0;
-    color:white;
-}
-
-
-#about-us img{
-    width:20px; 
-    height:20px;
 }
 
 /* Signup Section */
@@ -274,7 +284,6 @@ cursor: pointer;}
     padding-left: 10px;
     margin-bottom: 10px;
     width:83.5%;
-    /* display: inline-block; */
 }
 
 #signup-error {
@@ -282,7 +291,6 @@ cursor: pointer;}
     color: red;
     height:20px;
     margin-bottom: 12px;
-    /* display: inline-block; */
     visibility: visible;
 }
 
