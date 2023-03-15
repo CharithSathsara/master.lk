@@ -15,10 +15,10 @@ class ViewStudentDetailsController{
 
     }
 
-    public function getAllStudents(){
+    public function getAllStudents($search = ''){
 
         try {
-            $data = Teacher::getAllStudents($this->connection);
+            $data = Teacher::getAllStudents($this->connection, $search);
             if ($data) {
                 return $data;
             } else {

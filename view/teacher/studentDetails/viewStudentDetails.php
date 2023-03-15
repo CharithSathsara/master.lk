@@ -37,10 +37,21 @@ $viewStudentDetailsController = new ViewStudentDetailsController();
             <p class="subheading">Students &nbsp;&nbsp;&nbsp;</p>
         </div>
 
+        <div id="search-container">
+            <form action="" method="GET">
+                <input type="text" name="search" placeholder="Search by name or email">
+                <input type="submit" value="Search"/>
+            </form>
+        </div>
+
+
         <?php
 
-            // Get all students from the controller
-            $students = $viewStudentDetailsController->getAllStudents();
+            // Get the search query from the URL parameter
+            $search = isset($_GET['search']) ? $_GET['search'] : '';
+
+            // Get all students
+            $students = $viewStudentDetailsController->getAllStudents($search);
 
             // Check if there are any students
             if (mysqli_num_rows($students) > 0) {

@@ -120,10 +120,16 @@ class Teacher {
 
     }
 
-    public static function getAllStudents($connection){
+    public static function getAllStudents($connection, $search){
 
         try {
             $query = "SELECT * FROM user WHERE userType = 'STUDENT'";
+
+            // Add a filter if a search parameter is provided
+            if (!empty($search)) {
+                $query .= " AND (firstName LIKE '%{$search}%' OR lastName LIKE '%{$search}%' OR email LIKE '%{$search}%')";
+            }
+
             $data = $connection->query($query);
 
             if($data){
