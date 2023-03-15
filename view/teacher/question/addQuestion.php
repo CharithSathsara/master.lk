@@ -35,7 +35,7 @@ include_once '../../common/header.php';
 
         <div id="dashboard-container">
 
-        <p id="title">Add New Question</p>
+        <p id="title"><b>Add New Question</b></p>
 
         <p class="subheading">Question&nbsp;&nbsp;</p>
 

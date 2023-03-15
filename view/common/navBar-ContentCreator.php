@@ -51,7 +51,7 @@ $profilePhotoViewController = new profilePhotoViewController();
                     </a>
                 </li>
                 <li class="nav-item" id="theory">
-                    <a href="">
+                    <a href="../contentcreator/theoryQuestions.php">
                         <div class="list-item">
                             <img src="../../public/icons/theoryQuestions.svg" class="list-icon">
                             <p class="list-text">Theory Questions</p>

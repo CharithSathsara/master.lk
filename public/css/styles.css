@@ -264,3 +264,7 @@ textarea {
     width:300px;
 }
 
+#subject-shortcut a{
+    text-decoration: none;
+    color:#0b2e5e
+}
