@@ -26,6 +26,63 @@ class Student {
 
     }
 
+    public static function register($connection, $first_name, $last_name, $dob, $address_first, $address_second, $telephone, $email, $username, $password){
+
+        // Inserts data into the database - 'User Table'
+        if(!empty($first_name) && !empty($last_name) && !empty($dob) && !empty($address_first) && !empty($address_second) &&
+            !empty($telephone) && !empty($email) && !empty($username) && !empty($password)){
+
+            try {
+
+                $query1 = "INSERT into user (
+                    userName,password,
+                    firstName,lastName,
+                    email,mobile,addLine01,
+                    addLine02,userType 
+                    ) VALUES ('$username', '$password',
+                        '$first_name', '$last_name',
+                        '$email', '$telephone',
+                        '$address_first','$address_second','STUDENT'
+                        )";
+
+                $response = $connection->query($query1);
+
+                if(!empty($response)) {
+
+                    // Inserts data into the database - 'Student Table'
+                    $query2 = "SELECT userId from user where userName = '$username'";
+                    $result = $connection->query($query2);
+
+                    if($result && mysqli_num_rows($result) > 0){
+
+                        $user_data = mysqli_fetch_assoc($result);
+                        $user_id = $user_data["userId"];
+
+                        $query3 = "INSERT into student (studentId, dob) VALUES($user_id, '$dob')";
+
+                        $data = $connection->query($query3);
+
+                        if($data) {
+                            return $data;
+                        }else {
+                            return false;
+                        }
+                    }
+                }
+
+            } catch(Exception $e) {
+                $errorMessage = "An error occurred while register a student : " . $e->getMessage();
+                echo '<script>console.error("' . $errorMessage . '")</script>';
+                return false;
+            }
+
+        }else{
+            $errorMessage = "Form fields can not be empty";
+            echo '<script>console.error("' . $errorMessage . '")</script>';
+            return false;
+        }
+    }
+
     /**
      * End of
      * @author Charith Sathsara section

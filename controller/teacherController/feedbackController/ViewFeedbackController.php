@@ -6,7 +6,7 @@ include('../../../model/Student.php');
 include('../../../model/Subject.php');
 include('../../../model/Lesson.php');
 
-class ViewFeedbackController{
+class ViewFeedbackController {
 
     private $connection;
 

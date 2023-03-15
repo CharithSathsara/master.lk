@@ -1,6 +1,73 @@
 <?php
 
-class User{
+class User {
+
+    public static function login($connection, $username_email, $password){
+
+        // Reads data from the database
+        if(!empty($username_email) && !empty($password)){
+
+            //Checks whether the entered text is an email
+            if(preg_match("/^[\w\-]+@[\w\-]+.[\w\-]+$/",$username_email)){
+                $query1 = "SELECT * from user where email = '$username_email' limit 1 ";
+                $result = $connection->query($query1);
+
+            } else{//If the entered text is not an email
+                $query2 = "SELECT * from user where userName = '$username_email' limit 1 ";
+                $result = $connection->query($query2);
+            }
+
+            if($result && mysqli_num_rows($result) > 0){
+
+                $user_data = mysqli_fetch_assoc($result);
+                if(password_verify($password, $user_data['password'])){
+
+                    //Sets the session with user ID
+                    self::userAuthentication($user_data);
+                    return true;
+
+                }
+
+            }
+            return false;
+        }
+    }
+
+    private static function userAuthentication($user_data){
+
+        $_SESSION['authenticated'] = true;
+        $_SESSION['auth_role'] = $user_data['userType'];
+        $_SESSION['auth_user'] = [
+            'userId' => $user_data['userId'],
+            'userEmail' => $user_data['email'],
+            'userName' => $user_data['userName'],
+            'userFirstName' => $user_data['firstName'],
+            'userLastName' => $user_data['lastName']
+        ];
+        $_SESSION["cart-subjects"]=array();
+
+    }
+
+    //In here we unset session values
+    public static function logout(){
+
+        if(isset($_SESSION['authenticated']) === TRUE){
+
+            if($_SESSION['auth_role'] == "TEACHER"){
+                unset($_SESSION['subject']);
+            }
+
+            unset($_SESSION['authenticated']);
+            unset($_SESSION['auth_user']);
+            unset($_SESSION['auth_role']);
+
+            return true;
+
+        }else{
+            return false;
+        }
+
+    }
 
     public static function setprofilePhoto($connection,$imgContent){
 

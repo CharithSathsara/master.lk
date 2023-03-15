@@ -18,12 +18,6 @@ if(isset($_POST['add-question'])){
     $correctAnswer = validateInput($db_connection->getConnection(), $_POST['correctAnswer']);
     $answerDescription = validateInput($db_connection->getConnection(), $_POST['description']);
 
-    //Method One
-    //$addQuestionController = new AddQuestionController();
-    //$data = $addQuestionController->addQuestion($subject, $topic, $type, $question, $answer1, $answer2, $answer3, $answer4, $answer5,
-                                        //$correctAnswer, $answerDescription);
-
-    //Method Two
     $data = Teacher::addQuestion($question, $answer1, $answer2, $answer3, $answer4, $answer5,
         $correctAnswer, $answerDescription, $type, $_SESSION['subject'], $topicId, $_SESSION['auth_user']['userId'], $db_connection->getConnection());
 

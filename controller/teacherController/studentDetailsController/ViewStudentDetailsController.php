@@ -4,7 +4,7 @@ include('../../../config/app.php');
 include('../../../model/Teacher.php');
 include('../../../model/Subject.php');
 
-class ViewStudentDetailsController{
+class ViewStudentDetailsController {
 
     private $connection;
 
