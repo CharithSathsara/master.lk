@@ -2,7 +2,7 @@
 
 session_start();
 include_once('DatabaseConnection.php');
-$db_connection = new DatabaseConnection();
+$db_connection = DatabaseConnection::getInstance();
 
 const SITE_URL = 'http://localhost/master.lk/';
 

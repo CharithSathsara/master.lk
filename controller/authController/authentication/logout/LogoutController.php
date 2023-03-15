@@ -1,13 +1,8 @@
 <?php
 
-class LogoutController{
-
-    private $connection;
+class LogoutController {
 
     public function __construct(){
-
-        $db_connection = new DatabaseConnection();
-        $this->connection = $db_connection->getConnection();
 
     }
 

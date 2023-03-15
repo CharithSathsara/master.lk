@@ -1,6 +1,6 @@
 <?php
 
-class Authorization{
+class Authorization {
 
     public static function authorizingAdmin(){
 
