@@ -29,6 +29,8 @@
     margin: auto;
 }
 
+/* My Subjects Container */
+
 #my-subjects-container{
     margin-top:35px;
     height:auto;
@@ -43,6 +45,7 @@
     margin-right: 30px;
     border-radius: 10px;
     position: relative;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 #chemistry{
@@ -59,6 +62,43 @@
     margin-left: 15px;
     height: 30px;
 }
+
+/* Subject Completion Status Bars */
+
+progress[value] {
+    
+    -webkit-appearance: none;
+     appearance: none;
+  
+     width: 100%;
+     height: 6px;
+     
+  }
+
+  progress[value]::-webkit-progress-bar {
+    background-color: #eee;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+    margin-left: 10px;
+  }
+
+  progress::-webkit-progress-value {
+    background: black;
+    opacity: .70;
+    border-radius: 5px;
+  }
+
+  #progress-value-text{
+    float: right;
+    margin-right:10px;
+    font-weight: bold;
+  }
+
+  .progress-container{
+    top: 135px;
+    position: absolute;
+    width: 92%;
+  }
 
 .lesson-container{
     width:100%;
@@ -96,34 +136,89 @@
     width:100%;
 }
 
+/* Progress Section */
+
 #progress-container{
     margin-top:35px;
-    height:350px;
+    height:auto;
     
 }
 
-.progress-card{
-    display:inline-block;
-    width: 47%;
-    height: 100%;
+.subject-progress-card{
+    width: 97%;
+    height: auto;
+    background-color: white;
+    padding: 15px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border-radius: 10px;
-    position: relative;
 }
 
-#completion-card{
-    /* background-color:#0b2e5e; */
-    margin-right: 30px;
+.progress-card-title{
+    margin-left:15px;
+    margin-bottom: 0;
+    color:#0b2e5e;
+    font-weight: bold;
 }
 
-#scores-card{
-    background-color:black;
+#inner-container{
+    height: auto;
+    display: flex;
+    align-items: flex-start;
 }
 
-.progress-title{
-    color: #fff;
-    font-size:17px;
-    margin-left: 15px;
+#lesson-names{
+    display: inline-block;
+    width: 30%;
 }
+
+.lesson-name-item{
+    margin-left: 100px;
+    margin-bottom: 50px;
+    font-weight: bold;
+    
+}
+
+#progress-values{
+    display: inline-block;
+    width: 60%;
+
+}
+
+.progress-value{
+    width: 50px;
+    margin: 0 0 5px 10px;
+}
+
+.lesson-progress-bars,.lesson-progress-bars-phy {
+    width: 100% !important;
+    height: 15px !important;
+  }
+  
+  .lesson-progress-bars::-webkit-progress-bar {
+    background-color: #d9d9d9 !important;
+  }
+  
+  .lesson-progress-bars::-webkit-progress-value {
+    background-color: #219ebc !important;
+  }
+  
+  .lesson-progress-bars::-moz-progress-bar {
+    background-color: #219ebc !important;
+  }
+
+  .lesson-progress-bars-phy::-webkit-progress-bar {
+    background-color: #d9d9d9 !important;
+  }
+
+  .lesson-progress-bars-phy::-webkit-progress-value {
+    background-color: #f49f0a !important;
+  }
+  
+  .lesson-progress-bars-phy::-moz-progress-bar {
+    background-color: #f49f0a !important;
+  }
+
+/* Badges Section */
 
 #badge-container{
     margin-top:35px;
@@ -141,149 +236,8 @@
     width:97%;
 }
 
-/* Subject Completion Status Bars */
-
-progress[value] {
-    
-    -webkit-appearance: none;
-     appearance: none;
-  
-     width: 225px;
-     height: 6px;
-     
-  }
-
-  progress[value]::-webkit-progress-bar {
-    background-color: #eee;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
-    margin-left: 10px;
-  }
-
-  progress::-webkit-progress-value {
-    background: black;
-    opacity: .70;
-    border-radius: 5px;
-  }
-
-  #progress-value-text{
-    float: right;
-    margin-right:10px;
-    font-weight: bold;
-  }
-
-  .progress-container{
-    top: 135px;
-    position: absolute;
-  }
 
 
-/* .progress-container{
-    background:#222;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-} */
-
-
-
-/* .progress-bar{
-    background-color: #959595;
-    width:250px;
-    height: 10px;
-    border-radius: 5px;
-
-} */
-
-/* .progress-value{
-    height:10px;
-    border-radius:5px;
-    width:0%;
-    background: red;
-    animation: progress-value 1s linear forwards;
-} */
-
-/* .progress-value span{
-    height: 40px;
-    width:40px;
-    border-radius: 50%;
-    background-color: #333;
-    float: right;
-    margin-top:-15px;
-    margin-right: -20px;
-    color:#FFF;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid red;
-} */
-
-/* @keyframes progress-value{
-    100%{
-        width:75%;
-    }
-}*/
-
-
-
-/* Progress - Completion Section */
-
-.completion{
-    width: 100px;
-    height:100px;
-    /* background: #219ebc; */
-    position: relative;
-}
-
-.outer{
-    height: 100px;
-    width: 100px;
-    border-radius: 50%;
-    box-shadow: 6px 6px 10px -1px rgba(0,0,0,0.15),
-                -6px -6px 10px -1px rgba(255, 255, 255, 0.7);
-    padding:20px;
-}
-
-.inner{
-    height: 96px;
-    width: 96px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow:inset 4px 4px 6px -1px rgba(0,0,0,0.2),
-                inset -4px -4px 6px -1px rgba(255,255,255,0.7),
-                -0.5px -0.5px 0px  rgba(255, 255, 255, 1),
-                0.5px 0.5px 0px  rgba(0, 0, 0, 0.15),
-                0px 12px 10px -10px rgba(0, 0, 0, 0.05);
-}
-
-#number{
-    font-weight: 600px;
-    color: #555;
-
-}
-
-circle{
-    fill:none;
-    stroke:url(#GradientColor);
-    stroke-width: 20px;
-    stroke-dasharray: 472;
-    stroke-dashoffset: 165.2;
-    animation: anim 2s linear forwards;
-}
-
-svg{
-    position:absolute;
-    top:0;
-    left:0;
-}
-
-/* @keyframes anim{
-    100%{
-        stroke-dashoffset: 165.2;
-    }
-} */
 
 
 
