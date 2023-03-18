@@ -50,14 +50,7 @@ class Topic{
         
         if($result3->num_rows > 0){
             while($row_data = mysqli_fetch_array($result3)){
-                // echo "<form method='post' action='../../controller/dasboardController/studentSubjectController.php' name='selectsubejct-form' id='selectsubejct-form'>
-                //         <button class='goToLesson-button' type='submit'>
-                //             <div class='lesson'>
-                //                 <p class='lesson-title'>".$row_data['lessonName']."</p>
-                //             </div>
-                //         </button>
-                //     </form>";
-                echo "<a href ='../student/theoryContents.php'>
+                echo "<a href ='../student/theoryContents.php?topic=".$row_data['topicTitle']."'>
                 <div class='topic'>
                     <p class='topic-title'>".$row_data['topicTitle']."</p>
                 </div>

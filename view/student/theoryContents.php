@@ -31,12 +31,15 @@ include('../../model/Theory.php');
 
 $theoryContentController = new theoryContentController();
 
+$_SESSION['current-topic'] = $_GET['topic'];
+
 ?>
 
 <div id="subject-contents-container">
     <div id="subject-contents">
-        <b><p id="title"><span id="subject-shortcut"><a href="studentDashboard.php">Chemistry</a></span>&nbsp;&nbsp;>&nbsp;&nbsp;
-        <span id="lesson-shortcut"><a href="topicsAndFeedbacks.php">Organic Chemistry</a></span>&nbsp;&nbsp;>&nbsp;&nbsp;Basic Concepts</p></b>
+        <b><p id="title"><span id="subject-shortcut"><a href="studentDashboard.php"><?=$_SESSION['current-subject']?></a></span>&nbsp;&nbsp;>&nbsp;&nbsp;
+        <span id="lesson-shortcut"><a href="topicsAndFeedbacks.php?subject=<?=$_SESSION['current-subject']?>&lesson=<?=$_SESSION['current-lesson']?>">
+        <?=$_SESSION['current-lesson']?></a></span>&nbsp;&nbsp;>&nbsp;&nbsp;<?=$_SESSION['current-topic']?></p></b>
 
         <br>
         <div class="scrollmenu">
@@ -49,7 +52,9 @@ $theoryContentController = new theoryContentController();
         
         <div id="thoery-container">
             <p class="sub-title">Theory&nbsp;&nbsp;</p><br>
-            <div id="theory-sec"><?=$theoryContentController->getTheoryContent("Chemistry","Organic Chemistry","Basic Concepts"); ?></div>            
+            <div id="theory-sec">
+                <?=$theoryContentController->getTheoryContent($_SESSION['current-subject'],$_SESSION['current-lesson'],$_SESSION['current-topic']); ?>
+            </div>            
         </div>
 
         <div id="test-question-container">

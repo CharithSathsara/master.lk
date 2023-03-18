@@ -44,18 +44,13 @@ class Lesson{
         
             while($row_data = mysqli_fetch_array($result2)){
                 echo " 
-                        <a href='../../view/student/topicsAndFeedbacks.php' class='goToLesson-button' type='submit' key='".$row_data['lessonName']."' onclick='selectLesson(this)'>
+                        <a href='../../view/student/topicsAndFeedbacks.php?subject=".$subject."&lesson=".$row_data['lessonName']."' class='goToLesson-button'>
                             <div class='lesson'>
                                 <p class='lesson-title'>".$row_data['lessonName']."</p>
                             </div>
                         </a>
                     
                     "; 
-                // echo "<a href ='../../view/student/topicsAndFeedbacks.php'>
-                // <div class='lesson'>
-                //     <p class='lesson-title'>".$row_data['lessonName']."</p>
-                // </div>
-                // </a>";
             }
             return true;
         }else{

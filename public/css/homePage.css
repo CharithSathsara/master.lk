@@ -134,6 +134,10 @@ button {
     color: white;
 }
 
+#signup-btn:hover{
+    color: black;
+}
+
 #home-img{
     display: inline-block;
     height: 380px;
