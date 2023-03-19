@@ -1,5 +1,7 @@
 <?php
 
+include_once $currentDir . '/../../config/app.php';
+
 class User {
 
     public static function login($connection, $username_email, $password){
@@ -121,6 +123,11 @@ class User {
             return true;
         }else{
             echo "<img id='profile-pic' src='../../public/img/default-profPic.png'/>";
+            // echo "<img id='profile-pic' src='".base_url('public/img/default-profPic.png')."'/>";
+            // $to_echo = "<img id='profile-pic' src='";
+            // $to_echo .= base_url('public/img/default-profPic.png');
+            // $to_echo .= "'/>";
+            // echo $to_echo;
             return false;
         }
 

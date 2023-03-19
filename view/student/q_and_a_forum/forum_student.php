@@ -2,7 +2,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="../../../public/css/QandA_Forum.css?<?php echo time(); ?>">
-    <title>Real-time Q&A Forum Student</title>
+    <title>Q&A Forum</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>

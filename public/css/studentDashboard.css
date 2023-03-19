@@ -6,7 +6,7 @@
 
 }
 
-#student-dashboard{
+#student-dashboard, #no-subjects-bought{
     margin: 120px 40px 100px 30px;
 }
 
@@ -14,6 +14,10 @@
     margin-top:0;
     font-size:18px;
     color:#0b2e5e;
+}
+
+#dashboard-section{
+    height:auto;
 }
 
 .sub-title{
@@ -236,7 +240,45 @@ progress[value] {
     width:97%;
 }
 
+/* Recommendations Section */
 
+/* No Subjects Bought Section */
+
+#no-subjects-bought{
+    display: none;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#no-subjects-img{
+    height: 280px;
+    position: absolute;
+    top: 215px;
+    left: 650px;
+}
+
+#no-subjects-text{
+    position: absolute;
+    bottom: 150px;
+    left: 600px;
+    font-size: 18px;
+}
+
+#buy-btn{
+    border: 2px solid #f49f0a;
+    padding: 10px 30px;
+    border-radius: 15px;
+    text-decoration: none;
+    color: #f49f0a;
+    position: absolute;
+    bottom: 100px;
+    left: 770px;
+}
+
+#buy-btn:hover{
+    background-color: #f49f0a;
+    color: black;
+}
 
 
 

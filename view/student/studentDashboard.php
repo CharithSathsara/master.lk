@@ -46,153 +46,161 @@ $subjectProgressController = new subjectProgressController();
 
         <!-- My Subjects Section -->
 
-        <b><p class="sub-title">My Subjects&nbsp;&nbsp;&nbsp;</p></b>
-
-        <div id="my-subjects-container">
-        
-            <div id='chemistry' class='subject-card'>
-                    <b><p class='card-title'>Chemistry</p></b>
-
-                    <!-- Displays the progress of Chemistry Subject -->
-
-                    <div class="progress-container">
-                        <label id="progress-value-text"><?=$subjectProgressController->getSubjectProgress('Chemistry');?>%</label>
-                        <progress id="progress-bar" value="<?=$subjectProgressController->getSubjectProgress('Chemistry');?>" max="100">
-                            <div class="progress-value">
-                                <span class="progress-perc"><?=$subjectProgressController->getSubjectProgress('Chemistry');?>%</span>
-                            </div>
-                        </progress>
-                    </div>
-                    
-                    <!-- Gets the lessons of the Chemistry Subject from the database -->
-
-                    <div class='lesson-container'>
-                        <?=$lessonController->getLessons("Chemistry");?>
-                        
-                    </div>
-            </div>
-        
-
-            <div id='physics' class='subject-card'>
-                    <b><p class='card-title'>Physics</p></b>
-
-                    <!-- Displays the progress of Physics Subject -->
-
-                    <div class="progress-container">
-                        <label id="progress-value-text"><?=$subjectProgressController->getSubjectProgress('Physics');?>%</label>
-                        <progress id="progress-bar" value="<?=$subjectProgressController->getSubjectProgress('Physics');?>" max="100">
-                            <div class="progress-value">
-                                <span class="progress-perc"><?=$subjectProgressController->getSubjectProgress('Physics');?>%</span>
-                            </div>
-                        </progress>
-                    </div>
-
-                    <!-- Gets the lessons of the Physics Subject from the database -->
-                    
-                    <div class='lesson-container'>
-                        <?=$lessonController->getLessons("Physics")?>
-                    </div>
-            </div>
-
+        <div id="dashboard-section">
             
-        </div>
+            <b><p class="sub-title">My Subjects&nbsp;&nbsp;&nbsp;</p></b>
 
-        <br><br> 
+            <div id="my-subjects-container">
 
-        <!-- Progress Section -->
+                <div id='chemistry' class='subject-card'>
+                        <b><p class='card-title'>Chemistry</p></b>
 
-        <b><p class="sub-title">Progress&nbsp;&nbsp;&nbsp;</p></b>
+                        <!-- Displays the progress of Chemistry Subject -->
 
-        <div id="progress-container">
-           <div id="chem-sec" class="subject-progress-card">
-                <p class="progress-card-title">Chemistry</p>
-                <div id="inner-container">
-                    <?=$lessonController->getLessonProgress("Chemistry")?>
-                    <div id="lesson-names">
-                        <?php
-                        $rows = array();
-                        $rows = $_SESSION['lesson_rows'];
-                        foreach ($rows as $row) {
+                        <div class="progress-container">
+                            <label id="progress-value-text"><?=$subjectProgressController->getSubjectProgress('Chemistry');?>%</label>
+                            <progress id="progress-bar" value="<?=$subjectProgressController->getSubjectProgress('Chemistry');?>" max="100">
+                                <div class="progress-value">
+                                    <span class="progress-perc"><?=$subjectProgressController->getSubjectProgress('Chemistry');?>%</span>
+                                </div>
+                            </progress>
+                        </div>
                         
-                            echo "<p class='lesson-name-item'>" . $row['lessonName'] . "</p>";
-                        
-                        }?>
-                    </div>
-                    <div id="progress-values">
-                        <?php
-                        $values = array();
-                        $values = $_SESSION['lesson_progress_values'];
-                        foreach ($values as $row2) {
-                        
-                            echo "<p class='progress-value'>" . $row2 . "%</p>";
-                            echo "<progress class ='lesson-progress-bars' value='".$row2."' max='100'></progress><br><br>";
-                        
-                        }?>
-                    </div>  
+                        <!-- Gets the lessons of the Chemistry Subject from the database -->
+
+                        <div class='lesson-container'>
+                            <?=$lessonController->getLessons("Chemistry");?>
+                            
+                        </div>
                 </div>
-                   
-           </div>
-           <br>
-           <div id="phy-sec" class="subject-progress-card">
-                <p class="progress-card-title">Physics</p>
-                <div id="inner-container">
-                    <?=$lessonController->getLessonProgress("Physics")?>
-                    <div id="lesson-names">
-                        <?php
-                        $rows = array();
-                        $rows = $_SESSION['lesson_rows'];
-                        foreach ($rows as $row) {
+
+
+                <div id='physics' class='subject-card'>
+                        <b><p class='card-title'>Physics</p></b>
+
+                        <!-- Displays the progress of Physics Subject -->
+
+                        <div class="progress-container">
+                            <label id="progress-value-text"><?=$subjectProgressController->getSubjectProgress('Physics');?>%</label>
+                            <progress id="progress-bar" value="<?=$subjectProgressController->getSubjectProgress('Physics');?>" max="100">
+                                <div class="progress-value">
+                                    <span class="progress-perc"><?=$subjectProgressController->getSubjectProgress('Physics');?>%</span>
+                                </div>
+                            </progress>
+                        </div>
+
+                        <!-- Gets the lessons of the Physics Subject from the database -->
                         
-                            echo "<p class='lesson-name-item'>" . $row['lessonName'] . "</p>";
-                        
-                        }?>
-                    </div>
-                    <div id="progress-values">
-                        <?php
-                        $values = array();
-                        $values = $_SESSION['lesson_progress_values'];
-                        foreach ($values as $row2) {
-                        
-                            echo "<p class='progress-value'>" . $row2 . "%</p>";
-                            echo "<progress class ='lesson-progress-bars-phy' value='".$row2."' max='100'></progress><br><br>";
-                        
-                        }?>
-                    </div>  
+                        <div class='lesson-container'>
+                            <?=$lessonController->getLessons("Physics")?>
+                        </div>
                 </div>
-                   
-           </div>
+
+            </div>
+
+            <br><br> 
+
+            <!-- Progress Section -->
+
+            <b><p class="sub-title">Progress&nbsp;&nbsp;&nbsp;</p></b>
+
+            <div id="progress-container">
+            <div id="chem-sec" class="subject-progress-card">
+                    <p class="progress-card-title">Chemistry</p>
+                    <div id="inner-container">
+                        <?=$lessonController->getLessonProgress("Chemistry")?>
+                        <div id="lesson-names">
+                            <?php
+                            $rows = array();
+                            $rows = $_SESSION['lesson_rows'];
+                            foreach ($rows as $row) {
+                            
+                                echo "<p class='lesson-name-item'>" . $row['lessonName'] . "</p>";
+                            
+                            }?>
+                        </div>
+                        <div id="progress-values">
+                            <?php
+                            $values = array();
+                            $values = $_SESSION['lesson_progress_values'];
+                            foreach ($values as $row2) {
+                            
+                                echo "<p class='progress-value'>" . $row2 . "%</p>";
+                                echo "<progress class ='lesson-progress-bars' value='".$row2."' max='100'></progress><br><br>";
+                            
+                            }?>
+                        </div>  
+                    </div>
+                    
+            </div>
+            <br>
+            <div id="phy-sec" class="subject-progress-card">
+                    <p class="progress-card-title">Physics</p>
+                    <div id="inner-container">
+                        <?=$lessonController->getLessonProgress("Physics")?>
+                        <div id="lesson-names">
+                            <?php
+                            $rows = array();
+                            $rows = $_SESSION['lesson_rows'];
+                            foreach ($rows as $row) {
+                            
+                                echo "<p class='lesson-name-item'>" . $row['lessonName'] . "</p>";
+                            
+                            }?>
+                        </div>
+                        <div id="progress-values">
+                            <?php
+                            $values = array();
+                            $values = $_SESSION['lesson_progress_values'];
+                            foreach ($values as $row2) {
+                            
+                                echo "<p class='progress-value'>" . $row2 . "%</p>";
+                                echo "<progress class ='lesson-progress-bars-phy' value='".$row2."' max='100'></progress><br><br>";
+                            
+                            }?>
+                        </div>  
+                    </div>
+                    
+            </div>
+            </div>
+
+            <br><br> 
+
+            <!-- Scores Section -->
+
+            <b><p class="sub-title">Scores&nbsp;&nbsp;&nbsp;</p></b>
+
+            <div id="scores-container">
+
+
+            </div>
+            <br><br>
+
+            <!-- Badges Section -->
+
+            <b><p class="sub-title">Badges&nbsp;&nbsp;&nbsp;</p></b>
+
+            <div id="badge-container">
+
+            </div>
+
+            <br><br> 
+
+            <!-- Recommendations Section -->
+
+            <b><p class="sub-title">Recommendations&nbsp;&nbsp;&nbsp;</p></b>
+
+            <div id="rec-container">
+
+            </div>
+
         </div>
+    </div>
 
-        <br><br> 
-
-        <!-- Scores Section -->
-
-        <b><p class="sub-title">Scores&nbsp;&nbsp;&nbsp;</p></b>
-
-        <div id="scores-container">
-
-    
-        </div>
-        <br><br>
-
-        <!-- Badges Section -->
-
-        <b><p class="sub-title">Badges&nbsp;&nbsp;&nbsp;</p></b>
-
-        <div id="badge-container">
-
-        </div>
-
-        <br><br> 
-
-        <!-- Recommendations Section -->
-
-        <b><p class="sub-title">Recommendations&nbsp;&nbsp;&nbsp;</p></b>
-
-        <div id="rec-container">
-
-        </div>
-
+    <div id="no-subjects-bought">
+        <img src="../../public/img/cart-bg.svg" id="no-subjects-img">
+        <p id="no-subjects-text">Buy subjects and join our community to view your dashboard.</p>
+        <a href="./newSubjects.php" class="header-btns" id="buy-btn">Buy Now</a>
     </div>
 </div>
 
@@ -201,7 +209,7 @@ $subjectProgressController = new subjectProgressController();
     if(!($studentSubjectController->hasBought("Chemistry"))){
         echo"
         <style>
-        #chemistry{
+        #chemistry, #chem-sec{
             display:none;
         }
         </style>
@@ -210,8 +218,20 @@ $subjectProgressController = new subjectProgressController();
     if(!($studentSubjectController->hasBought("Physics"))){
         echo"
         <style>
-        #physics{
+        #physics, #phy-sec{
             display:none;
+        }
+        </style>
+        ";
+    }
+    if(!($studentSubjectController->hasBought("Physics")) && !($studentSubjectController->hasBought("Chemistry"))){
+        echo "
+        <style>
+        #dashboard-section{
+            display:none;
+        }
+        #no-subjects-bought{
+            display:block;
         }
         </style>
         ";

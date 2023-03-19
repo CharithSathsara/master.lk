@@ -29,12 +29,15 @@ Authorization::authorizingStudent();
 include('../../controller/studentController/newSubjectsController/subjectController.php');
 include('../../controller/studentController/newSubjectsController/viewCartController.php');
 include('../../controller/studentController/newSubjectsController/cartController.php');
+include('../../controller/studentController/dashboardController/studentSubjectController.php');
+include('../../model/Student.php');
 include('../../model/Subject.php');
 include('../../model/Cart.php');
 
 $subjectController = new subjectController();
 $viewCartController = new viewCartController();
 $cartController = new cartController();
+$studentSubjectController = new studentSubjectController();
 
 ?>
 
@@ -46,7 +49,14 @@ $cartController = new cartController();
             <div class="subject-description-card" id="phy-subject-description-card">
                 <b><p class="sub-card-title">Physics</p></b>
                 <?php
-                if(!($cartController->existsInCart("Physics"))){
+
+                if($studentSubjectController->hasBought("Physics")){
+                    echo"
+                    <div class='added-to-cart-container' id='phy-add-to-cart-container'>
+                        <b><p class='added-to-cart-text'>Already Bought</p></b>
+                    </div>
+                    ";
+                }elseif(!($cartController->existsInCart("Physics"))){
                     echo"
                     <div class='add-to-cart-container' id='phy-add-to-cart-container'>
                         <form action='../../controller/studentController/newSubjectsController/addToCartController.php' method='post'>
@@ -54,8 +64,8 @@ $cartController = new cartController();
                         </form>
                     </div>
                     ";
-
-                }else{
+                }
+                else{
                     echo"
                     <div class='added-to-cart-container' id='phy-add-to-cart-container'>
                         <b><p class='added-to-cart-text'>Added to Cart</p></b>
@@ -66,16 +76,22 @@ $cartController = new cartController();
                 ?>
             </div>
             <div class="subject-description">
-                <p class="sub-text">Physics is the natural science that studies matter, its fundamental constituents, its motion and behavior through space and time, 
-                    and the related entities of energy and force. In this course, you will learn the basic theory parts of Electronics and Mechanics along with related 
-                    Model MCQs and Past Paper MCQs.<br><br>LKR.<?= $subjectController->getSubjectPrice("Physics") ; ?>.00</p>
+                <p class="sub-text"><?= $subjectController->getSubjectDescription("Physics") ; ?>
+                <br><br>LKR.<?= $subjectController->getSubjectPrice("Physics") ; ?>.00</p>
             </div>
         </div>
         <div class="subject-container">
             <div class="subject-description-card" id="chem-subject-description-card">
                 <b><p class="sub-card-title">Chemistry</p></b>
                 <?php
-                if(!($cartController->existsInCart("Chemistry"))){
+
+                if($studentSubjectController->hasBought("Chemistry")){
+                    echo"
+                    <div class='added-to-cart-container' id='phy-add-to-cart-container'>
+                        <b><p class='added-to-cart-text'>Already Bought</p></b>
+                    </div>
+                    ";
+                }elseif(!($cartController->existsInCart("Chemistry"))){
                     echo"
                     <div class='add-to-cart-container' id='chem-add-to-cart-container'>
                         <form action='../../controller/studentController/newSubjectsController/addToCartController.php' method='post'>
@@ -83,8 +99,8 @@ $cartController = new cartController();
                         </form>
                     </div>
                     ";
-
-                }else{
+                }
+                else{
                     echo"
                     <div class='added-to-cart-container' id='chem-add-to-cart-container'>
                         <b><p class='added-to-cart-text'>Added to Cart</p></b>
@@ -95,10 +111,8 @@ $cartController = new cartController();
                 ?>
             </div>
             <div class="subject-description">
-                <p class="sub-text">Chemistry is the scientific study of the properties and behavior of matter. It is a natural science that covers the elements that 
-                    make up matter to the compounds made of atoms, molecules and ions: their composition, structure, properties, behavior and the changes they undergo 
-                    during a reaction with other substances. In this course, you will learn the basic theory parts of Organic Chemistry and Inorganic Chemistry along with related 
-                    Model MCQs and Past Paper MCQs.<br><br>LKR.<?= $subjectController->getSubjectPrice("Chemistry") ; ?>.00</p>
+                <p class="sub-text"><?= $subjectController->getSubjectDescription("Chemistry") ; ?>
+                <br><br>LKR.<?= $subjectController->getSubjectPrice("Chemistry") ; ?>.00</p>
 
             </div>
         </div>
