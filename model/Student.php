@@ -69,5 +69,22 @@ class Student {
 
     }
 
+    // get student email
+
+    public  static function getStudentEmail($connection,$userId){
+
+        $query = "SELECT email FROM user WHERE userId ='$userId'";
+
+        $data = $connection->query($query);
+
+        $email = $data->fetch_assoc();
+
+        if ($email){
+            return $email['email'];
+        }else{
+            return false;
+        }
+    }
+
 
 }

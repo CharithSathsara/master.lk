@@ -30,7 +30,7 @@
                 </a>
             </li>
             <li class="nav-item"  id="payments">
-                <a href=<?= base_url('view/admin/payment/paymentVarification.php') ?>>
+                <a href=<?= base_url('view/admin/payment/paymentVerification.php') ?>>
                     <div class="list-item" >
                         <img src="<?= base_url('public/icons/payments.svg') ?>" class="list-icon">
                         <p class="list-text">Payments</p>

@@ -43,7 +43,7 @@
                     <input type="text" name="number" placeholder="Telephone Number" required>
                     <input type="email" name="email" placeholder="Email" required>
                     <input type="text" name="username" placeholder="User name" required>
-                    <input type="password" name="password" placeholder="Password" required>
+<!--                    <input type="password" name="password" placeholder="Password" required>-->
                     <div class="selectSub">
                         <label >Select the Subject : </label>
                         <select style="width: 6vw; border-radius: 5px; margin-left: 7vw; border: none; height: 4vh" name="subjects" id="subjects" >

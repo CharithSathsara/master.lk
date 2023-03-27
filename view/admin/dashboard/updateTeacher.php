@@ -11,6 +11,7 @@
 </head>
 <body>
 
+
                         <div id="popup-update" class="popup-update">
                             <div class="popup-UpdateTeacher">
                                 <img src="<?= base_url('public/img/close.png') ?>" class="closeTeacher-Icon" id="closeTeacher-Icon" alt="close">
@@ -38,7 +39,6 @@
                                         <div class="selectSub">
                                             <label>Select the Subject : </label>
                                             <select name="subjects" id="subject" >
-                                                    <option value="">Select Subject</option>
                                                 <option value="Chemistry">Chemistry</option>
                                                 <option value="Physics">Physics</option>
                                             </select>

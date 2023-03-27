@@ -33,4 +33,26 @@ class paymentVerifyController
             }
         }
 
+        public function getSlipOwner($paymentId){
+
+            $data = slipPayment::getAllOwner($paymentId,$this->connection);
+            if($data){
+                return $data;
+            }else{
+                return false;
+            }
+        }
+
+        public function getSlipImage($paymentId){
+
+            $data = slipPayment::getSlipPhoto($paymentId,$this->connection);
+
+            if($data){
+               // header("Location : ../../../view/admin/payment/slipImage.php");
+            }else{
+                return false;
+            }
+        }
+
     }
+ ?>
