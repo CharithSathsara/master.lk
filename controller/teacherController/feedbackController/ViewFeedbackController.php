@@ -17,10 +17,10 @@ class ViewFeedbackController {
 
     }
 
-    public function getAllFeedbacks(){
+    public function getAllFeedbacks($lessonId = '', $subjectId = ''){
 
         try {
-            $data = Teacher::getAllFeedbacks($this->connection);
+            $data = Teacher::getAllFeedbacks($this->connection, $lessonId, $subjectId);
             if ($data) {
                 return $data;
             } else {
@@ -111,6 +111,42 @@ class ViewFeedbackController {
 
         } catch (Exception $e) {
             return $e->getMessage();
+        }
+
+    }
+
+    public function getAllSubjects(){
+
+        try {
+            $data = Teacher::getAllSubjects($this->connection);
+
+            if($data){
+                return $data;
+            }else{
+                throw new Exception("Error: can not get all subjects");
+            }
+        } catch(Exception $e) {
+            $errorMessage = "An error occurred while getting all subjects:  " . $e->getMessage();
+            echo '<script>console.error("' . $errorMessage . '")</script>';
+            return false;
+        }
+
+    }
+
+    public function getAllLessons($subject){
+
+        try {
+            $data = Teacher::getAllLessons($this->connection, $subject);
+
+            if($data){
+                return $data;
+            }else{
+                throw new Exception("Error: can not get all lessons");
+            }
+        } catch(Exception $e) {
+            $errorMessage = "An error occurred while getting all lessons:  " . $e->getMessage();
+            echo '<script>console.error("' . $errorMessage . '")</script>';
+            return false;
         }
 
     }

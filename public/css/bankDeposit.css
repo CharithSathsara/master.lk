@@ -150,7 +150,7 @@ a{
     transition: color .2s ease-in-out;
   }
 
-  #photo-upload-submit{
+  #slip-upload-submit{
     width: 160px;
     height: 40px;
     left: 20px;
@@ -266,4 +266,14 @@ input[type=file] {
     left: 0;
     z-index: 14;
     display: none;
+}
+
+#slip-upload-error {
+    height: 25px;
+}
+
+#slip-upload-error p{
+    font-size: 14px;
+    color: red;
+    margin: 0 auto;
 }

@@ -141,23 +141,25 @@ $viewCartController = new viewCartController();
                 <!-- upto here -->
 
                 <div id="upload-slip-sec">
-                    <!-- <form action="" method="post" enctype="multipart/form-data" id="slip-upload-form"> -->
+                     <form action="../../controller/paymentController/slipPaymentController.php" method="post" enctype="multipart/form-data" id="slip-upload-form">
                         <label for="images" class="drop-container">
                             <span class="drop-title">Drop files here</span>
                             or
                             <input type="file" name="image" id="upload-photo-space" oninput="inputChange()">
                         </label>
-                        <button type="submit" name="photo-upload-submit" id="photo-upload-submit" onclick="getUploadSuccessPopup()">Upload</button>
+                         <div id="slip-upload-error">
+                             <?php include "../../controller/authController/message.php"?>
+                         </div>
+                        <button type="submit" name="slip-upload-submit" id="slip-upload-submit">Upload</button>
                     </form>
-                <!-- </div> -->
+                </div>
 
             </div>
         </div>
-
     </div>
 </div>
 
-<div class="page-mask" id="page-mask-upload-success">
+<div class="page-mask" id="page-mask-slip-upload-success">
     <div id="upload-success-popup">
         <img id="success-icon" src="../../public/icons/success-yellow.svg">
         <b><p id="upload-title">Uploaded Successfully!</p></b>
@@ -171,6 +173,21 @@ $viewCartController = new viewCartController();
 </div>
 
 <script src="../../public/js/bankDeposit.js"></script>
+
+<?php
+
+if(isset($_SESSION['slip-upload-success'])){
+    echo"
+                <style>
+                        #page-mask-slip-upload-success{
+                            display:block;
+                        }
+                </style>
+            ";
+    unset($_SESSION['slip-upload-success']);
+}
+
+?>
 
 </body>
 </html>

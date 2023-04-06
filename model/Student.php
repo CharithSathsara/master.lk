@@ -47,7 +47,7 @@ class Student {
 
                 $response = $connection->query($query1);
 
-                if(!empty($response)) {
+                if($response) {
 
                     // Inserts data into the database - 'Student Table'
                     $query2 = "SELECT userId from user where userName = '$username'";
@@ -82,6 +82,42 @@ class Student {
             return false;
         }
     }
+
+    public static function slipUpload($connection, $slipContent, $studentId){
+
+        try {
+
+            $queryToPayment = "INSERT INTO payment (`date`, `paymentType`, `studentId`) VALUES (NOW(), 'SLIP', $studentId)";
+            $response = $connection->query($queryToPayment);
+
+            if($response){
+
+                // Get the last inserted paymentId
+                $paymentId = mysqli_insert_id($connection);
+
+                $queryToSlip = "INSERT INTO slip_payment (`paymentId`, `isVerified`, `slipImage`)
+                                VALUES ($paymentId, 0, '$slipContent')";
+
+                $data = $connection->query($queryToSlip);
+
+                if($data){
+                    return true;
+                }else{
+                    throw new Exception("Error: Unable insert to slip payment table");
+                }
+
+            }else{
+                throw new Exception("Error: Unable insert to payment table");
+            }
+
+        } catch(Exception $e) {
+            $errorMessage = "An error occurred while fetching student name: " . $e->getMessage();
+            echo '<script>console.error("' . $errorMessage . '")</script>';
+            return false;
+        }
+
+    }
+
 
     /**
      * End of

@@ -13,3 +13,8 @@ if(isset($_SESSION['change-photo-error'])){
     echo "<p>".$_SESSION['change-photo-error']."</p>";
 }
 
+if(isset($_SESSION['slip-upload-error'])){
+    echo "<p>".$_SESSION['slip-upload-error']."</p>";
+    unset($_SESSION['slip-upload-error']);
+}
+
