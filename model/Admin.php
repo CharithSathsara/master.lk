@@ -54,16 +54,7 @@ class Admin{
 
         }
 
-//        public static function getAllSubject($connection){
-//
-//            $query = "SELECT * FROM subject";
-//
-//            $data = $connection->query($query);
-//
-//            $subject = $data->fetch_assoc();
-//
-//                return $subject;
-//            }
+
         public static function addTeacher($fname,$lname,$address1,$address2,$number,$email,$username,$password,$subject,$connection){
 
             $passHash = password_hash($password, PASSWORD_DEFAULT);
@@ -111,14 +102,8 @@ class Admin{
         }
 
 
-        public static function getAllPaymentSlip(){
 
-            $query = "SELECT * FROM `student` INNER JOIN `payment` ON student.studentId = payment.studentId INNER JOIN `slip_payment` ON payment.paymentId = slip_payment.paymentId";
-
-            var_dump($query);
-            exit();
-
-        }
+//        Content creator model
 
         public static function addContentCreator($fname,$lname,$address1,$address2,$number,$email,$username,$password,$subject,$connection){
 
@@ -134,17 +119,17 @@ class Admin{
                 $data1 = $connection->query($query1);
 
                 $result = $data1->fetch_assoc();
-                $teacherId = $result['userId'];
+                $creatorId = $result['userId'];
 
                 $query2 = "SELECT subjectId FROM subject WHERE subjectTitle='$subject'";
 
                 $data2 = $connection->query($query2);
-                $result = $data2->fetch_assoc();
-                $subjectId = $result['subjectId'];
+                $result2 = $data2->fetch_assoc();
+                $subjectId = $result2['subjectId'];
 
-                $queryToTeacher = "INSERT INTO contentcreator(teacherId,subjectId) VALUES ('$teacherId','$subjectId')";
+                $queryToContentCreator = "INSERT INTO contentcreator(creatorId,subjectId) VALUES ('$creatorId','$subjectId')";
 
-                $dataSubject = $connection->query($queryToTeacher);
+                $dataSubject = $connection->query($queryToContentCreator);
 
                 return $dataSubject;
             } else{

@@ -583,7 +583,7 @@ textarea{
     background-color: white;
     margin-top: 200px;
     border-radius: 20px;
-    position: fixed;
+    /*position: fixed;*/
 }
 
 .popup-addContentCreator .update-ContentCreatorHeaderPop{
@@ -703,7 +703,7 @@ textarea{
     display: none;
     justify-content: center;
     z-index: 100;
-    margin-left: -16.5vw;
+    margin-left: 10vw;
 
 }
 
@@ -770,6 +770,10 @@ textarea{
 }
 
 #teacher-userId{
+    display: none;
+}
+
+#Creator-userId{
     display: none;
 }
 

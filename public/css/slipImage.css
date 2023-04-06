@@ -1,0 +1,121 @@
+
+.slip-image{
+    width: 40vw;
+    /*height: 100vh;*/
+    /*background-color: #F4C430;*/
+    margin-left: 15vw;
+}
+
+/*.header-2{*/
+/*    height: 10vh;*/
+/*    background-color: red;*/
+/*    width: 40vw;*/
+/*    margin-top: 100px;*/
+/*}*/
+
+.main{
+    height: 80vh;
+    width: 55vw;
+    display: flex;
+    margin-top: 9vh;
+    /*width: 60vw;*/
+    /*margin-left: 20vw;*/
+}
+
+#slip-pic{
+    width: 30vw;
+    height: 40vh;
+    align-items: center;
+    justify-content: center;
+    /*margin-top: 35vh;*/
+    margin-left: 5vw;
+    border-radius: 10px;
+    border-color: black;
+    position: relative;
+}
+
+.payment-details{
+    background-color: #0b2e5e;
+    width: 25vw;
+    /*margin-left: 65vw;*/
+    /*margin-top: 20vh;*/
+    /*height: 100vh;*/
+    position: absolute;
+    margin-left: 60vw;
+    /*margin-top: 30vh;*/
+}
+
+h2{
+    padding: 30px;
+    margin-left: 40px;
+    font-weight: bold;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.payment-button{
+    /*background-color: #F4C430;*/
+    height: 15vh;
+    display: flex;
+    flex-direction: row;
+}
+
+#accept-button{
+    background-color: orange;
+    border: none;
+    border-radius: 10px;
+    padding: 5px;
+    width: 100px;
+    height: 45px;
+    /*font-weight: bold;*/
+    font-size: 20px;
+    color: black;
+    cursor: pointer;
+    margin-top: 50px;
+    margin-left: 5vw;
+}
+
+#accept-button:hover{
+    background-color: #0b2e5e;
+    color: white;
+}
+
+#reject-button{
+    background-color: orange;
+    border: none;
+    border-radius: 10px;
+    padding: 5px;
+    width: 100px;
+    height: 45px;
+    /*font-weight: bold;*/
+    font-size: 20px;
+    color: black;
+    cursor: pointer;
+    margin-top: 50px;
+    margin-left: 19.5vw;
+}
+
+#reject-button:hover{
+    background-color: #0b2e5e;
+    color: white;
+}
+
+.payment-details h1{
+    padding: 20px;
+    margin-left: 50px;
+    margin-top: 10px;
+}
+
+.details-table p{
+    font-size: 20px;
+
+}
+
+.slip-image h2{
+    margin-top: 30px;
+    margin-left: 50px;
+}
+
+.slip-image hr{
+    width: 40vw;
+}

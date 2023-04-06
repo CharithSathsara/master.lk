@@ -126,7 +126,8 @@ class Student {
 
     }
 
-    public static function getSubjectProgress($connection,$subject){
+    public static function getSubjectProgress($connection,$subject)
+    {
 
         $userId = $_SESSION['auth_user']['userId'];
 
@@ -153,24 +154,40 @@ class Student {
         ";
         $result3 = $connection->query($query3);
 
-        if(mysqli_num_rows($result3) > 0){
+        if (mysqli_num_rows($result3) > 0) {
             $total_no_of_topics = mysqli_num_rows($result3);
 
-            if(mysqli_num_rows($result2) > 0){
+            if (mysqli_num_rows($result2) > 0) {
                 $no_of_covered_topics = mysqli_num_rows($result2);
-                $covered_percentage = ($no_of_covered_topics/$total_no_of_topics)*100;
-    
+                $covered_percentage = ($no_of_covered_topics / $total_no_of_topics) * 100;
+
                 return $covered_percentage;
 
-            }else{
+            } else {
                 echo "0";
                 return;
             }
-        }else{
+        } else {
             echo "0";
-                return;
+            return;
         }
+    }
 
+    // get student email
+
+    public  static function getStudentEmail($connection,$userId){
+
+        $query = "SELECT email FROM user WHERE userId ='$userId'";
+
+        $data = $connection->query($query);
+
+        $email = $data->fetch_assoc();
+
+        if ($email){
+            return $email['email'];
+        }else{
+            return false;
+        }
     }
 
 
