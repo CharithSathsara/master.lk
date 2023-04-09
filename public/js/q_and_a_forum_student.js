@@ -1,6 +1,7 @@
 loadForumStudent(); // Call loadForumStudent once at the beginning
 
 function loadForumStudent() {
+
     const xhr = new XMLHttpRequest();
     xhr.open('GET', '../../../controller/q_and_a_controller/student_forum_controller.php', true);
     xhr.onload = function() {
@@ -15,6 +16,7 @@ function loadForumStudent() {
         console.error('Error loading questions: ' + xhr.statusText);
     };
     xhr.send();
+
 }
 
 function renderForumStudent(questions) {
@@ -71,7 +73,6 @@ function renderForumStudent(questions) {
 
         // Add the question element to the container element
         questionAnswersDiv.appendChild(questionDiv);
-
 
         if (question.answers.length > 0) {
 

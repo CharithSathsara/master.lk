@@ -6,7 +6,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
-
 <body>
 
 <?php
@@ -36,7 +35,9 @@ $studentForumController = new StudentForumController();
         </div>
 
         <div id="container" class="container"></div>
+
         <div class="form-container">
+
             <form id="new-question-form">
 
                 <select id="dropdown" name="dropdown">
@@ -69,11 +70,16 @@ $studentForumController = new StudentForumController();
                         ?>
 
                     </optgroup>
+
                 </select>
+
                 <input type="text" id="new-question" name="new-question" placeholder="Ask Your Question?">
                 <button type="submit" class="submit-btn">Ask</button>
+
             </form>
+
         </div>
+
         <script src="../../../public/js/q_and_a_forum_student.js"></script>
 
     </div>
@@ -81,5 +87,4 @@ $studentForumController = new StudentForumController();
 </div>
 
 </body>
-
 </html>

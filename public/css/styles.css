@@ -166,20 +166,35 @@ input[type=submit]:hover{
 input[type=text] {
     padding: 12px 20px;
     margin: 8px 0;
-    border: 1px solid #818181;
+    border: 1px solid #D9D9D9;
     border-radius: 7px;
-    background: #EDECEC;
+    background: #F5F5F5;
     box-sizing: border-box;
     width: 25vw;
 }
-select{
-    padding: 12px 20px;
-    margin: 8px 0;
-    border: 1px solid #818181;
-    border-radius: 7px;
-    background: #EDECEC;
-    box-sizing: border-box;
+
+select {
+    width: 15vw;
+    height: 35px;
+    margin-right: 10px;
+    border-radius: 10px;
+    border: 1px solid #D9D9D9;
+    background-color: #F5F5F5;
+    color: #666666;
+    font-size: 14px;
+    font-weight: normal;
+    padding: 5px;
+    cursor: pointer;
+    /*transition: width 0.5s ease-in-out;*/
 }
+
+option {
+    background-color: white;
+    color: #666666;
+    font-size: 14px;
+    font-weight: normal;
+}
+
 input[type=submit] {
     padding: 12px 20px;
     margin: 8px 0;
@@ -267,4 +282,8 @@ textarea {
 #subject-shortcut a{
     text-decoration: none;
     color:#0b2e5e
+}
+
+.form-container {
+    margin-right: 100px;
 }

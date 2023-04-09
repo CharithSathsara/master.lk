@@ -2,6 +2,7 @@ let refreshInterval = setInterval(loadForumTeacher, 5000);
 loadForumTeacher(); // Call loadForumTeacher once at the beginning
 
 function loadForumTeacher() {
+
     const xhr = new XMLHttpRequest();
     xhr.open('GET', '../../../controller/q_and_a_controller/teacher_forum_controller.php', true);
     xhr.onload = function() {
@@ -16,6 +17,7 @@ function loadForumTeacher() {
         console.error('Error loading questions: ' + xhr.statusText);
     };
     xhr.send();
+
 }
 
 function renderForumTeacher(questions) {
@@ -116,6 +118,7 @@ function renderForumTeacher(questions) {
 
         const sendButton = document.createElement('button');
         sendButton.innerHTML = 'Send';
+        sendButton.className = 'reply-submit';
         sendButton.type = 'submit';
 
         replyForm.addEventListener('submit', function(event) {

@@ -14,10 +14,10 @@ td,th {
 }
 
 tr {
-    background-color: #D9D9D9;
+    background-color: #d7d4f0;
 }
 
-#title{
+#title {
     margin-top: 0;
     font-size: 18px;
     color:#0b2e5e;
@@ -28,25 +28,77 @@ tr {
     justify-content: right;
 }
 
-input[type=submit] {
-    padding: 12px 20px;
-    margin: 8px 0;
-    border-radius: 5px;
-    background: #219ebc;
-    box-sizing: border-box;
-    font-weight: bold;
+#update-question-btn {
+    margin-left: 10px;
+    width: 7vw;
+    height: 37px;
+    border-radius: 7px;
     cursor: pointer;
-    transition-duration: 0.4s;
+    background-color: #0b2e5e;
+    font-weight: bold;
     color: #DCDCDC;
+    border: none;
 }
 
 #delete-btn {
     background: #f49f0a;
     margin-left: 10px;
+    width: 7vw;
+    height: 37px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #DCDCDC;
+    border: none;
 }
 
-#delete-btn:hover {
+/*#delete-btn:hover {*/
+/*    background-color: white;*/
+/*    color: #f49f0a;*/
+/*    font-weight: bold;*/
+/*}*/
+
+select {
+    width: 15vw;
+    height: 35px;
+    margin-right: 10px;
+    border-radius: 10px;
+    border: 1px solid #D9D9D9;
+    background-color: #F5F5F5;
+    color: #666666;
+    font-size: 14px;
+    font-weight: normal;
+    padding: 5px;
+    cursor: pointer;
+    /*transition: width 0.5s ease-in-out;*/
+}
+
+option {
     background-color: white;
-    color: #f49f0a;
+    color: #666666;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+#view-questions {
+    margin-left: 10px;
+    width: 10vw;
+    height: 37px;
+    border-radius: 7px;
+    cursor: pointer;
+    background-color: #0b2e5e;
     font-weight: bold;
+    color: #DCDCDC;
+    border: none;
+}
+
+.options {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 0;
+    padding-left: 20px;
+}
+.correct-answer, .description {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }

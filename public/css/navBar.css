@@ -72,9 +72,9 @@ ul {
     background-color: #D9D9D9;
 } */
 
-li {
-    list-style-type: none;
-}
+/*li {*/
+/*    list-style-type: none;*/
+/*}*/
 
 li a {
     display: block;
