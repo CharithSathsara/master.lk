@@ -42,12 +42,12 @@ include_once '../../common/header.php';
 
                 <form id="add-question-form" action="../../../controller/teacherController/questionController/addQuestionController.php" method="post" >
 
-                    <p id="add_question-heading">You can add questions to <?= $_SESSION['subject']; ?> subject:</p>
+                    <p id="add_question-heading">You can add questions to <?= $_SESSION['subject']; ?> subject</p>
 
                     <div class="form-inline">
 
                         <label for="topicId" class="topic-selection">Select Topic :</label>
-                        <select name="topicId" style="margin-right: 8vw" class="type-selection">
+                        <select name="topicId" style="margin-right: 8vw" class="type-selection" required>
 
                             <option value="" selected>-- Select a topic --</option>
                             <?php
@@ -63,7 +63,7 @@ include_once '../../common/header.php';
                         </select>
 
                         <label for="type"  class="topic-selection">Select Type :</label>
-                        <select name="type" class="type-selection" >
+                        <select name="type" class="type-selection" required>
                             <option value="" selected>-- Select a type --</option>
                             <option value="PASTQUESTION">Past Question</option>
                             <option value="MODELQUESTION">Model Question</option>
@@ -112,8 +112,65 @@ include_once '../../common/header.php';
             </div>
         </div>
     </div>
+</div>
+
+<div class="page-mask" id="page-mask-upload-question-success">
+
+    <div id="upload-success-popup">
+        <img id="success-icon" src="../../../public/icons/success-yellow.svg">
+        <b><p id="upload-title">Inserted Successfully!</p></b>
+        <button onclick="closeUploadSuccessPopup()" class="close-button">
+            <img src="../../../public/icons/close.svg" class="close-icon">
+        </button>
+        <p id="upload-success-text">Question has been successfully uploaded.</p>
+        <button id="ok-btn" onclick="closeUploadSuccessPopup()">OK</button>
+    </div>
 
 </div>
+
+<div class="page-mask" id="page-mask-upload-question-fail">
+
+    <div id="upload-success-popup">
+        <img id="success-icon" src="../../../public/icons/delete-alert.png">
+        <b><p id="upload-title">Question upload failed!</p></b>
+        <button onclick="closeUploadFailPopup()" class="close-button">
+            <img src="../../../public/icons/close.svg" class="close-icon">
+        </button>
+        <div id="question-upload-error">
+            <p><?= $_SESSION['question-upload-fail']; ?></p>
+        </div>
+        <button id="ok-btn" onclick="closeUploadFailPopup()">OK</button>
+    </div>
+
+</div>
+
+<script src="../../../public/js/addQuestion.js"></script>
+
+<?php
+
+if(isset($_SESSION['question-upload-success'])){
+    echo"
+                <style>
+                        #page-mask-upload-question-success {
+                            display:block;
+                        }
+                </style>
+            ";
+    unset($_SESSION['question-upload-success']);
+}
+
+if(isset($_SESSION['question-upload-fail'])){
+    echo"
+                <style>
+                        #page-mask-upload-question-fail {
+                            display:block;
+                        }
+                </style>
+            ";
+    unset($_SESSION['question-upload-fail']);
+}
+
+?>
 
 </body>
 </html>
