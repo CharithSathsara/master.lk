@@ -54,5 +54,16 @@ class paymentVerifyController
             }
         }
 
+        public function getBankDetails(){
+
+            $data = BankDetails::getBankDetails($this->connection);
+
+            if($data){
+                return $data;
+            }else{
+                return false;
+            }
+        }
+
     }
  ?>

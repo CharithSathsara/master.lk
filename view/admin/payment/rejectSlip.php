@@ -13,7 +13,7 @@
         <div class="rejectPop">
             <div class="rejectHead">
                 <img src="../../../public/img/exclamationIcon.png">
-                <h4>Reject Payment</h4>
+                <h3>Reject Payment</h3>
             </div>
 
             <div class="rejectBody">
@@ -29,7 +29,7 @@
 
                     <form method="post" action="<?= base_url('controller/adminController/paymentVerificationController/paymentAcceptRejectController.php') ?>">
                         <input type="hidden" name="PaymentId" id="yer-RejectPaymentId">
-                        <input type="submit" id="rejectYesPop" name="yesRejectButton-pop" value="Yes, Reject">
+                        <input type="submit" id="rejectYesPop" name="yesRejectButton-pop" value="Yes, Reject" class="rejectButton-slip">
                     </form>
                 </div>
             </div>

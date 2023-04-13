@@ -21,7 +21,7 @@
                 <div class="update-contentCreatorForm">
                     <div class="forms-div">
 
-                        <form class="UpdateTeach-form" action="<?= base_url('controller/adminController/dashboardController/addContentCreatorController.php') ?>" method="POST">
+                        <form class="UpdateContent-form" action="<?= base_url('controller/adminController/dashboardController/addContentCreatorController.php') ?>" method="POST">
                             <!--                <label class="teachrHead"><b>Add Teacher</b></label>-->
                             <input type="text" name="fname" placeholder="Full Name" >
                             <input type="text" name="lname" placeholder="Last Name" >
@@ -38,8 +38,8 @@
                                     <option value="Physics">Physics</option>
                                 </select>
                             </div>
-                            <!--                        <textarea name="qualification" placeholder="Qualification"></textarea>-->
-                            <input type="submit" name="addContentCreator-button" value="Save" class="subb-Update" style="color: #D9D9D9">
+                            <!-- <textarea name="qualification" placeholder="Qualification"></textarea>-->
+                            <input type="submit" name="addContentCreator-button" value="Save" class="subb-add" style="color: #D9D9D9">
                         </form>
                     </div>
                 </div>

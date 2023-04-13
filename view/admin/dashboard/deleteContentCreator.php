@@ -17,15 +17,15 @@
                 <h3>Delete Confirmation</h3>
             </div>
             <div class="deletePop-contentBody">
-                <p>Are you sure you want to delete this Teacher?</p>
+                <p>Are you sure you want to delete this Content Creator?</p>
             </div>
 
             <div class="deletePop-contentButton">
+                <button class="deleteContentNo-button" id="deleteContentNo-btn" onclick="close()">No</button>
                 <form action="<?= base_url('controller/adminController/dashboardController/deleteContentCreatorController.php'); ?>" method="post">
                     <input type="hidden" name="userId" id="creatorUserId">
                     <input type="submit" class="deleteYes-button" id="deleteYes-btn" value="Yes" name="DeleteCreator-btn">
                 </form>
-                <button class="deleteContentNo-button" id="deleteContentNo-btn" onclick="close()">No</button>
             </div>
         </div>
     </div>

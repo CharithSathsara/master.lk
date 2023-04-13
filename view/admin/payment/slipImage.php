@@ -20,59 +20,59 @@
             include_once('../../common/navBar-Admin.php');
     ?>
 
-    <div class="main">
-        <div class="slip-image">
-            <h2><a href="paymentVerification.php">Payment</a> > View Payment Slip </h2>
-            <hr>
-            <h2>Slip Image</h2>
+   <div class="main-container">
+        <div class="header-container">
+        </div>
+       <h2><a class="back-to-payments" href="paymentVerification.php"><button>Payments</button></a> > View Payment Slip </h2>
+       <hr>
+        <div class="body-container">
+            <div class="slipImage-container">
+                <h2>Slip Image</h2>
+                   <?php
+                   $slipImage = new paymentVerifyController();
+                   $paymentId = $_GET['paymentId'];
+                   $slipImage->getSlipImage($paymentId);
+                   ?>
+                <div class="payment-button">
+                    <button id="reject-button" onclick="viewRejectPage('<?php echo $paymentId ?>')">Reject</button>
+                    <button id="accept-button" onclick="viewAcceptPage('<?php echo $paymentId ?>')">Accept</button>
+                </div>
 
-            <?php
-            $slipImage = new paymentVerifyController();
-            $paymentId = $_GET['paymentId'];
-            $slipImage->getSlipImage($paymentId);
-            ?>
-            <div class="payment-button">
-                <button id="accept-button" onclick="viewAcceptPage('<?php echo $paymentId ?>')">Accept</button>
-                <button id="reject-button" onclick="viewRejectPage('<?php echo $paymentId ?>')">Reject</button>
+                <!--            accept slip page-->
+                <?php include_once ('acceptSlip.php');?>
+
+                <!--            accept slip js file-->
+                <script src="../../../public/js/acceptSlipImage.js"></script>
+
+                <!--            reject slip page-->
+                <?php include_once ('rejectSlip.php');?>
+
+
+                <!--            reject slip js  file-->
+                <script src="../../../public/js/rejectSlipImage.js"></script>
             </div>
 
-<!--            accept slip page-->
-            <?php include_once ('acceptSlip.php');?>
-
-<!--            accept slip js file-->
-            <script src="../../../public/js/acceptSlipImage.js"></script>
-
-  <!--            reject slip page-->
-            <?php include_once ('rejectSlip.php');?>
-
-
-<!--            reject slip js  file-->
-            <script src="../../../public/js/rejectSlipImage.js"></script>
-
+            <div class="slipDetails-container">
+                <div class="details-student">
+                    <h1>Details</h1>
+                    <div class="details-table">
+                        <?php
+                        $object = new paymentVerifyController();
+                        $details = $object->getSlipOwner($paymentId);
+                        foreach ($details as $detail){
+                            $userId = $detail['studentId'];
+                            $name = $object->getStudentName($userId);
+                            ?>
+                            <p>Student full name : <?php echo $name;?></p>
+                            <p>Course amount : Rs. <?php echo $detail['amount'];?></p>
+                            <p>Submit date : <?php echo $detail['date'];?></p>
+                        <?php }
+                        ?>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="payment-details">
-        <h1>Details</h1>
-        <div class="details-table">
-            <?php
-            $object = new paymentVerifyController();
-            $details = $object->getSlipOwner($paymentId);
-            foreach ($details as $detail){
-                $userId = $detail['studentId'];
-                $name = $object->getStudentName($userId);
-//                        echo $name;
-                ?>
-
-                <p>Student full name : <?php echo $name;?></p><br>
-                <p>Course amount : Rs. <?php echo $detail['amount'];?></p><br>
-                <p>Submit date : <?php echo $detail['date'];?></p>
-
-            <?php }
-            ?>
-        </div>
-    </div>
-
-
+   </div>
 </body>
 
 

@@ -1,25 +1,45 @@
-
-.slip-image{
-    width: 40vw;
-    /*height: 100vh;*/
-    /*background-color: #F4C430;*/
-    margin-left: 15vw;
+.main-container{
+    width: 85%;
+    height: 100%;
+    float: right;
+    z-index: 1;
 }
 
-/*.header-2{*/
-/*    height: 10vh;*/
-/*    background-color: red;*/
-/*    width: 40vw;*/
-/*    margin-top: 100px;*/
-/*}*/
+.header-container{
+    width: 98%;
+    height: 3vh;
+    margin-top: 5vh;
+    margin-left: 1vw;
+}
 
-.main{
-    height: 80vh;
-    width: 55vw;
+.back-to-payments{
+    margin-left: 40px;
+    cursor: pointer;
+}
+hr{
+    border: 2px solid black;
+}
+
+.body-container{
     display: flex;
-    margin-top: 9vh;
-    /*width: 60vw;*/
-    /*margin-left: 20vw;*/
+    flex-direction: row;
+}
+
+.slipImage-container{
+    width: 45vw;
+    height: 70vh;
+    text-align: center;
+}
+
+.slipImage-container h2{
+    margin-top: 8vh;
+    font-weight: bold;
+    margin-bottom: 5vh;
+}
+
+.viewSlip-image{
+    width: 20vw;
+    height: 40vh;
 }
 
 #slip-pic{
@@ -27,37 +47,10 @@
     height: 40vh;
     align-items: center;
     justify-content: center;
-    /*margin-top: 35vh;*/
-    margin-left: 5vw;
+    margin-left: 3vw;
     border-radius: 10px;
     border-color: black;
     position: relative;
-}
-
-.payment-details{
-    background-color: #0b2e5e;
-    width: 25vw;
-    /*margin-left: 65vw;*/
-    /*margin-top: 20vh;*/
-    /*height: 100vh;*/
-    position: absolute;
-    margin-left: 60vw;
-    /*margin-top: 30vh;*/
-}
-
-h2{
-    padding: 30px;
-    margin-left: 40px;
-    font-weight: bold;
-    font-size: 30px;
-    margin-bottom: 20px;
-}
-
-.payment-button{
-    /*background-color: #F4C430;*/
-    height: 15vh;
-    display: flex;
-    flex-direction: row;
 }
 
 #accept-button{
@@ -67,12 +60,12 @@ h2{
     padding: 5px;
     width: 100px;
     height: 45px;
-    /*font-weight: bold;*/
+    font-weight: bold;
     font-size: 20px;
     color: black;
     cursor: pointer;
     margin-top: 50px;
-    margin-left: 5vw;
+    margin-left: 16vw;
 }
 
 #accept-button:hover{
@@ -87,12 +80,12 @@ h2{
     padding: 5px;
     width: 100px;
     height: 45px;
-    /*font-weight: bold;*/
+    font-weight: bold;
     font-size: 20px;
     color: black;
     cursor: pointer;
     margin-top: 50px;
-    margin-left: 19.5vw;
+    margin-left: 3vw;
 }
 
 #reject-button:hover{
@@ -100,22 +93,21 @@ h2{
     color: white;
 }
 
-.payment-details h1{
-    padding: 20px;
-    margin-left: 50px;
-    margin-top: 10px;
-}
 
-.details-table p{
+.details-student p{
+    font-weight: bold;
     font-size: 20px;
-
 }
 
-.slip-image h2{
-    margin-top: 30px;
-    margin-left: 50px;
-}
-
-.slip-image hr{
-    width: 40vw;
+.details-student{
+    background-color: #f8f8f8;
+    width: 23vw;
+    height: 35vh;
+    position: absolute;
+    margin-left: 50vw;
+    margin-top: -53vh;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 10px 10px #f0eded;
+    border-radius: 10px;
 }

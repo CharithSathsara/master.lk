@@ -15,7 +15,7 @@
         <div class="accessPop">
             <div class="accessHead">
                 <img src="../../../public/img/verify.png">
-                <h4>Verify Payment</h4>
+                <h3>Verify Payment</h3>
             </div>
 
             <div class="accessBody">
@@ -28,7 +28,7 @@
                 </div>
                     <form method="post" action="<?= base_url('controller/adminController/paymentVerificationController/paymentAcceptRejectController.php') ?>">
                         <input type="hidden" name="PaymentId" id="yer-PaymentId">
-                        <input type="submit" name="yesButton-pop" value="Yes, Verify">
+                        <input type="submit" name="yesButton-pop" value="Yes, Verify" class="yesButton-pop">
                     </form>
                 </div>
             </div>

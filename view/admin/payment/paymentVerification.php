@@ -14,14 +14,27 @@
     include('../../../model/slipPayment.php');
     include('../../../model/Admin.php');
     include('../../../model/Student.php');
+    include('../../../model/BankDetails.php');
     include_once('../../common/header.php');
     include_once('../../common/navBar-Admin.php');
 
     ?>
 
+    <?php
+    $bankDetails = new paymentVerifyController();
+    $viewBankDetails  = $bankDetails->getBankDetails();
+    ?>
+
     <div class="main-container">
         <div class="container-1">
             <p>Payment Verification</p>
+            <?php
+            foreach ($viewBankDetails as $detail){
+            ?>
+            <button class="Bank-Details" onclick="updateBank('<?php echo $detail['AccountNumber'];?>','<?php echo $detail['HolderName'];?>','<?php echo $detail['BankName'];?>','<?php echo $detail['BranchName'];?>')">Bank Details</button>
+            <?php
+                }
+            ?>
         </div>
 
         <div class="container-2">
@@ -53,6 +66,10 @@
 
 <!--      View slip js function-->
                     <script src="../../../public/js/viewSlipImage.js"></script>
+
+<!-- Bank Details Update page               -->
+                    <?php include('../payment/updateBankDetails.php')?>
+
 
                 </tbody>
             </table>

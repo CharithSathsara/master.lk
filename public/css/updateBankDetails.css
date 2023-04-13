@@ -1,0 +1,77 @@
+.Update-BankDetails{
+    background-color: rgba(0,0,0,0.6);
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    display: none;
+    justify-content: center;
+    z-index: 100;
+    margin-left: -15vw;
+}
+
+.BankDetails-table{
+    width: 35vw;
+    height: 50vh;
+    background-color: whitesmoke;
+    margin-top: 24vh;
+    margin-left: 30vw;
+    border-radius: 8px;
+}
+
+.box-header{
+    display: flex;
+    flex-direction: row;
+}
+.box-header p{
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 15px;
+    margin-right: 22vw;
+}
+.box-header img{
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.details{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.details input[type=text]{
+    width: 22vw;
+    margin-left: 6vw;
+    height: 25px;
+
+}
+
+.details label{
+    margin-bottom: 10px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.details input[type=submit]{
+    width: 5.5vw;
+    margin-top: 25px;
+    border: none;
+    background-color: #F4C430;
+    padding: 8px 0;
+    /*font-weight: bold;*/
+    border-radius: 10px;
+    font-size: 18px;
+    margin-left: 14vw;
+}
+
+.details input[type=submit]:hover{
+    background-color: #0b2e5e;
+    color: whitesmoke;
+}
+
+
+
+
+

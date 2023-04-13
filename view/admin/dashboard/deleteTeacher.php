@@ -31,11 +31,11 @@
                 </div>
 
                 <div class="deletePop-teacherButton">
+                    <button class="deleteNo-button" id="deleteNo-btn">No</button>
                     <form action="<?= base_url('controller/adminController/dashboardController/deleteTeacherController.php') ?>" method="post">
                         <input type="hidden" name="userId" id="teacherUserId">
                         <input type="submit" class="deleteYes-button" id="deleteYes-btn" value="Yes" name="DeleteTeacher-btn">
                     </form>
-                    <button class="deleteNo-button" id="deleteNo-btn">No</button>
                 </div>
             </div>
         </div>
