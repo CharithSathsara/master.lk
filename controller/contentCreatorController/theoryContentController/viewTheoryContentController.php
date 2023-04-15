@@ -52,7 +52,7 @@ class ViewTheoryContentController{
 
     public function getAllLessons($subject){
     
-            $data = Lesson::getSubjectLessons($this->connection, $subject);
+            $data = Lesson::getAllLessons($this->connection, $subject);
 
             if($data){
                 return $data;

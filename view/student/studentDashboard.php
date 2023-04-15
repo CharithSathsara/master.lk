@@ -7,10 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Student Dashboard</title>
     <link rel="stylesheet" href="../../public/css/studentDashboard.css?<?php echo time(); ?>">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src="../../public/js/studentDashboard.js"></script>
 </head>
 <body>
 
@@ -30,12 +31,15 @@ include_once('../common/header.php');
 include_once('../../controller/studentController/dashboardController/lessonController.php');
 include_once('../../controller/studentController/dashboardController/studentSubjectController.php');
 include_once('../../controller/studentController/dashboardController/subjectProgressController.php');
+include_once('../../controller/studentController/dashboardController/progressController.php');
 include_once('../../model/Student.php');
 include_once('../../model/Lesson.php');
+include_once('../../model/Topic.php');
 
 $lessonController = new lessonController();
 $studentSubjectController = new studentSubjectController();
 $subjectProgressController = new subjectProgressController();
+$progressController = new progressController();
 
 ?>
 
@@ -100,15 +104,15 @@ $subjectProgressController = new subjectProgressController();
 
             <br><br> 
 
-            <!-- Progress Section -->
+            <!-- Completion Section -->
 
-            <b><p class="sub-title">Progress&nbsp;&nbsp;&nbsp;</p></b>
+            <b><p class="sub-title">Completion&nbsp;&nbsp;&nbsp;</p></b> 
 
-            <div id="progress-container">
-            <div id="chem-sec" class="subject-progress-card">
-                    <p class="progress-card-title">Chemistry</p>
+            <div id="completion-container">
+                <div id="chem-sec" class="subject-progress-card">
+                    <p class="progress-card-title">Chemistry</p><br>
                     <div id="inner-container">
-                        <?=$lessonController->getLessonProgress("Chemistry")?>
+                        <?=$lessonController->getLessonCompletion("Chemistry")?>
                         <div id="lesson-names">
                             <?php
                             $rows = array();
@@ -131,13 +135,12 @@ $subjectProgressController = new subjectProgressController();
                             }?>
                         </div>  
                     </div>
-                    
-            </div>
-            <br>
-            <div id="phy-sec" class="subject-progress-card">
-                    <p class="progress-card-title">Physics</p>
+                </div>
+                <br>
+                <div id="phy-sec" class="subject-progress-card">
+                    <p class="progress-card-title">Physics</p><br>
                     <div id="inner-container">
-                        <?=$lessonController->getLessonProgress("Physics")?>
+                        <?=$lessonController->getLessonCompletion("Physics")?>
                         <div id="lesson-names">
                             <?php
                             $rows = array();
@@ -160,20 +163,127 @@ $subjectProgressController = new subjectProgressController();
                             }?>
                         </div>  
                     </div>
-                    
-            </div>
+                </div>
             </div>
 
             <br><br> 
 
-            <!-- Scores Section -->
+            <!-- Progress Section -->
 
-            <b><p class="sub-title">Scores&nbsp;&nbsp;&nbsp;</p></b>
+            <b><p class="sub-title">Progress&nbsp;&nbsp;&nbsp;</p></b> 
+            
+            <div id="progress-container">
 
-            <div id="scores-container">
+                <form action="" method="get">
+                    <label for="lesson">Select the lesson : </label><br><br>
+                    <select name="lesson" id="lesson-progress">
+                        <option value="default" disabled selected hidden>Select a lesson</option>
+                        <optgroup label="Chemistry">
+                        <?php
+                            $chem_lessons = $lessonController->getAllLessons("Chemistry");
+                            foreach($chem_lessons as $lesson){
+                                echo "<option value='".$lesson['lessonName']."'>".$lesson['lessonName']."</option>";
+                            }
+                        ?>
+                        </optgroup>
+                        <optgroup label="Physics">
+                        <?php
+                            $phy_lessons = $lessonController->getAllLessons("Physics");
+                            foreach($phy_lessons as $lesson){
+                                echo "<option value='".$lesson['lessonName']."'>".$lesson['lessonName']."</option>";
+                            }
+                        ?>
+                        </optgroup>
+                    </select>
+                    <input type="submit" value="Check Progress" id="select-lesson-btn" name="get-progress-lesson" onclick="setScrollPosition(event)">
+                    
+                </form>
 
+                <!-- <script>
+                    document.getElementById('select-lesson-btn').addEventListener('click', function() {
+                        event.preventDefault();
+                        window.scrollTo(0, 850); 
+                    });
+                </script> -->
+    
+                <?php
 
+                    if(isset($_GET['get-progress-lesson']) && isset($_GET['lesson'])){
+                        
+                        $status = $progressController->hasStarted($_GET['lesson']);
+
+                        if($status){
+                        
+                            $topics = $progressController->getTopicsOfLesson($_GET['lesson']);
+                            echo "
+                            <canvas id='progressChart'></canvas>
+                            <script>
+                                const xValues = [";
+
+                                foreach($topics as $topic){
+                                    echo "'".$topic['topicTitle']."',";
+                                }
+                            echo "
+                            ];
+                            new Chart('progressChart', {
+                                type: 'line',
+                                data: {
+                                    labels: xValues,
+                                    datasets: [{
+                                    label: 'Average marks of quizzes',
+                                    data: [";
+
+                                    $progressController->getLessonProgress($_GET['lesson']);
+
+                                    echo
+                                    "],
+                                    borderColor: 'green',
+                                    fill: false
+                                    }]
+                                },
+                                options: {
+                                    
+                                    legend: {
+                                        display: true,
+                                        position: 'bottom',
+                                     },
+                                    title: {
+                                        display: true,
+                                        text: 'Progress - ".$_GET['lesson']."',
+                                        color: 'navy',
+                                        position: 'top',
+                                        align: 'center',
+                                        font: {
+                                            
+                                            fontSize:100,
+                                
+                                        },
+                                        padding: 30,
+                                        fullSize: true,
+                                    }
+                                    
+                                },
+                                });
+                            </script>
+                            ";   
+                                
+                            
+                        }else{
+                            echo "<div id='no-lesson-selected'>
+                            <img id='no-lesson-img' src='../../public/img/chart.png'><br>
+                            <p id='no-lesson-text'>You have not completed any quizzes from <span><b>'".$_GET['lesson']."'</b></span></p>
+                             </div>";
+                        }
+                    }else{
+                        echo "<div id='no-lesson-selected'>
+                                <img id='no-lesson-img' src='../../public/img/chart.png'><br>
+                                <p id='no-lesson-text'>Select a lesson and check your progress</p>
+                            </div>";
+                    }
+
+                ?>
             </div>
+
             <br><br>
 
             <!-- Badges Section -->
@@ -191,7 +301,16 @@ $subjectProgressController = new subjectProgressController();
             <b><p class="sub-title">Recommendations&nbsp;&nbsp;&nbsp;</p></b>
 
             <div id="rec-container">
+                <?php
+                $msgs = ;
+                
+                ?>
+                    <div class="rec-cards">
+                        <div class="msg-container">
 
+                        </div>
+                        <img src="../../public/img/master.svg" class="master-img">
+                    </div>
             </div>
 
         </div>
@@ -239,7 +358,7 @@ $subjectProgressController = new subjectProgressController();
 
 ?>
 
-<script src="../../public/js/studentDashboard.js"></script>
+
 
 
 </body>

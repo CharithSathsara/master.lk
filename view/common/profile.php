@@ -60,7 +60,7 @@ $profileInfoController = new profileInfoController();
                     <img src="../../public/icons/remove.svg" class="edit-icon">
                 </button>
                 <div class="circle" id="circle">
-                    <?=$profilePhotoViewController->getProfilePhoto();?>
+                    <img id='profile-pic' src='<?=$profilePhotoViewController->getProfilePhoto();?>'/>;
                 </div>
 
             </div>

@@ -29,14 +29,26 @@ class lessonController{
         die();
     }
 
-    // Controller to call the function which gets the progress of each lesson 
+    // Controller to call the function which gets the completion of each lesson 
 
-    public function getLessonProgress($subject){
+    public function getLessonCompletion($subject){
 
-        $data = Lesson::getLessonProgress($this->connection,$subject);
+        $data = Lesson::getLessonCompletion($this->connection,$subject);
 
         if($data){
             return;
+        }else{
+            return false;
+        }
+
+    }
+
+    public function getAllLessons($subject){
+
+        $data = Lesson::getAllLessons($this->connection,$subject);
+
+        if($data){
+            return $data;
         }else{
             return false;
         }

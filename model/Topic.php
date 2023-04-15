@@ -71,5 +71,23 @@ class Topic{
 
     }
 
+    public static function getTopicsOfLesson($connection,$lesson){
+
+        $query2 = "SELECT lessonId FROM lesson WHERE lessonName='$lesson'";
+        $result2 = $connection->query($query2);
+        $data2 = $result2->fetch_assoc();
+        $lessonId = $data2['lessonId'];
+
+        $query3 = "SELECT topicTitle FROM topic WHERE lessonId='$lessonId' ORDER BY topicId ASC";
+        $result3 = $connection->query($query3);
+        
+        if($result3->num_rows > 0){
+            return $result3;
+        }else{
+            return false;
+        }
+        
+
+    }
 
 }

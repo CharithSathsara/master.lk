@@ -33,7 +33,7 @@ $profilePhotoViewController = new profilePhotoViewController();
     <div id="cc-nav" class="nav">
         <div class="prof-detail">
             <div class="circle">
-                <?=$profilePhotoViewController->getProfilePhoto();?>
+                <img id='profile-pic' src='<?=$profilePhotoViewController->getProfilePhoto();?>'/>;
             </div>
 
             <p id="user-name">

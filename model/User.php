@@ -115,19 +115,13 @@ class User {
 
         if($row['image']!=null){
 
-            $to_echo = "<img id='profile-pic' src='data:image/jpg;charset=utf8;base64,";
+            $to_echo = "data:image/jpg;charset=utf8;base64,";
             $to_echo .= base64_encode($row['image']);
-            $to_echo .= "'/>";
             echo $to_echo;
 
             return true;
         }else{
-            echo "<img id='profile-pic' src='../../public/img/default-profPic.png'/>";
-            // echo "<img id='profile-pic' src='".base_url('public/img/default-profPic.png')."'/>";
-            // $to_echo = "<img id='profile-pic' src='";
-            // $to_echo .= base_url('public/img/default-profPic.png');
-            // $to_echo .= "'/>";
-            // echo $to_echo;
+            echo base_url('public/img/default-profPic.png');
             return false;
         }
 

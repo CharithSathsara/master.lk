@@ -58,26 +58,28 @@ class Lesson{
         }
 
     }
-    
-    public static function getSubjectLessons($connection,$subject){
 
-        
+    public static function getAllLessons($connection,$subject){
+
         $query1 = "SELECT subjectId FROM subject WHERE subjectTitle='$subject'";
         $result1 = $connection->query($query1);
         $data1 = $result1->fetch_assoc();
         $subjectId = $data1['subjectId'];
 
-        $query2 = "SELECT lessonId, lessonName FROM lesson WHERE subjectId='$subjectId'";
+        $query2 = "SELECT * FROM lesson WHERE subjectId='$subjectId'";
         $result2 = $connection->query($query2);
 
-            if($result2){
-                return $result2;
-            }
+        if($result2 && mysqli_num_rows($result2) > 0){
+            return $result2;
+        }else{
+            return false;
+        }
+
     }
 
-    // Function to get progress of each lesson
+    // Function to get completion of each lesson
 
-    public static function getLessonProgress($connection,$subject){
+    public static function getLessonCompletion($connection,$subject){
 
         $userId = $_SESSION['auth_user']['userId'];
 
@@ -160,4 +162,66 @@ class Lesson{
 
     }
 
+    //Function to check whether the student has started the given lesson
+
+    public static function hasStarted($connection,$lesson){
+
+        $userId = $_SESSION['auth_user']['userId'];
+        $query1 = "SELECT lessonId from lesson WHERE lessonName='$lesson'";
+        $result1 = $connection->query($query1);
+        $data1 = $result1->fetch_assoc();
+        $lessonId = $data1['lessonId'];
+
+        // Checks whether there are any completed quizzes for the current student from the given lesson
+
+        $query2 = "SELECT DISTINCT quiz_details.topicId
+                FROM quiz_details
+                INNER JOIN topic ON quiz_details.topicId=topic.topicId
+                INNER JOIN lesson ON topic.lessonId=lesson.lessonId
+                WHERE lesson.lessonId='$lessonId' && quiz_details.studentId='$userId'
+                ;";
+        $result2 = $connection->query($query2);
+
+        if(mysqli_num_rows($result2) > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    //Function to get lesson progress for each topic
+
+    public static function getLessonProgress($connection,$lesson){
+
+        $userId = $_SESSION['auth_user']['userId'];
+        $query1 = "SELECT lessonId from lesson WHERE lessonName='$lesson'";
+        $result1 = $connection->query($query1);
+        $data1 = $result1->fetch_assoc();
+        $lessonId = $data1['lessonId'];
+
+        $query2 = "SELECT * FROM topic WHERE lessonId='$lessonId' ORDER BY topicId ASC";
+        $result2 = $connection->query($query2);
+
+        foreach ($result2 as $topicid){
+            $topic = $topicid['topicId'];
+            $query3 = "SELECT score FROM quiz_details WHERE topicId = '$topic' AND studentId='$userId'";
+            $result3 = $connection->query($query3);
+
+            if(mysqli_num_rows($result3) > 0){
+                $score_sum =0;
+                $score_count=0;
+                foreach ($result3 as $score){
+                    $score_count++;
+                    $score_sum = $score_sum + $score['score'];
+                }
+                $score_avg = $score_sum / $score_count;
+                echo $score_avg.",";
+            }else{
+                echo "0,";
+            }
+        }
+        
+        return true;
+
+    }
 }

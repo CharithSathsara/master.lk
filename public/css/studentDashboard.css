@@ -116,13 +116,14 @@ progress[value] {
 }
 
 .lesson{
-    background-color:#EDECEC;
+    background-color: #EDECEC;
     margin-left: 10px;
     margin-right: 10px;
-    height: 40px;
+    height: auto;
     border-radius: 5px;
     text-align: center;
     margin-bottom: 10px;
+    word-wrap: break-word;
 }
 
 .lesson:hover{
@@ -134,18 +135,19 @@ progress[value] {
     margin-top:0;
     margin-bottom: 0;
     padding:8px 0;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .goToLesson-button{
     width:100%;
 }
 
-/* Progress Section */
+/* Completion Section */
 
-#progress-container{
+#completion-container{
     margin-top:35px;
     height:auto;
-    
+    display: flex;
 }
 
 .subject-progress-card{
@@ -164,6 +166,10 @@ progress[value] {
     font-weight: bold;
 }
 
+#chem-sec{
+    margin-right: 20px;
+}
+
 #inner-container{
     height: auto;
     display: flex;
@@ -176,10 +182,10 @@ progress[value] {
 }
 
 .lesson-name-item{
-    margin-left: 100px;
+    margin-left: 15px;
     margin-bottom: 50px;
     font-weight: bold;
-    
+    word-wrap: break-word;
 }
 
 #progress-values{
@@ -222,6 +228,63 @@ progress[value] {
     background-color: #f49f0a !important;
   }
 
+/* Progress Section */
+
+#progress-container{
+    margin-top:35px;
+    height:340px;
+    display: flex;
+}
+
+#lesson-progress{
+    width: 300px;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: #edecec;
+    margin-right: 10px;
+}
+
+#select-lesson-btn{
+    background-color: #0b2e5e;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 10px;
+    background-color: none;
+    border: none;
+    font-weight: bold;
+}
+
+#select-lesson-btn:hover{
+    background-color:black;
+    color: white;
+    cursor: pointer;
+}
+
+#progressChart{
+    width: 100%;
+    max-width: 700px;
+    margin-left: 30px;
+    margin-top: 40px;
+}
+
+#no-lesson-selected{
+    text-align: center;
+    margin: auto;
+}
+
+#no-lesson-img{
+    width: 100px;
+    opacity: .50;
+}
+
+#no-lesson-text{
+    color: #f49f0a;
+}
+
 /* Badges Section */
 
 #badge-container{
@@ -229,18 +292,41 @@ progress[value] {
     height:350px;
     background-color:#EDECEC;
     border-radius: 10px;
-    width:97%;
-}
-
-#rec-container{
-    margin-top:35px;
-    height:350px;
-    background-color:#219ebc;
-    border-radius: 10px;
-    width:97%;
+    width:100%;
 }
 
 /* Recommendations Section */
+
+#rec-container{
+    margin-top:35px;
+    height:auto;
+    border-radius: 10px;
+    width:100%;
+}
+
+.master-img{
+    height: 100px;
+    margin-bottom:15px;
+    display: inline-block;
+}
+
+.rec-cards{
+    background-color: #EDECEC;
+    height: 200px;
+    width: 49%;
+    display: inline-block;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin-right: 5px;
+}
+
+.msg-container{
+    display: inline-block;
+    background-color: aqua;
+    height: 200px;
+    width: 82%;
+}
+
 
 /* No Subjects Bought Section */
 

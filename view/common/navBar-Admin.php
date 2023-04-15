@@ -34,7 +34,7 @@ $profilePhotoViewController = new profilePhotoViewController();
     <div class="prof-detail">
 
         <div class="circle">
-            <?=$profilePhotoViewController->getProfilePhoto();?>
+            <img id='profile-pic' src='<?=$profilePhotoViewController->getProfilePhoto();?>'/>;
         </div>
 
         <p id="user-name"><?= $_SESSION['auth_user']['userFirstName'] ?>&nbsp;<?= $_SESSION['auth_user']['userLastName'] ?></p>
