@@ -191,7 +191,7 @@ class Lesson{
 
     //Function to get lesson progress for each topic
 
-    public static function getLessonProgress($connection,$lesson){
+    public static function getLessonProgress($connection,$lesson,$type){
 
         $userId = $_SESSION['auth_user']['userId'];
         $query1 = "SELECT lessonId from lesson WHERE lessonName='$lesson'";
@@ -204,7 +204,7 @@ class Lesson{
 
         foreach ($result2 as $topicid){
             $topic = $topicid['topicId'];
-            $query3 = "SELECT score FROM quiz_details WHERE topicId = '$topic' AND studentId='$userId'";
+            $query3 = "SELECT score FROM quiz_details WHERE topicId = '$topic' AND studentId='$userId' AND quizType='$type'";
             $result3 = $connection->query($query3);
 
             if(mysqli_num_rows($result3) > 0){

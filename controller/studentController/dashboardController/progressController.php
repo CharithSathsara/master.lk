@@ -35,9 +35,9 @@ class progressController{
 
     }
 
-    public function getLessonProgress($lesson){
+    public function getLessonProgress($lesson,$type){
 
-        $data = Lesson::getLessonProgress($this->connection,$lesson);
+        $data = Lesson::getLessonProgress($this->connection,$lesson,$type);
 
         if($data){
             return true;

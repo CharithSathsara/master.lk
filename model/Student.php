@@ -173,5 +173,28 @@ class Student {
 
     }
 
+    //Function to get recommendations for the student
+
+    public static function getRecommendations($connection){
+
+        $userId = $_SESSION['auth_user']['userId'];
+        //Gets an array to store the recommendation messages
+        $msgs = array(); 
+        
+        //Checks if the student has started any lessons
+
+        $query1 = "SELECT * from quiz_details WHERE studentId='$userId'";
+        $result1 = $connection->query($query1);
+
+        if(mysqli_num_rows($result1)>0){
+
+            
+
+        }else{
+            $msgs[]="Go ahead and start your quizzes to expand your knowledge. ";
+        }
+        
+    }
+
 
 }

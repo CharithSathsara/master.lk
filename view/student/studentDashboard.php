@@ -32,6 +32,7 @@ include_once('../../controller/studentController/dashboardController/lessonContr
 include_once('../../controller/studentController/dashboardController/studentSubjectController.php');
 include_once('../../controller/studentController/dashboardController/subjectProgressController.php');
 include_once('../../controller/studentController/dashboardController/progressController.php');
+include_once('../../controller/studentController/dashboardController/recommendationsController.php');
 include_once('../../model/Student.php');
 include_once('../../model/Lesson.php');
 include_once('../../model/Topic.php');
@@ -40,6 +41,7 @@ $lessonController = new lessonController();
 $studentSubjectController = new studentSubjectController();
 $subjectProgressController = new subjectProgressController();
 $progressController = new progressController();
+$recommendationsController = new recommendationsController();
 
 ?>
 
@@ -230,14 +232,24 @@ $progressController = new progressController();
                                 data: {
                                     labels: xValues,
                                     datasets: [{
-                                    label: 'Average marks of quizzes',
+                                    label: 'Average Marks - Model Papers',
                                     data: [";
 
-                                    $progressController->getLessonProgress($_GET['lesson']);
+                                    $progressController->getLessonProgress($_GET['lesson'],'MODELPAPER');
 
                                     echo
                                     "],
                                     borderColor: 'green',
+                                    fill: false
+                                    },
+                                    {label: 'Average Marks - Past Papers',
+                                    data: [";
+
+                                    $progressController->getLessonProgress($_GET['lesson'],'PASTPAPER');
+    
+                                    echo
+                                    "],
+                                    borderColor: 'red',
                                     fill: false
                                     }]
                                 },
@@ -302,7 +314,7 @@ $progressController = new progressController();
 
             <div id="rec-container">
                 <?php
-                $msgs = ;
+                $msgs = $recommendationsController->getRecommendations();
                 
                 ?>
                     <div class="rec-cards">
