@@ -178,17 +178,44 @@ class Student {
     public static function getRecommendations($connection){
 
         $userId = $_SESSION['auth_user']['userId'];
-        //Gets an array to store the recommendation messages
         $msgs = array(); 
         
         //Checks if the student has started any lessons
 
-        $query1 = "SELECT * from quiz_details WHERE studentId='$userId'";
+        $query1 = "SELECT * FROM quiz_details WHERE studentId='$userId'";
         $result1 = $connection->query($query1);
 
         if(mysqli_num_rows($result1)>0){
 
-            
+            $query2 = "SELECT * FROM lesson ORDER BY lessonId ASC";
+            $result2 = $connection->query($query2);
+
+            foreach($result2 as $lessonAttribute){
+                $lesson = $lessonAttribute['lessonName'];
+                $lessonId = $lessonAttribute['lessonId'];
+
+                //Checks if the student has started the selected lesson
+
+                $hasStarted = Lesson::hasStarted($connection,$lesson);
+                if($hasStarted){
+
+                    $query3="SELECT * FROM topic WHERE lessonId = '$lessonId'";
+                    $result3 = $connection->query($query3);
+
+                    foreach($result3 as $topicAttribute){
+                        $topic = $topicAttribute['topicTitle'];
+                        $topicId = $lessonAttribute['topicId'];
+
+                        //Checks whether there are marks < 5 in the quizzes of selected topic
+
+                        $query4 = "SELECT score FROM quiz_details WHERE score<5 AND studentId='$userId' AND topicId='$topicId'";
+
+                    }
+    
+                }else{
+                    $msgs[] = "Start your quizzes of '".$lesson."' lesson.";
+                }
+            }
 
         }else{
             $msgs[]="Go ahead and start your quizzes to expand your knowledge. ";

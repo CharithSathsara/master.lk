@@ -11,7 +11,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-    <script src="../../public/js/studentDashboard.js"></script>
 </head>
 <body>
 
@@ -176,7 +175,7 @@ $recommendationsController = new recommendationsController();
             
             <div id="progress-container">
 
-                <form action="" method="get">
+                <form action="" method="get" id="progress-checking-form">
                     <label for="lesson">Select the lesson : </label><br><br>
                     <select name="lesson" id="lesson-progress">
                         <option value="default" disabled selected hidden>Select a lesson</option>
@@ -197,20 +196,36 @@ $recommendationsController = new recommendationsController();
                         ?>
                         </optgroup>
                     </select>
-                    <input type="submit" value="Check Progress" id="select-lesson-btn" name="get-progress-lesson" onclick="setScrollPosition(event)">
+                    <input type="submit" value="Check Progress" id="select-lesson-btn" name="get-progress-lesson">
                     
                 </form>
 
                 <!-- <script>
-                    document.getElementById('select-lesson-btn').addEventListener('click', function() {
-                        event.preventDefault();
-                        window.scrollTo(0, 850); 
+                    document.getElementById('progress-checking-form').addEventListener('submit', function() {
+                    //    setTimeout(() => {
+                    //     console.log('xxxxxxx');
+                    //    }, 3000);
+                       window.scrollTo(0, 850); 
+                       event.preventDefault();
+
+                        
+                        
                     });
+                    
                 </script> -->
     
                 <?php
 
                     if(isset($_GET['get-progress-lesson']) && isset($_GET['lesson'])){
+
+                        echo "<script>
+                          setTimeout(()=>{
+                            window.scrollTo({
+                                top: 850,
+                                behavior: 'smooth',
+                               }); 
+                          },50)
+                         </script>";
                         
                         $status = $progressController->hasStarted($_GET['lesson']);
 
@@ -282,14 +297,26 @@ $recommendationsController = new recommendationsController();
                             
                         }else{
                             echo "<div id='no-lesson-selected'>
-                            <img id='no-lesson-img' src='../../public/img/chart.png'><br>
-                            <p id='no-lesson-text'>You have not completed any quizzes from <span><b>'".$_GET['lesson']."'</b></span></p>
-                             </div>";
+                                    <div id='no-lesson-section'>
+                                        <img id='no-lesson-img' src='../../public/img/chart.png'><br>
+                                        <p id='no-lesson-text'>You have not completed any quizzes from <span><b>'".$_GET['lesson']."'</b></span></p>
+                                    </div>
+                                </div>";
                         }
                     }else{
+                        echo "<script>
+                          setTimeout(()=>{
+                            window.scrollTo({
+                                top: 850,
+                                behavior: 'smooth',
+                               }); 
+                          },50)
+                         </script>";
                         echo "<div id='no-lesson-selected'>
-                                <img id='no-lesson-img' src='../../public/img/chart.png'><br>
-                                <p id='no-lesson-text'>Select a lesson and check your progress</p>
+                                <div id='no-lesson-section'>
+                                    <img id='no-lesson-img' src='../../public/img/chart.png'><br>
+                                    <p id='no-lesson-text'>Select a lesson and check your progress</p>
+                                </div>
                             </div>";
                     }
 
@@ -314,15 +341,15 @@ $recommendationsController = new recommendationsController();
 
             <div id="rec-container">
                 <?php
-                $msgs = $recommendationsController->getRecommendations();
+                // $msgs = $recommendationsController->getRecommendations();
                 
                 ?>
-                    <div class="rec-cards">
+                    <!-- <div class="rec-cards">
                         <div class="msg-container">
 
                         </div>
                         <img src="../../public/img/master.svg" class="master-img">
-                    </div>
+                    </div> -->
             </div>
 
         </div>

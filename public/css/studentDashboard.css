@@ -274,6 +274,14 @@ progress[value] {
 #no-lesson-selected{
     text-align: center;
     margin: auto;
+    background-color: #EDECEC;
+    width: 700px;
+    height:350px;
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
 }
 
 #no-lesson-img{
@@ -289,7 +297,7 @@ progress[value] {
 
 #badge-container{
     margin-top:35px;
-    height:350px;
+    height:auto;
     background-color:#EDECEC;
     border-radius: 10px;
     width:100%;
