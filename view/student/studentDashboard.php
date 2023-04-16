@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src="../../public/js/studentDashboard.js"></script>
 </head>
 <body>
 
@@ -242,7 +243,7 @@ $recommendationsController = new recommendationsController();
 
                                         echo
                                         "],
-                                        borderColor: 'green',
+                                        borderColor: 'MediumVioletRed',
                                         fill: false
                                         },
                                         {label: 'Average Marks - Past Papers',
@@ -252,7 +253,7 @@ $recommendationsController = new recommendationsController();
         
                                         echo
                                         "],
-                                        borderColor: 'red',
+                                        borderColor: 'LightSeaGreen',
                                         fill: false
                                         }]
                                     },
@@ -335,43 +336,70 @@ $recommendationsController = new recommendationsController();
             <b><p class="sub-title">Recommendations&nbsp;&nbsp;&nbsp;</p></b>
 
             <div id="rec-container">
-                <?php
-                $msgs = $recommendationsController->getRecommendations();
-                
-                if($msgs){
-                    $rec_msgs = array();
-                    $rec_msgs = $_SESSION['rec-msgs'];
-                    $first_four_msgs = array_slice($rec_msgs, 0, 4);
+                <div id="rec-card">
+                    <div id="container-head"></div>
+                    <div class="rec-msg-slides">
+                        <button class="nav-btns nav-btns-next">
+                            <img src="../../public/icons/arrow-back.svg" class="arrow-icon" name="arrow-back">
+                        </button>
+                        <button class="nav-btns nav-btns-prev">
+                            <img src="../../public/icons/arrow-forward.svg" class="arrow-icon" name="arrow-forward">
+                        </button>
 
-                    foreach ($first_four_msgs as $item) {       
-                        echo "
-                        <div class='rec-cards'>
-                            <div class='msg-container'>
-                                <p>".$item."</p>
-                            </div>
-                            <div class='img-container'>
-                                <img src='../../public/img/master.svg' class='master-img'>
-                            </div>
-                        </div>
-                        ";        
-                    }
-                }
-                else{
-                    echo "
-                    <div class='rec-cards'>
-                            <div class='msg-container'>
-                                <p>No recommendations yet!</p>
-                            </div>
-                            <div class='img-container'>
-                                <img src='../../public/img/master.svg' class='master-img'>
-                            </div>
-                        </div>
-                    ";
-                }
+                        <?php
+                            $msgs = $recommendationsController->getRecommendations();
+                    
+                                if($msgs){
+                                    echo "<ul class='slides-list'>";
+                                    $rec_msgs = array();
+                                    $rec_msgs = $_SESSION['rec-msgs'];
+                                    $firstMsg = $rec_msgs[0];
+                                    echo "
+                                        <li class='slide active-slide'>
+                                            <figure class='slide-figure'>
+                                                <img class='slide-figure-img' src='../../public/img/master.svg' alt='Master Logo'/>
+                                                <blockquote class='slide-figure-text'>".$firstMsg."</blockquote>
+                                            </figure>
+                                        </li>
+                                    ";
+                                    for ($i = 1; $i < count($rec_msgs); $i++) {
+                                        echo "
+                                        <li class='slide'>
+                                            <figure class='slide-figure'>
+                                                <img class='slide-figure-img' src='../../public/img/master.svg' alt='Master Logo'/>
+                                                <blockquote class='slide-figure-text'>".$rec_msgs[$i]."</blockquote>
+                                            </figure>
+                                        </li>
+                                        ";
+                                    }
+                                    echo"
+                                        </ul>
+                                        <div class='btn-dots flex'>
+                                            <button class='btn-dot active-dot'></button>";
 
-                ?>
+                                            for ($i = 1; $i < count($rec_msgs); $i++){
+                                                echo"
+                                                <button class='btn-dot'></button>
+                                                ";
+                                            }
+                                            
+                                    echo "   
+                                        </div>
+                                    ";
+                                }
+                                else{
+                                    echo "
+                                    <div class='slides-list'>
+                                        <p id='no-rec-text'>No recommendations yet!</p>
+                                            
+                                    </div>
+                                    ";
+                                }
+
+                        ?>
+                    </div>
+                </div>
             </div>
-
         </div>
     </div>
 
