@@ -11,12 +11,21 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-    <script src="../../view/contentcreator/ckeditor/ckeditor.js"></script>
+    <!-- Main Quill library -->
+    <script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
+
+    <!-- Theme included stylesheets -->
+    <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <link href="//cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet">
+
+    <!-- <script src="../../public/js/addTheoryContent.js"></script> -->
 
 
 </head>
 
 <body>
+
     <?php
 
 
@@ -48,9 +57,10 @@ include_once '../common/header.php';
                         <hr class="hr-line">
                     </p>
                     <div>
+
                         <form
                             action="../../controller/contentCreatorController/theoryContentController/addTheoryContentController.php"
-                            method="post">
+                            method="post" onsubmit="addContentOnSubmit()">
 
 
                             <div class="selectSubject">
@@ -90,9 +100,9 @@ include_once '../common/header.php';
                             <img src="../../public/img/addTheory1.svg" id="fixed-image2">
 
                             <div class="textContent">
-                                <!-- <input type="text" id="sectionContent" name="sectionContent" -->
-                                <!-- placeholder="Add Text Content Here" required> -->
-                                <textarea name="editor1" id="editor1" class="ckeditor">Add Text Content Here</textarea>
+                                <input name="editor1" type="hidden" id="editor1">
+                                <div id="editorcontent1"></div>
+                                <!-- <textarea name="editor1" id="editor1" class="ckeditor">Add Text Content Here</textarea> -->
                             </div>
 
                             <div class="btns">
@@ -110,9 +120,70 @@ include_once '../common/header.php';
         </div>
 
     </div>
+
     <script>
-    CKEDITOR.replace('editor1');
+    var toolbarOptions = [
+        ['bold', 'italic', 'underline', 'strike'], // toggled buttons
+        ['blockquote', 'code-block'],
+        [{
+            'list': 'ordered'
+        }, {
+            'list': 'bullet'
+        }],
+        [{
+            'script': 'sub'
+        }, {
+            'script': 'super'
+        }], // superscript/subscript
+        [{
+            'indent': '-1'
+        }, {
+            'indent': '+1'
+        }], // outdent/indent
+        [{
+            'direction': 'rtl'
+        }], // text direction
+
+        [{
+            'size': ['small', false, 'large', 'huge']
+        }], // custom dropdown
+        [{
+            'header': [1, 2, 3, 4, 5, 6, false]
+        }],
+
+        [{
+            'color': []
+        }, {
+            'background': []
+        }], // dropdown with defaults from theme
+        [{
+            'font': []
+        }],
+        [{
+            'align': []
+        }],
+        ['link', 'image'],
+
+        ['clean'] // remove formatting button
+    ];
+    var options = {
+        modules: {
+            toolbar: toolbarOptions
+        },
+        debug: 'info',
+        placeholder: 'Add Theory Content Here...',
+        readOnly: false,
+        theme: 'snow'
+    };
+    var container = document.getElementById("editorcontent1");
+    var editor = new Quill(container, options);
+
+    function addContentOnSubmit() {
+        var addhtml = document.getElementById("editorcontent1").children[0].innerHTML;
+        document.getElementById("editor1").value = addhtml;
+    }
     </script>
+
 </body>
 
 </html>

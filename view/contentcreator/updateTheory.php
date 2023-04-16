@@ -11,7 +11,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-    <script src="../../view/contentcreator/ckeditor/ckeditor.js"></script>
+    <!-- <script src="../../view/contentcreator/ckeditor/ckeditor.js"></script> -->
+    <!-- Main Quill library -->
+    <script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
+
+    <!-- Theme included stylesheets -->
+    <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <link href="//cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet">
 
 </head>
 
@@ -54,7 +61,7 @@ $viewTheoryContentController = new ViewTheoryContentController();
 
                         <form
                             action="../../controller/contentCreatorController/theoryContentController/updateTheoryContentController.php"
-                            method="post">
+                            method="post" onsubmit="addContentOnSubmit()">
 
 
                             <div class="textContent">
@@ -66,7 +73,9 @@ $viewTheoryContentController = new ViewTheoryContentController();
                                     foreach($content as $row){
                             
                                 ?>
-                                <textarea name="editor2" id="editor2"><?=$row['content'] ?></textarea>
+                                <input name="editor2" type="hidden" id="editor2">
+                                <div id="editorcontent2"><?=$row['content'] ?></div>
+                                <!-- <textarea name="editor2" id="editor2"><?=$row['content'] ?></textarea> -->
                                 <br>
                                 <div class="visibility">Visibility:
                                     <input type="radio" value="Visible" name="radio-visibility" id="radio-visibility"
@@ -104,7 +113,67 @@ $viewTheoryContentController = new ViewTheoryContentController();
         </div>
 
         <script>
-        CKEDITOR.replace('editor2');
+        // CKEDITOR.replace('editor2');
+        var toolbarOptions = [
+            ['bold', 'italic', 'underline', 'strike'], // toggled buttons
+            ['blockquote', 'code-block'],
+            [{
+                'list': 'ordered'
+            }, {
+                'list': 'bullet'
+            }],
+            [{
+                'script': 'sub'
+            }, {
+                'script': 'super'
+            }], // superscript/subscript
+            [{
+                'indent': '-1'
+            }, {
+                'indent': '+1'
+            }], // outdent/indent
+            [{
+                'direction': 'rtl'
+            }], // text direction
+
+            [{
+                'size': ['small', false, 'large', 'huge']
+            }], // custom dropdown
+            [{
+                'header': [1, 2, 3, 4, 5, 6, false]
+            }],
+
+            [{
+                'color': []
+            }, {
+                'background': []
+            }], // dropdown with defaults from theme
+            [{
+                'font': []
+            }],
+            [{
+                'align': []
+            }],
+            ['link', 'image'],
+
+            ['clean'] // remove formatting button
+        ];
+        var options = {
+            modules: {
+                toolbar: toolbarOptions
+            },
+            debug: 'info',
+            placeholder: 'Add Theory Content Here...',
+            readOnly: false,
+            theme: 'snow'
+        };
+        var container = document.getElementById("editorcontent2");
+        var editor = new Quill(container, options);
+
+        function addContentOnSubmit() {
+            var addhtml = document.getElementById("editorcontent2").children[0].innerHTML;
+            document.getElementById("editor2").value = addhtml;
+        }
         </script>
 
 
