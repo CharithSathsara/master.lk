@@ -199,119 +199,115 @@ $recommendationsController = new recommendationsController();
                     <input type="submit" value="Check Progress" id="select-lesson-btn" name="get-progress-lesson">
                     
                 </form>
-
-                <!-- <script>
-                    document.getElementById('progress-checking-form').addEventListener('submit', function() {
-                    //    setTimeout(() => {
-                    //     console.log('xxxxxxx');
-                    //    }, 3000);
-                       window.scrollTo(0, 850); 
-                       event.preventDefault();
-
-                        
-                        
-                    });
-                    
-                </script> -->
     
                 <?php
 
-                    if(isset($_GET['get-progress-lesson']) && isset($_GET['lesson'])){
+                    if(isset($_GET['get-progress-lesson'])){
 
-                        echo "<script>
-                          setTimeout(()=>{
-                            window.scrollTo({
-                                top: 850,
-                                behavior: 'smooth',
-                               }); 
-                          },50)
-                         </script>";
+                        if(isset($_GET['lesson'])){
+
+                            echo "<script>
+                            setTimeout(()=>{
+                                window.scrollTo({
+                                    top: 850,
+                                    behavior: 'smooth',
+                                }); 
+                            },50)
+                            </script>";
                         
-                        $status = $progressController->hasStarted($_GET['lesson']);
+                            $status = $progressController->hasStarted($_GET['lesson']);
 
-                        if($status){
-                        
-                            $topics = $progressController->getTopicsOfLesson($_GET['lesson']);
-                            echo "
-                            <canvas id='progressChart'></canvas>
-                            <script>
-                                const xValues = [";
-
-                                foreach($topics as $topic){
-                                    echo "'".$topic['topicTitle']."',";
-                                }
-                            echo "
-                            ];
-                            new Chart('progressChart', {
-                                type: 'line',
-                                data: {
-                                    labels: xValues,
-                                    datasets: [{
-                                    label: 'Average Marks - Model Papers',
-                                    data: [";
-
-                                    $progressController->getLessonProgress($_GET['lesson'],'MODELPAPER');
-
-                                    echo
-                                    "],
-                                    borderColor: 'green',
-                                    fill: false
-                                    },
-                                    {label: 'Average Marks - Past Papers',
-                                    data: [";
-
-                                    $progressController->getLessonProgress($_GET['lesson'],'PASTPAPER');
-    
-                                    echo
-                                    "],
-                                    borderColor: 'red',
-                                    fill: false
-                                    }]
-                                },
-                                options: {
-                                    
-                                    legend: {
-                                        display: true,
-                                        position: 'bottom',
-                                     },
-                                    title: {
-                                        display: true,
-                                        text: 'Progress - ".$_GET['lesson']."',
-                                        color: 'navy',
-                                        position: 'top',
-                                        align: 'center',
-                                        font: {
-                                            
-                                            fontSize:100,
-                                
-                                        },
-                                        padding: 30,
-                                        fullSize: true,
-                                    }
-                                    
-                                },
-                                });
-                            </script>
-                            ";   
-                                
+                            if($status){
                             
+                                $topics = $progressController->getTopicsOfLesson($_GET['lesson']);
+                                echo "
+                                <canvas id='progressChart'></canvas>
+                                <script>
+                                    const xValues = [";
+
+                                    foreach($topics as $topic){
+                                        echo "'".$topic['topicTitle']."',";
+                                    }
+                                echo "
+                                ];
+                                new Chart('progressChart', {
+                                    type: 'line',
+                                    data: {
+                                        labels: xValues,
+                                        datasets: [{
+                                        label: 'Average Marks - Model Papers',
+                                        data: [";
+
+                                        $progressController->getLessonProgress($_GET['lesson'],'MODELPAPER');
+
+                                        echo
+                                        "],
+                                        borderColor: 'green',
+                                        fill: false
+                                        },
+                                        {label: 'Average Marks - Past Papers',
+                                        data: [";
+
+                                        $progressController->getLessonProgress($_GET['lesson'],'PASTPAPER');
+        
+                                        echo
+                                        "],
+                                        borderColor: 'red',
+                                        fill: false
+                                        }]
+                                    },
+                                    options: {
+                                        
+                                        legend: {
+                                            display: true,
+                                            position: 'bottom',
+                                        },
+                                        title: {
+                                            display: true,
+                                            text: 'Progress - ".$_GET['lesson']."',
+                                            color: 'navy',
+                                            position: 'top',
+                                            align: 'center',
+                                            font: {
+                                                
+                                                fontSize:100,
+                                    
+                                            },
+                                            padding: 30,
+                                            fullSize: true,
+                                        }
+                                        
+                                    },
+                                    });
+                                </script>
+                                ";   
+                                
+                                
+                            }else{
+                                echo "<div id='no-lesson-selected'>
+                                        <div id='no-lesson-section'>
+                                            <img id='no-lesson-img' src='../../public/img/chart.png'><br>
+                                            <p id='no-lesson-text'>You have not completed any quizzes from <span><b>'".$_GET['lesson']."'</b></span></p>
+                                        </div>
+                                    </div>";
+                            }
                         }else{
+                            echo "<script>
+                            setTimeout(()=>{
+                                window.scrollTo({
+                                    top: 850,
+                                    behavior: 'smooth',
+                                }); 
+                            },50)
+                            </script>";
                             echo "<div id='no-lesson-selected'>
-                                    <div id='no-lesson-section'>
-                                        <img id='no-lesson-img' src='../../public/img/chart.png'><br>
-                                        <p id='no-lesson-text'>You have not completed any quizzes from <span><b>'".$_GET['lesson']."'</b></span></p>
-                                    </div>
-                                </div>";
+                                <div id='no-lesson-section'>
+                                    <img id='no-lesson-img' src='../../public/img/chart.png'><br>
+                                    <p id='no-lesson-text'>Select a lesson and check your progress</p>
+                                </div>
+                            </div>";
                         }
                     }else{
-                        echo "<script>
-                          setTimeout(()=>{
-                            window.scrollTo({
-                                top: 850,
-                                behavior: 'smooth',
-                               }); 
-                          },50)
-                         </script>";
                         echo "<div id='no-lesson-selected'>
                                 <div id='no-lesson-section'>
                                     <img id='no-lesson-img' src='../../public/img/chart.png'><br>
@@ -319,7 +315,6 @@ $recommendationsController = new recommendationsController();
                                 </div>
                             </div>";
                     }
-
                 ?>
             </div>
 
@@ -341,15 +336,40 @@ $recommendationsController = new recommendationsController();
 
             <div id="rec-container">
                 <?php
-                // $msgs = $recommendationsController->getRecommendations();
+                $msgs = $recommendationsController->getRecommendations();
                 
-                ?>
-                    <!-- <div class="rec-cards">
-                        <div class="msg-container">
+                if($msgs){
+                    $rec_msgs = array();
+                    $rec_msgs = $_SESSION['rec-msgs'];
+                    $first_four_msgs = array_slice($rec_msgs, 0, 4);
 
+                    foreach ($first_four_msgs as $item) {       
+                        echo "
+                        <div class='rec-cards'>
+                            <div class='msg-container'>
+                                <p>".$item."</p>
+                            </div>
+                            <div class='img-container'>
+                                <img src='../../public/img/master.svg' class='master-img'>
+                            </div>
                         </div>
-                        <img src="../../public/img/master.svg" class="master-img">
-                    </div> -->
+                        ";        
+                    }
+                }
+                else{
+                    echo "
+                    <div class='rec-cards'>
+                            <div class='msg-container'>
+                                <p>No recommendations yet!</p>
+                            </div>
+                            <div class='img-container'>
+                                <img src='../../public/img/master.svg' class='master-img'>
+                            </div>
+                        </div>
+                    ";
+                }
+
+                ?>
             </div>
 
         </div>

@@ -202,24 +202,68 @@ class Student {
                     $query3="SELECT * FROM topic WHERE lessonId = '$lessonId'";
                     $result3 = $connection->query($query3);
 
-                    foreach($result3 as $topicAttribute){
-                        $topic = $topicAttribute['topicTitle'];
-                        $topicId = $lessonAttribute['topicId'];
+                    if(mysqli_num_rows($result3)>0){
 
-                        //Checks whether there are marks < 5 in the quizzes of selected topic
+                        foreach($result3 as $topicAttribute){
+                            $topic = $topicAttribute['topicTitle'];
+                            $topicId = $topicAttribute['topicId'];
 
-                        $query4 = "SELECT score FROM quiz_details WHERE score<5 AND studentId='$userId' AND topicId='$topicId'";
+                            //Checks whether the average marks of Model Paper quizzes are < 5 in the quiz
 
+                            $query5 = "SELECT score FROM quiz_details WHERE studentId='$userId' AND topicId='$topicId' AND quizType='MODELPAPER'";
+                            $result5 = $connection->query($query5);
+                            if(mysqli_num_rows($result5)>0){
+                                $model_count=0;
+                                $model_sum=0;
+                                foreach($result5 as $model_scores){
+                                    $model_count++;
+                                    $model_sum = $model_sum + $model_scores['score'];
+                                }
+                                $model_avg = $model_sum / $model_count;
+                                if($model_avg<5){
+                                    $msgs[] = "Do more model papers from <b>".$topic."</b> of <b>".$lesson."</b>.";
+                                }
+                            }
+                            //Checks whether the average marks of Past Paper quizzes are < 5 in the quiz
+
+                            $query6 = "SELECT score FROM quiz_details WHERE studentId='$userId' AND topicId='$topicId' AND quizType='PASTPAPER'";
+                            $result6 = $connection->query($query6);
+                            if(mysqli_num_rows($result6)>0){
+                                $past_count=0;
+                                $past_sum=0;
+                                foreach($result6 as $past_scores){
+                                    $past_count++;
+                                    $past_sum = $past_sum + $past_scores['score'];
+                                }
+                                $past_avg = $past_sum / $past_count;
+                                if($past_avg<5){
+                                    $msgs[] = "Do more past papers from <b>".$topic."</b> of <b>".$lesson."</b>.";
+                                }
+                            }
+
+                            //Checks whether there are marks < 5 in the quizzes of selected topic
+
+                            $query4 = "SELECT score FROM quiz_details WHERE score<5 AND studentId='$userId' AND topicId='$topicId'";
+                            $result4 = $connection->query($query4);
+
+                            if(mysqli_num_rows($result4)>0){
+                                $msgs[] = "Pay more attention to <b>".$topic."</b> of <b>".$lesson."</b>.";
+                            }
+                        }
                     }
-    
                 }else{
-                    $msgs[] = "Start your quizzes of '".$lesson."' lesson.";
+                    $msgs[] = "Start your quizzes of <b>".$lesson."</b>.";
                 }
             }
 
         }else{
             $msgs[]="Go ahead and start your quizzes to expand your knowledge. ";
         }
+
+        //Store the messages in a session array
+
+        $_SESSION['rec-msgs'] = $msgs;
+        return true;
         
     }
 

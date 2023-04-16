@@ -16,7 +16,7 @@ class recommendationsController{
         $data = Student::getRecommendations($this->connection);
 
         if($data){
-            return $data;
+            return true;
         }else{
             return false;
         }

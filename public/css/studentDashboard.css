@@ -312,27 +312,52 @@ progress[value] {
     width:100%;
 }
 
-.master-img{
-    height: 100px;
-    margin-bottom:15px;
+.img-container{
+    width: 20%;
     display: inline-block;
+    float: right;
+    height: 100%;
+    position: relative;
+}
+
+
+.master-img{
+    width:80%;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
 }
 
 .rec-cards{
     background-color: #EDECEC;
-    height: 200px;
+    height: 140px;
     width: 49%;
     display: inline-block;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    margin-right: 5px;
+    margin-right: 10px;
+    margin-bottom: 20px;
 }
 
 .msg-container{
     display: inline-block;
-    background-color: aqua;
-    height: 200px;
-    width: 82%;
+    height: 100%;
+    width: 80%;
+    position: relative;
+
+}
+
+.msg-container p{
+    margin: 0 20px 0 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+    text-align: center;
 }
 
 
