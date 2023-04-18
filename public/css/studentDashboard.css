@@ -318,7 +318,7 @@ progress[value] {
 
 #container-head{
     background-color: #219ebc;
-    height: 30px;
+    height: 20px;
     border-radius: 10px 10px 0 0;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 0px 8px;
 }
@@ -328,21 +328,22 @@ progress[value] {
 }
   
 .slides-list {
-    padding: 2rem 0;
     list-style: none;
     position: relative;
     margin-left: auto;
     margin-right: auto;
-    height: 8rem;
-    width: 80%;
+    height: 100px;
+    width: 85%;
     top: 0;
     left: 0;
 }
   
 .slide {
     display: none;
-    padding: 2rem;
     position: absolute;
+    width: 100%;
+    height: 100%;
+    text-align: center;
 }
   
 .rec-msg-slides {
@@ -351,20 +352,20 @@ progress[value] {
     background-color: #EDECEC;
     border-radius: 0 0 10px 10px;
 }
-  
-.slide-figure-img {
-    width: 90px;
-    top: -10px;
-    left: 20px;
-    position: absolute;
+
+.slide-figure{
+    margin-top:0;
 }
   
 .slide-figure-text {
-    font-size: 18px;
+    font-size: 22px;
     line-height: 1.6;
     color: #4d4d4d;
     top: 20px;
     position: relative;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 12px;
 }
   
 .nav-btns {
@@ -377,8 +378,7 @@ progress[value] {
 }
   
 .nav-btns img:hover{
-    height: 3.5rem;
-    width: 3.5rem;
+    height: 35px;
 }
 
 .nav-btns:hover {
@@ -386,8 +386,7 @@ progress[value] {
 }
   
 .arrow-icon {
-    height: 3.2rem;
-    width: 3.2rem;
+    height: 30px;
 }
   
 .nav-btns-next {
@@ -416,7 +415,7 @@ progress[value] {
 }
   
 .btn-dots {
-    margin-top: 0.8rem;
+    margin-top: 35px;
     justify-content: center;
     gap: 0.8rem;
     padding-bottom: 1rem;
@@ -429,8 +428,8 @@ progress[value] {
 .btn-dot {
     border: 1px solid #fff;
     border-radius: 100px;
-    height: 1.4rem;
-    width: 1.4rem;
+    height: 15px;
+    width: 15px;
     background-color: #F0FBFD;
     transition: all 0.3s ease-out;
 }

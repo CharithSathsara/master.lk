@@ -348,39 +348,48 @@ $recommendationsController = new recommendationsController();
 
                         <?php
                             $msgs = $recommendationsController->getRecommendations();
-                    
-                                if($msgs){
+                            $rec_msgs = array();
+                            $rec_msgs = $_SESSION['rec-msgs'];
+
+                                if($msgs && (!empty($rec_msgs))){
                                     echo "<ul class='slides-list'>";
-                                    $rec_msgs = array();
-                                    $rec_msgs = $_SESSION['rec-msgs'];
                                     $firstMsg = $rec_msgs[0];
                                     echo "
                                         <li class='slide active-slide'>
                                             <figure class='slide-figure'>
-                                                <img class='slide-figure-img' src='../../public/img/master.svg' alt='Master Logo'/>
                                                 <blockquote class='slide-figure-text'>".$firstMsg."</blockquote>
                                             </figure>
                                         </li>
                                     ";
+                                    $rec_msg_count=1;
                                     for ($i = 1; $i < count($rec_msgs); $i++) {
-                                        echo "
-                                        <li class='slide'>
-                                            <figure class='slide-figure'>
-                                                <img class='slide-figure-img' src='../../public/img/master.svg' alt='Master Logo'/>
-                                                <blockquote class='slide-figure-text'>".$rec_msgs[$i]."</blockquote>
-                                            </figure>
-                                        </li>
-                                        ";
+                                        $rec_msg_count++;
+                                        if($rec_msg_count<11){
+                                            echo "
+                                            <li class='slide'>
+                                                <figure class='slide-figure'>
+                                                    <blockquote class='slide-figure-text'>".$rec_msgs[$i]."</blockquote>
+                                                </figure>
+                                            </li>
+                                            ";
+                                        }else{
+                                            break;
+                                        }
                                     }
                                     echo"
                                         </ul>
                                         <div class='btn-dots flex'>
                                             <button class='btn-dot active-dot'></button>";
-
+                                            $dot_count=1;
                                             for ($i = 1; $i < count($rec_msgs); $i++){
+                                                $dot_count++;
+                                                if($dot_count<11){
                                                 echo"
                                                 <button class='btn-dot'></button>
                                                 ";
+                                                }else{
+                                                    break;
+                                                }
                                             }
                                             
                                     echo "   
