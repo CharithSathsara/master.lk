@@ -10,6 +10,7 @@ function closePhotoUpdatePopup(){
     document.getElementById("page-mask-photo").style.display = "none";
     document.getElementById("change-photo-error").innerHTML = null;
     document.getElementById("change-pw-error").innerHTML = null;
+    document.getElementById("change-info-error").innerHTML = null;
 }
 
 function closeRemovePhotoPopup(){
@@ -24,12 +25,14 @@ function closePwUpdatePopup(){
     document.getElementById("page-mask-password").style.display = "none";
     document.getElementById("change-pw-error").innerHTML = null;
     document.getElementById("change-photo-error").innerHTML = null;
+    document.getElementById("change-info-error").innerHTML = null;
 }
 
 function inputChange() {
 
     document.getElementById("change-pw-error").style.visibility = "hidden";
     document.getElementById("change-photo-error").style.visibility = "hidden";
+    document.getElementById("change-info-error").style.visibility = "hidden";
 }
 
 function getProfileInfoPopup(){
@@ -38,4 +41,7 @@ function getProfileInfoPopup(){
 
 function closeProfileInfoPopup(){
     document.getElementById("page-mask-profileInfo").style.display = "none";
+    document.getElementById("change-pw-error").innerHTML = null;
+    document.getElementById("change-photo-error").innerHTML = null;
+    document.getElementById("change-info-error").innerHTML = null;
 }

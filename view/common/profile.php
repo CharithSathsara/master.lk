@@ -193,6 +193,11 @@ $profileInfoController = new profileInfoController();
                 <input type="text" id="telephone" name="telephone"  oninput="inputChange()" value="<?= $profileInfoController->getProfileData('mobile') ; ?>"><br>
                 <input type="email" id="email" name="email" oninput="inputChange()" value="<?= $profileInfoController->getProfileData('email') ; ?>"><br>
                 <input type="text" id="username" name="username"  oninput="inputChange()" value="<?= $profileInfoController->getProfileData('userName') ; ?>"><br>
+
+                <div id="change-info-error">
+                    <?php include "../../controller/authController/message.php"?>
+                </div>
+
                 <button id="profile-info-update-button" type="submit" >Save</button>
             </div>
 
@@ -222,6 +227,16 @@ $profileInfoController = new profileInfoController();
                 </style>
             ";
             unset($_SESSION['change-pw-error']);
+        }
+        if(isset($_SESSION['change-info-error'])){
+            echo"
+                <style>
+                        #page-mask-profileInfo{
+                            display:block;
+                        }
+                </style>
+            ";
+            unset($_SESSION['change-info-error']);
         }
 
 ?>

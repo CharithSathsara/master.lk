@@ -23,7 +23,7 @@ class User {
 
                 $user_data = mysqli_fetch_assoc($result);
                 if(password_verify($password, $user_data['password'])){
-
+                    
                     //Sets the session with user ID
                     self::userAuthentication($user_data);
                     return true;
@@ -141,10 +141,10 @@ class User {
             $password = $row['password'];
 
             //Checks whether the current password is correct
-            if($current_password==$password){
+            if(password_verify($current_password,$password)){
                 
                 //Checks whether the new password is equal to the old password
-                if(!($new_password==$password)){
+                if(!(password_verify($new_password,$password))){
 
                     //Checks the length of the new password
                     if(!(strlen($new_password)<8)){
@@ -152,7 +152,8 @@ class User {
                         //Checks the validation of the password re-entry
                         if($new_password == $retype_new_password){
 
-                            $query = "UPDATE user SET password = '$new_password' WHERE userId='$userId'";
+                            $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
+                            $query = "UPDATE user SET password = '$hashed_password' WHERE userId='$userId'";
                             $result = $connection->query($query);
 
                             if($result){
@@ -242,29 +243,58 @@ class User {
 
         $userId = $_SESSION['auth_user']['userId'];
 
-        $query = "UPDATE user 
-        SET firstName = '$first_name', 
-            lastName = '$last_name',
-            addLine01 = '$address_first',
-            addLine02 = '$address_second',
-            mobile = '$telephone',
-            email = '$email',
-            userName = '$username'
-        WHERE userId = '$userId' ;";
+        //Checks email validity
 
-        $result = $connection->query($query);
+        $query1 = "SELECT email FROM user WHERE email = '$email' AND userId!='$userId' LIMIT 1";
+        $data = $connection->query($query1);
 
-        $query2 = "UPDATE student 
-        SET dob = '$dob', 
-        WHERE userId = '$userId' ;";
-
-        $result2 = $connection->query($query2);
-
-        if($result && $result2){
-            return true;
-        }else{
+        if($data && $data->num_rows > 0){
+            $_SESSION['change-info-error']="This email already exists";
             return false;
+        }else{
             
+            //Checks username validity
+
+            if(preg_match("/^[\w\-]+@[\w\-]+.[\w\-]+$/",$username)){
+                $_SESSION['change-info-error']="The username should not include '@' symbol";
+                return false;
+            }else {
+                
+                $query2 = "SELECT username FROM user WHERE username='$username' AND userId!='$userId' limit 1";
+                $result2 = $connection->query($query2);
+                if($result2 && mysqli_num_rows($result2) > 0){
+                    $_SESSION['change-info-error']="This username already exists";
+                    return false;
+                }else {
+                    
+                    $query3 = "UPDATE user 
+                        SET firstName = '$first_name', 
+                            lastName = '$last_name',
+                            addLine01 = '$address_first',
+                            addLine02 = '$address_second',
+                            mobile = '$telephone',
+                            email = '$email',
+                            userName = '$username'
+                        WHERE userId = '$userId' ;";
+
+                    $result3 = $connection->query($query3);
+
+                    $query4 = "UPDATE student 
+                    SET dob = '$dob', 
+                    WHERE userId = '$userId' ;";
+
+                    $result4 = $connection->query($query4);
+
+                    if($result3 && $result4){
+                        return true;
+                    }else{
+                        return false;
+                        
+                    }
+
+                }
+            }
+
         }
 
     }

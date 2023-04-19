@@ -334,7 +334,7 @@ input[type=password],input[type=text],input[type=email]{
     margin: auto;
 }
 
-#change-pw-error p,#change-photo-error p{
+#change-pw-error p,#change-photo-error p,#change-info-error p{
     font-size: 14px;
     color: red;
     margin: 0 auto;
@@ -424,8 +424,13 @@ input[type=password],input[type=text],input[type=email]{
     background-color:#219ebc;
     border-radius: 5px;
     color:#fff;
-    margin-top: 10px;
-    margin-top: 100px;
+    margin-top: 55px;
     float: right;
     margin-right: 55px;
+}
+
+#change-info-error{
+    height: 40px;
+    /* width: 80%;
+    margin: auto; */
 }

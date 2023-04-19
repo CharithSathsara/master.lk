@@ -44,9 +44,10 @@ $_SESSION['current-topic'] = $_GET['topic'];
         <br>
         <div class="scrollmenu">
             <div id="scrollmenu-contents">
-                <a href="modelQuiz.php"  class="list-item" id="model-quiz-item">Model Quiz</a>
-                <a href="modelQuiz.php"  class="list-item" id="pp-quiz-item">Past Paper Quiz</a>
-                <a href="Leaderboard.php"  class="list-item" id="leaderboard-item">Leaderboard</a>
+                <a href="modelQuiz.php"  class="list-item" id="model-quiz-item"><p>Model Quiz</p></a>
+                <a href="modelQuiz.php"  class="list-item" id="pp-quiz-item"><p>Past Paper Quiz</p></a>
+                <a href="reviewQuizzes.php?topic=<?=$_SESSION['current-topic']?>"  class="list-item" id="review-item"><p>Review Quizzes</p></a>
+                <a href="Leaderboard.php"  class="list-item" id="leaderboard-item"><p>Leaderboard</p></a>
             </div>
         </div><br><br>
         
