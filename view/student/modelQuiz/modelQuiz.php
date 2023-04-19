@@ -6,9 +6,8 @@
     <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Model Quiz</title>
-    <link rel="stylesheet" href="../../public/css/modelQuizStarted.css">
-    <?php echo time(); ?>">
+    <title>Model Quiz Start</title>
+    <link rel="stylesheet" href="../../../public/css/modelQuizStart.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
@@ -18,9 +17,9 @@
 <body>
     <?php
 
-include_once('../../config/app.php');
-include_once('../../controller/authController/authentication/Authentication.php');
-include_once('../../controller/authController/authorization/Authorization.php');
+include('../../../controller/studentController/quizController/modelQuizController.php');
+include_once('../../../controller/authController/authentication/Authentication.php');
+include_once('../../../controller/authController/authorization/Authorization.php');
 
 //check user authenticated or not
 //$authentication = new Authentication();
@@ -31,8 +30,8 @@ Authentication::userAuthentication();
 //User Authorization
 Authorization::authorizingStudent();
 
-include_once '../common/header.php';
-@include '../common/navBar-Student.php';
+include_once '../../common/header.php';
+@include '../../common/navBar-Student.php';
 
 ?>
     <div class="content">
@@ -42,19 +41,15 @@ include_once '../common/header.php';
                     <hr class="hr-line">
                 </div>
 
-                <div class="quiz-completed-popup">
 
-                    <h3>Well done! You have completed the Model Quiz!
-                    </h3>
-                    <p><b>Score : 3/5</b> </p>
-                </div>
+
             </div>
-            <script src="https://kit.fontawesome.com/d56261bbb9.js"></script>
-
-            <script src="../../public/js/quizUserInfo.js"></script>
-
         </div>
     </div>
+
+
+
+
 
 </body>
 
