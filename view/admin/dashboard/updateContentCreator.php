@@ -43,7 +43,7 @@
 
                             <div class="selectSub">
                                 <label>Select the Subject : </label>
-                                <select name="subjects" id="subjects" style="width: 6vw; border-radius: 5px; margin-left: 9vw; border: none; height: 4vh; margin-top: -60px">
+                                <select name="subjects" id="subjects-creator" style="width: 6vw; border-radius: 5px; margin-left: 9vw; border: none; height: 4vh; margin-top: -60px">
                                     <?php
                                         foreach ($subjects as $subject){
                                             ?>

@@ -10,7 +10,10 @@
     <title>Admin Dashboard</title>
 </head>
 <body>
-
+            <?php
+                $allSubject = new allSubjectController();
+                $subjects = $allSubject->getAllSubject();
+            ?>
 
                         <div id="popup-update" class="popup-update">
                             <div class="popup-UpdateTeacher">
@@ -38,9 +41,14 @@
 
                                         <div class="selectSub">
                                             <label>Select the Subject : </label>
-                                            <select name="subjects" id="subject" style="width: 6vw; border-radius: 5px; margin-left: 9vw; border: none; height: 4vh; margin-top: -60px">
-                                                <option value="Chemistry">Chemistry</option>
-                                                <option value="Physics">Physics</option>
+                                            <select name="subjects" id="subject-teacher" style="width: 6vw; border-radius: 5px; margin-left: 9vw; border: none; height: 4vh; margin-top: -60px">
+                                                <?php
+                                                foreach ($subjects as $subject){
+                                                    ?>
+                                                    <option value="<?php echo $subject['subjectTitle'] ;?>"><?= $subject['subjectTitle']; ?></option>
+                                                    <?php
+                                                }
+                                                   ?>
                                             </select>
                                         </div>
 

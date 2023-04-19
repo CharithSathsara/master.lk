@@ -15,6 +15,7 @@
     <?php
 
     include_once('../../controller/adminController/dashboardController/AdminDashboardController.php');
+    include_once('../../controller/adminController/dashboardController/allSubjectController.php');
     include_once('../../model/User.php');
     include_once('../../model/Admin.php');
     include_once ('../../model/Subject.php');
