@@ -22,7 +22,10 @@
             <div class="updatePop-contentCreator">
                 <div class="updatePop-contentCreatorHeader">
                     <h4>Update Content Creator</h4>
-                    <img src="../../public/img/close.png" class="CloseContentCreatorPop" >
+                    <button onclick="closeUpCreator()"><img src="../../public/img/close.png" class="CloseContentCreatorPop" ></button>
+                </div>
+                <div class="error-message-up-creator" id="error-message-up-creator">
+                    <?php include "validationMessage.php"?>
                 </div>
 
                 <div class="update-contentCreatorForm">
@@ -30,17 +33,17 @@
 
                         <form class="UpdateContentCreator-form" action="<?= base_url('controller/adminController/dashboardController/updateContentCreatorController.php') ?>" method="POST">
 
-                            <input type="text" name="fname"  id="Creator-fname">
-                            <input type="text" name="lname"  id="Creator-lname">
-                            <input type="text" name="address1"  id="Creator-address1">
-                            <input type="text" name="address2"  id="Creator-address2">
-                            <input type="text" name="number"  id="Creator-number">
-                            <input type="email" name="email"  id="Creator-email">
-                            <input type="text" name="userId" id="Creator-userId">
+                            <input type="text" name="fname"  id="Creator-fname" value="<?= $_SESSION['user']['firstName'] ?>">
+                            <input type="text" name="lname"  id="Creator-lname"  value="<?= $_SESSION['user']['lastName'] ?>">
+                            <input type="text" name="address1"  id="Creator-address1"  value="<?= $_SESSION['user']['addLine01'] ?>">
+                            <input type="text" name="address2"  id="Creator-address2"  value="<?= $_SESSION['user']['addLine02'] ?>">
+                            <input type="text" name="number"  id="Creator-number"  value="<?= $_SESSION['user']['mobile'] ?>">
+                            <input type="email" name="email"  id="Creator-email"  value="<?= $_SESSION['user']['email'] ?>">
+                            <input type="text" name="userId" id="Creator-userId" value="<?= $_SESSION['user']['userId'] ?>">
 
                             <div class="selectSub">
                                 <label>Select the Subject : </label>
-                                <select name="subjects" id="subjects" >
+                                <select name="subjects" id="subjects" style="width: 6vw; border-radius: 5px; margin-left: 9vw; border: none; height: 4vh; margin-top: -60px">
                                     <?php
                                         foreach ($subjects as $subject){
                                             ?>

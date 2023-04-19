@@ -13,3 +13,5 @@ if(isset($_SESSION['change-photo-error'])){
     echo "<p>".$_SESSION['change-photo-error']."</p>";
 }
 
+
+

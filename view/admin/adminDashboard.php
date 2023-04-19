@@ -6,6 +6,7 @@
     <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../../public/css/adminDashboard.css">
+    <script src="../../public/js/adminDashboard.js"></script>
 
     <title>Admin Dashboard</title>
 </head>
@@ -14,7 +15,7 @@
     <?php
 
     include_once('../../controller/adminController/dashboardController/AdminDashboardController.php');
-
+    include_once('../../model/User.php');
     include_once('../../model/Admin.php');
     include_once ('../../model/Subject.php');
     include_once ('../../model/Teacher.php');
@@ -77,7 +78,7 @@
 
 
                     <div class="anchor-1">
-                        <button class="but-teacher" id="but-AddTeacher">Add Teacher</button>
+                        <button class="but-teacher" id="but-AddTeacher" onclick="clickButton()">Add Teacher</button>
                     </div>
                 </div>
 
@@ -126,7 +127,7 @@
                         </tbody>
                     </table>
                         <div class="anchor-2">
-                             <button class="but-content" id="but-content">Add Content Creator</button>
+                             <button class="but-content" id="but-content" onclick="addCreator()">Add Content Creator</button>
                         </div>
                 </div>
              </div>
@@ -151,5 +152,53 @@
     <!-- Add Content Creator pop up box js script -->
     <script src="../../public/js/addContentCreator.js"></script>
 
+    <?php
+    if(isset($_SESSION['add_Teacher'])){
+        echo"
+                <style>
+                        .popup{
+                            display:flex;
+                        }
+                </style>
+            ";
+        unset($_SESSION['add_Teacher']);
+    }
+    if(isset($_SESSION['update_Teacher'])){
+        echo"
+                <style>
+                      .popup-update{
+                         display:flex;
+                      }
+                </style>
+            ";
+        unset($_SESSION['update_Teacher']);
+    }
+
+    if(isset($_SESSION['add_Creator'])){
+        echo"
+                <style>
+                        .popup-addContentCreator{
+                            display:block;
+                        }
+                </style>
+           ";
+        unset($_SESSION['add_Creator']);
+    }
+
+    if(isset($_SESSION['upp_Creator'])){
+        echo"
+                <style>
+                        .update-ContentCreatorPop{
+                            display:flex;
+                        }
+                </style>
+           ";
+        unset($_SESSION['upp_Creator']);
+    }
+
+    ?>
+
+
     </body>
 </html>
+

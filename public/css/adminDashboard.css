@@ -140,31 +140,6 @@ th{
     margin-bottom: 20px;
 }
 
-/*.styled-table {*/
-/*    border-collapse: collapse;*/
-/*    margin: 25px 0;*/
-/*    font-size: 0.9em;*/
-/*    font-family: sans-serif;*/
-/*    min-width: 400px;*/
-/*    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);*/
-/*}*/
-
-/*.styled-table .td-2,.td-1{*/
-/*    padding: 15px 0;*/
-/*}*/
-
-/*.styled-table tbody tr {*/
-/*    border-bottom: 1px solid red;*/
-/*}*/
-
-/*.getTeacher .but{*/
-/*    margin-right: 20px;*/
-/*}*/
-
-/*.anchor .but{*/
-/*    right: 20px;*/
-/*}*/
-
 .getContentCreator .styled-table{
     margin-top: 20px;
     margin-bottom: 20px;
@@ -198,40 +173,43 @@ th{
 /*}*/
 
 .popup{
-    background-color: rgba(0,0,0,0.6);
-    height: 150vh;
-    width: 99vw;
-    position: absolute;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
     top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 14;
     display: none;
     justify-content: center;
-    z-index: 100;
-    margin-left:-320px ;
-
 }
 
 .popup-update{
-    background-color: rgba(0,0,0,0.6);
-    height: 150vh;
-    width: 100%;
-    position: absolute;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
     top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 14;
     display: none;
     justify-content: center;
-    margin-left: -16.5vw;
-    z-index: 100;
 }
 
 .popup-update .closeTeacher-Icon{
     cursor: pointer;
     width: 30px;
     height: 30px;
-    margin-left: 34.5vw;
-    margin-top: 15px;
+    margin-left: 24vw;
+    /*margin-top: 5px;*/
+}
+
+.updateTeacherText h4{
+    margin-left: 2vw;
 }
 
 .popup-UpdateTeacher{
-    height: 450px;
+    height: 500px;
     width: 700px;
     background-color: white;
     /*padding: 20px;*/
@@ -239,6 +217,11 @@ th{
     /*position: fixed;*/
     margin-top: 200px;
     margin-left: 100px;
+}
+
+.updateTeacherText{
+    display: flex;
+    flex-direction: row;
 }
 
 .popup-AddTeacher{
@@ -251,10 +234,65 @@ th{
     margin-left: 100px;
 }
 
+.add-teacher-header{
+    display: flex;
+    flex-direction: row;
+}
+
+.add-teacher-header h4{
+    margin-left: 30px;
+}
 
 
-.addTeach-form .subb-button{
-    /*margin-bottom: 50px;*/
+#close-add{
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    margin-left: 24.5vw;
+    margin-top: 5px;
+}
+
+.error-message-add-teacher{
+    color: red;
+    margin-left: 30px;
+    height: 20px;
+    text-align: center;
+    font-weight: bold;
+    margin-top: -20px;
+    margin-bottom: -10px;
+}
+.error-message-add-content{
+    color: red;
+    margin-left: 30px;
+    height: 20px;
+    text-align: center;
+    font-weight: bold;
+    margin-top: -20px;
+    margin-bottom: 10px;
+}
+.error-message-up-teacher{
+    color: red;
+    margin-left: 30px;
+    height: 20px;
+    text-align: center;
+    font-weight: bold;
+    margin-top: -20px;
+    margin-bottom: -10px;
+}
+
+.error-message-up-creator{
+    color: red;
+    margin-left: 30px;
+    height: 20px;
+    text-align: center;
+    font-weight: bold;
+    margin-top: -20px;
+    margin-bottom: 10px;
+}
+
+#add-teacherButton{
+    margin-left: 10vw;
+    margin-top: 5vh;
 }
 
 .close-Icons{
@@ -273,6 +311,7 @@ th{
 }
 
 .addTeach-form{
+    margin-top: 0;
     max-width: 650px;
     width :100%;
     /*background-color: #8A8AFF;*/
@@ -304,7 +343,7 @@ th{
     grid-column-gap: 100px;
     grid-row-gap: 20px;
     padding-left: 35px;
-    padding-top: 10px;
+    padding-top: 30px;
 }
 
 .UpdateTeach-form label{
@@ -393,9 +432,9 @@ textarea{
     cursor: pointer;
     border: none;
     background-color: #0b2e5e;
-    margin-left: 25vw;
+    margin-left: 23.5vw;
     border-radius: 10px;
-    margin-top: 40px;
+    margin-top: 30px;
 }
 .subb-add:hover{
     background-color:orange;
@@ -446,25 +485,15 @@ textarea{
 }
 
 .popup-delete{
-    /*background-color: rgba(0,0,0,0.6);*/
-    /*height: 100%;*/
-    /*width: 100%;*/
-    /*position: absolute;*/
-    /*top: 0;*/
-    /*display: none;*/
-    /*justify-content: center;*/
-    /*z-index: 100;*/
-
-    background-color: rgba(0,0,0,0.6);
-    height: 150vh;
-    width: 100vw;
-    position: absolute;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
     top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 14;
     display: none;
     justify-content: center;
-    z-index: 100;
-    margin-left: -17.5vw;
-
 }
 
 .delete-teacherPop{
@@ -515,16 +544,17 @@ textarea{
     background-color: #0b2e5e;
     color: white;
     width: 100px;
-    height: 30px;
+    height: 33px;
     border-radius: 8px;
     cursor: pointer;
+    border: none;
 }
 
 .deletePop-teacherButton .deleteNo-button{
     background-color: orange;
     color: white;
     width: 100px;
-    height: 30px;
+    height: 33px;
     border-radius: 8px;
     margin-left: 40px;
     margin-right: 170px;
@@ -539,15 +569,15 @@ textarea{
 }
 
 .popup-addContentCreator{
-    background-color: rgba(0,0,0,0.6);
-    height: 150vh;
-    width: 98.9vw;
-    position: absolute;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
     top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 14;
     display: none;
     justify-content: center;
-    z-index: 100;
-
 }
 
 .add-contentCreatorPop{
@@ -609,15 +639,15 @@ textarea{
 }
 
 .update-ContentCreatorPop{
-    background-color: rgba(0,0,0,0.6);
-    height: 150vh;
-    width: 98.9vw;
-    position: absolute;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
     top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 14;
     display: none;
     justify-content: center;
-    z-index: 100;
-    /*margin-left: 2vw;*/
 }
 
 .update-ContentCreatorPop .updatePop-contentCreator{
@@ -683,19 +713,29 @@ textarea{
     background-color: #F4C430;
 }
 
+.sub-Update-teacher{
+    width: 130px;
+    height: 35px;
+    cursor: pointer;
+    border: none;
+    background-color: #0b2e5e;
+    margin-left: 9vw;
+    border-radius: 10px;
+    margin-top: -10vh;
+}
+
 /*Delete Content Creator Pop Box*/
 
 .popup-deleteContent{
-    background-color: rgba(0,0,0,0.6);
-    height: 150vh;
-    width: 98.9vw;
-    position: absolute;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
     top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 14;
     display: none;
     justify-content: center;
-    z-index: 100;
-    /*margin-left: 10vw;*/
-
 }
 
 .delete-contentPop{
@@ -746,16 +786,17 @@ textarea{
     background-color: #0b2e5e;
     color: white;
     width: 100px;
-    height: 30px;
+    height: 33px;
     border-radius: 8px;
     cursor: pointer;
+    border: none;
 }
 
 .deletePop-contentButton .deleteContentNo-button{
     background-color: orange;
     color: white;
     width: 100px;
-    height: 30px;
+    height: 33px;
     border-radius: 8px;
     margin-left: 40px;
     margin-right: 170px;
@@ -776,5 +817,6 @@ textarea{
 #Creator-userId{
     display: none;
 }
+
 
 

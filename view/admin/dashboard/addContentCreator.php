@@ -17,6 +17,9 @@
                     <h4>Add New Content Creator</h4>
                     <img src="<?= base_url('public/img/close.png') ?>" class="CloseContentPop">
                 </div>
+                <div class="error-message-add-content" id="error-message-add-content">
+                    <?php include "validationMessage.php"?>
+                </div>
                 <!-- Add content creator popup form  -->
                 <div class="update-contentCreatorForm">
                     <div class="forms-div">
@@ -33,7 +36,7 @@
         <!--                    <input type="password" name="password" placeholder="Password" >-->
                             <div class="selectSub">
                                 <label>Select the Subject : </label>
-                                <select name="subjects" id="subjects" >
+                                <select name="subjects" id="subjects" style="width: 6vw; border-radius: 5px; margin-left: 9vw; border: none; height: 4vh; margin-top: -60px">
                                     <option value="Chemistry">Chemistry</option>
                                     <option value="Physics">Physics</option>
                                 </select>

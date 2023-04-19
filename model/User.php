@@ -268,6 +268,48 @@ class User {
 
     }
 
+    public static function checkEmailExist($connection,$email){
+
+        $query = "SELECT email FROM user WHERE email= '$email'";
+
+        $result = $connection->query($query);
+
+        if($result){
+            return $result;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public static function checkUsernameExist($connection,$username){
+
+        $query = "SELECT userName  FROM user WHERE userName = '$username'";
+
+        $result = $connection->query($query);
+
+        if($result){
+            return $result;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public static function getUserEmail($connection,$userId){
+
+        $query = "SELECT email FROM user WHERE userId = '$userId'";
+
+        $result = $connection->query($query);
+
+        if($result){
+            $data = $result->fetch_assoc();
+            return $data['email'];
+        }else{
+            return false;
+        }
+    }
+
 
 }
 
