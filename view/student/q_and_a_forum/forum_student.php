@@ -12,8 +12,9 @@
 
 include_once('../../../controller/authController/authentication/Authentication.php');
 include_once('../../../controller/authController/authorization/Authorization.php');
-include('../../../controller/q_and_a_controller/StudentForumController.php');
-include_once '../../common/header.php';
+include_once('../../../config/app.php');
+include_once('../../../controller/q_and_a_controller/StudentForumController.php');
+include_once('../../common/header.php');
 
 //User Authentication
 Authentication::userAuthentication();

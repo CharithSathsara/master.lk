@@ -1,7 +1,6 @@
 <?php
 
 include('../../../config/app.php');
-require_once('AddQuestionController.php');
 require_once('../../../model/Teacher.php');
 
 if(isset($_POST['add-question'])){

@@ -9,7 +9,7 @@ class ForumQuestion {
     public static function insertQuestion($connection, $question_text, $studentId, $topicId){
 
         try {
-            $query = "INSERT INTO `forum_question` (`question_text`, `date_time`, `studentId`, `topicId`) 
+            $query = "INSERT INTO forum_question(`question_text`, `date_time`, `studentId`, `topicId`) 
                       VALUES ('$question_text', NOW(), $studentId, $topicId)";
             $data = $connection->query($query);
 
@@ -67,11 +67,11 @@ class ForumQuestion {
     public static function getDetails($connection, $topicId){
 
         try {
-            $query = "SELECT Topic.topicTitle, Lesson.lessonName, Subject.subjectTitle
-                      FROM Topic
-                      JOIN Lesson ON Topic.lessonId = Lesson.lessonId
-                      JOIN Subject ON Lesson.subjectId = Subject.subjectId
-                      WHERE Topic.topicId = $topicId";
+            $query = "SELECT topic.topicTitle, lesson.lessonName, subject.subjectTitle
+                      FROM topic
+                      JOIN lesson ON topic.lessonId = lesson.lessonId
+                      JOIN subject ON lesson.subjectId = subject.subjectId
+                      WHERE topic.topicId = $topicId";
             $data = $connection->query($query);
             $details = $data->fetch_assoc();
 
