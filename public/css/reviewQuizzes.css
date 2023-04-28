@@ -38,9 +38,52 @@
     margin: auto;
 }
 
-#review-container{
+.review-container{
     margin-top:35px;
-    height:auto;
+    min-height:180px;
     display: flex;
-    background-color: aquamarine;
+    overflow: auto;
 }
+
+table{
+    margin: 0 15px;
+    width: 100%;
+    text-align: center;
+    height:fit-content;
+    table-layout: fixed;
+    border-spacing: 0 10px;
+}
+
+th{
+    color: #219ebc;
+    height: 40px !important;
+}
+
+td{
+    height: 40px !important;
+    background-color: #EDECEC;
+}
+
+.review-btn a{
+    text-decoration: none;
+    color: #f49f0a;
+    font-weight: bold;
+}
+
+.review-btn a:hover{
+    color: black;
+}
+
+/* Review Page */
+
+#quiz-review-container{
+    background-color:#219ebc;
+    margin-top:35px;
+    display: flex;
+    overflow: auto;
+}
+
+.qContentTable tr{
+    width:100%;
+}
+

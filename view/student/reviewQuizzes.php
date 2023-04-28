@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Subject Contents</title>
+    <title>Review Quizzes</title>
     <link rel="stylesheet" href="../../public/css/reviewQuizzes.css?<?php echo time(); ?>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,6 +18,8 @@
 include_once('../../config/app.php');
 include_once('../../controller/authController/authentication/Authentication.php');
 include_once('../../controller/authController/authorization/Authorization.php');
+include_once('../../controller/studentController/quizController/quizReviewController.php');
+include_once('../../model/Quiz.php');
 include_once('../common/navBar-Student.php');
 include_once('../common/header.php');
 
@@ -27,6 +29,7 @@ Authentication::userAuthentication();
 Authorization::authorizingStudent();
 
 $_SESSION['current-topic'] = $_GET['topic'];
+$quizReviewController = new quizReviewController();
 
 ?>
 
@@ -42,7 +45,99 @@ $_SESSION['current-topic'] = $_GET['topic'];
         <b><p class="sub-title">Model Papers&nbsp;&nbsp;&nbsp;</p></b>
 
         <div id="model-paper-review-container" class="review-container">
-             
+            <?php
+
+            $quizzesList = $quizReviewController->getQuizzesList($_SESSION['current-lesson'],$_SESSION['current-topic'],"MODELPAPER",);
+            
+            if($quizzesList){
+                echo "
+                    <table>
+                        <tr class='quiz-item'>
+                            <th>Attempt</th>
+                            <th>Date</th>
+                            <th>Started Time</th>
+                            <th>Score</th>
+                        </tr>
+                ";
+                foreach($quizzesList as $quiz){
+                    
+                    $score = $quiz['score'];
+                    $date = $quiz['date'];
+                    $time = $quiz['time'];
+                    $attempt = $quiz['attempts'];
+
+                    echo"
+                        <tr class='quiz-item'>
+                            <td>".$attempt."</td>
+                            <td>".$date."</td>
+                            <td>".$time."</td>
+                            <td>".$score."</td>
+                            <td class='review-btn'><a href='./review.php?type=MODELPAPER&attempt=".$attempt."'>Review</a></td>
+                        </tr>
+                    ";
+                }
+                echo"
+                    </table>
+                ";
+            }else{
+                echo "
+                    <div id='no-quizzes'>
+                        <img src='' id='no-quizzes-img'>
+                        <p id='no-quizzes-text'>No quizzes to show!</p>
+                    </div>
+                ";
+            }
+
+            ?>
+        </div>
+
+        <b><p class="sub-title">Past Papers&nbsp;&nbsp;&nbsp;</p></b>
+
+        <div id="past-paper-review-container" class="review-container">
+            <?php
+
+            $quizzesList = $quizReviewController->getQuizzesList($_SESSION['current-lesson'],$_SESSION['current-topic'],"PASTPAPER",);
+            
+            if($quizzesList){
+                echo "
+                    <table>
+                        <tr class='quiz-item'>
+                            <th>Attempt</th>
+                            <th>Date</th>
+                            <th>Started Time</th>
+                            <th>Score</th>
+                        </tr>
+                ";
+                foreach($quizzesList as $quiz){
+                    
+                    $score = $quiz['score'];
+                    $date = $quiz['date'];
+                    $time = $quiz['time'];
+                    $attempt = $quiz['attempts'];
+
+                    echo"
+                        <tr class='quiz-item'>
+                            <td>".$attempt."</td>
+                            <td>".$date."</td>
+                            <td>".$time."</td>
+                            <td>".$score."</td>
+                            <td class='review-btn'><a href='./review.php?type=PASTPAPER&attempt=".$attempt."'>Review</a></td>
+                        </tr>
+                    ";
+                }
+                echo"
+                    </table>
+                ";
+            }else{
+                echo "
+                    <div id='no-quizzes'>
+                        <img src='' id='no-quizzes-img'>
+                        <p id='no-quizzes-text'>No quizzes to show!</p>
+                    </div>
+                ";
+            }
+
+            ?>
         </div>
         
         
