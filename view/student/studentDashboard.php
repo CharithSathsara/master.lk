@@ -337,7 +337,6 @@ $recommendationsController = new recommendationsController();
 
             <div id="rec-container">
                 <div id="rec-card">
-                    <div id="container-head"></div>
                     <div class="rec-msg-slides">
                         <button class="nav-btns nav-btns-next">
                             <img src="../../public/icons/arrow-back.svg" class="arrow-icon" name="arrow-back">
