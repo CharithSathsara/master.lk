@@ -1,3 +1,5 @@
+/* Container Styling */
+
 .container {
     width: 85%;
     height: 100%;
@@ -9,6 +11,8 @@
 .contentecreator-container {
     margin: 120px 40px 100px 30px;
 }
+
+/* Title Elements Styling  */
 
 .title {
 
@@ -38,6 +42,8 @@
     margin-right: 10px;
 }
 
+/* View Theory Content Form Styling */
+
 .select {
 
     /* width: 60%; */
@@ -49,7 +55,6 @@
 
 .selectSubject {
     text-align: left;
-
     font-size: 16px;
     font-family: Arial, Helvetica, sans-serif;
     padding-left: 0%;
@@ -58,8 +63,6 @@
 
 
 }
-
-
 
 
 #selecttopic {
@@ -112,6 +115,8 @@
     margin: 10px;
 }
 
+/* No Contents Error Message */
+
 #no-contents-text {
     font-size: 16px;
     margin-left: 12%;
@@ -121,13 +126,15 @@
 
 }
 
+/* Right Side Button Panel */
 
 .btn-list {
     float: right;
-    /* background-color: blanchedalmond; */
     margin-top: -95px;
     margin-right: 10px;
 }
+
+/* Theory Content Table for Viewing */
 
 .content-table {
     width: 103%;
@@ -150,6 +157,8 @@
     margin-left: 55px;
 }
 
+/* Update, Delete Row Icon styling */
+
 .row-icon {
     vertical-align: top;
     width: 3%;
@@ -169,6 +178,7 @@
     opacity: 0.658;
 }
 
+/* Content Creator Dashboard Fixed Background Image */
 
 #fixed-image1 {
     position: fixed;
