@@ -110,14 +110,17 @@ include_once '../common/header.php';
                 foreach($content as $row){
             ?>
 
-                <tr class="sectionTable">
+                <tr class="sectionTable" <?php $_SESSION['contentId'] = $row['contentId'];
+                        ?>>
                     <td class="sectionRow" style="font-size: 14px;"><b>Section
-                            No.<?=$row['contentId']?></b><br><?=$row['content']?><br><i
-                            style="font-size:12px;">Published at
+                            No.<?=$row['contentId'];;?></b><br><?=$row['content']?><br>
+
+                        <i style="font-size:12px;">Published at
                             <?=$row['date_published']?> by <?=$row['firstName']?> <?=$row['lastName']?></i>
                     </td>
                     <form action="" method="get">
-                        <?php $_SESSION['contentId'] = $row['contentId']?>
+
+
                         <td class="row-icon"><a href="../../view/contentcreator/updateTheory.php"><img
                                     src="../../public/img/update.svg" alt="edit" id="editImg" name="editImg"
                                     width="24px" height="24px"></a>

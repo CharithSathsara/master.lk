@@ -7,7 +7,7 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Content Creator Dashboard</title>
-    <link rel="stylesheet" href="../../public/css/addTheory.css">
+    <link rel="stylesheet" href="../../public/css/updateTheory.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
@@ -20,11 +20,7 @@
     <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <link href="//cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet">
 
-    <style>
-    .ql-editor {
-        height: 200px;
-    }
-    </style>
+
 
 </head>
 
@@ -59,7 +55,9 @@ $viewTheoryContentController = new ViewTheoryContentController();
                 <div class="sub-elements">
                     <p class="sub-title"><b>Theory Contents</b>
                         <hr class="hr-line">
+
                     </p>
+
                     <div>
                         <form action="" method="get">
                         </form>
@@ -69,12 +67,23 @@ $viewTheoryContentController = new ViewTheoryContentController();
                             action="../../controller/contentCreatorController/theoryContentController/updateTheoryContentController.php"
                             method="post" onsubmit="addContentOnSubmit()">
 
+                            <div class="visibility">Visibility:
+                                <input type="radio" value="Visible" name="radio-visibility" id="radio-visibility"
+                                    required />
+                                <label for="visible">Visible</label>
+                                <input type="radio" value="Not Visisble" name="radio-visibility" id="radio-visibility"
+                                    required />
+                                <label for="not visible">Not Visible</label>
+
+                            </div>
+
 
                             <div class="textContent">
                                 <?php
 
                             
                                 $content = $viewTheoryContentController->viewGivenNoContent( $_SESSION['contentId']);
+                                
                                 if(mysqli_num_rows($content) > 0){
                                     foreach($content as $row){
                             
@@ -83,15 +92,7 @@ $viewTheoryContentController = new ViewTheoryContentController();
                                 <div id="editorcontent2"><?=$row['content'] ?></div>
                                 <!-- <textarea name="editor2" id="editor2"><?=$row['content'] ?></textarea> -->
                                 <br>
-                                <div class="visibility">Visibility:
-                                    <input type="radio" value="Visible" name="radio-visibility" id="radio-visibility"
-                                        required />
-                                    <label for="visible">Visible</label>
-                                    <input type="radio" value="Not Visisble" name="radio-visibility"
-                                        id="radio-visibility" required />
-                                    <label for="not visible">Not Visible</label>
 
-                                </div>
                                 <?php   }
                                 }
                                 
@@ -101,8 +102,6 @@ $viewTheoryContentController = new ViewTheoryContentController();
 
                             </div>
                             <br>
-
-
 
                             <div class="btns">
                                 <a href="contentCreatorDashboard.php" class="back-btn">Back</a>
