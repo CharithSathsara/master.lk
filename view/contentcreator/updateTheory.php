@@ -20,6 +20,12 @@
     <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <link href="//cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet">
 
+    <style>
+    .ql-editor {
+        height: 200px;
+    }
+    </style>
+
 </head>
 
 <body>

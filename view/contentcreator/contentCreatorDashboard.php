@@ -48,7 +48,7 @@ include_once '../common/header.php';
         <div class="contentecreator-container">
             <div class="title"><b>Dashboard</b></div>
             <div class="sub-elements">
-                <p class="sub-title"><b>Theory Contents</b></p>
+                <p class="sub-title"><b>Theory Contents&nbsp;&nbsp;&nbsp;</b></p>
                 <hr class="hr-line">
             </div>
             <div class="select">
@@ -119,13 +119,13 @@ include_once '../common/header.php';
                     <form action="" method="get">
                         <?php $_SESSION['contentId'] = $row['contentId']?>
                         <td class="row-icon"><a href="../../view/contentcreator/updateTheory.php"><img
-                                    src="../../public/icons/edit.png" alt="edit" id="editImg" name="editImg"
-                                    width="27px" height="27px"></a>
+                                    src="../../public/img/update.svg" alt="edit" id="editImg" name="editImg"
+                                    width="24px" height="24px"></a>
                         </td>
                     </form>
 
-                    <td class="row-icon"><a href="#" onclick="toggle2()"><img src="../../public/icons/delete.png"
-                                alt="delete" id="deleteImg" width="27px" height="27px"></a>
+                    <td class="row-icon"><a href="#" onclick="toggle2()"><img src="../../public/img/delete.svg"
+                                alt="delete" id="deleteImg" width="24px" height="24px"></a>
 
 
                     </td>

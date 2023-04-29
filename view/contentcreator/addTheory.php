@@ -19,6 +19,12 @@
     <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <link href="//cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet">
 
+    <style>
+    .ql-editor {
+        height: 160px;
+    }
+    </style>
+
     <!-- <script src="../../public/js/addTheoryContent.js"></script> -->
 
 
@@ -53,7 +59,7 @@ include_once '../common/header.php';
             <div class="contentecreator-container">
                 <div class="title"><b>Add New Theory Contents</b></div>
                 <div class="sub-elements">
-                    <p class="sub-title"><b>Theory Contents</b>
+                    <p class="sub-title"><b>Theory Contents&nbsp;&nbsp;&nbsp;</b>
                         <hr class="hr-line">
                     </p>
                     <div>
