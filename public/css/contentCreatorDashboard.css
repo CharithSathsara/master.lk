@@ -112,6 +112,15 @@
     margin: 10px;
 }
 
+#no-contents-text {
+    font-size: 16px;
+    margin-left: 12%;
+    margin-top: 0%;
+    font-weight: bold;
+    color: rgb(244 159 10);
+
+}
+
 
 .btn-list {
     float: right;
@@ -168,7 +177,7 @@
     z-index: -1;
     width: 30%;
     height: auto;
-    opacity: 0.7;
+    opacity: 0.5;
     background-repeat: no-repeat;
     background-size: cover;
 }

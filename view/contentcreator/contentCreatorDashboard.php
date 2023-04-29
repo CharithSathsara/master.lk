@@ -136,6 +136,11 @@ include_once '../common/header.php';
                 </tr>
                 <?php   }
                     }
+                    else{
+                        echo "<div id='no-contents'>
+                              <p id='no-contents-text'><b></b>No Theory Contents Found! </b></p><br> 
+                              </div>";
+                    }
             }
                 ?>
 
