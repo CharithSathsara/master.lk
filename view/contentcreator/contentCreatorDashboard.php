@@ -6,15 +6,23 @@
     <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Page Title -->
     <title>Content Creator Dashboard</title>
+
+    <!-- Include Page CSS Files -->
     <link rel="stylesheet" href="../../public/css/contentCreatorDashboard.css">
     <link rel="stylesheet" href="../../public/css/addTopic.css">
     <link rel="stylesheet" href="../../public/css/deleteTheory.css">
-    <script src="../../public/js/addTopic.js"></script>
-    <script src="../../public/js/deleteTheory.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+    <!-- Include jQuery and Javascript Files -->
+    <script src="../../public/js/updateTheoryContent.js"></script>
+    <script src="../../public/js/addTopic.js"></script>
+    <script src="../../public/js/deleteTheory.js"></script>
+
 
 
 </head>
@@ -23,49 +31,52 @@
 
     <?php
 
-
-include_once('../../controller/authController/authentication/Authentication.php');
-include_once('../../controller/authController/authorization/Authorization.php');
-include('../../controller/contentCreatorController/theoryContentController/viewTheoryContentController.php');
-
-//check user authenticated or not
-//$authentication = new Authentication();
-//$authentication->authorizingAdmin();
-
-//User Authentication
-Authentication::userAuthentication();
-//User Authorization
-Authorization::authorizingContentCreator();
-
-$viewTheoryContentController = new ViewTheoryContentController();
-
-include_once '../common/header.php';
-@include '../common/navBar-ContentCreator.php';
+    // Include Controller Files
+    include_once('../../controller/authController/authentication/Authentication.php');
+    include_once('../../controller/authController/authorization/Authorization.php');
+    include('../../controller/contentCreatorController/theoryContentController/viewTheoryContentController.php');
+    
+    //check user authenticated or not
+    //$authentication = new Authentication();
+    //$authentication->authorizingAdmin();
+    
+    //User Authentication
+    Authentication::userAuthentication();
+    //User Authorization
+    Authorization::authorizingContentCreator();
+    
+    // Create an instance of the ViewTheoryContentController() Class
+    $viewTheoryContentController = new ViewTheoryContentController();
+    
+    // Include Header and Navigation Bar Files
+    include_once '../common/header.php';
+    @include '../common/navBar-ContentCreator.php';
 
 ?>
 
     <div class="container">
         <div class="contentecreator-container">
+            <!-- Title and SubTitle Section -->
             <div class="title"><b>Dashboard</b></div>
             <div class="sub-elements">
                 <p class="sub-title"><b>Theory Contents&nbsp;&nbsp;&nbsp;</b></p>
                 <hr class="hr-line">
             </div>
             <div class="select">
-
+                <!-- View Theory Content Form -->
                 <form action="" class="view-form" method="get">
                     <div class="selectSubject">
                         <p id="add_theory-heading">You Can View Theory Content of the <?= $_SESSION['subject']; ?>
                             subject:</p>
                     </div>
 
-
+                    <!-- Select Topic from Dropdown Menu -->
                     <div class="selectTopic">
                         <div class="selecttopic">
                             <label class="topicLabel">Select Topic:</label>
                             <select id="selecttopic" name="selectTopic" style="margin-right: 8vw" required>
                                 <?php
-
+                                // Load Topics to Dropdown Menu
                                 $topics = $viewTheoryContentController->getAllTopics($_SESSION['subject']);
                                 
                                 foreach($topics as $topic){
@@ -81,6 +92,8 @@ include_once '../common/header.php';
 
                         <br>
                     </div>
+
+                    <!-- Right Side Button panel -->
                     <div class="add-btns">
                         <ul class="btn-list">
                             <li><a href="#" onclick="toggle1()" class="add-btn-topic" id="add-btn-topic">Add New
@@ -96,11 +109,11 @@ include_once '../common/header.php';
 
             </div>
 
-
+            <!-- Dashboard Fixed Background Image -->
             <img src="../../public/img/fixed-img1.svg" id="fixed-image1">
 
 
-
+            <!-- Table to view Loaded Theory Contents -->
             <table class="content-table">
                 <?php
 
@@ -113,7 +126,8 @@ include_once '../common/header.php';
                 <tr class="sectionTable" <?php $_SESSION['contentId'] = $row['contentId'];
                         ?>>
                     <td class="sectionRow" style="font-size: 14px;"><b>Section
-                            No.<?=$row['contentId'];;?></b><br><?=$row['content']?><br>
+                            No.<?=$row['contentId'];;?></b><br>
+                        <p name="sectioncontent" id="sectioncontent"></p><?=$row['content']?></p><br>
 
                         <i style="font-size:12px;">Published at
                             <?=$row['date_published']?> by <?=$row['firstName']?> <?=$row['lastName']?></i>
@@ -150,6 +164,7 @@ include_once '../common/header.php';
     </div>
     </div>
 
+    <!-- Add New Topic Popup  -->
     <div id="popup1">
         <div id="getAddTopicPopup">
             <a href="#" class="close-btn" onclick="toggle1()">&times;</a>

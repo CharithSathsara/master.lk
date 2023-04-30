@@ -6,12 +6,18 @@
     <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Content Creator Dashboard</title>
+    <!-- Page Title -->
+    <title>Update Theory Contents</title>
+
+    <!-- Include Page CSS Files -->
     <link rel="stylesheet" href="../../public/css/updateTheory.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-    <!-- <script src="../../view/contentcreator/ckeditor/ckeditor.js"></script> -->
+
+    <!-- Include jQuery and Javascript Files -->
+
+
     <!-- Main Quill library -->
     <script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
     <script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
@@ -27,30 +33,33 @@
 <body>
     <?php
 
-
-include_once('../../controller/authController/authentication/Authentication.php');
-include_once('../../controller/authController/authorization/Authorization.php');
-include('../../controller/contentCreatorController/theoryContentController/viewTheoryContentController.php');
-
-//check user authenticated or not
-//$authentication = new Authentication();
-//$authentication->authorizingAdmin();
-
-//User Authentication
-Authentication::userAuthentication();
-//User Authorization
-Authorization::authorizingContentCreator();
-
-include_once '../common/header.php';
-@include '../common/navBar-ContentCreator.php';
-
-$viewTheoryContentController = new ViewTheoryContentController();
+    // Include Controller Files
+    include_once('../../controller/authController/authentication/Authentication.php');
+    include_once('../../controller/authController/authorization/Authorization.php');
+    include('../../controller/contentCreatorController/theoryContentController/viewTheoryContentController.php');
+    
+    //check user authenticated or not
+    //$authentication = new Authentication();
+    //$authentication->authorizingAdmin();
+    
+    //User Authentication
+    Authentication::userAuthentication();
+    //User Authorization
+    Authorization::authorizingContentCreator();
+    
+    // Include Header and Navigation Bar Files
+    include_once '../common/header.php';
+    @include '../common/navBar-ContentCreator.php';
+    
+     // Create an instance of the ViewTheoryContentController() Class
+    $viewTheoryContentController = new ViewTheoryContentController();
 
 ?>
 
     <div class="content">
         <div class="container">
             <div class="contentecreator-container">
+                <!-- Title and SubTitle Section -->
                 <div class="title"><b>Update Contents</b></div>
                 <div class="sub-elements">
                     <p class="sub-title"><b>Theory Contents</b>
@@ -62,7 +71,7 @@ $viewTheoryContentController = new ViewTheoryContentController();
                         <form action="" method="get">
                         </form>
 
-
+                        <!-- Update Theory Content Form -->
                         <form
                             action="../../controller/contentCreatorController/theoryContentController/updateTheoryContentController.php"
                             method="post" onsubmit="addContentOnSubmit()">
@@ -80,14 +89,14 @@ $viewTheoryContentController = new ViewTheoryContentController();
 
                             <div class="textContent">
                                 <?php
-
-                            
+                                // Get Relevant Theory Content
                                 $content = $viewTheoryContentController->viewGivenNoContent( $_SESSION['contentId']);
                                 
                                 if(mysqli_num_rows($content) > 0){
                                     foreach($content as $row){
                             
                                 ?>
+                                <!-- Quill Text editor to update Theory Content -->
                                 <input name="editor2" type="hidden" id="editor2">
                                 <div id="editorcontent2"><?=$row['content'] ?></div>
                                 <!-- <textarea name="editor2" id="editor2"><?=$row['content'] ?></textarea> -->
@@ -117,8 +126,8 @@ $viewTheoryContentController = new ViewTheoryContentController();
 
         </div>
 
+        <!-- Quill Text Editor -->
         <script>
-        // CKEDITOR.replace('editor2');
         var toolbarOptions = [
             ['bold', 'italic', 'underline', 'strike'], // toggled buttons
             ['blockquote', 'code-block'],
