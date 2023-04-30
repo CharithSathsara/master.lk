@@ -102,6 +102,7 @@
                             <div class="selectSection">
                                 <label class="sectionNo-label">Section No:</label>
                                 <input type="text" id="sectionNo" name="sectionNo" required>
+                                <span id="content_id_error"></span>
                             </div>
                             <div class="visibility">Visibility:
                                 <input type="radio" value="Visible" name="radio-visibility" id="radio-visibility"
@@ -138,6 +139,7 @@
 
     </div>
 
+    <!-- Quill Text Editor -->
     <script>
     var toolbarOptions = [
         ['bold', 'italic', 'underline', 'strike'], // toggled buttons

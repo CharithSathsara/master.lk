@@ -35,6 +35,11 @@ public static function ViewTheoryContents($topicId, $connection){
 
 }
 
+public static function CheckContentId($contentId, $connection){
+    $query = "SELECT * FROM topic_content WHERE contentId = '$contentId'";
+    $id = $connection->query($query);
+    return $id;
+}
 
 public static function AddTheoryContents( $sectionNo, $selectTopic,$sectionContent, $visibility,  $contentCreatorId, $connection){
    

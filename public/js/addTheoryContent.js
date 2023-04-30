@@ -1,3 +1,24 @@
+// Check Availability of the User Given Section No.
+
+$(document).ready(function () {
+    $('#sectionNo').on('blur', function () {
+        var contentId = $(this).val();
+        $.ajax({
+            url: '../../controller/contentCreatorController/theoryContentController/addTheoryContentController.php',
+            type: 'POST',
+            data: { contentId: contentId },
+            success: function (response) {
+                if (response == 'exists') {
+                    $('#content_id_error').text('Content Id already exists!');
+                }
+            }
+        });
+    });
+});
+
+
+// Quill TextEditor
+
 var toolbarOptions = [
     ['bold', 'italic', 'underline', 'strike'], // toggled buttons
     ['blockquote', 'code-block'],
@@ -58,3 +79,4 @@ function addContentOnSubmit() {
     var addhtml = document.getElementById("editorcontent1").children[0].innerHTML;
     document.getElementById("editor1").value = addhtml;
 }
+

@@ -1,3 +1,4 @@
+/* Container Styling */
 .container {
     width: 85%;
     height: 100%;
@@ -10,6 +11,7 @@
     margin: 120px 40px 100px 30px;
 }
 
+/* Title Elements Styling  */
 .title {
 
     margin-top: 0;
@@ -33,6 +35,8 @@
     margin-left: 82px;
     margin-right: 10px;
 }
+
+/* Add Theory Content Form Styling */
 
 .selectSubject,
 .selectTopic,
@@ -72,6 +76,14 @@
     border-radius: 10px;
 }
 
+/* Section No Already Exists Error Message */
+#content_id_error {
+    font-size: 16px;
+    margin-left: 2%;
+    font-weight: bold;
+    color: rgb(244 159 10);
+
+}
 
 #physics,
 #chemistry {
