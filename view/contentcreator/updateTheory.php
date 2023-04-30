@@ -16,7 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 
     <!-- Include jQuery and Javascript Files -->
-
+    <script src="../../public/js/updateTheoryContent.js"></script>
 
     <!-- Main Quill library -->
     <script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
@@ -48,11 +48,16 @@
     Authorization::authorizingContentCreator();
     
     // Include Header and Navigation Bar Files
-    include_once '../common/header.php';
-    @include '../common/navBar-ContentCreator.php';
+    // include_once '../common/header.php';
+    // @include '../common/navBar-ContentCreator.php';
     
      // Create an instance of the ViewTheoryContentController() Class
     $viewTheoryContentController = new ViewTheoryContentController();
+    
+
+$_SESSION['content'] = $_POST['content'];
+echo 'Session variable set to: ' . $_SESSION['content'];
+
 
 ?>
 
@@ -90,22 +95,19 @@
                             <div class="textContent">
                                 <?php
                                 // Get Relevant Theory Content
-                                $content = $viewTheoryContentController->viewGivenNoContent( $_SESSION['contentId']);
+                                // $content = $viewTheoryContentController->viewGivenNoContent( $_SESSION['contentId']);
                                 
-                                if(mysqli_num_rows($content) > 0){
-                                    foreach($content as $row){
+                                // if(mysqli_num_rows($content) > 0){
+                                //     foreach($content as $row){
                             
-                                ?>
+                                // ?>
                                 <!-- Quill Text editor to update Theory Content -->
                                 <input name="editor2" type="hidden" id="editor2">
-                                <div id="editorcontent2"><?=$row['content'] ?></div>
-                                <!-- <textarea name="editor2" id="editor2"><?=$row['content'] ?></textarea> -->
+                                <div id="editorcontent2"><?=$_SESSION['content'] ?></div>
+
                                 <br>
 
-                                <?php   }
-                                }
-                                
-                                ?>
+
 
 
 

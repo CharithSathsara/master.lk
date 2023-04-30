@@ -1,21 +1,30 @@
-// Get all update buttons
-const updateButtons = document.querySelectorAll('.update-button');
+<script>
+    $(document).ready(function() {
+			// Get all update buttons
+			const updateButtons = $('#editImg');
 
-// Loop through each update button and add click event listener
-updateButtons.forEach(function (updateButton) {
-    updateButton.addEventListener('click', function (e) {
+    // Loop through each update button and add click event listener
+    updateButtons.each(function() {
+        $(this).click(function () {
+            // Get the content ID of the clicked row
+            const contentId = $(this).data('contentid');
 
-        // Get the parent row of the update button
-        const parentRow = e.target.closest('tr');
-
-        // Get the question, options, and correct answer from the parent row
-        const sectionContent = document.querySelector('#sectioncontent').value;
-
-        // Populate the update form with the data
-        document.querySelector('#editorcontent2').value = questionId;
-
-
+            // Send AJAX request to get the content of the row
+            $.ajax({
+                url: '../../controller/contentCreatorController/theoryContentController/updateTheoryContentController.php',
+                method: 'POST',
+                data: {
+                    contentId: contentId
+                },
+                success: function (response) {
+                    // Redirect to updateContent.php with the content data
+                    window.location.href = '../../view/js/updateTheory.php?content=' + response;
+                },
+                error: function (xhr, status, error) {
+                    console.log(xhr.responseText);
+                }
+            });
+        })
     });
-});
-
-
+		});
+</script>

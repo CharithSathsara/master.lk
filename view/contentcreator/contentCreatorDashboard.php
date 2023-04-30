@@ -19,6 +19,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 
     <!-- Include jQuery and Javascript Files -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../../public/js/updateTheoryContent.js"></script>
     <script src="../../public/js/addTopic.js"></script>
     <script src="../../public/js/deleteTheory.js"></script>
