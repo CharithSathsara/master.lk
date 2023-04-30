@@ -9,6 +9,7 @@
 
     <!-- Page Title -->
     <title>Content Creator Dashboard</title>
+    <link rel="shortcut icon" type="image" href="../../public/img/master.svg">
 
     <!-- Include Page CSS Files -->
     <link rel="stylesheet" href="../../public/css/contentCreatorDashboard.css">
@@ -19,8 +20,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 
     <!-- Include jQuery and Javascript Files -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="../../public/js/updateTheoryContent.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../../public/js/updateTheoryContent.js"></script> -->
     <script src="../../public/js/addTopic.js"></script>
     <script src="../../public/js/deleteTheory.js"></script>
 
@@ -136,9 +137,10 @@
                     <form action="" method="get">
 
 
-                        <td class="row-icon"><a href="../../view/contentcreator/updateTheory.php"><img
-                                    src="../../public/img/update.svg" alt="edit" id="editImg" name="editImg"
-                                    width="24px" height="24px"></a>
+                        <td class="row-icon"> <a href="../../view/contentcreator/updateTheory.php">
+                                <img src="../../public/img/update.svg" value="<?= $row['contentId'] ?>" alt="edit"
+                                    id="editImg" name="editImg" width="24px" height="24px">
+                            </a>
                         </td>
                     </form>
 

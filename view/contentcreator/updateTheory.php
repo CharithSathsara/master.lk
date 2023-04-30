@@ -16,7 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 
     <!-- Include jQuery and Javascript Files -->
-    <script src="../../public/js/updateTheoryContent.js"></script>
+    <!-- <script src="../../public/js/updateTheoryContent.js"></script> -->
 
     <!-- Main Quill library -->
     <script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
@@ -54,9 +54,9 @@
      // Create an instance of the ViewTheoryContentController() Class
     $viewTheoryContentController = new ViewTheoryContentController();
     
-
-$_SESSION['content'] = $_POST['content'];
-echo 'Session variable set to: ' . $_SESSION['content'];
+    $content=null;
+    if(isset($_GET['editImg'])){
+        $content = $_GET['content'];}
 
 
 ?>
@@ -103,7 +103,8 @@ echo 'Session variable set to: ' . $_SESSION['content'];
                                 // ?>
                                 <!-- Quill Text editor to update Theory Content -->
                                 <input name="editor2" type="hidden" id="editor2">
-                                <div id="editorcontent2"><?=$_SESSION['content'] ?></div>
+
+                                <div id="editorcontent2" name="content"> <?= $content ?></div>
 
                                 <br>
 
