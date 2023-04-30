@@ -253,14 +253,14 @@ progress[value] {
     display: flex;
 }
 
-#lesson-progress{
+/* #lesson-progress{
     width: 300px;
     padding: 10px;
     border-radius: 10px;
     border: none;
     background-color: #edecec;
     margin-right: 10px;
-}
+} */
 
 #select-lesson-btn{
     background-color: #0b2e5e;
@@ -513,4 +513,50 @@ progress[value] {
 
 
 
- 
+
+
+
+
+
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    outline: 0;
+    box-shadow: none;
+    border: 0!important;
+    background: #edecec;
+    background-image: none;
+    flex: 1;
+    padding: 0 0.5em;
+    /* color: #808080; */
+    cursor: pointer;
+ }
+ select::-ms-expand {
+    display: none;
+ }
+ .select {
+    position: relative;
+    display: inline-flex;
+    width: 320px;
+    height: 38px;
+    line-height: 3;
+    background: #edecec;
+    overflow: hidden;
+    border-radius: 10px;
+ }
+ .select::after {
+    content: '\25BC';
+    position: absolute;
+    top: -3px;
+    right: 12px;
+    cursor: pointer;
+    pointer-events: none;
+    transition: .25s all ease;
+    color: #808080;
+ }
+ .select:hover::after {
+    color: #0b2e5e;
+ }

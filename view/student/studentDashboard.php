@@ -177,7 +177,8 @@ $recommendationsController = new recommendationsController();
             <div id="progress-container">
 
                 <form action="" method="get" id="progress-checking-form">
-                    <label for="lesson">Select the lesson : </label><br><br>
+                    <label for="lesson">Select a lesson : </label><br><br>
+                    <div class="select">
                     <select name="lesson" id="lesson-progress">
                         <option value="default" disabled selected hidden>Select a lesson</option>
                         <optgroup label="Chemistry">
@@ -197,6 +198,7 @@ $recommendationsController = new recommendationsController();
                         ?>
                         </optgroup>
                     </select>
+                    </div>
                     <input type="submit" value="Check Progress" id="select-lesson-btn" name="get-progress-lesson">
                     
                 </form>
