@@ -6,11 +6,19 @@
     <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Page Title -->
     <title>Add New Theory Content</title>
+
+    <!-- Include Page CSS Files -->
     <link rel="stylesheet" href="../../public/css/addTheory.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+    <!-- Include jQuery and Javascript Files -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../../public/js/addTheoryContent.js"></script>
+
     <!-- Main Quill library -->
     <script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
     <script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
@@ -19,14 +27,12 @@
     <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <link href="//cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet">
 
+    <!-- Quill Editor Styling -->
     <style>
     .ql-editor {
         height: 160px;
     }
     </style>
-
-    <!-- <script src="../../public/js/addTheoryContent.js"></script> -->
-
 
 </head>
 
@@ -34,36 +40,39 @@
 
     <?php
 
-
-include_once('../../controller/authController/authentication/Authentication.php');
-include_once('../../controller/authController/authorization/Authorization.php');
-include('../../controller/contentCreatorController/theoryContentController/viewTheoryContentController.php');
-
-//check user authenticated or not
-//$authentication = new Authentication();
-//$authentication->authorizingAdmin();
-
-//User Authentication
-Authentication::userAuthentication();
-//User Authorization
-Authorization::authorizingContentCreator();
-
-$viewTheoryContentController = new ViewTheoryContentController();
-
-include_once '../common/header.php';
-@include '../common/navBar-ContentCreator.php';
+    // Include Controller Files
+    include_once('../../controller/authController/authentication/Authentication.php');
+    include_once('../../controller/authController/authorization/Authorization.php');
+    include('../../controller/contentCreatorController/theoryContentController/viewTheoryContentController.php');
+    
+    //check user authenticated or not
+    //$authentication = new Authentication();
+    //$authentication->authorizingAdmin();
+    
+    //User Authentication
+    Authentication::userAuthentication();
+    //User Authorization
+    Authorization::authorizingContentCreator();
+    
+    // Create an instance of the ViewTheoryContentController() Class
+    $viewTheoryContentController = new ViewTheoryContentController();
+    
+    // Include Header and Navigation Bar Files
+    include_once '../common/header.php';
+    @include '../common/navBar-ContentCreator.php';
 
 ?>
     <div class="content">
         <div class="container">
             <div class="contentecreator-container">
+                <!-- Title and SubTitle Section -->
                 <div class="title"><b>Add New Theory Contents</b></div>
                 <div class="sub-elements">
                     <p class="sub-title"><b>Theory Contents&nbsp;&nbsp;&nbsp;</b>
                         <hr class="hr-line">
                     </p>
                     <div>
-
+                        <!-- Add Theory Content Form -->
                         <form
                             action="../../controller/contentCreatorController/theoryContentController/addTheoryContentController.php"
                             method="post" onsubmit="addContentOnSubmit()">
@@ -75,6 +84,7 @@ include_once '../common/header.php';
                             </div>
                             <div class="selectTopic">
                                 <label class="topic-label">Select Topic:</label>
+                                <!-- Get all Topics to the Drop Down Menu -->
                                 <select id="selecttopic" name="topicId" style="margin-right: 8vw" required>
                                     <?php
 
@@ -105,6 +115,7 @@ include_once '../common/header.php';
 
                             <img src="../../public/img/addTheory1.svg" id="fixed-image2">
 
+                            <!-- Quill Text editor to add Theory Content -->
                             <div class="textContent">
                                 <input name="editor1" type="hidden" id="editor1">
                                 <div id="editorcontent1"></div>
