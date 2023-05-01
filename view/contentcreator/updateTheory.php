@@ -26,6 +26,14 @@
     <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <link href="//cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet">
 
+    <!-- Quill Editor Styling -->
+    <style>
+    .ql-editor {
+        height: 286px;
+    }
+    </style>
+
+
 
 
 </head>
@@ -48,16 +56,15 @@
     Authorization::authorizingContentCreator();
     
     // Include Header and Navigation Bar Files
-    // include_once '../common/header.php';
-    // @include '../common/navBar-ContentCreator.php';
+    include_once '../common/header.php';
+    @include '../common/navBar-ContentCreator.php';
     
      // Create an instance of the ViewTheoryContentController() Class
     $viewTheoryContentController = new ViewTheoryContentController();
     
-    $content=null;
-    if(isset($_GET['editImg'])){
-        $content = $_GET['content'];}
-
+    $id = $_GET['id'];
+    
+    
 
 ?>
 
@@ -78,7 +85,7 @@
 
                         <!-- Update Theory Content Form -->
                         <form
-                            action="../../controller/contentCreatorController/theoryContentController/updateTheoryContentController.php"
+                            action="../../controller/contentCreatorController/theoryContentController/updateTheoryContentController.php?id=<?=$id?>"
                             method="post" onsubmit="addContentOnSubmit()">
 
                             <div class="visibility">Visibility:
@@ -91,29 +98,32 @@
 
                             </div>
 
+                            <img src="../../public/img/update_fixed.svg" id="fixed-image3">
 
                             <div class="textContent">
                                 <?php
                                 // Get Relevant Theory Content
-                                // $content = $viewTheoryContentController->viewGivenNoContent( $_SESSION['contentId']);
                                 
-                                // if(mysqli_num_rows($content) > 0){
-                                //     foreach($content as $row){
-                            
+                                
+                                $content = $viewTheoryContentController->viewGivenNoContent( $id);
+                                if(mysqli_num_rows($content) > 0){
+                                    foreach($content as $row){
                                 // ?>
                                 <!-- Quill Text editor to update Theory Content -->
                                 <input name="editor2" type="hidden" id="editor2">
 
-                                <div id="editorcontent2" name="content"> <?= $content ?></div>
+                                <div id="editorcontent2"><?php echo $toUpdateContent =$row['content']?></div>
 
                                 <br>
 
-
+                                <?php   }
+                                }
+                                ?>
 
 
 
                             </div>
-                            <br>
+
 
                             <div class="btns">
                                 <a href="contentCreatorDashboard.php" class="back-btn">Back</a>

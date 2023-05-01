@@ -9,7 +9,18 @@
 
     <!-- Page Title -->
     <title>Content Creator Dashboard</title>
-    <link rel="shortcut icon" type="image" href="../../public/img/master.svg">
+    <link rel="shortcut icon" type="image" id="#header-image" href="../../public/img/master.svg">
+    <style>
+    #header-image {
+        max-width: 20px;
+        /* set the maximum width to 200 pixels */
+        max-height: 10px;
+        /* set the maximum height to 100 pixels */
+        width: auto;
+        /* set the width to auto to maintain aspect ratio */
+    }
+    </style>
+
 
     <!-- Include Page CSS Files -->
     <link rel="stylesheet" href="../../public/css/contentCreatorDashboard.css">
@@ -137,9 +148,10 @@
                     <form action="" method="get">
 
 
-                        <td class="row-icon"> <a href="../../view/contentcreator/updateTheory.php">
-                                <img src="../../public/img/update.svg" value="<?= $row['contentId'] ?>" alt="edit"
-                                    id="editImg" name="editImg" width="24px" height="24px">
+                        <td class="row-icon"> <a
+                                href="../../view/contentcreator/updateTheory.php?id=<?=$row['contentId']?>">
+                                <img src="../../public/img/update.svg" alt="edit" id="editImg" name="editImg"
+                                    width="24px" height="24px">
                             </a>
                         </td>
                     </form>
