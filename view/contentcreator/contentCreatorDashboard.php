@@ -61,8 +61,8 @@
     $viewTheoryContentController = new ViewTheoryContentController();
     
     // Include Header and Navigation Bar Files
-    include_once '../common/header.php';
-    @include '../common/navBar-ContentCreator.php';
+    // include_once '../common/header.php';
+    // @include '../common/navBar-ContentCreator.php';
 
 ?>
 
@@ -155,10 +155,11 @@
                         </td>
                     </form>
 
-                    <td class="row-icon"><a href="#" onclick="toggle2()"><img src="../../public/img/delete.svg"
-                                alt="delete" id="deleteImg" width="24px" height="24px"></a>
-
-
+                    <td class="row-icon">
+                        <button onclick="deleteTheoryPopup()">
+                            <img src="../../public/img/delete.svg" alt="delete" id="deleteImg" width="24px"
+                                height="24px">
+                        </button>
                     </td>
 
                 </tr>
@@ -237,10 +238,11 @@
     </div>
 
     <!-- Delete Theory Content Confirmation Popup -->
-    <div id="setDeleteTheoryPopup">
-        <div id="popup2">
-
-            <a href="#" class="close-btn" onclick="toggle2()">&times;</a>
+    <div class="page-mask" id="page-mask-delete-theory">
+        <div id="setDeleteTheoryPopup">
+            <button onclick="closeDeleteTheoryPopup()" class="close-button">
+                <img src="../../public/icons/close.svg" class="close-icon">
+            </button><br><br>
             <img src="../../public/icons/delete-alert.png" width="30px" height="35px" alt="Delete Alert"
                 class="delete-alert">
             <p class="popup1-title"><b>Delete Confirmation</b></p>
@@ -252,7 +254,7 @@
                     <input type="submit" name="deleteTheory-Yes-btn" value="Yes" id="deleteTheory-Yes-btn"
                         class="deleteTheory-Yes-btn">
                     <input type="submit" name="deleteTheory-No-btn" value="No" id="deleteTheory-No-btn"
-                        class="deleteTheory-No-btn" onclick="toggle2()">
+                        class="deleteTheory-No-btn" onclick="closeDeleteTheoryPopup()">
                 </div>
             </form>
 

@@ -1,5 +1,11 @@
-function toggle2() {
+console.log("awaaaa");
 
-    let popup2 = document.getElementById("popup2");
-    popup2.classList.toggle("active");
+function closeDeleteTheoryPopup() {
+    document.getElementById("page-mask-delete-theory").style.display = "none";
+
+
+}
+
+function deleteTheoryPopup() {
+    document.getElementById("page-mask-delete-theory").style.display = "block";
 }
