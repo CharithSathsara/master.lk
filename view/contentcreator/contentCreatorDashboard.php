@@ -31,8 +31,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 
     <!-- Include jQuery and Javascript Files -->
-    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="../../public/js/updateTheoryContent.js"></script> -->
+    <script src="../../public/js/updateTheory.js"></script>
     <script src="../../public/js/addTopic.js"></script>
     <script src="../../public/js/deleteTheory.js"></script>
 
@@ -62,8 +61,8 @@
     $viewTheoryContentController = new ViewTheoryContentController();
     
     // Include Header and Navigation Bar Files
-    // include_once '../common/header.php';
-    // @include '../common/navBar-ContentCreator.php';
+    include_once '../common/header.php';
+    @include '../common/navBar-ContentCreator.php';
 
 ?>
 
@@ -180,26 +179,14 @@
     </div>
 
     <!-- Theory Content Update Successful Popup element -->
-    <div id="update-successful-popup" style="display: none; z-index: 100;">
-        Theory Content Updated Successfully!
+    <div class="page-mask" id="page-mask-update-success">
+        <div id="update-successful-popup">
+            <img src="../../public/icons/success-yellow.svg" alt="success" width="54px" height="54px">
+            <h2>Updated!</h2>
+            <h3>Theory Content Updated Successfully.</h3>
+
+        </div>
     </div>
-
-    <script>
-    function showUpdateSuccessfulPopup() {
-
-        // Get the popup element
-        var updatePopup = document.getElementById("update-successful-popup");
-
-        // Show the popup
-        updatePopup.style.display = "block";
-
-        // Hide the popup after 3 seconds
-        // setTimeout(function() {
-        //     updatePopup.style.display = "none";
-        //     // Redirect to dashboard after the popup disappears
-        // }, 3000);
-    }
-    </script>
 
     <?php 
     if(isset($_SESSION['update_successful']) && $_SESSION['update_successful']) {

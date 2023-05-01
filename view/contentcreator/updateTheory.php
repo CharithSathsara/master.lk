@@ -138,6 +138,27 @@
             </div>
 
 
+            <!-- Theory Content Update Successful Popup element -->
+            <div class="page-mask" id="page-mask-update-unsuccess">
+                <div id="update-unsuccessful-popup">
+                    <i class="fa-regular fa-triangle-exclamation" style="color: #de1212;"></i>
+                    <h2>Failed!</h2>
+                    <h3>TSomething went Wrong! Theory Content Update Unsuccessful.</h3>
+
+                </div>
+            </div>
+
+            <?php 
+    if(isset($_SESSION['update_unsuccessful']) && $_SESSION['update_unsuccessful']) {
+        echo "<script>showUpdateUnsuccessfulPopup();</script>";
+        // Unset the session flag to prevent the popup from showing again
+        unset($_SESSION['update_unsuccessful']);
+    }
+    
+    ?>
+
+
+
 
             <!-- Quill Text Editor -->
             <script>

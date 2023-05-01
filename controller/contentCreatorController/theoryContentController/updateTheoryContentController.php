@@ -18,6 +18,7 @@ if(isset($_POST['update-btn'])){
         redirect("Theory Content Added Successfully","view/contentcreator/contentCreatorDashboard.php");
         
     }else{ 
+        $_SESSION['update_unsuccessful'] = true;
         redirect("Something Went Wrong while Adding the Theory Content","view/contentcreator/updateTheory.php");
     }
 

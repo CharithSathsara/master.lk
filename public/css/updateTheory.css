@@ -173,7 +173,7 @@
 
 
 
-.container form .error-msg {
+/* .container form .error-msg {
     margin: 10px 20px 20px 50px;
     display: block;
     font-size: 14px;
@@ -184,7 +184,7 @@
     padding: 5px;
     width: 20%;
     text-align: center;
-}
+} */
 
 .textContent {
     margin-top: 4%;
@@ -201,4 +201,53 @@
     opacity: 0.4;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.page-mask {
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 99;
+    display: none;
+}
+
+#update-successful-popup {
+    z-index: 101;
+    position: absolute;
+    height: 222px;
+    width: 465px;
+    background-color: white;
+    border-radius: 10px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 290px;
+}
+
+#update-unsuccessful-popup img {
+    width: 80px;
+    height: auto;
+    margin-left: 190px;
+    padding: 18px 0px 0px 0px;
+}
+
+
+#update-unsuccessful-popup h2 {
+    margin-top: 20px;
+    font-size: 25px;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+}
+
+#update-unsuccessful-popup h3 {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    text-align: center;
+    margin-top: -10px;
 }
