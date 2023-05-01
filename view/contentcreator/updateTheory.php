@@ -137,71 +137,71 @@
 
             </div>
 
-        </div>
 
-        <!-- Quill Text Editor -->
-        <script>
-        var toolbarOptions = [
-            ['bold', 'italic', 'underline', 'strike'], // toggled buttons
-            ['blockquote', 'code-block'],
-            [{
-                'list': 'ordered'
-            }, {
-                'list': 'bullet'
-            }],
-            [{
-                'script': 'sub'
-            }, {
-                'script': 'super'
-            }], // superscript/subscript
-            [{
-                'indent': '-1'
-            }, {
-                'indent': '+1'
-            }], // outdent/indent
-            [{
-                'direction': 'rtl'
-            }], // text direction
 
-            [{
-                'size': ['small', false, 'large', 'huge']
-            }], // custom dropdown
-            [{
-                'header': [1, 2, 3, 4, 5, 6, false]
-            }],
+            <!-- Quill Text Editor -->
+            <script>
+            var toolbarOptions = [
+                ['bold', 'italic', 'underline', 'strike'], // toggled buttons
+                ['blockquote', 'code-block'],
+                [{
+                    'list': 'ordered'
+                }, {
+                    'list': 'bullet'
+                }],
+                [{
+                    'script': 'sub'
+                }, {
+                    'script': 'super'
+                }], // superscript/subscript
+                [{
+                    'indent': '-1'
+                }, {
+                    'indent': '+1'
+                }], // outdent/indent
+                [{
+                    'direction': 'rtl'
+                }], // text direction
 
-            [{
-                'color': []
-            }, {
-                'background': []
-            }], // dropdown with defaults from theme
-            [{
-                'font': []
-            }],
-            [{
-                'align': []
-            }],
-            ['link', 'image'],
+                [{
+                    'size': ['small', false, 'large', 'huge']
+                }], // custom dropdown
+                [{
+                    'header': [1, 2, 3, 4, 5, 6, false]
+                }],
 
-            ['clean'] // remove formatting button
-        ];
-        var options = {
-            modules: {
-                toolbar: toolbarOptions
-            },
-            debug: 'info',
-            placeholder: 'Add Theory Content Here...',
-            readOnly: false,
-            theme: 'snow'
-        };
-        var container = document.getElementById("editorcontent2");
-        var editor = new Quill(container, options);
+                [{
+                    'color': []
+                }, {
+                    'background': []
+                }], // dropdown with defaults from theme
+                [{
+                    'font': []
+                }],
+                [{
+                    'align': []
+                }],
+                ['link', 'image'],
 
-        function addContentOnSubmit() {
-            var addhtml = document.getElementById("editorcontent2").children[0].innerHTML;
-            document.getElementById("editor2").value = addhtml;
-        }
-        </script>
+                ['clean'] // remove formatting button
+            ];
+            var options = {
+                modules: {
+                    toolbar: toolbarOptions
+                },
+                debug: 'info',
+                placeholder: 'Add Theory Content Here...',
+                readOnly: false,
+                theme: 'snow'
+            };
+            var container = document.getElementById("editorcontent2");
+            var editor = new Quill(container, options);
+
+            function addContentOnSubmit() {
+                var addhtml = document.getElementById("editorcontent2").children[0].innerHTML;
+                document.getElementById("editor2").value = addhtml;
+            }
+            </script>
 
 
 </body>

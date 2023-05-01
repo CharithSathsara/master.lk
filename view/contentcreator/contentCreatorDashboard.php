@@ -62,8 +62,8 @@
     $viewTheoryContentController = new ViewTheoryContentController();
     
     // Include Header and Navigation Bar Files
-    include_once '../common/header.php';
-    @include '../common/navBar-ContentCreator.php';
+    // include_once '../common/header.php';
+    // @include '../common/navBar-ContentCreator.php';
 
 ?>
 
@@ -178,6 +178,43 @@
         </div>
     </div>
     </div>
+
+    <!-- Theory Content Update Successful Popup element -->
+    <div id="update-successful-popup" style="display: none; z-index: 100;">
+        Theory Content Updated Successfully!
+    </div>
+
+    <script>
+    function showUpdateSuccessfulPopup() {
+
+        // Get the popup element
+        var updatePopup = document.getElementById("update-successful-popup");
+
+        // Show the popup
+        updatePopup.style.display = "block";
+
+        // Hide the popup after 3 seconds
+        // setTimeout(function() {
+        //     updatePopup.style.display = "none";
+        //     // Redirect to dashboard after the popup disappears
+        // }, 3000);
+    }
+    </script>
+
+    <?php 
+    if(isset($_SESSION['update_successful']) && $_SESSION['update_successful']) {
+        echo "<script>showUpdateSuccessfulPopup();</script>";
+        // Unset the session flag to prevent the popup from showing again
+        unset($_SESSION['update_successful']);
+    }
+    
+    ?>
+
+
+
+    </div>
+
+
 
     <!-- Add New Topic Popup  -->
     <div id="popup1">
