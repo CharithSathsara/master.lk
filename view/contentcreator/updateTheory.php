@@ -138,12 +138,12 @@
             </div>
 
 
-            <!-- Theory Content Update Successful Popup element -->
+            <!-- Theory Content Update Unsuccessful Popup element -->
             <div class="page-mask" id="page-mask-update-unsuccess">
                 <div id="update-unsuccessful-popup">
                     <i class="fa-regular fa-triangle-exclamation" style="color: #de1212;"></i>
                     <h2>Failed!</h2>
-                    <h3>TSomething went Wrong! Theory Content Update Unsuccessful.</h3>
+                    <h3>Something went Wrong! Theory Content Update Unsuccessful.</h3>
 
                 </div>
             </div>

@@ -7,7 +7,7 @@ function showUpdateSuccessfulPopup() {
     // Hide the popup after 3 seconds
     setTimeout(function () {
         document.getElementById("page-mask-update-success").style.display = "none";
-    }, 3000);
+    }, 2500);
 }
 
 function showUpdateUnsuccessfulPopup() {
@@ -19,6 +19,6 @@ function showUpdateUnsuccessfulPopup() {
     // Hide the popup after 3 seconds
     setTimeout(function () {
         document.getElementById("page-mask-update-unsuccess").style.display = "none";
-    }, 3000);
+    }, 2500);
 }
 

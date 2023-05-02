@@ -1,6 +1,8 @@
-.popup2-title {
+/* Delete Confirmation of Theory Content Popup */
+
+.deleteTheory-title {
     margin-left: 9%;
-    margin-top: -2.5%;
+    margin-top: -6%;
     margin-bottom: 6%;
     font-size: 18px;
 }
@@ -22,32 +24,39 @@
 
 
 #setDeleteTheoryPopup {
-    top: 50%;
-    left: 51.44%;
-    width: 35%;
-    height: 15%;
+    width: 40%;
+    /* height: auto; */
+    height: 98%;
+    /* top: 11%; */
+    margin-left: 35%;
+    margin-top: 18.5%;
+    height: 21%;
+    padding: 2%;
     visibility: visible;
     opacity: 1;
-    border-radius: 8px;
+    background-color: white;
+    border-radius: 10px;
 
 }
 
 .close-icon {
     height: 25px;
-    right: 0;
+    right: 328px;
+    /* top: 2%; */
+    margin-top: -0.8%;
+    /* margin: 25px; */
     position: absolute;
-    margin: 25px;
-
 }
 
 .delete-alert {
     float: left;
-    margin-top: -3.5%;
+    margin-top: -6.6%;
     margin-right: 1%;
 }
 
 .delete-confirmation-btns {
     float: right;
+    margin-top: 8px;
 }
 
 #deleteTheory-Yes-btn {
@@ -55,7 +64,7 @@
     padding: 1.7%;
     width: 180px;
     border: none;
-    border-radius: 4px;
+    border-radius: 10px;
     color: white;
     font-size: 16px;
     cursor: pointer;
@@ -71,11 +80,53 @@
     padding: 1.7%;
     width: 180px;
     border: none;
-    border-radius: 4px;
+    border-radius: 10px;
     color: white;
     font-size: 16px;
     cursor: pointer;
     text-align: center;
-    margin: 10px;
+    margin: -2px;
     text-decoration: none;
+}
+
+/* Deleted Theory Successfully Popup */
+
+#delete-successful-popup {
+    z-index: 101;
+    position: absolute;
+    height: 222px;
+    width: 465px;
+    background-color: white;
+    border-radius: 10px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 290px;
+}
+
+
+
+#delete-successful-popup img {
+    width: 80px;
+    height: auto;
+    margin-left: 190px;
+    padding: 18px 0px 0px 0px;
+}
+
+
+#delete-successful-popup h2 {
+    margin-top: 20px;
+    font-size: 25px;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+}
+
+#delete-successful-popup h3 {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    text-align: center;
+    margin-top: -10px;
 }

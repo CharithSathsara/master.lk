@@ -61,8 +61,8 @@
     $viewTheoryContentController = new ViewTheoryContentController();
     
     // Include Header and Navigation Bar Files
-    // include_once '../common/header.php';
-    // @include '../common/navBar-ContentCreator.php';
+    include_once '../common/header.php';
+    @include '../common/navBar-ContentCreator.php';
 
 ?>
 
@@ -155,11 +155,35 @@
                         </td>
                     </form>
 
+                    <!-- Delete Theory Content Confirmation Popup -->
+                    <div class="page-mask" id="page-mask-delete-theory">
+                        <div id="setDeleteTheoryPopup">
+                            <button onclick="closeDeleteTheoryPopup()" class="close-button">
+                                <img src="../../public/icons/close.svg" class="close-icon">
+                            </button><br><br>
+                            <img src="../../public/icons/delete-alert.png" width="30px" height="35px" alt="Delete Alert"
+                                class="delete-alert">
+                            <p class="deleteTheory-title"><b>Delete Confirmation</b></p>
+                            <form
+                                action="../../controller/contentCreatorController/theoryContentController/deleteTheoryContentController.php?deleteId=<?=$row['contentId']?>"
+                                class="deleteTheory-form" method="POST">
+                                <p>Are you sure you want to Delete this Section? </p>
+                                <div class="delete-confirmation-btns">
+                                    <input type="submit" name="deleteTheory-Yes-btn" value="Yes"
+                                        id="deleteTheory-Yes-btn" class="deleteTheory-Yes-btn">
+                                    <input type="submit" name="deleteTheory-No-btn" value="No" id="deleteTheory-No-btn"
+                                        class="deleteTheory-No-btn" onclick="closeDeleteTheoryPopup()">
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+
                     <td class="row-icon">
-                        <button onclick="deleteTheoryPopup()">
+                        <a href="#" onclick="deleteTheoryPopup()">
                             <img src="../../public/img/delete.svg" alt="delete" id="deleteImg" width="24px"
                                 height="24px">
-                        </button>
+                        </a>
                     </td>
 
                 </tr>
@@ -178,6 +202,43 @@
         </div>
     </div>
     </div>
+    <!-- Theory Content Delete Successful Popup element -->
+    <div class="page-mask" id="page-mask-delete-success">
+        <div id="delete-successful-popup">
+            <img src="../../public/icons/success-yellow.svg" alt="success" width="54px" height="54px">
+            <h2>Deleted!</h2>
+            <h3>Theory Content Deleted Successfully.</h3>
+
+        </div>
+    </div>
+
+    <?php 
+    if(isset($_SESSION['delete_successful']) && $_SESSION['delete_successful']) {
+        echo "<script>showDeleteSuccessfulPopup();</script>";
+        // Unset the session flag to prevent the popup from showing again
+        unset($_SESSION['delete_successful']);
+    }
+    
+    ?>
+
+    <!-- Theory Content Delete Unsuccessful Popup element -->
+    <div class="page-mask" id="page-mask-delete-unsuccess">
+        <div id="delete-unsuccessful-popup">
+            <i class="fa-regular fa-triangle-exclamation" style="color: #de1212;"></i>
+            <h2>Failed!</h2>
+            <h3>Something went Wrong! Theory Content Update Unsuccessful.</h3>
+
+        </div>
+    </div>
+
+    <?php 
+    if(isset($_SESSION['delete_unsuccessful']) && $_SESSION['delete_unsuccessful']) {
+        echo "<script>showDeleteUnsuccessfulPopup();</script>";
+        // Unset the session flag to prevent the popup from showing again
+        unset($_SESSION['delete_unsuccessful']);
+    }
+    
+    ?>
 
     <!-- Theory Content Update Successful Popup element -->
     <div class="page-mask" id="page-mask-update-success">
@@ -237,29 +298,7 @@
 
     </div>
 
-    <!-- Delete Theory Content Confirmation Popup -->
-    <div class="page-mask" id="page-mask-delete-theory">
-        <div id="setDeleteTheoryPopup">
-            <button onclick="closeDeleteTheoryPopup()" class="close-button">
-                <img src="../../public/icons/close.svg" class="close-icon">
-            </button><br><br>
-            <img src="../../public/icons/delete-alert.png" width="30px" height="35px" alt="Delete Alert"
-                class="delete-alert">
-            <p class="popup1-title"><b>Delete Confirmation</b></p>
-            <form
-                action="../../controller/contentCreatorController/theoryContentController/deleteTheoryContentController.php"
-                class="deleteTheory-form" method="POST">
-                <p>Are you sure you want to Delete this Section? </p>
-                <div class="delete-confirmation-btns">
-                    <input type="submit" name="deleteTheory-Yes-btn" value="Yes" id="deleteTheory-Yes-btn"
-                        class="deleteTheory-Yes-btn">
-                    <input type="submit" name="deleteTheory-No-btn" value="No" id="deleteTheory-No-btn"
-                        class="deleteTheory-No-btn" onclick="closeDeleteTheoryPopup()">
-                </div>
-            </form>
 
-        </div>
-    </div>
 
 
 
