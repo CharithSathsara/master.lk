@@ -1,3 +1,32 @@
+// Theory Content add Success Popup
+
+function showAddSuccessfulPopup() {
+
+    // Show the popup
+    document.getElementById("page-mask-add-success").style.display = "block";
+
+
+    // Hide the popup after 3 seconds
+    setTimeout(function () {
+        document.getElementById("page-mask-add-success").style.display = "none";
+    }, 2500);
+}
+
+// Theory Content add Unsuccess Popup
+
+function showAddUnsuccessfulPopup() {
+
+    // Show the popup
+    document.getElementById("page-mask-add-unsuccess").style.display = "block";
+
+
+    // Hide the popup after 3 seconds
+    setTimeout(function () {
+        document.getElementById("page-mask-add-unsuccess").style.display = "none";
+    }, 2500);
+}
+
+
 // Check Availability of the User Given Section No.
 
 $(document).ready(function () {

@@ -31,6 +31,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 
     <!-- Include jQuery and Javascript Files -->
+    <script src="../../public/js/addTheoryContent.js"></script>
     <script src="../../public/js/updateTheory.js"></script>
     <script src="../../public/js/addTopic.js"></script>
     <script src="../../public/js/deleteTheory.js"></script>
@@ -74,6 +75,43 @@
                 <p class="sub-title"><b>Theory Contents&nbsp;&nbsp;&nbsp;</b></p>
                 <hr class="hr-line">
             </div>
+
+            <!-- Add New Topic Popup  -->
+            <div id="page-mask-addTopic">
+                <div id="addTopicPopup">
+                    <button onclick="closeAddTopicPopup()" class="close-button">
+                        <img src="../../public/icons/close.svg" class="close-icon">
+                    </button><br><br>
+                    <p class="addTopicPopup-title"><b>Add New Title</b></p>
+                    <form action="" class="addTopic-form" method="POST">
+                        <div class="selectSub">
+                            <p id="add_theory-heading">You Can Add Topics to <?= $_SESSION['subject']; ?>
+                                Subject:</p>
+                        </div>
+                        <div class="selectlesson">Select Lesson:
+                            <select id="selectlesson" name="selectLesson">
+                                <?php
+
+                    $lessons = $viewTheoryContentController->getAllLessons($_SESSION['subject']);
+                    
+                    foreach($lessons as $lesson){
+                        echo "<option value=\"{$lesson['lessonId']}\">{$lesson['lessonName']}</option>";
+                    }
+
+                    ?>
+                            </select>
+                        </div>
+                        <div class="topic-title">Topic Title :
+                            <input type="text" id="topicTitle" placeholder="Add new topic title here" required>
+                        </div>
+
+                        <input type="submit" name="addNewTopic-btn" value="Add" id="add-NewTopic-btn"
+                            class="add-NewTopic-btn">
+                </div>
+
+
+            </div>
+
             <div class="select">
                 <!-- View Theory Content Form -->
                 <form action="" class="view-form" method="get">
@@ -108,7 +146,8 @@
                     <!-- Right Side Button panel -->
                     <div class="add-btns">
                         <ul class="btn-list">
-                            <li><a href="#" onclick="toggle1()" class="add-btn-topic" id="add-btn-topic">Add New
+                            <li><a href="#" onclick="showAddTopicPopup()" class="add-btn-topic" id="add-btn-topic">Add
+                                    New
                                     Topic</a></li>
                             <li><a href="addTheory.php" class="add-btn-content">Add New Content</a></li>
 
@@ -240,6 +279,26 @@
     
     ?>
 
+    <!-- Theory Content Add Successful Popup element -->
+    <div class="page-mask" id="page-mask-add-success">
+        <div id="add-successful-popup">
+            <img src="../../public/icons/success-yellow.svg" alt="success" width="54px" height="54px">
+            <h2>Added!</h2>
+            <h3>Theory Content Added Successfully.</h3>
+
+        </div>
+    </div>
+
+    <?php 
+    if(isset($_SESSION['add_successful']) && $_SESSION['add_successful']) {
+        echo "<script>showAddSuccessfulPopup();</script>";
+        // Unset the session flag to prevent the popup from showing again
+        unset($_SESSION['add_successful']);
+    }
+    
+    ?>
+
+
     <!-- Theory Content Update Successful Popup element -->
     <div class="page-mask" id="page-mask-update-success">
         <div id="update-successful-popup">
@@ -265,38 +324,7 @@
 
 
 
-    <!-- Add New Topic Popup  -->
-    <div id="popup1">
-        <div id="getAddTopicPopup">
-            <a href="#" class="close-btn" onclick="toggle1()">&times;</a>
-            <p class="popup1-title"><b>Add New Title</b></p>
-            <form action="" class="addTopic-form" method="POST">
-                <div class="selectSub">
-                    <p id="add_theory-heading">You Can Add Topics to <?= $_SESSION['subject']; ?>
-                        Subject:</p>
-                </div>
-                <div class="selectlesson">Select Lesson:
-                    <select id="selectlesson" name="selectLesson">
-                        <?php
 
-                    $lessons = $viewTheoryContentController->getAllLessons($_SESSION['subject']);
-                    
-                    foreach($lessons as $lesson){
-                        echo "<option value=\"{$lesson['lessonId']}\">{$lesson['lessonName']}</option>";
-                    }
-
-                    ?>
-                    </select>
-                </div>
-                <div class="topic-title">Topic Title :
-                    <input type="text" id="topicTitle" placeholder="Add new topic title here" required>
-                </div>
-
-                <input type="submit" name="addNewTopic-btn" value="Add" id="add-NewTopic-btn" class="add-NewTopic-btn">
-        </div>
-
-
-    </div>
 
 
 

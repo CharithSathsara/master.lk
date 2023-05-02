@@ -203,6 +203,8 @@
     background-size: cover;
 }
 
+
+/* Update Theory Content Uncsuccesful Popup */
 .page-mask {
     background: rgba(0, 0, 0, 0.5);
     position: fixed;
@@ -214,7 +216,7 @@
     display: none;
 }
 
-#update-successful-popup {
+#update-unsuccessful-popup {
     z-index: 101;
     position: absolute;
     height: 222px;
@@ -225,7 +227,7 @@
     right: 0;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 290px;
+    margin-top: 272px;
 }
 
 #update-unsuccessful-popup img {

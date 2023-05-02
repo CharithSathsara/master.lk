@@ -217,3 +217,54 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+
+/* Add Theory Content Uncsuccesful Popup */
+.page-mask {
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 99;
+    display: none;
+}
+
+#add-unsuccessful-popup {
+    z-index: 101;
+    position: absolute;
+    height: 222px;
+    width: 465px;
+    background-color: white;
+    border-radius: 10px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 272px;
+}
+
+#add-unsuccessful-popup img {
+    width: 80px;
+    height: auto;
+    margin-left: 190px;
+    padding: 18px 0px 0px 0px;
+}
+
+
+#add-unsuccessful-popup h2 {
+    margin-top: 20px;
+    font-size: 25px;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+}
+
+#add-unsuccessful-popup h3 {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    text-align: center;
+    margin-top: -10px;
+}

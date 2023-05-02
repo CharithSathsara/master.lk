@@ -129,6 +129,25 @@
 
                             </div>
                         </form>
+
+                        <!-- Theory Content Add Unsuccessful Popup element -->
+                        <div class="page-mask" id="page-mask-add-unsuccess">
+                            <div id="add-unsuccessful-popup">
+                                <i class="fa-regular fa-triangle-exclamation" style="color: #de1212;"></i>
+                                <h2>Failed!</h2>
+                                <h3>Something went Wrong! Theory Content Adding Unsuccessful.</h3>
+
+                            </div>
+                        </div>
+
+                        <?php 
+                        if(isset($_SESSION['add_unsuccessful']) && $_SESSION['add_unsuccessful']) {
+                            echo "<script>showAddUnsuccessfulPopup();</script>";
+                            // Unset the session flag to prevent the popup from showing again
+                            unset($_SESSION['add_unsuccessful']);
+                        }
+                        
+                        ?>
                     </div>
 
                 </div>

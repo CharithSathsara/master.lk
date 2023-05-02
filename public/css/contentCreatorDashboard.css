@@ -203,6 +203,7 @@
     display: none;
 }
 
+#add-successful-popup,
 #update-successful-popup {
     z-index: 101;
     position: absolute;
@@ -214,9 +215,10 @@
     right: 0;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 290px;
+    margin-top: 272px;
 }
 
+#add-successful-popup img,
 #update-successful-popup img {
     width: 80px;
     height: auto;
@@ -224,7 +226,7 @@
     padding: 18px 0px 0px 0px;
 }
 
-
+#add-successful-popup h2,
 #update-successful-popup h2 {
     margin-top: 20px;
     font-size: 25px;
@@ -233,6 +235,7 @@
     text-align: center;
 }
 
+#add-successful-popup h3,
 #update-successful-popup h3 {
     font-size: 16px;
     font-weight: 500;

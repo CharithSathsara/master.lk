@@ -1,31 +1,10 @@
-.popup1-title {
+.addTopicPopup-title {
     margin-left: 5%;
     margin-top: -2.5%;
     margin-bottom: 0%;
     font-size: 18px;
 }
 
-#popup1 {
-    position: fixed;
-    top: 49%;
-    left: 51.44%;
-    transform: translate(-50%, -50%);
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
-    width: 600px;
-    padding: 50px;
-    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
-    background: #fff;
-    visibility: hidden;
-    opacity: 0;
-    transition: 0.5s;
-    -webkit-transition: 0.5s;
-    -moz-transition: 0.5s;
-    -ms-transition: 0.5s;
-    -o-transition: 0.5s;
-}
 
 .close-btn {
     text-decoration: none;
@@ -33,19 +12,12 @@
     margin-top: -4%;
 }
 
-#popup1.active {
+#addTopicPopup {
     top: 49%;
     left: 51.44%;
     width: 35%;
     height: 44%;
-    visibility: visible;
-    opacity: 1;
-    border-radius: 8px;
-    transition: 0.5s;
-    -webkit-transition: 0.5s;
-    -moz-transition: 0.5s;
-    -ms-transition: 0.5s;
-    -o-transition: 0.5s;
+    border-radius: 10px;
 }
 
 .selectSub {
@@ -101,9 +73,4 @@
     margin-top: 9%;
     margin-left: 130px;
 
-}
-
-#add-NewTopic-btn:hover {
-    background: rgb(244 159 10);
-    color: rgba(33, 158, 188);
 }

@@ -29,8 +29,10 @@ if(isset($_POST['add-btn'])){
     $data = ContentCreator::AddTheoryContents($sectionNo, $selectTopic,$sectionContent, $visibility, $_SESSION['auth_user']['userId'], $db_connection->getConnection());
 
     if($data){
+      $_SESSION['add_successful'] = true;
         redirect("Theory Content Added Successfully","view/contentcreator/contentCreatorDashboard.php");
     }else{ 
+      $_SESSION['add_unsuccessful'] = true;
         redirect("Something Went Wrong while Adding the Theory Content","view/contentcreator/addTheory.php");
     }
 
