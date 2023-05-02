@@ -22,10 +22,9 @@
             <div class="updatePop-contentCreator">
                 <div class="updatePop-contentCreatorHeader">
                     <h4>Update Content Creator</h4>
-                    <button onclick="closeUpCreator()"><img src="../../public/img/close.png" class="CloseContentCreatorPop" ></button>
-                </div>
-                <div class="error-message-up-creator" id="error-message-up-creator">
-                    <?php include "validationMessage.php"?>
+                    <div class="close-updateCreator">
+                        <button onclick="closeUpCreator()"><img src="../../public/img/close.png" class="CloseContentCreatorPop" ></button>
+                    </div>
                 </div>
 
                 <div class="update-contentCreatorForm">
@@ -42,8 +41,9 @@
                             <input type="text" name="userId" id="Creator-userId" value="<?= $_SESSION['user']['userId'] ?>">
 
                             <div class="selectSub">
-                                <label>Select the Subject : </label>
-                                <select name="subjects" id="subjects-creator" style="width: 6vw; border-radius: 5px; margin-left: 9vw; border: none; height: 4vh; margin-top: -60px">
+                                <label id="select-subjectCreator" >Select the Subject : </label>
+                                <select name="subjects" id="subjects-creator" >
+                                    <option value="" disabled selected hidden>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ----- Select a Subject -----</option>
                                     <?php
                                         foreach ($subjects as $subject){
                                             ?>
@@ -54,7 +54,13 @@
                                 </select>
                             </div>
 
-                            <input type="submit" name="updateContentCreator-button" value="Save" class="subb-Update" style="background-color: #0b2e5e; color: #D9D9D9; border-radius: 10px">
+                            <div class="show-errorUpdateCreator">
+                                <div class="error-message-up-creator" id="error-message-up-creator">
+                                    <?php include "validationMessage.php"?>
+                                </div>
+                                <input type="submit" name="updateContentCreator-button" value="Save" class="sub-UpdateContent" >
+                            </div>
+
                         </form>
                     </div>
                 </div>

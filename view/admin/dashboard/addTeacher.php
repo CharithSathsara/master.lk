@@ -28,9 +28,6 @@
                 <h4>Add New Teacher</h4>
                 <img src="<?= base_url('public/img/close.png') ?>" id="close-add" alt="close">
             </div>
-            <div class="error-message-add-teacher" id="error-message-add-teacher">
-                <?php include "validationMessage.php"?>
-            </div>
             <!-- Teacher Add form -->
             <div class="forms-div">
                 <form class="addTeach-form" action="<?= base_url('controller/adminController/dashboardController/addTeacherController.php') ?>" method="POST">
@@ -44,16 +41,22 @@
 
                     <div class="selectSub">
                         <label >Select the Subject : </label>
-                        <select style="width: 6vw; border-radius: 5px; margin-left: 10vw; border: none; height: 4vh; margin-top: -60px" name="subjects" id="subjects" >
+                        <select  name="subjects" id="subjects" >
+                            <option value="" disabled selected hidden>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--Select a Subject--</option>
                             <?php
                             foreach ($subjects as $dat){
                                 ?>
-                                <option value="<?php echo $dat['subjectTitle'] ?>"><?php echo $dat['subjectTitle'] ?></option>
+                                <option class="optionSubject" value="<?php echo $dat['subjectTitle'] ?>"><?php echo $dat['subjectTitle'] ?></option>
                           <?php  } ?>
                         </select>
                     </div>
                     <textarea name="qualification" placeholder="Qualification" style="margin-top: -10px"></textarea>
-                    <input type="submit" name="addteacher-button" value="Save"  id="add-teacherButton">
+                    <div class="errors">
+                        <div class="error-message-add-teacher" id="error-message-add-teacher">
+                            <?php include "validationMessage.php"?>
+                        </div>
+                        <input type="submit" name="addteacher-button" value="Save"  id="add-teacherButton">
+                    </div>
                 </form>
             </div>
 

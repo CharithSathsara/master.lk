@@ -6,4 +6,8 @@ function viewAcceptPage(paymentId){
     document.getElementById('close-verifyPop').addEventListener('click',function (){
         document.querySelector('.access-popBox').style.display = 'none';
     })
+
+    document.getElementById('close-accept').addEventListener('click',function (){
+        document.querySelector('.access-popBox').style.display = 'none';
+    })
 }

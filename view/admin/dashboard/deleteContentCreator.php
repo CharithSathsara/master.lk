@@ -15,17 +15,20 @@
             <div class="delete-headerContentPop">
                 <img src="../../public/img/important.png" id="closeDelete-popBox">
                 <h3>Delete Confirmation</h3>
+                <div class="close-deleteCreator">
+                    <button onclick="closeDeleteCreatorPop()"><img src="<?= base_url('public/img/close.png') ?>"> </button>
+                </div>
             </div>
             <div class="deletePop-contentBody">
                 <p>Are you sure you want to delete this Content Creator?</p>
             </div>
 
             <div class="deletePop-contentButton">
-                <button class="deleteContentNo-button" id="deleteContentNo-btn" onclick="close()">No</button>
                 <form action="<?= base_url('controller/adminController/dashboardController/deleteContentCreatorController.php'); ?>" method="post">
                     <input type="hidden" name="userId" id="creatorUserId">
                     <input type="submit" class="deleteYes-button" id="deleteYes-btn" value="Yes" name="DeleteCreator-btn">
                 </form>
+                <button class="deleteContentNo-button" id="deleteContentNo-btn" onclick="close()">No</button>
             </div>
         </div>
     </div>

@@ -10,7 +10,7 @@ function showUpdateCreatorForm(userId,fname,lname,address1,address2,mobile,email
     document.getElementById('Creator-email').value = email;
     document.getElementById('Creator-userId').value = userId;
 
-    document.getElementById('update-ContentCreatorPop').style.display='flex';
+    document.getElementById('update-ContentCreatorPop').style.display='block';
 
     document.querySelector(".CloseContentCreatorPop").addEventListener("click",function () {
         document.querySelector(".update-ContentCreatorPop").style.display = "none";

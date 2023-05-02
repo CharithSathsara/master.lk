@@ -127,6 +127,27 @@ class User {
 
     }
 
+    public static function getUserProfilePicture($connection,$userId){
+
+        $query = "SELECT image FROM user WHERE userId='$userId'";
+
+        $result = $connection->query($query);
+        $row = $result->fetch_assoc();
+
+        if($row['image']!=null){
+
+            $to_echo = "<img id='profilePictureUsers' src='data:image/jpg;charset=utf8;base64,";
+            $to_echo .= base64_encode($row['image']);
+            $to_echo .= "'/>";
+            echo $to_echo;
+
+            return true;
+        }else{
+            echo "<img id='profilePictureUsers' src='../../public/img/default-profPic.png'/>";
+            return false;
+        }
+    }
+
     public static function changePassword($connection,$current_password,$new_password,$retype_new_password){
 
         $userId = $_SESSION['auth_user']['userId'];
@@ -309,6 +330,7 @@ class User {
             return false;
         }
     }
+
 
 
 }

@@ -105,4 +105,47 @@ class Subject {
             return $data;
         }
     }
+
+    public static function AddDescription($connection,$subjectId,$description,$price){
+
+        $query = "UPDATE subject SET description='$description', price = '$price'  WHERE subjectId ='$subjectId'";
+
+        $data = $connection->query($query);
+
+        if($data){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
+    public static function getSubjectDescription($connection,$subjectId){
+
+        $query = "SELECT * from subject where subjectId = '$subjectId'";
+        $data = $connection->query($query);
+        $description = $data->fetch_assoc();
+
+        if ($description){
+            return $description['description'];
+        }else{
+           return false;
+        }
+
+    }
+
+    public static function updateSubjectDescription($connection,$subjectId,$description,$price){
+
+        $query = "UPDATE subject
+                  SET price	='$price', description='$description'
+                  WHERE subjectId = '$subjectId'";
+
+        $result = $connection->query($query);
+
+        if($result){
+            return $result;
+        }else{
+            return false;
+        }
+    }
 }

@@ -22,9 +22,7 @@
                                             <h4>Update Teacher</h4>
                                             <button onclick="closePopTeacher()"><img src="<?= base_url('public/img/close.png') ?>" class="closeTeacher-Icon" id="close-Teacher-Icon" alt="close"></button>
                                         </div>
-                                        <div class="error-message-up-teacher" id="error-message-up-teacher">
-                                            <?php include "validationMessage.php"?>
-                                        </div>
+
                                 </div>
                                 <!-- Teacher Update form -->
                                 <div class="forms-div">
@@ -40,8 +38,9 @@
                                         <input type="text" name="userId" id="teacher-userId" value="<?= $_SESSION['user']['userId'] ?>" >
 
                                         <div class="selectSub">
-                                            <label>Select the Subject : </label>
-                                            <select name="subjects" id="subject-teacher" style="width: 6vw; border-radius: 5px; margin-left: 9vw; border: none; height: 4vh; margin-top: -60px">
+                                            <label id="label-selectUpdateTeacher">Select the Subject : </label>
+                                            <select name="subjects" id="subject-teacher" >
+                                                <option value="" disabled selected hidden>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ----- Select a Subject -----</option>
                                                 <?php
                                                 foreach ($subjects as $subject){
                                                     ?>
@@ -51,8 +50,13 @@
                                                    ?>
                                             </select>
                                         </div>
+                                        <div class="show-updateTeacherError">
+                                            <div class="error-message-up-teacher" id="error-message-up-teacher">
+                                                <?php include "validationMessage.php"?>
+                                            </div>
+                                            <input type="submit" name="updateteacher-button" value="Save" class="sub-Update-teacher" id="updateTeacherSubmit" >
+                                        </div>
 
-                                        <input type="submit" name="updateteacher-button" value="Save" class="sub-Update-teacher" id="updateTeacherSubmit" style="margin-top: -18vh; margin-left: 23.5vw">
                                     </form>
                                 </div>
 

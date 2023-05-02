@@ -16,14 +16,15 @@
             <div class="accessHead">
                 <img src="../../../public/img/verify.png">
                 <h3>Verify Payment</h3>
+                <img src="<?= base_url('public/img/close.png') ?>" id="close-accept" alt="close">
             </div>
 
             <div class="accessBody">
-                <p>If you click the Verify button, an acceptance email will be sent to <br> the student. Do you want to continue?</p>
+                <p id="acceptBody-text">If you click the Verify button, an acceptance email will be sent to the student. Do you want to continue?</p>
             </div>
 
             <div class="access-button">
-                <div class="no-button">
+                <div class="no-buttonAccept">
                     <button id="close-verifyPop">No</button>
                 </div>
                     <form method="post" action="<?= base_url('controller/adminController/paymentVerificationController/paymentAcceptRejectController.php') ?>">

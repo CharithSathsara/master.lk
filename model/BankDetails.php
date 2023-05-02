@@ -29,6 +29,19 @@ class BankDetails
                 return false;
             }
         }
-        
+
+        public static function addBankDetails($connection,$AccountNumber,$HolderName,$BankName,$BranchName){
+
+            $query = "INSERT INTO bank_details (`AccountNumber`,`HolderName`,`BankName`,`BranchName`)
+                      VALUES ('$AccountNumber','$HolderName','$BankName','$BranchName')";
+
+            $data = $connection->query($query);
+
+            if($data){
+                return $data;
+            }else{
+                return false;
+            }
+        }
 }
 ?>

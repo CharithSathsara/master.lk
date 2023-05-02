@@ -14,10 +14,11 @@
             <div class="rejectHead">
                 <img src="../../../public/img/exclamationIcon.png">
                 <h3>Reject Payment</h3>
+                <img src="<?= base_url('public/img/close.png') ?>" id="close-reject" alt="close">
             </div>
 
             <div class="rejectBody">
-                <p>If you click the Reject button, a rejection email will be sent to  <br> the student. Do you want to continue?</p>
+                <p>If you click the Reject button,a rejection email will be sent to the student. Do you want to continue?</p>
             </div>
 
             <div class="reject-button">

@@ -11,7 +11,7 @@ function showUpdateTeacherForm(userId,fName,lName,address1,address2,mobile,email
     document.getElementById('teacher-email').value = email;
     document.getElementById('teacher-userId').value = userId;
 
-  document.getElementById('popup-update').style.display = 'flex';
+  document.getElementById('popup-update').style.display = 'block';
 
     // Close the popup form
         document.getElementById("close-Teacher-Icon").addEventListener("click", function() {

@@ -17,9 +17,7 @@
                     <h4>Add New Content Creator</h4>
                     <img src="<?= base_url('public/img/close.png') ?>" class="CloseContentPop">
                 </div>
-                <div class="error-message-add-content" id="error-message-add-content">
-                    <?php include "validationMessage.php"?>
-                </div>
+
                 <!-- Add content creator popup form  -->
                 <div class="update-contentCreatorForm">
                     <div class="forms-div">
@@ -35,14 +33,21 @@
                             <input type="text" name="username" placeholder="User name" >
         <!--                    <input type="password" name="password" placeholder="Password" >-->
                             <div class="selectSub">
-                                <label>Select the Subject : </label>
-                                <select name="subjects" id="subjects" style="width: 6vw; border-radius: 5px; margin-left: 9vw; border: none; height: 4vh; margin-top: -60px">
+                                <label id="select-addContent">Select the Subject : </label>
+                                <select name="subjects" id="subjects" >
+                                    <option value="" disabled selected hidden>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ----- Select a Subject -----</option>
                                     <option value="Chemistry">Chemistry</option>
                                     <option value="Physics">Physics</option>
                                 </select>
                             </div>
                             <!-- <textarea name="qualification" placeholder="Qualification"></textarea>-->
-                            <input type="submit" name="addContentCreator-button" value="Save" class="subb-add" style="color: #D9D9D9">
+                            <div class="show-errorAddContent">
+                                <div class="error-message-add-content" id="error-message-add-content">
+                                    <?php include "validationMessage.php"?>
+                                </div>
+                                <input type="submit" name="addContentCreator-button" value="Save" class="subb-addContent">
+                            </div>
+
                         </form>
                     </div>
                 </div>
