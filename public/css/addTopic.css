@@ -46,7 +46,7 @@
     width: 67%;
     margin-right: 6%;
     margin-top: -2%;
-    padding: 2%;
+    padding: 1.7%;
     float: right;
     opacity: 0.8;
     text-align: justify;
@@ -57,10 +57,10 @@
 }
 
 #topicTitle {
-    width: 61.5%;
+    width: 62.5%;
     margin-right: 6%;
     margin-top: -2%;
-    padding: 2%;
+    padding: 1.8%;
     float: right;
     opacity: 0.8;
     text-align: justify;
@@ -73,13 +73,13 @@
 #add-NewTopic-btn {
     background: rgba(33, 158, 188);
     padding: 2.1%;
-    width: 307px;
+    width: 300px;
     border: none;
     border-radius: 10px;
     color: white;
     font-size: 16px;
     cursor: pointer;
     margin-top: 11%;
-    margin-left: 64px;
+    margin-left: 139px;
 
 }

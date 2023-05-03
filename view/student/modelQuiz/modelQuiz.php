@@ -6,11 +6,14 @@
     <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Model Quiz Start</title>
+    <title>Model Quiz</title>
     <link rel="stylesheet" href="../../../public/css/modelQuiz.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+    <script src="../../../public/js/modelQuizQuestion.js"></script>
+    <script src="../../../public/js/modelQuiz.js"></script>
 
 </head>
 
@@ -108,8 +111,7 @@ include_once '../../common/header.php';
                 </div>
 
             </div>
-            <script src="../../../public/js/modelQuizQuestion.js"></script>
-            <script src="../../../public/js/modelQuiz.js"></script>
+
 
 
         </div>

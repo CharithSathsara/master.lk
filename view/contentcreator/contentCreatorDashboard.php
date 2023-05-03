@@ -144,33 +144,35 @@
                             <div class="selectlesson">Select Lesson:
                                 <select id="selectlesson" name="selectLesson">
                                     <?php
+                                    
 
-                    // $lessons = $viewTheoryContentController->getAllLessons($_SESSION['subject']);
+                    $lessons = $viewTheoryContentController->getAllLessons($_SESSION['subject']);
                     
-                    // foreach($lessons as $lesson){
-                    //     echo "<option value=\"{$lesson['lessonId']}\">{$lesson['lessonName']}</option>";
-                    // }
+                    foreach($lessons as $lesson){
+                        echo $lesson['lessonId'];
+                        echo "<option value=\"{$lesson['lessonId']}\">{$lesson['lessonName']}</option>";
+                    }
 
                     ?>
-                                </select>
+                                    <!-- </select>
                             </div>
                             <div class="topic-title">Topic Title :
                                 <input type="text" id="topicTitle" placeholder="Add new topic title here" required>
                             </div>
 
                             <input type="submit" name="addNewTopic-btn" value="Add" id="add-NewTopic-btn"
-                                class="add-NewTopic-btn">
-                    </div>
+                                class="add-NewTopic-btn"> -->
+                            </div>
 
+
+                    </div>
 
                 </div>
 
-            </div>
 
-
-            <!-- Table to view Loaded Theory Contents -->
-            <table class="content-table">
-                <?php
+                <!-- Table to view Loaded Theory Contents -->
+                <table class="content-table">
+                    <?php
 
             if(isset($_GET['view-btn'])){
                 $content = $viewTheoryContentController->viewTheoryContents( $_GET['selectTopic']);
@@ -178,59 +180,60 @@
                 foreach($content as $row){
             ?>
 
-                <tr class="sectionTable" <?php $_SESSION['contentId'] = $row['contentId'];
+                    <tr class="sectionTable" <?php $_SESSION['contentId'] = $row['contentId'];
                         ?>>
-                    <td class="sectionRow" style="font-size: 14px;"><b>Section
-                            No.<?=$row['contentId'];;?></b><br>
-                        <p name="sectioncontent" id="sectioncontent"></p><?=$row['content']?></p><br>
+                        <td class="sectionRow" style="font-size: 14px;"><b>Section
+                                No.<?=$row['contentId'];;?></b><br>
+                            <p name="sectioncontent" id="sectioncontent"></p><?=$row['content']?></p><br>
 
-                        <i style="font-size:12px;">Published at
-                            <?=$row['date_published']?> by <?=$row['firstName']?> <?=$row['lastName']?></i>
-                    </td>
-                    <form action="" method="get">
+                            <i style="font-size:12px;">Published at
+                                <?=$row['date_published']?> by <?=$row['firstName']?> <?=$row['lastName']?></i>
+                        </td>
+                        <form action="" method="get">
 
 
-                        <td class="row-icon"> <a
-                                href="../../view/contentcreator/updateTheory.php?id=<?=$row['contentId']?>">
-                                <img src="../../public/img/update.svg" alt="edit" id="editImg" name="editImg"
-                                    width="24px" height="24px">
+                            <td class="row-icon"> <a
+                                    href="../../view/contentcreator/updateTheory.php?id=<?=$row['contentId']?>">
+                                    <img src="../../public/img/update.svg" alt="edit" id="editImg" name="editImg"
+                                        width="24px" height="24px">
+                                </a>
+                            </td>
+                        </form>
+
+                        <!-- Delete Theory Content Confirmation Popup -->
+                        <div class="page-mask" id="page-mask-delete-theory">
+                            <div id="setDeleteTheoryPopup">
+                                <button onclick="closeDeleteTheoryPopup()" class="close-button">
+                                    <img src="../../public/icons/close.svg" class="close-icon">
+                                </button><br><br>
+                                <img src="../../public/icons/delete-alert.png" width="30px" height="35px"
+                                    alt="Delete Alert" class="delete-alert">
+                                <p class="deleteTheory-title"><b>Delete Confirmation</b></p>
+                                <form
+                                    action="../../controller/contentCreatorController/theoryContentController/deleteTheoryContentController.php?deleteId=<?=$row['contentId']?>"
+                                    class="deleteTheory-form" method="POST">
+                                    <p>Are you sure you want to Delete this Section? </p>
+                                    <div class="delete-confirmation-btns">
+                                        <input type="submit" name="deleteTheory-Yes-btn" value="Yes"
+                                            id="deleteTheory-Yes-btn" class="deleteTheory-Yes-btn">
+                                        <input type="submit" name="deleteTheory-No-btn" value="No"
+                                            id="deleteTheory-No-btn" class="deleteTheory-No-btn"
+                                            onclick="closeDeleteTheoryPopup()">
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+
+                        <td class="row-icon">
+                            <a href="#" onclick="deleteTheoryPopup()">
+                                <img src="../../public/img/delete.svg" alt="delete" id="deleteImg" width="24px"
+                                    height="24px">
                             </a>
                         </td>
-                    </form>
 
-                    <!-- Delete Theory Content Confirmation Popup -->
-                    <div class="page-mask" id="page-mask-delete-theory">
-                        <div id="setDeleteTheoryPopup">
-                            <button onclick="closeDeleteTheoryPopup()" class="close-button">
-                                <img src="../../public/icons/close.svg" class="close-icon">
-                            </button><br><br>
-                            <img src="../../public/icons/delete-alert.png" width="30px" height="35px" alt="Delete Alert"
-                                class="delete-alert">
-                            <p class="deleteTheory-title"><b>Delete Confirmation</b></p>
-                            <form
-                                action="../../controller/contentCreatorController/theoryContentController/deleteTheoryContentController.php?deleteId=<?=$row['contentId']?>"
-                                class="deleteTheory-form" method="POST">
-                                <p>Are you sure you want to Delete this Section? </p>
-                                <div class="delete-confirmation-btns">
-                                    <input type="submit" name="deleteTheory-Yes-btn" value="Yes"
-                                        id="deleteTheory-Yes-btn" class="deleteTheory-Yes-btn">
-                                    <input type="submit" name="deleteTheory-No-btn" value="No" id="deleteTheory-No-btn"
-                                        class="deleteTheory-No-btn" onclick="closeDeleteTheoryPopup()">
-                                </div>
-                            </form>
-
-                        </div>
-                    </div>
-
-                    <td class="row-icon">
-                        <a href="#" onclick="deleteTheoryPopup()">
-                            <img src="../../public/img/delete.svg" alt="delete" id="deleteImg" width="24px"
-                                height="24px">
-                        </a>
-                    </td>
-
-                </tr>
-                <?php   }
+                    </tr>
+                    <?php   }
                     }
                     else{
                         echo "<div id='no-contents'>
@@ -240,10 +243,10 @@
             }
                 ?>
 
-            </table>
-            <br><br><br><br>
+                </table>
+                <br><br><br><br>
+            </div>
         </div>
-    </div>
     </div>
     <!-- Theory Content Delete Successful Popup element -->
     <div class="page-mask" id="page-mask-delete-success">

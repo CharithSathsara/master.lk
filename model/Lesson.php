@@ -60,7 +60,22 @@ class Lesson{
     }
     
     public static function getSubjectLessons($connection,$subject){
+        //     $query = "SELECT * From lesson 
+        //                              WHERE subjectId = (SELECT subjectId From subject  
+        //                                                 WHERE subjectTitle = '$subject')";
+        //     $data = $connection->query($query);
 
+        //     if($data){
+        //         return $data;
+        // //     }else{
+        //         throw new Exception("Error: Unable to get topics of subject $subject");
+        //     }
+
+        // } catch (Exception $e) {
+        //     $errorMessage = "An error occurred while fetching topics of subject $subject: " . $e->getMessage();
+        //     echo '<script>console.error("' . $errorMessage . '")</script>';
+        //     return false;
+        // }
         
         $query1 = "SELECT subjectId FROM subject WHERE subjectTitle='$subject'";
         $result1 = $connection->query($query1);
