@@ -1,1 +1,1 @@
-{"version":1,"defects":{"GreetingTest::testGetGreeting":3,"TeacherTest::testAddQuestion":4},"times":{"GreetingTest::testGetGreeting":0.008,"TeacherTest::testAddQuestion":0.013}}
+{"version":1,"defects":{"GreetingTest::testGetGreeting":3,"TeacherTest::testAddQuestion":4},"times":{"GreetingTest::testGetGreeting":0.007,"TeacherTest::testAddQuestion":0.073}}
