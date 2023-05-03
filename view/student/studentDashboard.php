@@ -30,12 +30,18 @@ include_once('../common/header.php');
 include_once('../../controller/studentController/dashboardController/lessonController.php');
 include_once('../../controller/studentController/dashboardController/studentSubjectController.php');
 include_once('../../controller/studentController/dashboardController/subjectProgressController.php');
+include_once ('../../controller/studentController/leaderBoardController/leaderBoardController.php');
+include_once ('../../controller/studentController/dashboardController/badgesController.php');
 include_once('../../model/Student.php');
+include_once('../../model/Badges.php');
+include_once('../../model/Subject.php');
 include_once('../../model/Lesson.php');
+include_once ('../../model/Leaderboard.php');
 
 $lessonController = new lessonController();
 $studentSubjectController = new studentSubjectController();
 $subjectProgressController = new subjectProgressController();
+$badgeController = new badgesController();
 
 ?>
 
@@ -131,7 +137,12 @@ $subjectProgressController = new subjectProgressController();
         <b><p class="sub-title">Badges&nbsp;&nbsp;&nbsp;</p></b>
 
         <div id="badge-container">
-
+           <div class="show-badges">
+               <?php
+                   $userId =  $_SESSION['auth_user']['userId'];
+                   $details = $badgeController->getAllDetails($userId);
+               ?>
+           </div>
         </div>
 
         <br><br> 

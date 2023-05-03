@@ -127,10 +127,27 @@
 
 #badge-container{
     margin-top:35px;
-    height:350px;
+    min-height:350px;
+    height: auto;
     background-color:#EDECEC;
     border-radius: 10px;
     width:97%;
+}
+.show-badges{
+    width: 92%;
+    /*background-color: red;*/
+    height: auto;
+    margin-right: auto;
+    margin-left: auto;
+    padding-top: 45px;
+    display: flex;
+    flex-wrap: wrap;
+    grid-column-gap: 35px;
+}
+
+#BadgePicture{
+    width: 250px;
+    height: 250px;
 }
 
 #rec-container{

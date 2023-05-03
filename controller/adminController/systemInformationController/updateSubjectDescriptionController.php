@@ -5,8 +5,8 @@ include_once $currentDir.'\..\..\..\config\app.php';
 include_once $currentDir.'\..\..\..\model\Subject.php';
 
 if(isset($_POST['updatePhysicsDescription'])){
-    $description  = validateInput($db_connection->getConnection(), $_POST['physicsDescription']);
-    $price  = validateInput($db_connection->getConnection(), $_POST['physicsName']);
+    $description  = validateInput($db_connection->getConnection(), $_POST['PhysicsDescription']);
+    $price  = validateInput($db_connection->getConnection(), $_POST['PhysicsName']);
 
     if(empty(trim($description))){
         unset($_POST['updatePhysicsDescription']);

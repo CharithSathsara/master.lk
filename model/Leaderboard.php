@@ -32,6 +32,45 @@ public static function getpastQuizLeaderBoard($topicId, $connection){
   return $data;
   }
   }
+
+  public static function getTopicId($connection,$userId){
+
+    $query = "SELECT topicId FROM leaderboard WHERE studentId = '$userId'";
+
+    $result = $connection->query($query);
+
+    if ($result){
+        return $result;
+    }else{
+        return false;
+    }
+  }
+
+  public static function getRank($connection,$userId){
+
+    $query = "SELECT rank FROM leaderboard WHERE studentId = '$userId'";
+
+    $result = $connection->query($query);
+
+    if($result){
+        return $result;
+    }else{
+        return false;
+    }
+  }
+
+    public static function getAllDetails($connection,$userId){
+
+        $query = "SELECT * FROM leaderboard WHERE studentId = '$userId'";
+
+        $result = $connection->query($query);
+
+        if ($result){
+            return $result;
+        }else{
+            return false;
+        }
+    }
   
 }
 ?>

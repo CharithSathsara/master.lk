@@ -55,10 +55,12 @@
                                             <button class="delete-teacher" id="but-deleteTeacher" onclick="showDeleteTeacherForm('<?php echo $teacher['userId']; ?>')" ><img src="../../public/img/delete.svg"></button>
                                         </div>
                                         <div class="profilePic">
-                                            <?php
+                                            <div class="profilePicBorder">
+                                                <?php
                                                 $UserProfilePhoto = new profilePhotoViewController();
                                                 $UserProfilePhoto->getProfilePhotoUsers($teacherId);
-                                            ?>
+                                                ?>
+                                            </div>
                                         </div>
                                         <div class="userInformation">
                                             <div class="allInfo">
@@ -130,10 +132,12 @@
 
                                 </div>
                                 <div class="profilePic">
-                                    <?php
-                                    $UserProfilePhoto = new profilePhotoViewController();
-                                    $UserProfilePhoto->getProfilePhotoUsers($creatorId);
-                                    ?>
+                                    <div class="profilePicBorder">
+                                        <?php
+                                        $UserProfilePhoto = new profilePhotoViewController();
+                                        $UserProfilePhoto->getProfilePhotoUsers($creatorId);
+                                        ?>
+                                    </div>
                                 </div>
                                 <div class="userInformation">
                                     <div class="allInfo">

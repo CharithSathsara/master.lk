@@ -148,4 +148,25 @@ class Subject {
             return false;
         }
     }
+
+    public static function getSubjectID($connection,$topicId){
+
+        $query1 = "SELECT lessonId FROM topic WHERE topicId = '$topicId'";
+
+        $lesson = $connection->query($query1);
+        $lessonIdSet = mysqli_fetch_assoc($lesson);
+        $lessonId = $lessonIdSet['lessonId'];
+
+        $query2 = "SELECT SubjectId FROM lesson WHERE lessonId = '$lessonId'";
+
+        $subjects = $connection->query($query2);
+        $subjectIdSet = mysqli_fetch_assoc($subjects);
+        $subjectId = $subjectIdSet['SubjectId'];
+
+        if($subjectId){
+            return $subjectId;
+        }else{
+            return false;
+        }
+    }
 }
