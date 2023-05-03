@@ -1,7 +1,7 @@
 <?php
 
-class slipPayment
-{
+class slipPayment {
+
     public  static function getAllPaymentSlip($connection){
         $query = "SELECT * FROM payment WHERE paymentType = 'SLIP' ";
 
