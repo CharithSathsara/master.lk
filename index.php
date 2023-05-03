@@ -16,7 +16,7 @@
 
 <?php
 
-//include('./config/app.php');
+include('./config/app.php');
 // redirect("", "view/authentication/index.php");
 
 ?>
