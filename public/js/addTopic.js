@@ -4,17 +4,17 @@ function showAddTopicPopup() {
 
     // Show the popup
     document.getElementById("page-mask-addTopic").style.display = "block";
-
+    console.log("awa");
 
     // Hide the popup after 3 seconds
-    setTimeout(function () {
-        document.getElementById("page-mask-addTopic").style.display = "none";
-    }, 2500);
+    // setTimeout(function () {
+    //     document.getElementById("page-mask-addTopic").style.display = "none";
+    // }, 2500);
 }
 
 function closeAddTopicPopup() {
     document.getElementById("page-mask-addTopic").style.display = "none";
-
+    console.log("awa");
 
 }
 

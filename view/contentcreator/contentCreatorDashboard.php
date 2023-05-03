@@ -76,41 +76,7 @@
                 <hr class="hr-line">
             </div>
 
-            <!-- Add New Topic Popup  -->
-            <div id="page-mask-addTopic">
-                <div id="addTopicPopup">
-                    <button onclick="closeAddTopicPopup()" class="close-button">
-                        <img src="../../public/icons/close.svg" class="close-icon">
-                    </button><br><br>
-                    <p class="addTopicPopup-title"><b>Add New Title</b></p>
-                    <form action="" class="addTopic-form" method="POST">
-                        <div class="selectSub">
-                            <p id="add_theory-heading">You Can Add Topics to <?= $_SESSION['subject']; ?>
-                                Subject:</p>
-                        </div>
-                        <div class="selectlesson">Select Lesson:
-                            <select id="selectlesson" name="selectLesson">
-                                <?php
 
-                    $lessons = $viewTheoryContentController->getAllLessons($_SESSION['subject']);
-                    
-                    foreach($lessons as $lesson){
-                        echo "<option value=\"{$lesson['lessonId']}\">{$lesson['lessonName']}</option>";
-                    }
-
-                    ?>
-                            </select>
-                        </div>
-                        <div class="topic-title">Topic Title :
-                            <input type="text" id="topicTitle" placeholder="Add new topic title here" required>
-                        </div>
-
-                        <input type="submit" name="addNewTopic-btn" value="Add" id="add-NewTopic-btn"
-                            class="add-NewTopic-btn">
-                </div>
-
-
-            </div>
 
             <div class="select">
                 <!-- View Theory Content Form -->
@@ -143,25 +109,63 @@
                         <br>
                     </div>
 
-                    <!-- Right Side Button panel -->
-                    <div class="add-btns">
-                        <ul class="btn-list">
-                            <li><a href="#" onclick="showAddTopicPopup()" class="add-btn-topic" id="add-btn-topic">Add
-                                    New
-                                    Topic</a></li>
-                            <li><a href="addTheory.php" class="add-btn-content">Add New Content</a></li>
-
-                        </ul>
-                    </div>
-
 
 
                 </form>
 
-            </div>
 
-            <!-- Dashboard Fixed Background Image -->
-            <img src="../../public/img/fixed-img1.svg" id="fixed-image1">
+
+                <!-- Right Side Button panel -->
+                <div class="add-btns">
+                    <ul class="btn-list">
+                        <li><a href="#" onclick="showAddTopicPopup()" class="add-btn-topic" id="add-btn-topic">Add
+                                New
+                                Topic</a></li>
+                        <li><a href="addTheory.php" class="add-btn-content">Add New Content</a></li>
+
+                    </ul>
+                </div>
+
+                <!-- Dashboard Fixed Background Image -->
+                <img src="../../public/img/fixed-img1.svg" id="fixed-image1">
+
+                <!-- Add New Topic Popup  -->
+                <div class="page-mask" id="page-mask-addTopic">
+                    <div id="addTopicPopup">
+                        <button onclick="closeAddTopicPopup()">
+                            <img src="../../public/icons/close.svg" class="close-btn">
+                        </button><br><br>
+                        <p class="addTopicPopup-title"><b>Add New Title</b></p>
+                        <form action="" class="addTopic-form" method="POST">
+                            <div class="selectSub">
+                                <p id="add_theory-heading">You Can Add Topics to <?= $_SESSION['subject']; ?>
+                                    Subject:</p>
+                            </div>
+                            <div class="selectlesson">Select Lesson:
+                                <select id="selectlesson" name="selectLesson">
+                                    <?php
+
+                    // $lessons = $viewTheoryContentController->getAllLessons($_SESSION['subject']);
+                    
+                    // foreach($lessons as $lesson){
+                    //     echo "<option value=\"{$lesson['lessonId']}\">{$lesson['lessonName']}</option>";
+                    // }
+
+                    ?>
+                                </select>
+                            </div>
+                            <div class="topic-title">Topic Title :
+                                <input type="text" id="topicTitle" placeholder="Add new topic title here" required>
+                            </div>
+
+                            <input type="submit" name="addNewTopic-btn" value="Add" id="add-NewTopic-btn"
+                                class="add-NewTopic-btn">
+                    </div>
+
+
+                </div>
+
+            </div>
 
 
             <!-- Table to view Loaded Theory Contents -->
