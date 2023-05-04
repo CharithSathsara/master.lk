@@ -2,10 +2,12 @@
 
 use PHPUnit\Framework\TestCase;
 
-require_once 'model/Teacher.php';
-require_once 'config/DatabaseConnection.php';
+require_once 'config\DatabaseConnection.php';
+require_once 'model\Teacher.php';
 
-class TeacherTest extends TestCase {
+
+class TeacherTest extends TestCase
+{
 
     private static $connection;
 
@@ -35,7 +37,7 @@ class TeacherTest extends TestCase {
         $teacherId = 17;
 
         // Begin a transaction
-        //self::$connection->begin_transaction();
+        self::$connection->begin_transaction();
 
         $result = Teacher::addQuestion($question, $answer1, $answer2, $answer3, $answer4, $answer5,
             $correctAnswer, $answerDescription, $type, $subject, $topicId, $teacherId, self::$connection);
@@ -44,7 +46,7 @@ class TeacherTest extends TestCase {
         $this->assertNotEquals(false, $result);
 
         // Rollback the transaction
-        //self::$connection->rollback();
+        self::$connection->rollback();
 
     }
 

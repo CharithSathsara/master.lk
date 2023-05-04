@@ -280,7 +280,7 @@ class Command
         $this->handleCustomTestSuite();
 
         if (!isset($this->arguments['testSuffixes'])) {
-            $this->arguments['testSuffixes'] = ['GreetingTest.php', '.phpt'];
+            $this->arguments['testSuffixes'] = ['Test.php', '.phpt'];
         }
 
         if (!isset($this->arguments['test']) && $arguments->hasArgument()) {

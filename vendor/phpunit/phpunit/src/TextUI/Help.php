@@ -70,7 +70,7 @@ final class Help
             ['arg' => '--list-tests', 'desc' => 'List available tests'],
             ['arg' => '--list-tests-xml <file>', 'desc' => 'List available tests in XML format'],
             ['arg' => '--filter <pattern>', 'desc' => 'Filter which tests to run'],
-            ['arg' => '--test-suffix <suffixes>', 'desc' => 'Only search for test in files with specified suffix(es). Default: GreetingTest.php,.phpt'],
+            ['arg' => '--test-suffix <suffixes>', 'desc' => 'Only search for test in files with specified suffix(es). Default: Test.php,.phpt'],
         ],
 
         'Test Execution Options' => [

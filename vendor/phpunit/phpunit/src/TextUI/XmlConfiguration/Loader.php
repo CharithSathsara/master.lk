@@ -1148,7 +1148,7 @@ final class Loader
                     $prefix = (string) $directoryNode->getAttribute('prefix');
                 }
 
-                $suffix = 'GreetingTest.php';
+                $suffix = 'Test.php';
 
                 if ($directoryNode->hasAttribute('suffix')) {
                     $suffix = (string) $directoryNode->getAttribute('suffix');
