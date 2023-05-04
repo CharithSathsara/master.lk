@@ -2,9 +2,9 @@
 
 class DatabaseConnection {
 
-    private $db_host = 'localhost';
-    private $db_user = 'root';
-    private $db_password = '';
+    private $db_host = '192.168.8.136:3306';
+    private $db_user = 'remoteuser';
+    private $db_password = 'remote@1234';
     private $db_name = 'master_db';
 
     private static $instance;

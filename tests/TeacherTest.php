@@ -43,7 +43,7 @@ class TeacherTest extends TestCase
             $correctAnswer, $answerDescription, $type, $subject, $topicId, $teacherId, self::$connection);
 
         // Verify the expected output
-        $this->assertNotEquals(false, $result);
+        $this->assertNotEquals(true, $result, "The addQuestion method should return a valid result.");
 
         // Rollback the transaction
         self::$connection->rollback();

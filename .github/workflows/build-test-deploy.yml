@@ -41,10 +41,4 @@ jobs:
         run: chmod +x vendor/bin/phpunit
 
       - name: Run tests
-        run: vendor/bin/phpunit tests/ --coverage-html coverage-report/
-
-      - name: Upload coverage report
-        uses: actions/upload-artifact@v2
-        with:
-          name: coverage-report
-          path: coverage-report/
+        run: vendor/bin/phpunit --testdox tests/
