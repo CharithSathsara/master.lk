@@ -2,9 +2,9 @@
 
 class DatabaseConnection {
 
-    private $db_host = '192.168.8.136:3306';
-    private $db_user = 'remoteuser';
-    private $db_password = 'remote@1234';
+    private $db_host = '0.tcp.ap.ngrok.io:15064';
+    private $db_user = 'root';
+    private $db_password = '';
     private $db_name = 'master_db';
 
     private static $instance;
