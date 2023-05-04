@@ -2,8 +2,8 @@
 
 use PHPUnit\Framework\TestCase;
 
-require_once 'config\DatabaseConnection.php';
-require_once 'model\Teacher.php';
+require_once 'config/DatabaseConnection.php';
+require_once 'model/Teacher.php';
 
 
 class TeacherTest extends TestCase
