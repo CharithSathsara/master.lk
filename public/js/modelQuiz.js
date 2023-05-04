@@ -163,7 +163,6 @@ function goToDashboard() {
 }
 
 function startQuiz() {
-    console.log("awa");
     homeBox.classList.add("hide");
     quizBox.classList.remove("hide");
     setAvailableQuestions();

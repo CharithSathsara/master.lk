@@ -44,158 +44,42 @@ include_once '../common/header.php';
 ?>
     <div class="content">
         <div class="container">
-            <div class="leaderboard-container">
-                <div class="title-leaderboard"><b>Leaderboard</b></div>
+            <div class="title-leaderboard"><b>Leaderboard</b></div>
+
+            <div class="sub-elements">
+                <p class="sub-title"><b>Model Paper Quiz Leaderboard</b></p>
+                <hr class="hr-line">
+            </div>
+            <br>
+            <div class="leaderboardPlace-container">
+                <div class="lbox-container">
+                    <div class="lbox left">
+                        <div class="circle-imgbox">
+                            <img
+                                src="https://images.pexels.com/photos/1815257/pexels-photo-1815257.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" />
+                        </div>
+                    </div>
 
 
-                <div class="sub-elements">
-                    <p class="sub-title"><b>Model Paper Quiz Leaderboard</b></p>
-                    <hr class="hr-line">
-                </div>
-                <br>
-                <div class="searchBox">
-
-                    <input class="searchInput" id="searchInputModelLeaderboard" type="text" name=""
-                        placeholder="Search Student..." oninput="search()">
-                    <button class="searchButton" id="searchButtonModelLeaderboard" href="#">
-                        <i class="fa fa-search" aria-hidden="true"></i>
-                    </button>
-                </div>
-                <br>
-
-                <div class="leaderboard">
-                    <table id="modelPaperTable">
-
-                        <thead>
-                            <tr>
-                                <td class="leaderboard-heading">Rank</td>
-                                <td class="leaderboard-heading">
-                                    Name
-                                </td>
-                                <td class="leaderboard-heading">
-                                    Score
-                                </td>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <?php
-                            $_SESSION['selectedTopicId'] = 2;
-                            $i = 0;
-
-                        $leaderboard1 = $leaderBoardController->modelQuizLeaderBoard( $_SESSION['selectedTopicId']);
-                        if( mysqli_num_rows ($leaderboard1) > 0){
-                        foreach($leaderboard1 as $row){
-                        ?>
-                            <tr>
-                                <td id="winner">
-                                    <?php echo ($i+1);
-                                    $i++;?>
-                                </td>
-                                <td id="modelTableStudent">
-                                    <p> <?=$row['firstName']?> <?=$row['lastName']?></p>
-                                </td>
-                                <td><?=$row['score']?></td>
-
-                            </tr>
-                            <?php   }
-                            }
-                            ?>
+                    <div class="lbox bigger">
+                        <div class="circle-imgbox-middle">
+                            <img
+                                src="https://images.pexels.com/photos/1815257/pexels-photo-1815257.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" />
+                        </div>
+                    </div>
 
 
-                        </tbody>
-                    </table>
-                    <!-- <div class="gif-container">
-                        <img class="congratulations-gif" src="../../public/img/Congratulations.gif" alt="Animated GIF">
-                    </div> -->
+                    <div class="lbox right">
+                        <div class="circle-imgbox">
+                            <img
+                                src="https://images.pexels.com/photos/1815257/pexels-photo-1815257.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" />
+                        </div>
+                    </div>
 
-                </div>
-                <br><br><br><br>
-
-                <div class="sub-elements">
-                    <p class="sub-title"><b>Past Paper Quiz Leaderboard</b></p>
-                    <hr class="hr-line">
-                </div>
-                <br>
-                <div class="searchBox">
-
-                    <input class="searchInput" type="text" name="" placeholder="Search Student...">
-                    <button class="searchButton" href="#">
-                        <i class="fa fa-search"></i>
-                    </button>
-                </div>
-                <br>
-
-                <div class="leaderboard">
-                    <table id="modelPaperTable">
-
-                        <thead>
-                            <tr>
-                                <td class="leaderboard-heading">Rank</td>
-                                <td class="leaderboard-heading">
-                                    Name
-                                </td>
-                                <td class="leaderboard-heading">
-                                    Score
-                                </td>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <?php
-                            $_SESSION['selectedTopicId'] = 2;
-                            $j = 0;
-
-                        $leaderboard2 = $leaderBoardController->pastQuizLeaderBoard( $_SESSION['selectedTopicId']);
-                        if( mysqli_num_rows ($leaderboard2) > 0){
-                        foreach($leaderboard2 as $row){
-                        ?>
-                            <tr>
-                                <td id="winner">
-                                    <?php echo ($j+1);
-                                    $j++;?>
-                                </td>
-                                <td>
-                                    <p> <?=$row['firstName']?> <?=$row['lastName']?></p>
-                                </td>
-                                <td><?=$row['score']?></td>
-
-                            </tr>
-                            <?php   }
-                            }
-                            ?>
-
-
-                        </tbody>
-                    </table>
-                    <!-- <div class="gif-container">
-                        <img class="congratulations-gif" src="../../public/img/Congratulations.gif" alt="Animated GIF">
-                    </div> -->
 
                 </div>
             </div>
         </div>
-
-
-
-    </div>
-    </div>
-    <script>
-    function search() {
-        var text = document.getElementById('search').value;
-        const tr = document.getElementsById('modelTableStudent');
-        for (let i = 1; i < tr.length; i++) {
-            if (!tr[i].children[1].children[1].innerHTML.toLowerCase().includes(
-                    text.toLowerCase()
-                )) {
-                tr[i].style.display = 'none';
-            } else {
-                tr[i].style.display = '';
-            }
-        }
-    }
-    </script>
-
 
 </body>
 
