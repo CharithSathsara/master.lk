@@ -15,7 +15,8 @@ include_once('../../config/app.php');
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../public/css/popup.css">
+    <link rel="stylesheet" href="../../public/css/popup.css?<?php echo time(); ?>">
+    <script src="../../public/js/popup.js?<?php echo time(); ?>"></script>
 
     <title></title>
 </head>
@@ -34,8 +35,20 @@ include_once('../../config/app.php');
             unset($_SESSION['popup-message']);
         }
 
+        if(isset($_SESSION['session_expire_message'])){
+            echo"
+                <div id='error-popup-container'>
+                    <div id='img-div-error'>
+                        <img src='../../public/icons/timeout.png'>
+                    </div>
+                    <p>".$_SESSION['session_expire_message']."</p>
+                </div>
+            ";
+            unset($_SESSION['session_expire_message']);
+        }
+
     ?>
 
-    <script src="../../public/js/popup.js"></script>
+    
 </body>
 </html>

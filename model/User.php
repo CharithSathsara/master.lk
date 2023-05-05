@@ -47,11 +47,12 @@ class User {
             'userLastName' => $user_data['lastName']
         ];
         $_SESSION["cart-subjects"]=array();
+        $_SESSION['start_time'] = time();
 
     }
 
     //In here we unset session values
-    public static function logout(){
+    public static function logout($connection){
 
         if(isset($_SESSION['authenticated']) === TRUE){
 
@@ -59,9 +60,29 @@ class User {
                 unset($_SESSION['subject']);
             }
 
+            $userId = $_SESSION['auth_user']['userId'];
+            $date = date('Y-m-d');
+
             unset($_SESSION['authenticated']);
             unset($_SESSION['auth_user']);
             unset($_SESSION['auth_role']);
+
+            // Add daily usage times to the database
+            
+            $sql = "SELECT * FROM daily_usage_times WHERE userId='$userId' AND date='$date'";
+            $result = mysqli_query($connection, $sql);
+            $usage_time = $_SESSION['usage_time'];
+            if (mysqli_num_rows($result) == 0) {
+                // There is no existing row for this user and date, so insert a new row with the usage time
+                $sql = "INSERT INTO daily_usage_times (userId, date, total_usage_time) VALUES ('$userId', '$date', $usage_time)";
+                mysqli_query($connection, $sql);
+            } else {
+                // There is an existing row for this user and date, so update the total usage time
+                $row = mysqli_fetch_assoc($result);
+                $total_usage_time = $row['total_usage_time'] + $usage_time;
+                $sql = "UPDATE daily_usage_times SET total_usage_time='$total_usage_time' WHERE userId='$userId' AND date='$date'";
+                mysqli_query($connection, $sql);
+            }
 
             return true;
 

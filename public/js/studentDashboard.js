@@ -1,6 +1,5 @@
 setTimeout(()=>{
 
-
 const btnSildesClass = document.querySelectorAll(".nav-btns");
 const slidesClass = document.querySelector(".slides-list");
 const btnDotsClass = document.querySelector(".btn-dots");
