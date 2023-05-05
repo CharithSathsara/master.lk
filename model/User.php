@@ -4,7 +4,7 @@ class User {
 
     public static function login($connection, $username_email, $password){
 
-        // Reads data from the database
+        // Check whether username/email and password exists
         if(!empty($username_email) && !empty($password)){
 
             //Checks whether the entered text is an email
@@ -21,14 +21,17 @@ class User {
 
                 $user_data = mysqli_fetch_assoc($result);
                 if(password_verify($password, $user_data['password'])){
-
                     //Sets the session with user ID
                     self::userAuthentication($user_data);
                     return true;
-
+                }else {
+                    return false;
                 }
 
+            }else {
+                return false;
             }
+        } else {
             return false;
         }
     }
