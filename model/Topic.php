@@ -1,6 +1,6 @@
 <?php
 
-class Topic{
+class Topic {
 
     /**
      * Author:
