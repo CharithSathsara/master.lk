@@ -2,7 +2,7 @@
 
 class DatabaseConnection {
 
-    private $db_host = 'localhost';
+    private $db_host = '0.tcp.ap.ngrok.io:13794';
     private $db_user = 'root';
     private $db_password = '';
     private $db_name = 'master_db';
