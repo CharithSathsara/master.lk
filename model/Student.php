@@ -78,7 +78,7 @@ class Student {
 
         }else{
             $errorMessage = "Form fields can not be empty";
-            echo '<script>console.error("' . $errorMessage . '")</script>';
+            echo '<script>console.error("' . $errorMessage . '")</script>'."\n";
             return false;
         }
     }

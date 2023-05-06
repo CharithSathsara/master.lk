@@ -4,7 +4,7 @@ use PHPUnit\Framework\TestCase;
 
 require_once 'config/DatabaseConnection.php';
 require_once 'model/Teacher.php';
-
+require_once 'model/Student.php';
 
 class TeacherTest extends TestCase {
 
@@ -163,11 +163,272 @@ class TeacherTest extends TestCase {
 
     }
 
+    public function testViewQuestions() {
 
+        // Test data
+        $subject = "Physics";
+        $topic = "Work, Energy and Power";
+        $type = "PASTQUESTION";
 
+        // Retrieve questions
+        $result = Teacher::viewQuestions(self::$connection, $subject, $topic, $type);
 
+        // Check that the result is not false
+        $this->assertNotFalse($result, "Error: Unable to view questions");
+        // Check that the result is not empty
+        $this->assertNotEmpty($result, "No questions found");
+        // Check that the number of rows in the result is greater than 0
+        $this->assertGreaterThan(0, $result->num_rows, "No questions found for the specified criteria");
 
+    }
 
+    public function testGetAllStudentsWithSearchParameter() {
 
+        $search = "Charith";
+
+        // Call the function with search parameter
+        $result = Teacher::getAllStudents(self::$connection, $search);
+
+        // Check that result is not false
+        $this->assertNotFalse($result, "Failed to retrieve students from database with search parameter.");
+
+        // Check that each row returned has the expected columns
+        while ($row = $result->fetch_assoc()) {
+            $this->assertArrayHasKey('userId', $row);
+            $this->assertArrayHasKey('firstName', $row);
+            $this->assertArrayHasKey('lastName', $row);
+            $this->assertArrayHasKey('email', $row);
+            $this->assertArrayHasKey('password', $row);
+            $this->assertArrayHasKey('userType', $row);
+        }
+
+    }
+
+    public function testGetAllStudentsWithoutSearchParameter() {
+
+        // Call the function without search parameter
+        $result = Teacher::getAllStudents(self::$connection, "");
+
+        // Check that result is not false
+        $this->assertNotFalse($result, "Failed to retrieve students from database without search parameter.");
+
+        // Check that the number of rows returned is greater than zero
+        $this->assertGreaterThan(0, $result->num_rows, "No students found in database without search parameter.");
+
+        // Check that each row returned has the expected columns
+        while ($row = $result->fetch_assoc()) {
+            $this->assertArrayHasKey('userId', $row);
+            $this->assertArrayHasKey('firstName', $row);
+            $this->assertArrayHasKey('lastName', $row);
+            $this->assertArrayHasKey('email', $row);
+            $this->assertArrayHasKey('password', $row);
+            $this->assertArrayHasKey('userType', $row);
+        }
+
+    }
+
+    public function testGetStudentSubjects() {
+
+        // Start transaction
+        self::$connection->begin_transaction();
+
+        // Sample data
+        $first_name = "Sathsara";
+        $last_name = "Pathirana";
+        $dob = "1999-06-01";
+        $address_first = "123 Main St";
+        $address_second = "Matara";
+        $telephone = "0753428877";
+        $email = "johndoe@example.com";
+        $username = "chasath12345";
+        $password = "password1234";
+
+        $result = Student::register(self::$connection, $first_name, $last_name, $dob, $address_first, $address_second, $telephone, $email, $username, $password);
+        // Get the student id
+        $student_id = self::$connection->insert_id;
+
+        // Check if registration was successful
+        $this->assertNotFalse($result, "Failed to register student.");
+
+        // Add two subjects to the subject table with known ids
+        $query = "INSERT INTO subject (subjectId, subjectTitle, price) VALUES (100, 'ICT', 5000), (200, 'Combined Maths', 7500);";
+        self::$connection->query($query);
+
+        // Add the student and subjects to the student_subject table
+        $start_date = "2023-05-01";
+        $query2 = "INSERT INTO student_subject (studentId, subjectId, startDate) VALUES ($student_id, 100, '$start_date'), ($student_id, 200, '$start_date')";
+        self::$connection->query($query2);
+
+        // Get the student's subjects
+        $subjectResult = Teacher::getStudentSubjects(self::$connection, $student_id);
+
+        // Assert that result is not false
+        $this->assertNotFalse($subjectResult, "Failed to retrieve student's subjects from database.");
+
+        // Assert that the number of rows returned is greater than zero
+        $this->assertGreaterThan(0, $subjectResult->num_rows, "No subjects found for student in database.");
+
+        // Assert that each row returned has the expected columns
+        while ($row = $subjectResult->fetch_assoc()) {
+            $this->assertArrayHasKey('studentId', $row);
+            $this->assertEquals($student_id, $row['studentId'], "Invalid student id found in database.");
+            $this->assertArrayHasKey('subjectId', $row);
+            $this->assertGreaterThan(0, $row['subjectId'], "Invalid subject id found in database.");
+            $this->assertArrayHasKey('startDate', $row);
+            $this->assertEquals($start_date, $row['startDate'], "Unexpected start date found in database.");
+        }
+
+        // Rollback transaction
+        self::$connection->rollback();
+
+    }
+
+    public function testGetAllFeedbacksWithoutFilters() {
+
+        // Get all feedbacks without filters
+        $feedbackResult = Teacher::getAllFeedbacks(self::$connection, '', '');
+
+        // Check that result is not false
+        $this->assertNotFalse($feedbackResult, "Failed to retrieve feedbacks from database.");
+
+        // Check that each row returned has the expected columns
+        while ($row = $feedbackResult->fetch_assoc()) {
+            $this->assertArrayHasKey('feedbackId', $row);
+            $this->assertArrayHasKey('feedback', $row);
+            $this->assertArrayHasKey('studentId', $row);
+            $this->assertArrayHasKey('lessonId', $row);
+            $this->assertArrayHasKey('timestamp', $row);
+        }
+
+    }
+
+    public function testGetAllFeedbacksWithSubjectFilter() {
+
+        // Get subject ID of "Physics" from the database
+        $subjectIdResult = self::$connection->query("SELECT subjectId FROM subject WHERE subjectTitle = 'Physics'");
+        $subjectIdRow = $subjectIdResult->fetch_assoc();
+        $subjectId = $subjectIdRow['subjectId'];
+
+        // Get all feedbacks for the "Physics" subject
+        $feedbackResult = Teacher::getAllFeedbacks(self::$connection, '', $subjectId);
+        // Check that result is not false
+        $this->assertNotFalse($feedbackResult, "Failed to retrieve feedbacks from database for Physics subject.");
+
+        // Check that each row returned has the expected columns
+        while ($row = $feedbackResult->fetch_assoc()) {
+            $this->assertArrayHasKey('feedbackId', $row);
+            $this->assertArrayHasKey('feedback', $row);
+            $this->assertArrayHasKey('studentId', $row);
+            $this->assertArrayHasKey('lessonId', $row);
+            $this->assertArrayHasKey('timestamp', $row);
+        }
+
+    }
+
+    public function testGetAllFeedbacksWithLessonFilter() {
+
+        // Get lesson ID of "Mechanics" from the database
+        $lessonIdResult = self::$connection->query("SELECT lessonId FROM lesson WHERE lessonname = 'Mechanics'");
+        $lessonIdRow = $lessonIdResult->fetch_assoc();
+        $lessonId = $lessonIdRow['lessonId'];
+
+        // Get all feedbacks for the "Physics" subject
+        $feedbackResult = Teacher::getAllFeedbacks(self::$connection, $lessonId, '');
+        // Check that result is not false
+        $this->assertNotFalse($feedbackResult, "Failed to retrieve feedbacks from database for Mechanics lesson.");
+
+        // Check that each row returned has the expected columns
+        while ($row = $feedbackResult->fetch_assoc()) {
+            $this->assertArrayHasKey('feedbackId', $row);
+            $this->assertArrayHasKey('feedback', $row);
+            $this->assertArrayHasKey('studentId', $row);
+            $this->assertArrayHasKey('lessonId', $row);
+            $this->assertArrayHasKey('timestamp', $row);
+        }
+
+    }
+
+    public function testGetAllFeedbacksWithBothFilters() {
+
+        // Get subject ID of "Physics" from the database
+        $subjectIdResult = self::$connection->query("SELECT subjectId FROM subject WHERE subjectTitle = 'Physics'");
+        $subjectIdRow = $subjectIdResult->fetch_assoc();
+        $subjectId = $subjectIdRow['subjectId'];
+
+        // Get lesson ID of "Mechanics" from the database
+        $lessonIdResult = self::$connection->query("SELECT lessonId FROM lesson WHERE lessonname = 'Mechanics'");
+        $lessonIdRow = $lessonIdResult->fetch_assoc();
+        $lessonId = $lessonIdRow['lessonId'];
+
+        // Get all feedbacks for the "Physics" subject
+        $feedbackResult = Teacher::getAllFeedbacks(self::$connection, $lessonId, $subjectId);
+        // Check that result is not false
+        $this->assertNotFalse($feedbackResult, "Failed to retrieve feedbacks from database for Physics subject Mechanics lesson.");
+
+        // Check that each row returned has the expected columns
+        while ($row = $feedbackResult->fetch_assoc()) {
+            $this->assertArrayHasKey('feedbackId', $row);
+            $this->assertArrayHasKey('feedback', $row);
+            $this->assertArrayHasKey('studentId', $row);
+            $this->assertArrayHasKey('lessonId', $row);
+            $this->assertArrayHasKey('timestamp', $row);
+        }
+
+    }
+
+    public function testGetAllSubjects() {
+
+        // Get all subjects
+        $subjectResult = Teacher::getAllSubjects(self::$connection);
+
+        // Check that result is not false
+        $this->assertNotFalse($subjectResult, "Failed to retrieve subjects from database.");
+
+        // Check that the number of rows returned is greater than zero
+        $this->assertGreaterThan(0, $subjectResult->num_rows, "No subjects found in database.");
+
+        // Check that each row returned has the expected columns
+        while ($row = $subjectResult->fetch_assoc()) {
+            $this->assertArrayHasKey('subjectId', $row);
+            $this->assertArrayHasKey('subjectTitle', $row);
+            $this->assertArrayHasKey('price', $row);
+        }
+    }
+
+    public function testGetAllLessons() {
+
+        // Retrieve all lessons related to "Physics"
+        $physics_lessons = Teacher::getAllLessons(self::$connection, "Physics");
+
+        // Check that the result is not false
+        $this->assertNotFalse($physics_lessons, "Failed to retrieve lessons related to Physics.");
+
+        // Check that the number of rows returned is greater than zero
+        $this->assertGreaterThan(0, $physics_lessons->num_rows, "No lessons found for Physics subject in database.");
+
+        // Check that each row returned has the expected columns
+        while ($row = $physics_lessons->fetch_assoc()) {
+            $this->assertArrayHasKey('lessonId', $row);
+            $this->assertArrayHasKey('lessonName', $row);
+            $this->assertArrayHasKey('subjectId', $row);
+        }
+
+        // Retrieve all lessons related to "Chemistry"
+        $chemistry_lessons = Teacher::getAllLessons(self::$connection, "Chemistry");
+
+        // Check that the result is not false
+        $this->assertNotFalse($chemistry_lessons, "Failed to retrieve lessons related to Chemistry.");
+
+        // Check that the number of rows returned is greater than zero
+        $this->assertGreaterThan(0, $chemistry_lessons->num_rows, "No lessons found for Chemistry subject in database.");
+
+        // Check that each row returned has the expected columns
+        while ($row = $physics_lessons->fetch_assoc()) {
+            $this->assertArrayHasKey('lessonId', $row);
+            $this->assertArrayHasKey('lessonName', $row);
+            $this->assertArrayHasKey('subjectId', $row);
+        }
+
+    }
 
 }
