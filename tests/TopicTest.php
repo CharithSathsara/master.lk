@@ -19,7 +19,7 @@ class TopicTest extends TestCase {
         self::$connection = DatabaseConnection::getInstance()->getConnection();
     }
 
-    public function testGetAllTopics() {
+    public function testGetAllTopicsForPhysics() {
 
         // Retrieve all topics for "Physics" subject
         $physicsTopics = Topic::getAllTopics(self::$connection, 'Physics');
@@ -35,6 +35,10 @@ class TopicTest extends TestCase {
             $this->assertArrayHasKey('topicId', $row, "topicId not found in row.");
             $this->assertArrayHasKey('topicTitle', $row, "topicTitle not found in row.");
         }
+
+    }
+
+    public function testGetAllTopicsForChemistry() {
 
         // Retrieve all topics for "Chemistry" subject
         $chemistryTopics = Topic::getAllTopics(self::$connection, 'Chemistry');
