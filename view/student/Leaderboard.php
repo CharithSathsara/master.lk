@@ -44,6 +44,17 @@ include_once '../common/header.php';
 ?>
     <div class="content">
         <div class="container">
+            <?php
+        $_SESSION['selectedTopicId'] = 2;
+        $i = 0;
+
+        $leaderboard1 = $leaderBoardController->modelQuizLeaderBoard( $_SESSION['selectedTopicId']);
+        mysqli_data_seek($leaderboard1, 1); // move the pointer to the third row (0-based index)
+        $row = mysqli_fetch_assoc($leaderboard1);
+       
+
+    
+        ?>
             <div class="title-leaderboard"><b>Leaderboard</b></div>
 
             <div class="sub-elements">
@@ -55,29 +66,128 @@ include_once '../common/header.php';
                 <div class="lbox-container">
                     <div class="lbox left">
                         <div class="circle-imgbox">
-                            <img
-                                src="https://images.pexels.com/photos/1815257/pexels-photo-1815257.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" />
+                            <?php
+                             if($row['image']!=null){
+
+                                $to_echo = "<img id='profile-pic' src='data:image/jpg;charset=utf8;base64,";
+                                $to_echo .= base64_encode($row['image']);
+                                $to_echo .= "'/>";
+                                echo $to_echo;
+                    
+                            }else{
+                                echo "<img id='profile-pic' src='../../public/img/default-profPic.png'/>";
+                            }
+                            ?>
+                        </div>
+
+                        <div class="lcontent-left">
+                            <div class="left-header-container">
+                                <img src="../../public/img/second_place.png" class="second-icon">
+                                <h2 class="lcontent-left-h2">1<sup>st</sup> Runner Up</h2>
+                            </div>
+
+                            <p>
+
+                                <b>
+                                    <?=$row['firstName']?> <?=$row['lastName']?><br>
+
+                                    <?=$row['score']?>% Marks </b>
+                            </p>
                         </div>
                     </div>
+                    <?php
+                
+                   
+                    mysqli_data_seek($leaderboard1, 0); // move the pointer to the third row (0-based index)
+                    $row = mysqli_fetch_assoc($leaderboard1);
+        
 
+                    ?>
 
                     <div class="lbox bigger">
                         <div class="circle-imgbox-middle">
-                            <img
-                                src="https://images.pexels.com/photos/1815257/pexels-photo-1815257.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" />
+                            <?php
+                             if($row['image']!=null){
+
+                                $to_echo = "<img id='profile-pic' src='data:image/jpg;charset=utf8;base64,";
+                                $to_echo .= base64_encode($row['image']);
+                                $to_echo .= "'/>";
+                                echo $to_echo;
+                    
+                            }else{
+                                echo "<img id='profile-pic' src='../../public/img/default-profPic.png'/>";
+                            }
+                            ?>
+                        </div>
+                        <div class="lcontent-middle">
+                            <div class="middle-header-container">
+                                <img src="../../public/img/first_place.png" class="winner-icon">
+                                <h2 class="lcontent-middle-h2">Winner</h2>
+                            </div>
+                            <p>
+
+                                <b>
+                                    <?=$row['firstName']?> <?=$row['lastName']?><br>
+
+                                    <?=$row['score']?>% Marks </b></b>
+
+                            </p>
                         </div>
                     </div>
-
-
+                    <?php
+                    mysqli_data_seek($leaderboard1, 2);
+                    $row = mysqli_fetch_assoc($leaderboard1);// move the pointer to the third row (0-based index)
+                
+                    ?>
                     <div class="lbox right">
                         <div class="circle-imgbox">
-                            <img
-                                src="https://images.pexels.com/photos/1815257/pexels-photo-1815257.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" />
+                            <?php
+                             if($row['image']!=null){
+
+                                $to_echo = "<img id='profile-pic' src='data:image/jpg;charset=utf8;base64,";
+                                $to_echo .= base64_encode($row['image']);
+                                $to_echo .= "'/>";
+                                echo $to_echo;
+                    
+                            }else{
+                                echo "<img id='profile-pic' src='../../public/img/default-profPic.png'/>";
+                            }
+                            ?>
+                        </div>
+                        <div class="lcontent-right">
+                            <div class="right-header-container">
+                                <img src="../../public/img/third_place.png" class="third-icon">
+                                <h2 class="lcontent-right-h2">2<sup>nd</sup> Runner Up</h2>
+                            </div>
+
+                            <p>
+
+                                <?=$row['firstName']?> <?=$row['lastName']?><br>
+
+                                <b> <?=$row['score']?>% Marks </b>
+
+                            </p>
                         </div>
                     </div>
+
 
 
                 </div>
+                <?php
+                    // foreach($leaderboard1 as $row){
+                        ?>
+
+                <?php 
+                // echo ($i+1);
+                    // i++;
+                    ?>
+
+                <p> </p>
+                <br>
+
+
+
+
             </div>
         </div>
 
