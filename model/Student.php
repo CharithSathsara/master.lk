@@ -267,5 +267,35 @@ class Student {
         
     }
 
+    // Function to get a student's daily time usage
+
+    public static function getTimes($connection){
+
+        $userId = $_SESSION['auth_user']['userId'];
+
+        $last_week_dates = array();
+        $current_date = new DateTime();
+        for ($i = 1; $i <= 7; $i++) {
+            $last_week_dates[] = $current_date->modify('-1 day')->format('Y-m-d');
+        }
+        $last_week_dates = array_reverse($last_week_dates);
+        $daily_usages = array();
+
+        for($i = 0; $i < 7; $i++){
+            $day = $last_week_dates[$i];
+            $query1 = "SELECT * FROM daily_usage_times WHERE userId = '$userId' && date='$day'";
+            $result1 = $connection->query($query1);
+
+            if($result1 && mysqli_num_rows($result1) > 0){
+                $data1 = $result1->fetch_assoc();
+                $time_seconds = $data1['total_usage_time'];
+                $daily_usages[] = round($time_seconds/60);
+            }else{
+                $daily_usages[] = 0;
+            }
+        }
+        $_SESSION['daily_usages']= $daily_usages;
+        return true;
+    }
 
 }

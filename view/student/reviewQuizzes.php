@@ -81,9 +81,9 @@ $quizReviewController = new quizReviewController();
                 ";
             }else{
                 echo "
-                    <div id='no-quizzes'>
-                        <img src='' id='no-quizzes-img'>
-                        <p id='no-quizzes-text'>No quizzes to show!</p>
+                    <div class='no-quizzes'>
+                        <img src='../../public/img/no-content.png' class='no-quizzes-img'><br>
+                        <p class='no-quizzes-text'>No Quizzes Done!</p><br>
                     </div>
                 ";
             }
@@ -130,10 +130,10 @@ $quizReviewController = new quizReviewController();
                 ";
             }else{
                 echo "
-                    <div id='no-quizzes'>
-                        <img src='' id='no-quizzes-img'>
-                        <p id='no-quizzes-text'>No quizzes to show!</p>
-                    </div>
+                <div class='no-quizzes'>
+                    <img src='../../public/img/no-content.png' class='no-quizzes-img'><br>
+                    <p class='no-quizzes-text'>No Quizzes Done!</p><br>
+                </div>
                 ";
             }
 

@@ -33,6 +33,7 @@ include_once('../../controller/studentController/dashboardController/studentSubj
 include_once('../../controller/studentController/dashboardController/subjectProgressController.php');
 include_once('../../controller/studentController/dashboardController/progressController.php');
 include_once('../../controller/studentController/dashboardController/recommendationsController.php');
+include_once('../../controller/studentController/dashboardController/timeUsageController.php');
 include_once('../../model/Student.php');
 include_once('../../model/Lesson.php');
 include_once('../../model/Topic.php');
@@ -42,6 +43,7 @@ $studentSubjectController = new studentSubjectController();
 $subjectProgressController = new subjectProgressController();
 $progressController = new progressController();
 $recommendationsController = new recommendationsController();
+$timeUsageController = new timeUsageController();
 
 ?>
 
@@ -278,7 +280,15 @@ $recommendationsController = new recommendationsController();
                                             },
                                             padding: 30,
                                             fullSize: true,
-                                        }
+                                        },
+                                        scales: {
+                                            yAxes: [{
+                                              scaleLabel: {
+                                                display: true,
+                                                labelString: 'Average Marks'
+                                              }
+                                            }]
+                                          }
                                         
                                     },
                                     });
@@ -331,7 +341,95 @@ $recommendationsController = new recommendationsController();
 
             </div>
 
-            <br><br> 
+            <br><br>
+            
+            <!-- Activity Time Chart Section -->
+
+            <b><p class="sub-title">Activity Time Log&nbsp;&nbsp;&nbsp;</p></b>
+
+            <div id="activity-time-log-container">
+                <?php
+                    $last_week_dates = array();
+                    $current_date = new DateTime();
+                    for ($i = 1; $i <= 7; $i++) {
+                        $last_week_dates[] = $current_date->modify('-1 day')->format('Y-m-d');
+                    }
+                    $last_week_dates = array_reverse($last_week_dates);
+
+                    echo "
+                    <canvas id='timeUsageChart'></canvas>
+                    <script>
+                    
+                        var xValues = [";
+                            for($i = 0; $i < 7; $i++){
+                                echo "'".$last_week_dates[$i]."',";
+                            }
+                        echo "];
+                        var yValues = [";
+                            $status = $timeUsageController->getTimes();
+                            if($status){
+                                for($i = 0; $i < 7; $i++){
+                                    echo $_SESSION['daily_usages'][$i].",";
+                                }
+                            }else{
+                                echo "0,0,0,0,0,0,0";
+                            }
+                        echo "];
+                        var barColors = ['#bfe6ff', '#86c7f3','#4d9fe6','#2177b4','#1d5a90','#153c5f','#0f1f30'];
+                    
+                        new Chart('timeUsageChart', {
+                            type: 'bar',
+                            data: {
+                                labels: xValues,
+                                datasets: [{
+                                    label: 'Daily Time Usage',
+                                    backgroundColor: barColors,
+                                    data: yValues
+                                }]
+                            },
+                            options: {
+                                
+                                legend: {
+                                    display: false,
+                                },
+                                title: {
+                                    display: true,
+                                    text: 'Daily Activity Time',
+                                    color: 'navy',
+                                    position: 'top',
+                                    align: 'center',
+                                    font: {
+                                        
+                                        fontSize:100,
+                            
+                                    },
+                                    padding: 30,
+                                    fullSize: true,
+                                },
+                                scales: {
+                                    yAxes: [{
+                                      scaleLabel: {
+                                        display: true,
+                                        labelString: 'Time in Minutes'
+                                      }
+                                    }],
+                                    xAxes: [{
+                                        scaleLabel: {
+                                          display: true,
+                                          labelString: 'Past 7 Days'
+                                        }
+                                      }]
+                                } 
+                                
+                            },
+                        });
+
+                    </script>
+                    ";
+                ?>
+            </div>
+
+            <br><br>
 
             <!-- Recommendations Section -->
 

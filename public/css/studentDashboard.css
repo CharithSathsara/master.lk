@@ -344,7 +344,21 @@ select {
 
 /* Badges Section */
 
+/* Activity Time Log Section */
 
+#activity-time-log-container{
+    margin-top:35px;
+    display: flex;
+    width: 100%;
+    /* max-width: 700px; */
+    justify-content: center;
+}
+
+#timeUsageChart{
+    width: 100%;
+    max-width: 700px;
+
+}
 
 /* Recommendations Section */
 

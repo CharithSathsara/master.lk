@@ -40,9 +40,10 @@ $attempt = $_GET['attempt'];
         <span id="subject-shortcut"><a href="studentDashboard.php"><?=$_SESSION['current-subject']?></a></span>&nbsp;&nbsp;>&nbsp;&nbsp;
         <span id="lesson-shortcut"><a href="topicsAndFeedbacks.php?subject=<?=$_SESSION['current-subject']?>&lesson=<?=$_SESSION['current-lesson']?>"><?=$_SESSION['current-lesson']?></a></span>&nbsp;&nbsp;>&nbsp;&nbsp;
         <span id="topic-shortcut"><a href="theoryContents.php?subject=<?=$_SESSION['current-subject']?>&lesson=<?=$_SESSION['current-lesson']?>&topic=<?=$_SESSION['current-topic']?>"><?=$_SESSION['current-topic']?></a></span>&nbsp;&nbsp;>&nbsp;&nbsp;
-        <span><a href="reviewQuizzes.php?subject=<?=$_SESSION['current-subject']?>&lesson=<?=$_SESSION['current-lesson']?>&topic=<?=$_SESSION['current-topic']?>">Review Quizzes</a></span>
+        <span>Review Quizzes</span>
         </p></b>
 
+        <a href="reviewQuizzes.php?subject=<?=$_SESSION['current-subject']?>&lesson=<?=$_SESSION['current-lesson']?>&topic=<?=$_SESSION['current-topic']?>"><img src="../../public/icons/back.svg" id="back-btn" title="Back"></a>
         <b><p class="sub-title">
             <?php
             if($type=='MODELPAPER'){

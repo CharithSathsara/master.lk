@@ -74,16 +74,17 @@ td{
     color: black;
 }
 
-/* Review Page */
-
-#quiz-review-container{
-    background-color:#219ebc;
-    margin-top:35px;
-    display: flex;
-    overflow: auto;
+.no-quizzes{
+    width: 180px;
+    margin: 0 auto;
 }
 
-.qContentTable tr{
-    width:100%;
+.no-quizzes-img{
+    height:100px;
+    margin-left: 15px;
+}
+
+.no-quizzes-text{
+    color:#f49f0a;
 }
 
