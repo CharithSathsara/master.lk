@@ -360,12 +360,12 @@ $timeUsageController = new timeUsageController();
                     <canvas id='timeUsageChart'></canvas>
                     <script>
                     
-                        var xValues = [";
+                        var xValues2 = [";
                             for($i = 0; $i < 7; $i++){
                                 echo "'".$last_week_dates[$i]."',";
                             }
                         echo "];
-                        var yValues = [";
+                        var yValues2 = [";
                             $status = $timeUsageController->getTimes();
                             if($status){
                                 for($i = 0; $i < 7; $i++){
@@ -380,11 +380,11 @@ $timeUsageController = new timeUsageController();
                         new Chart('timeUsageChart', {
                             type: 'bar',
                             data: {
-                                labels: xValues,
+                                labels: xValues2,
                                 datasets: [{
                                     label: 'Daily Time Usage',
                                     backgroundColor: barColors,
-                                    data: yValues
+                                    data: yValues2
                                 }]
                             },
                             options: {
