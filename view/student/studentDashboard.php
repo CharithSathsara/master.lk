@@ -26,7 +26,6 @@ Authentication::userAuthentication();
 //User Authorization
 Authorization::authorizingStudent();
 
-include_once('../common/navBar-Student.php');
 include_once('../common/header.php');
 include_once('../../controller/studentController/dashboardController/lessonController.php');
 include_once('../../controller/studentController/dashboardController/studentSubjectController.php');
@@ -37,6 +36,12 @@ include_once('../../controller/studentController/dashboardController/timeUsageCo
 include_once('../../model/Student.php');
 include_once('../../model/Lesson.php');
 include_once('../../model/Topic.php');
+
+$_SESSION['studentNavItems-dashboard'] = array();
+array_push($_SESSION['studentNavItems-dashboard'], 'Leaderboard.php', 'modelQuiz.php', 'modelQuizEnd.php','modelQuizStarted.php','review.php','reviewQuizzes.php',
+'studentDashboard.php','theoryContents.php','topicsAndFeedbacks.php');
+include_once('../common/navBar-Student.php');
+
 
 $lessonController = new lessonController();
 $studentSubjectController = new studentSubjectController();

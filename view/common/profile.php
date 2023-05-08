@@ -18,6 +18,9 @@
 include_once('../../config/app.php');
 include_once('../common/header.php');
 
+$_SESSION['studentNavItems-profile'] = array();
+array_push($_SESSION['studentNavItems-profile'], 'profile.php');
+
 if($_SESSION['auth_role']=='STUDENT'){
     include_once('./navBar-Student.php'); 
 }else if($_SESSION['auth_role']=='ADMIN'){
@@ -29,8 +32,6 @@ if($_SESSION['auth_role']=='STUDENT'){
 }
 
 include('../../controller/profileController/profileInfoController.php');
-// include('../../controller/profileController/profilePhotoViewController.php');
-// include('../../model/User.php');
 include('../../model/Student.php');
 
 

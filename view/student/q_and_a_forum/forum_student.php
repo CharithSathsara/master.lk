@@ -21,13 +21,15 @@ Authentication::userAuthentication();
 //User Authorization
 Authorization::authorizingStudent();
 
+$_SESSION['studentNavItems-q&aForum'] = array();
+array_push($_SESSION['studentNavItems-q&aForum'], 'forum_student.php');
+include_once('../../common/navBar-Student.php');
+
 $studentForumController = new StudentForumController();
 
 ?>
 
 <div class="content">
-
-    <?php include_once '../../common/navBar-Student.php'; ?>
 
     <div class="main" id="main">
 

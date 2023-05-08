@@ -10,6 +10,48 @@ include_once $currentDir . '/../../model/User.php';
 
 $profilePhotoViewController = new profilePhotoViewController();
 
+//Navigation Bar Highlighting
+
+$current_url = $_SERVER['REQUEST_URI'];
+$page_name = basename(parse_url($current_url, PHP_URL_PATH));
+
+if (in_array($page_name, $_SESSION['studentNavItems-dashboard'])){
+    echo "
+    <style>
+        #dashboard{
+            background-color:#edecec;
+        }
+    </style>
+    ";
+}
+else if (in_array($page_name, $_SESSION['studentNavItems-newSubjects'])){
+    echo "
+    <style>
+        #newSubjects{
+            background-color:#edecec;
+        }
+    </style>
+    ";
+}
+else if (in_array($page_name, $_SESSION['studentNavItems-q&aForum'])){
+    echo "
+    <style>
+        #q&aForum{
+            background-color:#edecec;
+        }
+    </style>
+    ";
+}
+else if (in_array($page_name, $_SESSION['studentNavItems-profile'])){
+    echo "
+    <style>
+        #profile{
+            background-color:#edecec;
+        }
+    </style>
+    ";
+}
+
 ?>
 
 <!DOCTYPE html>
