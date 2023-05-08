@@ -6,8 +6,11 @@ function getLogin(){
     document.getElementById("signup-card").style.visibility = "hidden";
     document.getElementById("master-card").style.visibility = "visible";
     document.getElementById("forgot-pw-card").style.visibility = "hidden";
+    document.getElementById("forgot-pw-card-reset").style.visibility = "hidden";
 
     document.getElementById("login-error").innerHTML = null;
+    document.getElementById("verify-email-error").innerHTML = null;
+    document.getElementById("password-reset-error").innerHTML = null;
 }
 
 function getSignup(){
@@ -35,6 +38,14 @@ function inputChange() {
     // element2.innerText = null;
     document.getElementById("login-error").style.visibility = "hidden";
     document.getElementById("signup-error").style.visibility = "hidden";
+}
+
+function closeVerifySuccessPopup(){
+    document.getElementById("page-mask-verify-email-success").style.display = "none";
+}
+
+function closeUpdatePwdSuccessPopup(){
+    document.getElementById("page-mask-reset-pwd-success").style.display = "none";
 }
 
 // const togglePassword = document.querySelector('#togglePassword');

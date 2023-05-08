@@ -18,3 +18,11 @@ if(isset($_SESSION['slip-upload-error'])){
     unset($_SESSION['slip-upload-error']);
 }
 
+if(isset($_SESSION['verify-email-error'])){
+    echo "<p>".$_SESSION['verify-email-error']."</p>";
+}
+
+if(isset($_SESSION['password-reset-error'])){
+    echo "<p>".$_SESSION['password-reset-error']."</p>";
+}
+

@@ -64,4 +64,13 @@ function popup_redirect($message, $page){
     exit(0);
 }
 
+function verify_email_error_redirect($message, $page){
+
+    $redirectTo = SITE_URL.$page;
+
+    $_SESSION['verify-email-error'] = "$message";
+    header("Location: $redirectTo");
+    exit(0);
+}
+
 ?>

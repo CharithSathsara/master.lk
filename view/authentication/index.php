@@ -120,15 +120,69 @@
     <div id="forgot-pw-card">
         <div id="forgot-pw-form-container">
             <h3>Forgot Password?</h3><br>
-            <p>Verify your email address below to recieve a link to reset your password.</p>
-            <form method="post" action="" name="forgot-pw-form" id="forgot-pw-form">
-                <div id="show-email"><p id="verifying-email">Email to be verified</p></div><br>
-                <button id="verify-email-button" type="submit" onclick="resetPassword()">Verify</button>
+            <p>Verify your email address below to receive a link to reset your password.</p>
+            <form method="post" action="../../controller/authController/authentication/password-reset/passwordReset.php" name="forgot-pw-form" id="forgot-pw-form">
+                <input type="email" id="show-email" name="user-email" placeholder="Enter You Email" required>
+                <button id="verify-email-button" name="verify-email" type="submit">Verify</button>
+                <div id="verify-email-error">
+                    <?php include "../../controller/authController/message.php"?>
+                </div>
             </form>
-            <br>
             <a onclick="getLogin()"><p>Go Back</p></a>
         </div>
     </div>
+
+    <div class="page-mask" id="page-mask-verify-email-success">
+        <div id="verify-success-popup">
+            <img id="success-icon" src="../../public/icons/success-yellow.svg">
+            <b><p id="verify-title">Email Verified Successfully!</p></b>
+            <button onclick="closeVerifySuccessPopup()" class="close-button">
+                <img src="../../public/icons/close.svg" class="close-icon">
+            </button>
+            <p id="verify-success-text">Your Email has been Verified successfully. An email has been sent to you with instructions on how to reset your password.</p>
+            <button id="ok-btn" onclick="closeVerifySuccessPopup()">OK</button>
+        </div>
+    </div>
+
+    <div id="forgot-pw-card-reset">
+        <div id="forgot-pw-form-reset-container">
+            <h3>Forgot Password?</h3>
+            <p>Please enter a new password below to reset your account password.</p>
+            <form method="post" action="../../controller/authController/authentication/password-reset/passwordReset.php" name="forgot-pw-form" id="forgot-pw-form">
+
+                <?php
+
+                    if(isset($_GET['email']) && isset($_GET['token'])) {
+                       echo '<input type="hidden" name="email" value='.$_GET['email'].' >';
+                       echo '<input type="hidden" name="token" value='.$_GET['token'].' >';
+                    }
+
+                ?>
+                <input type="password" id="show-email" name="reset-pwd" placeholder="Enter New Password" required>
+                <input type="password" id="show-email" name="retype-reset-pwd" placeholder="Retype New Password" required>
+                <button id="verify-email-button" name="reset-password" type="submit" onclick="resetPassword()">Reset</button>
+                <div id="password-reset-error">
+                    <?php include "../../controller/authController/message.php"?>
+                </div>
+            </form>
+            <br>
+            <a onclick="getLogin()"><p>Go Back To Login</p></a>
+        </div>
+    </div>
+
+    <!--    Reset Success-->
+    <div class="page-mask" id="page-mask-reset-pwd-success">
+        <div id="reset-success-popup">
+            <img id="success-icon" src="../../public/icons/success-yellow.svg">
+            <b><p id="verify-title">Password Reset Successfully!</p></b>
+            <button onclick="closeUpdatePwdSuccessPopup()" class="close-button">
+                <img src="../../public/icons/close.svg" class="close-icon">
+            </button>
+            <p id="verify-success-text">Your password has been updated successfully. A notification email has been sent to you.</p>
+            <button id="ok-btn" onclick="closeUpdatePwdSuccessPopup()">OK</button>
+        </div>
+    </div>
+
 
     <div id="signup-success">
         <?php include_once('../common/popup.php"') ?>
@@ -158,6 +212,76 @@
                 </style>
             ";
             unset($_SESSION['signup-error-message']);
+        }
+
+        if(isset($_GET['action']) && $_GET['action'] == 'reset'){
+
+            echo"
+                <style>
+                        #master-card{
+                            visibility:visible;
+                        }
+                        #forgot-pw-card-reset{
+                            visibility:visible;
+                        }
+                        #signup-card{
+                            visibility:hidden;
+                        }
+                        #forgot-pw-card{
+                            visibility:hidden;
+                        }
+                </style>
+            ";
+            if(isset($_SESSION['password-reset-error'])) {
+                unset($_SESSION['password-reset-error']);
+            }
+        }
+
+        if(isset($_GET['action']) && $_GET['action'] == 'verify-email'){
+
+            echo"
+                <style>
+                        #master-card{
+                            visibility:visible;
+                        }
+                        #forgot-pw-card-reset{
+                            visibility:hidden;
+                        }
+                        #signup-card{
+                            visibility:hidden;
+                        }
+                        #forgot-pw-card{
+                            visibility:visible;
+                        }
+                </style>
+            ";
+
+            if(isset($_SESSION['verify-email-error'])){
+                unset($_SESSION['verify-email-error']);
+            }
+
+        }
+
+        if(isset($_SESSION['verify-email-success'])){
+            echo"
+                <style>
+                        #page-mask-verify-email-success {
+                            display:block;
+                        }
+                </style>
+            ";
+            unset($_SESSION['verify-email-success']);
+        }
+
+        if(isset($_SESSION['update-password-success'])){
+            echo"
+                <style>
+                        #page-mask-reset-pwd-success {
+                            display:block;
+                        }
+                </style>
+            ";
+            unset($_SESSION['update-password-success']);
         }
 
     ?>
