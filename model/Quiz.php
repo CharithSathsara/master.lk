@@ -79,5 +79,18 @@ class Quiz {
         }
 
     }
+    
+    public static function getModelQuizQuestions($topicId, $connection){
+
+        $sql = "SELECT * FROM question WHERE topicId = '$topicId' AND questionType = 'MODELQUESTION' ORDER BY RAND() LIMIT 10";
+        $data = mysqli_query($connection, $sql);
+
+        $questions = array();
+        while ($row = mysqli_fetch_assoc($data)) {
+            $questions[] = $row;
+        }
+        return $questions;
+
+    }
 
 }
