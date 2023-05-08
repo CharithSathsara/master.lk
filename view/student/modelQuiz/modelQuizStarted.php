@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 
-    <script src="../../../public/js/modelQuizQuestion.js"></script>
+
     <script src="../../../public/js/modelQuiz.js"></script>
 
 </head>
@@ -47,11 +47,24 @@ $modelQuizController = new ModelQuizController();
 ?>
     <div class="content">
         <div class="container">
+
+            <div class="home-box custom-box">
+                <p class="quiz-instuctions"><b>Instructions: </b><br>Duration is 20 minutes.<br>
+                    The quiz consists of 10 short questions, and you must answer all questions.<br>
+                    Not All questions carry equal marks.<br>
+                    Once you attempt a question and click on ‘next’, you cannot go back to the previous
+                    question(s).<br>
+                </p>
+                <a href="../../../view/student/modelQuiz/modelQuizStarted.php"><button type="button" id="start-quiz-btn"
+                        onclick="startQuiz()" class="quiz-btn">Start Quiz</button></a>
+            </div>
+
+
             <div class="quiz-box custom-box ">
                 <p>Time remaining: <span id="countdown"></span></p>
 
                 <script>
-                var timeLimit = 1 * 60; // 20 minutes in seconds
+                var timeLimit = 5 * 60; // 20 minutes in seconds
                 var timer = setInterval(function() {
                     var minutes = Math.floor(timeLimit / 60);
                     var seconds = timeLimit % 60;
@@ -65,90 +78,83 @@ $modelQuizController = new ModelQuizController();
                 </script>
 
 
-                <?php
-                
-                $_SESSION['topicId'] = 2;
-                $questions = $modelQuizController->getModelQuizQuestions($_SESSION['topicId']);
-                
-                if(isset($questions) && is_array($questions)) {
-                    foreach ($questions as $question) {
-                    $i = 1; ?>
+
+
+                <!-- // $_SESSION['topicId'] = 2;
+                // $questions = $modelQuizController->getModelQuizQuestions($_SESSION['topicId']);
+                // encode the PHP array as a JSON string -->
+
+
 
                 <div class="question-number">
-                    Question <?php echo $i; $i++;?> of 10
+                    Question <p class="current-question">0</p> of 10
                 </div>
 
-                <div class="question-text">
-                    <?php echo "<p>Question: " . $question['question'] . "</p>";?>
+                <div class="question-text" id="load_questions">
+
+
                 </div>
 
-                <div class="option-container">
-                    <div class="quiz-option"><?php echo "<p>1.) " . $question['opt01'] . "</p>"; ?></div>
-                    <div class="quiz-option"><?php echo "<p>2.) " . $question['opt02'] . "</p>"; ?></div>
-                    <div class="quiz-option"><?php echo "<p>3.) " . $question['opt03'] . "</p>"; ?></div>
-                    <div class="quiz-option"><?php echo "<p>4.) " . $question['opt04'] . "</p>"; ?></div>
-                    <div class="quiz-option"><?php echo "<p>5.) " . $question['opt05'] . "</p>"; ?></div>
+                <div class="option-container"> -->
+
+                    <div class="question-btn">
+                        <input type="button" id="next-quiz-btn" class="next quiz-btn" onclick="loadNext()">Next</button>
+                        <input type="button" id="previous-quiz-btn" class="previous quiz-btn"
+                            onclick="loadPrevious()">Previous</button>
+                    </div>
+
                 </div>
-                <div class="next-question-btn">
-                    <button type="button" id="next-quiz-btn" class="quiz-btn" onclick="next()">Next</button>
-                </div>
-
-            </div>
-            <!-- echo "<p>Question ID: " . $question['questionId'] . "</p>"; -->
+                <!-- echo "<p>Question ID: " . $question['questionId'] . "</p>"; -->
 
 
 
 
 
 
-            <!-- echo "<p>Correct Answer: " . $question['correctAnswer'] . "</p>";
+                <!-- echo "<p>Correct Answer: " . $question['correctAnswer'] . "</p>";
                         echo "<p>Question Type: " . $question['questionType'] . "</p>";
                         echo "<p>Topic ID: " . $question['topicId'] . "</p>";
                         echo "<hr>"; -->
-            <?php }
-                } else {
-                    echo "No data available.";
-                }
-                
-                ?>
-            <div class="slider-indicator">
+
+                <div class="slider-indicator">
+
+                </div>
+
+
+
+
+
+
+
+
 
             </div>
-
-
-
-
-
-
-
-
-
         </div>
     </div>
-    </div>
 
-    <!-- <script>
-    setInterval(function() {
-        timer();
-    }, 1000);
+    <script>
+    var questionNo = "1";
+    load_questions(questionNo);
 
-    function timer() {
+    function load_questions() {
+        document.getElementById("current_question").innerHTML = questionNo;
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                if (xmlhttp.responseText == "00:00:01") {
-                    window.location == "../../../view/student/modelQuiz/quizResult.php"
+                if (xmlhttp.responseText == "over") {
+                    window.location = "quizResult.php";
+                } else {
+                    document.getElementById("load_questions").innerHTML = xmlhttp.responseText;
                 }
 
-                document.getElementById("countdown-timer").innerHTML = xmlhttp.responseText;
             }
         };
 
-        xmlhttp.open("GET", "../../../view/student/modelQuiz/loadTimer.php", true);
+        xmlhttp.open("GET", "../../../view/student/modelQuiz/loadQuestions.php?questionNo=" + questionNo, true);
         xmlhttp.send(null);
 
     }
-    </script> -->
+    </script>
 
 
 

@@ -47,16 +47,7 @@ include_once '../../../view/common/header.php';
                 <div class="title-modelQuiz"><b>Model Quiz</b>
                     <hr class="hr-line">
                 </div>
-                <div class="home-box custom-box">
-                    <p class="quiz-instuctions"><b>Instructions: </b><br>Duration is 20 minutes.<br>
-                        The quiz consists of 10 short questions, and you must answer all questions.<br>
-                        Not All questions carry equal marks.<br>
-                        Once you attempt a question and click on ‘next’, you cannot go back to the previous
-                        question(s).<br>
-                    </p>
-                    <a href="../../../view/student/modelQuiz/modelQuizStarted.php"><button type="button"
-                            id="start-quiz-btn" class="quiz-btn">Start Quiz</button></a>
-                </div>
+                
 
 
 
