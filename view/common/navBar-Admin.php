@@ -58,6 +58,14 @@ $profilePhotoViewController = new profilePhotoViewController();
                     </div>
                 </a>
             </li>
+            <li class="nav-item"  id="systemInfo">
+                <a href=<?= base_url('view/admin/payment/systemInfo.php') ?>>
+                    <div class="list-item" >
+                        <img src="<?= base_url('public/icons/info.svg') ?>" class="list-icon">
+                        <p class="list-text">System Info</p>
+                    </div>
+                </a>
+            </li>
             <hr id="nav-hr">
             <li class="nav-item"  id="profile">
                 <a href=<?= base_url('view/common/profile.php') ?>>
