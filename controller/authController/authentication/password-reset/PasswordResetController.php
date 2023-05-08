@@ -20,8 +20,7 @@ class PasswordResetController {
             if($data && $data->num_rows > 0){
                 return true;
             }else{
-                //add exception
-                return false;
+                throw new Exception("Email not found.");
             }
 
         } catch(Exception $e) {
@@ -43,8 +42,7 @@ class PasswordResetController {
             if($result && $result->num_rows > 0) {
                 return true;
             } else {
-                //add exception
-                return false;
+                throw new Exception("Invalid email or token.");
             }
 
         } catch(Exception $e) {
