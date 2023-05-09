@@ -10,6 +10,16 @@
     <title>Admin Dashboard</title>
 </head>
 <body>
+
+    <?php
+        include_once('../../controller/authController/authentication/Authentication.php');
+        include_once('../../controller/authController/authorization/Authorization.php');
+
+        //User Authentication
+        Authentication::userAuthentication();
+        //User Authorization
+        Authorization::authorizingAdmin();
+    ?>
     <div class="popup-deleteContent" id="Delete-contentPop">
         <div class="delete-contentPop">
             <div class="delete-headerContentPop">

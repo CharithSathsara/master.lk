@@ -12,6 +12,17 @@
 <body>
 
     <?php
+        include_once('../../../config/app.php');
+        include_once('../../../controller/authController/authentication/Authentication.php');
+        include_once('../../../controller/authController/authorization/Authorization.php');
+
+        //User Authentication
+        Authentication::userAuthentication();
+        //User Authorization
+        Authorization::authorizingAdmin();
+    ?>
+
+    <?php
 
             include_once ('../../../controller/adminController/paymentVerificationController/paymentVerifyController.php');
             include_once ('../../../model/slipPayment.php');

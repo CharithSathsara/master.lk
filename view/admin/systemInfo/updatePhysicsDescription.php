@@ -9,6 +9,16 @@
     <title>Update Description</title>
 </head>
 <body>
+
+    <?php
+        include_once('../../../controller/authController/authentication/Authentication.php');
+        include_once('../../../controller/authController/authorization/Authorization.php');
+
+        //User Authentication
+        Authentication::userAuthentication();
+        //User Authorization
+        Authorization::authorizingAdmin();
+    ?>
     <div class="mainDiv-updatePhysicsSubject" id="mainDiv-updatePhysicsSubject">
         <div class="container-update" id="container-updatePhysics">
             <div class="header-updateDescriptionSection">
@@ -22,7 +32,7 @@
                 <form class="update-subjectDescription-form" action="<?= base_url('controller/adminController/systemInformationController/updateSubjectDescriptionController.php') ?>" method="post">
 
                     <p>Description :</p>
-                    <input type="text" class="description-details" name="PhysicsDescription" value="<?= $_SESSION['physics']['Description']?>">
+                    <textarea class="description-details" name="PhysicsDescription"><?= $_SESSION['physics']['Description']?></textarea>
                     <p>Price :</p>
                     <input type="text" class="price-details" name="PhysicsName" value="<?= $_SESSION['physics']['Price']?>">
 

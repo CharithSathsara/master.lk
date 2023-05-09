@@ -13,6 +13,14 @@
     <body>
 
     <?php
+    include_once('../../config/app.php');
+    include_once('../../controller/authController/authentication/Authentication.php');
+    include_once('../../controller/authController/authorization/Authorization.php');
+
+    //User Authentication
+    Authentication::userAuthentication();
+    //User Authorization
+    Authorization::authorizingAdmin();
 
     include_once('../../controller/adminController/dashboardController/AdminDashboardController.php');
     include_once('../../controller/adminController/dashboardController/allSubjectController.php');

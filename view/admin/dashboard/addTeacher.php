@@ -10,17 +10,25 @@
     <title>Admin Dashboard</title>
 </head>
 <body>
+    <?php
+    include_once('../../controller/authController/authentication/Authentication.php');
+    include_once('../../controller/authController/authorization/Authorization.php');
 
-<?php
-  //  include ('../../../config/app.php');
-   // session_start();
+//    User Authentication
+    Authentication::userAuthentication();
+    //User Authorization
+    Authorization::authorizingAdmin();
+    ?>
+    <?php
+      //  include ('../../../config/app.php');
+       // session_start();
 
-    $currentDir = __DIR__;
-    include_once $currentDir . '\..\..\..\controller\adminController\dashboardController\allSubjectController.php';
+        $currentDir = __DIR__;
+        include_once $currentDir . '\..\..\..\controller\adminController\dashboardController\allSubjectController.php';
 
-    $allSubject = new allSubjectController();
-    $subjects = $allSubject->getAllSubject();
-?>
+        $allSubject = new allSubjectController();
+        $subjects = $allSubject->getAllSubject();
+    ?>
 
     <div class="popup">
         <div class="popup-AddTeacher">

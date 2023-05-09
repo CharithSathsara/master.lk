@@ -72,6 +72,7 @@
     width: 220px;
     border: none;
     border-radius: 10px;
+    padding-left: 15px;
 }
 
 .addBankAccount-form input[type='submit'] {

@@ -1,5 +1,5 @@
 function viewUpdateChemistryDescription(){
-
+         textarea.style.height = '130px';
         document.getElementById('error-message-updateChemistryValidate').style.display= 'none';
         document.getElementById('mainDiv-updateChemistrySubject').style.display = 'block';
 }

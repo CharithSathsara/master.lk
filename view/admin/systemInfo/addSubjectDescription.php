@@ -9,6 +9,16 @@
     <title>Subject Description</title>
 </head>
 <body>
+
+    <?php
+        include_once('../../../controller/authController/authentication/Authentication.php');
+        include_once('../../../controller/authController/authorization/Authorization.php');
+
+        //User Authentication
+        Authentication::userAuthentication();
+        //User Authorization
+        Authorization::authorizingAdmin();
+    ?>
         <div class="mainDiv-addSubject">
             <div class="container-add" id="container-addPhysics">
                <div class="header-AddDescriptionSection">

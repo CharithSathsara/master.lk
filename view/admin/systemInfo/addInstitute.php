@@ -9,6 +9,16 @@
     <title>Add Institute</title>
 </head>
 <body>
+
+    <?php
+        include_once('../../../controller/authController/authentication/Authentication.php');
+        include_once('../../../controller/authController/authorization/Authorization.php');
+
+        //User Authentication
+        Authentication::userAuthentication();
+        //User Authorization
+        Authorization::authorizingAdmin();
+    ?>
         <div class="main-AddSection" id="main-AddSection">
             <div class="AddSecond-section">
                 <div class="header-section">

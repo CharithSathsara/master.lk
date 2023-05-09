@@ -9,7 +9,16 @@
     <title>Document</title>
 </head>
 <body>
+    <?php
+        include_once('../../../config/app.php');
+        include_once('../../../controller/authController/authentication/Authentication.php');
+        include_once('../../../controller/authController/authorization/Authorization.php');
 
+        //User Authentication
+        Authentication::userAuthentication();
+        //User Authorization
+        Authorization::authorizingAdmin();
+    ?>
 
     <div class="access-popBox">
         <div class="accessPop">

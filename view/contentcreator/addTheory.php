@@ -31,7 +31,7 @@ include('../../controller/contentCreatorController/theoryContentController/viewT
 //User Authentication
 Authentication::userAuthentication();
 //User Authorization
-Authorization::authorizingContentCreator();
+Authorization::authorizingAdmin();
 
 $viewTheoryContentController = new ViewTheoryContentController();
 

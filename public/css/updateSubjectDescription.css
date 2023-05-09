@@ -63,14 +63,14 @@
     margin-bottom: 10px;
 }
 
-.update-subjectDescription-form .description-details{
-    width: 100%;
-    min-height: 130px;
-    height: auto;
-    background-color: #D9D9D9;
-    border: none;
-    border-radius: 10px;
-}
+/*.update-subjectDescription-form .description-details{*/
+/*    width: 100%;*/
+/*    min-height: 130px;*/
+/*    height: auto;*/
+/*    background-color: #D9D9D9;*/
+/*    border: none;*/
+/*    border-radius: 10px;*/
+/*}*/
 
 .update-subjectDescription-form .price-details{
     width: 200px;
@@ -172,13 +172,23 @@
 }
 
 .update-subjectDescription-form .description-details{
-    width: 100%;
+    width: 95%;
     min-height: 130px;
-    height: auto;
+    max-height: 200px;
     background-color: #D9D9D9;
     border: none;
     border-radius: 10px;
+    padding: 15px;
+    resize: none;
 }
+
+
+/*textarea:is(:focus, :valid){*/
+/*    border-color: white;*/
+/*}*/
+/*.update-subjectDescription-form .description-details:is(:focus,:valid){*/
+/*    border: none;*/
+/*}*/
 
 .update-subjectDescription-form .price-details{
     width: 200px;
@@ -186,6 +196,7 @@
     background-color:#D9D9D9 ;
     border: none;
     border-radius: 10px;
+    padding-left: 15px ;
 }
 
 .show-error #error-message-updatePhysicsValidate{

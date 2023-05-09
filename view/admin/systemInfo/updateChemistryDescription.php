@@ -9,6 +9,16 @@
     <title>Update Description</title>
 </head>
 <body>
+
+    <?php
+        include_once('../../../controller/authController/authentication/Authentication.php');
+        include_once('../../../controller/authController/authorization/Authorization.php');
+
+        //User Authentication
+        Authentication::userAuthentication();
+        //User Authorization
+        Authorization::authorizingAdmin();
+    ?>
     <div class="mainDiv-updateChemistrySubject" id="mainDiv-updateChemistrySubject">
         <div class="container-update" id="container-updateChemistry">
             <div class="header-updateDescriptionSection">
@@ -22,7 +32,15 @@
                 <form class="update-subjectDescription-form" action="<?= base_url('controller/adminController/systemInformationController/updateSubjectDescriptionController.php') ?>" method="post">
 
                     <p>Description :</p>
-                    <input type="text" class="description-details" name="ChemistryDescription" value="<?= $_SESSION['chemistry']['Description']?>">
+                    <textarea class="description-details" name="ChemistryDescription" > <?= $_SESSION['chemistry']['Description']?></textarea>
+                    <script>
+                        const textarea = document.querySelector('textarea');
+                        textarea.addEventListener("keyup",e =>{
+                            textarea.style.height = '130px';
+                            let Height = e.target.scrollHeight;
+                            textarea.style.height = `${Height}px`;
+                        } );
+                    </script>
                     <p>Price :</p>
                     <input type="text" class="price-details" name="ChemistryName" value="<?= $_SESSION['chemistry']['Price']?>">
 
