@@ -9,15 +9,27 @@
     <title>Document</title>
 </head>
 <body>
+
+    <?php
+        include_once('../../../config/app.php');
+        include_once('../../../controller/authController/authentication/Authentication.php');
+        include_once('../../../controller/authController/authorization/Authorization.php');
+
+        //User Authentication
+        Authentication::userAuthentication();
+        //User Authorization
+        Authorization::authorizingAdmin();
+    ?>
     <div class="reject-popBox" id="reject-popBox">
         <div class="rejectPop">
             <div class="rejectHead">
                 <img src="../../../public/img/exclamationIcon.png">
-                <h4>Reject Payment</h4>
+                <h3>Reject Payment</h3>
+                <img src="<?= base_url('public/img/close.png') ?>" id="close-reject" alt="close">
             </div>
 
             <div class="rejectBody">
-                <p>If you click the Reject button, a rejection email will be sent to  <br> the student. Do you want to continue?</p>
+                <p>If you click the Reject button,a rejection email will be sent to the student. Do you want to continue?</p>
             </div>
 
             <div class="reject-button">
@@ -29,7 +41,7 @@
 
                     <form method="post" action="<?= base_url('controller/adminController/paymentVerificationController/paymentAcceptRejectController.php') ?>">
                         <input type="hidden" name="PaymentId" id="yer-RejectPaymentId">
-                        <input type="submit" id="rejectYesPop" name="yesRejectButton-pop" value="Yes, Reject">
+                        <input type="submit" id="rejectYesPop" name="yesRejectButton-pop" value="Yes, Reject" class="rejectButton-slip">
                     </form>
                 </div>
             </div>

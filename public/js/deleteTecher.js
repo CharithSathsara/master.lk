@@ -9,3 +9,7 @@ function showDeleteTeacherForm(userId) {
 
 }
 
+function closeDeleteTeacherPop(){
+    document.querySelector(".popup-delete").style.display = "none";
+}
+

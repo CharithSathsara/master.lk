@@ -29,8 +29,6 @@ if($_SESSION['auth_role']=='STUDENT'){
 }
 
 include('../../controller/profileController/profileInfoController.php');
-// include('../../controller/profileController/profilePhotoViewController.php');
-// include('../../model/User.php');
 include('../../model/Student.php');
 
 
@@ -60,7 +58,7 @@ $profileInfoController = new profileInfoController();
                     <img src="../../public/icons/remove.svg" class="edit-icon">
                 </button>
                 <div class="circle" id="circle">
-                    <?=$profilePhotoViewController->getProfilePhoto();?>
+                    <img id='profile-pic' src='<?=$profilePhotoViewController->getProfilePhoto();?>'/>;
                 </div>
 
             </div>
@@ -193,6 +191,11 @@ $profileInfoController = new profileInfoController();
                 <input type="text" id="telephone" name="telephone"  oninput="inputChange()" value="<?= $profileInfoController->getProfileData('mobile') ; ?>"><br>
                 <input type="email" id="email" name="email" oninput="inputChange()" value="<?= $profileInfoController->getProfileData('email') ; ?>"><br>
                 <input type="text" id="username" name="username"  oninput="inputChange()" value="<?= $profileInfoController->getProfileData('userName') ; ?>"><br>
+
+                <div id="change-info-error">
+                    <?php include "../../controller/authController/message.php"?>
+                </div>
+
                 <button id="profile-info-update-button" type="submit" >Save</button>
             </div>
 
@@ -222,6 +225,16 @@ $profileInfoController = new profileInfoController();
                 </style>
             ";
             unset($_SESSION['change-pw-error']);
+        }
+        if(isset($_SESSION['change-info-error'])){
+            echo"
+                <style>
+                        #page-mask-profileInfo{
+                            display:block;
+                        }
+                </style>
+            ";
+            unset($_SESSION['change-info-error']);
         }
 
 ?>

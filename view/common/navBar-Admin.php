@@ -34,7 +34,7 @@ $profilePhotoViewController = new profilePhotoViewController();
     <div class="prof-detail">
 
         <div class="circle">
-            <?=$profilePhotoViewController->getProfilePhoto();?>
+            <img id='profile-pic' src='<?=$profilePhotoViewController->getProfilePhoto();?>'/>;
         </div>
 
         <p id="user-name"><?= $_SESSION['auth_user']['userFirstName'] ?>&nbsp;<?= $_SESSION['auth_user']['userLastName'] ?></p>
@@ -55,6 +55,20 @@ $profilePhotoViewController = new profilePhotoViewController();
                     <div class="list-item" >
                         <img src="<?= base_url('public/icons/payments.svg') ?>" class="list-icon">
                         <p class="list-text">Payments</p>
+                    </div>
+                </a>
+            </li>
+
+            <li class="nav-item"  id="payments">
+                <a href=<?= base_url('view/admin/systemInfo/systemInformation.php') ?>>
+                    <div class="list-item" >
+                        <img src="<?= base_url('public/icons/payments.svg') ?>" class="list-icon">
+
+            <li class="nav-item"  id="systemInfo">
+                <a href=<?= base_url('view/admin/payment/systemInfo.php') ?>>
+                    <div class="list-item" >
+                        <img src="<?= base_url('public/icons/info.svg') ?>" class="list-icon">
+                        <p class="list-text">System Info</p>
                     </div>
                 </a>
             </li>

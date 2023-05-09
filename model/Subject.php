@@ -40,6 +40,16 @@ class Subject {
 
     }
 
+    public static function getSubjectDescription($connection,$subject){
+
+        $query = "SELECT * from subject where subjectTitle = '$subject' limit 1 ";
+        $data = $connection->query($query);
+        $price = $data->fetch_assoc();
+
+        return $price['description'];
+
+    }
+
     public static function addToCart($connection,$subject){
 
         $userId = $_SESSION['auth_user']['userId'];
@@ -103,6 +113,70 @@ class Subject {
         if ($data) {
 
             return $data;
+        }
+    }
+
+    public static function AddDescription($connection,$subjectId,$description,$price){
+
+        $query = "UPDATE subject SET description='$description', price = '$price'  WHERE subjectId ='$subjectId'";
+
+        $data = $connection->query($query);
+
+        if($data){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
+    public static function getSubjectDescription($connection,$subjectId){
+
+        $query = "SELECT * from subject where subjectId = '$subjectId'";
+        $data = $connection->query($query);
+        $description = $data->fetch_assoc();
+
+        if ($description){
+            return $description['description'];
+        }else{
+           return false;
+        }
+
+    }
+
+    public static function updateSubjectDescription($connection,$subjectId,$description,$price){
+
+        $query = "UPDATE subject
+                  SET price	='$price', description='$description'
+                  WHERE subjectId = '$subjectId'";
+
+        $result = $connection->query($query);
+
+        if($result){
+            return $result;
+        }else{
+            return false;
+        }
+    }
+
+    public static function getSubjectID($connection,$topicId){
+
+        $query1 = "SELECT lessonId FROM topic WHERE topicId = '$topicId'";
+
+        $lesson = $connection->query($query1);
+        $lessonIdSet = mysqli_fetch_assoc($lesson);
+        $lessonId = $lessonIdSet['lessonId'];
+
+        $query2 = "SELECT SubjectId FROM lesson WHERE lessonId = '$lessonId'";
+
+        $subjects = $connection->query($query2);
+        $subjectIdSet = mysqli_fetch_assoc($subjects);
+        $subjectId = $subjectIdSet['SubjectId'];
+
+        if($subjectId){
+            return $subjectId;
+        }else{
+            return false;
         }
     }
 }

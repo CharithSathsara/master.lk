@@ -31,16 +31,18 @@ include('../../model/Topic.php');
 
 $topicController = new topicController();
 
+$_SESSION['current-subject'] = $_GET['subject'];
+$_SESSION['current-lesson'] = $_GET['lesson'];
 
 ?>
 
 <div id="lessons-feedbacks-container">
     <div id="lessons-feedbacks">
-        <b><p id="title"><span id="subject-shortcut"><a href="studentDashboard.php">Chemistry</a></span>&nbsp;&nbsp;>&nbsp;&nbsp;<?=$_SESSION['current-lesson'];?></p></b>
+        <b><p id="title"><span id="subject-shortcut"><a href="studentDashboard.php"><?=$_SESSION['current-subject']?></a></span>&nbsp;&nbsp;>&nbsp;&nbsp;<?=$_SESSION['current-lesson'];?></p></b>
         <b><p class="sub-title">Topics&nbsp;&nbsp;&nbsp;</p></b>
 
         <div class='topics-container'>
-            <?=$topicController->getTopics("Chemistry","Organic Chemistry");?>
+            <?=$topicController->getTopics($_SESSION['current-subject'],$_SESSION['current-lesson']);?>
         </div>
         <br>
 

@@ -13,6 +13,16 @@
     <body>
 
     <?php
+    include_once('../../controller/authController/authentication/Authentication.php');
+    include_once('../../controller/authController/authorization/Authorization.php');
+
+    //User Authentication
+    Authentication::userAuthentication();
+    //User Authorization
+    Authorization::authorizingAdmin();
+    ?>
+
+    <?php
         $allSubject = new allSubjectController();
         $subjects = $allSubject->getAllSubject();
     ?>
@@ -22,7 +32,9 @@
             <div class="updatePop-contentCreator">
                 <div class="updatePop-contentCreatorHeader">
                     <h4>Update Content Creator</h4>
-                    <img src="../../public/img/close.png" class="CloseContentCreatorPop" >
+                    <div class="close-updateCreator">
+                        <button onclick="closeUpCreator()"><img src="../../public/img/close.png" class="CloseContentCreatorPop" ></button>
+                    </div>
                 </div>
 
                 <div class="update-contentCreatorForm">
@@ -30,17 +42,18 @@
 
                         <form class="UpdateContentCreator-form" action="<?= base_url('controller/adminController/dashboardController/updateContentCreatorController.php') ?>" method="POST">
 
-                            <input type="text" name="fname"  id="Creator-fname">
-                            <input type="text" name="lname"  id="Creator-lname">
-                            <input type="text" name="address1"  id="Creator-address1">
-                            <input type="text" name="address2"  id="Creator-address2">
-                            <input type="text" name="number"  id="Creator-number">
-                            <input type="email" name="email"  id="Creator-email">
-                            <input type="text" name="userId" id="Creator-userId">
+                            <input type="text" name="fname"  id="Creator-fname" value="<?= $_SESSION['user']['firstName'] ?>">
+                            <input type="text" name="lname"  id="Creator-lname"  value="<?= $_SESSION['user']['lastName'] ?>">
+                            <input type="text" name="address1"  id="Creator-address1"  value="<?= $_SESSION['user']['addLine01'] ?>">
+                            <input type="text" name="address2"  id="Creator-address2"  value="<?= $_SESSION['user']['addLine02'] ?>">
+                            <input type="text" name="number"  id="Creator-number"  value="<?= $_SESSION['user']['mobile'] ?>">
+                            <input type="email" name="email"  id="Creator-email"  value="<?= $_SESSION['user']['email'] ?>">
+                            <input type="text" name="userId" id="Creator-userId" value="<?= $_SESSION['user']['userId'] ?>">
 
                             <div class="selectSub">
-                                <label>Select the Subject : </label>
-                                <select name="subjects" id="subjects" >
+                                <label id="select-subjectCreator" >Select the Subject : </label>
+                                <select name="subjects" id="subjects-creator" >
+                                    <option value="" disabled selected hidden>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ----- Select a Subject -----</option>
                                     <?php
                                         foreach ($subjects as $subject){
                                             ?>
@@ -51,7 +64,13 @@
                                 </select>
                             </div>
 
-                            <input type="submit" name="updateContentCreator-button" value="Save" class="subb-Update" style="background-color: #0b2e5e; color: #D9D9D9; border-radius: 10px">
+                            <div class="show-errorUpdateCreator">
+                                <div class="error-message-up-creator" id="error-message-up-creator">
+                                    <?php include "validationMessage.php"?>
+                                </div>
+                                <input type="submit" name="updateContentCreator-button" value="Save" class="sub-UpdateContent" >
+                            </div>
+
                         </form>
                     </div>
                 </div>

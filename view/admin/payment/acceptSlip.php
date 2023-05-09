@@ -9,26 +9,36 @@
     <title>Document</title>
 </head>
 <body>
+    <?php
+        include_once('../../../config/app.php');
+        include_once('../../../controller/authController/authentication/Authentication.php');
+        include_once('../../../controller/authController/authorization/Authorization.php');
 
+        //User Authentication
+        Authentication::userAuthentication();
+        //User Authorization
+        Authorization::authorizingAdmin();
+    ?>
 
     <div class="access-popBox">
         <div class="accessPop">
             <div class="accessHead">
                 <img src="../../../public/img/verify.png">
-                <h4>Verify Payment</h4>
+                <h3>Verify Payment</h3>
+                <img src="<?= base_url('public/img/close.png') ?>" id="close-accept" alt="close">
             </div>
 
             <div class="accessBody">
-                <p>If you click the Verify button, an acceptance email will be sent to <br> the student. Do you want to continue?</p>
+                <p id="acceptBody-text">If you click the Verify button, an acceptance email will be sent to the student. Do you want to continue?</p>
             </div>
 
             <div class="access-button">
-                <div class="no-button">
+                <div class="no-buttonAccept">
                     <button id="close-verifyPop">No</button>
                 </div>
                     <form method="post" action="<?= base_url('controller/adminController/paymentVerificationController/paymentAcceptRejectController.php') ?>">
                         <input type="hidden" name="PaymentId" id="yer-PaymentId">
-                        <input type="submit" name="yesButton-pop" value="Yes, Verify">
+                        <input type="submit" name="yesButton-pop" value="Yes, Verify" class="yesButton-pop">
                     </form>
                 </div>
             </div>

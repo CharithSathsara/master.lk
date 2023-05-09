@@ -2,22 +2,7 @@ body{
     /*background-color: #008CBA;*/
 }
 
-/*.header{*/
-/*    height: 10vh;*/
-/*    background-color: brown;*/
-/*    margin-top: 0;*/
-/*}*/
-
-/*.navBar{*/
-/*    height: 90vh;*/
-/*    width: 15vh;*/
-/*    background-color: #111111;*/
-/*    margin-top: 0;*/
-/*    margin-left: 0;*/
-/*}*/
-
 .section-3{
-    /*background-color: aqua;*/
     width: 85%;
     height: 100%;
     float: right;
@@ -25,25 +10,21 @@ body{
 
 }
 
-/*td{*/
-/*    !*padding: 10px;*!*/
-/*    !*padding-right: 50px;*!*/
-/*    !*padding-left: 20px;*!*/
-/*    column-gap: 30px;*/
-/*}*/
-
-/*tr{*/
-/*    border: 1px solid red;*/
-/*    width: 100%;*/
-/*}*/
-
 .but-teacher{
-    background-color: orange;
-    color: white;
-    padding: 5px;
-    margin: 0;
-    border-radius: 6px;
-    width: 150px;
+    width: 100%;
+    height: 100%;
+
+    /*margin-left: 22%;*/
+    /*margin-top: 25%;*/
+}
+
+.but-teacher img{
+    width: 50%;
+    opacity: 0.4;
+}
+
+.but-teacher img:hover{
+    opacity: 0.8;
 }
 
 .but-content{
@@ -54,10 +35,10 @@ body{
     border-radius: 6px;
     width: 175px;
 }
-.but-teacher:hover,.but-content:hover{
-    background-color: #0b2e5e ;
-    color: white;
-}
+/*.but-teacher:hover,.but-content:hover{*/
+/*    background-color: #0b2e5e ;*/
+/*    color: white;*/
+/*}*/
 
 .getTeacher .td-1{
     padding-left: 20px;
@@ -140,31 +121,6 @@ th{
     margin-bottom: 20px;
 }
 
-/*.styled-table {*/
-/*    border-collapse: collapse;*/
-/*    margin: 25px 0;*/
-/*    font-size: 0.9em;*/
-/*    font-family: sans-serif;*/
-/*    min-width: 400px;*/
-/*    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);*/
-/*}*/
-
-/*.styled-table .td-2,.td-1{*/
-/*    padding: 15px 0;*/
-/*}*/
-
-/*.styled-table tbody tr {*/
-/*    border-bottom: 1px solid red;*/
-/*}*/
-
-/*.getTeacher .but{*/
-/*    margin-right: 20px;*/
-/*}*/
-
-/*.anchor .but{*/
-/*    right: 20px;*/
-/*}*/
-
 .getContentCreator .styled-table{
     margin-top: 20px;
     margin-bottom: 20px;
@@ -185,7 +141,7 @@ th{
 }
 
 #adminDashboardContainer tr{
-    background-color: #D9D9D9;
+    background-color: #edecec;
 }
 
 #adminDashboardContainer td{
@@ -198,88 +154,151 @@ th{
 /*}*/
 
 .popup{
-    /*background-color: rgba(0,0,0,0.6);*/
-    /*height: 100%;*/
-    /*width: 100%;*/
-    /*position: absolute;*/
-    /*top: 0;*/
-    /*display: none;*/
-    /*justify-content: center;*/
-    /*z-index: 100;*/
-
-    background-color: rgba(0,0,0,0.6);
-    height: 150vh;
-    width: 98.9vw;
-    position: absolute;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
     top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 14;
     display: none;
     justify-content: center;
-    z-index: 100;
 }
 
 .popup-update{
-    /*background-color: rgba(0,0,0,0.6);*/
-    /*height: 150vh;*/
-    /*width: 100vw;*/
-    /*position: absolute;*/
-    /*top: 0;*/
-    /*display: none;*/
-    /*justify-content: center;*/
-    /*z-index: 100;*/
-
-
-    background-color: rgba(0,0,0,0.6);
-    height: 100vh;
-    width: 100%;
-    position: absolute;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
     top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 14;
     display: none;
     justify-content: center;
-    margin-left: -16.5vw;
-    z-index: 100;
 }
 
 .popup-update .closeTeacher-Icon{
     cursor: pointer;
     width: 30px;
     height: 30px;
-    margin-left: 34.5vw;
-    margin-top: 15px;
+    margin-left: 32.5vw;
+    /*margin-top: 5px;*/
+}
+
+.updateTeacherText h4{
+    margin-left: 2vw;
 }
 
 .popup-UpdateTeacher{
-    height: 450px;
+    height: 500px;
     width: 700px;
     background-color: white;
     /*padding: 20px;*/
     border-radius: 10px;
     /*position: fixed;*/
-    margin-top: 200px;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.updateTeacherText{
+    display: flex;
+    flex-direction: row;
+}
+
+.updateTeacherText img{
     margin-left: 100px;
 }
 
 .popup-AddTeacher{
-    height: 520px;
+    z-index: 15;
+    position: absolute;
+    height: 500px;
     width: 700px;
     background-color: white;
-    /*padding: 20px;*/
     border-radius: 10px;
-    position: fixed;
-    margin-top: 180px;
-    margin-left: 100px;
-    /*padding-left: 200px;*/
-    /*padding-bottom: 50px;*/
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+}
+
+.add-teacher-header{
+    display: flex;
+    flex-direction: row;
+}
+
+.add-teacher-header h4{
+    margin-left: 43px;
+    margin-top: 25px;
 }
 
 
+#close-add{
+    width: 33px;
+    height: 33px;
+    cursor: pointer;
+    margin-left: 30vw;
+    margin-top: 20px;
+}
 
-.addTeach-form .subb-button{
-    /*margin-bottom: 50px;*/
+.error-message-add-teacher{
+    color: red;
+    margin-left: 15px;
+    height: 20px;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: -40px;
+}
+.error-message-add-content{
+    color: red;
+    /*margin-left: 30px;*/
+    height: 20px;
+    text-align: center;
+    font-weight: bold;
+    margin-top: -50px;
+    margin-bottom: 15px;
+    margin-left: 100px;
+    width: 400px;
+}
+.error-message-up-teacher{
+    color: red;
+    margin-left: 150px;
+    height: 20px;
+    text-align: center;
+    font-weight: bold;
+    margin-top: -35px;
+    margin-bottom: 5px;
+    width: 300px;
+}
+
+.error-message-up-creator{
+    color: red;
+    margin-left: -30px;
+    height: 20px;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: -50px;
+    width: 300px;
+}
+
+#add-teacherButton{
+    margin-left: 89%;
+    margin-top: 8vh;
+    width: 130px;
+    height: 35px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
 }
 
 .close-Icons{
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
     cursor: pointer;
     padding-left: 670px;
     padding-top: 10px;
@@ -293,37 +312,57 @@ th{
 }
 
 .addTeach-form{
+    margin-top: 0;
     max-width: 650px;
     width :100%;
-    /*background-color: #8A8AFF;*/
     display: grid;
     grid-template-columns: 200px 200px;
     grid-row: auto auto;
-    grid-column-gap: 100px;
-    grid-row-gap: 20px;
-    /*grid-gap: 50px;*/
-    /*justify-content:space-around ;*/
-    /*!*align-items:center;*!*/
-    /*flex-direction: row;*/
-
-    padding:25px;
+    grid-column-gap: 140px;
+    grid-row-gap: 10px;
+    padding:15px;
     margin-left:0;
 }
 
+#subjects-creator{
+    margin-left: 30px;
+    width: 280px;
+    border: none;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.sub-UpdateContent{
+    width: 140px;
+    height: 40px;
+    background-color: rgba(33, 158, 188);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-left: 170px;
+    margin-top: 110px;
+
+}
+
 #subjects{
-    /*margin-left: 10vw;*/
+    width: 280px;
+    height:40px ;
+    margin-left: 13%;
+    border: none;
 }
 
 .UpdateTeach-form{
     max-width: 650px;
     width :100%;
+    /*height: 400px;*/
     /*background-color: #8A8AFF;*/
     display: grid;
     grid-template-columns: 200px 200px;
     grid-row: auto auto;
-    grid-column-gap: 100px;
+    grid-column-gap: 155px;
     grid-row-gap: 20px;
-    padding-left: 35px;
+    /*padding-left: 35px;*/
     padding-top: 10px;
 }
 
@@ -342,7 +381,7 @@ input[type="email"],input[type="password"],input[type="text"],input[type="date"]
     margin:5px 30px;
     padding:0 15px;
     border:none;
-    border-radius: 6px;
+    border-radius: 10px;
     background-color: rgba(117, 114, 114, 0.31);
 }
 textarea{
@@ -358,30 +397,29 @@ textarea{
 
 .selectSub{
     text-align: center;
-    /*margin-left: 0px;*/
-    margin-right: 90px;
+    margin-left: 0px;
+    height: 100px;
+}
+
+.selectSub .optionSubject{
+    /*background-color: #008CBA;*/
+    padding: 10px 0;
 }
 
 
 
-.addTeach-form input[type="submit"]{
-    width: 130px;
-    height: 35px;
-    /*padding: 40px 50px;*/
-    /*margin-top: 10px;*/
-    margin-bottom: 10px;
-    margin-left: 470px;
-    cursor: pointer;
-    border: none;
-    background-color: #0b2e5e;
-    /*color: white;*/
-    /*transition:all 0.3s ease-in;*/
-    /*-webkit-transition:all 0.3s ease-in;*/
-    /*-moz-transition:all 0.3s ease-in;*/
-    /*-ms-transition:all 0.3s ease-in;*/
-    /*-o-transition:all 0.3s ease-in;*/
-    border-radius: 10px;
-}
+/*.addTeach-form input[type="submit"]{*/
+/*    width: 130px;*/
+/*    height: 35px;*/
+/*    !*padding: 40px 50px;*!*/
+/*    !*margin-top: 10px;*!*/
+/*    margin-bottom: 10px;*/
+/*    margin-left: 470px;*/
+/*    cursor: pointer;*/
+/*    border: none;*/
+/*    background-color: #0b2e5e;*/
+/*    border-radius: 10px;*/
+/*}*/
 
 .UpdateTeach-form input[type="submit"]{
     width: 130px;
@@ -395,51 +433,58 @@ textarea{
     cursor: pointer;
     border: none;
     background-color: #0b2e5e;
-    /*color: white;*/
-    /*transition:all 0.3s ease-in;*/
-    /*-webkit-transition:all 0.3s ease-in;*/
-    /*-moz-transition:all 0.3s ease-in;*/
-    /*-ms-transition:all 0.3s ease-in;*/
-    /*-o-transition:all 0.3s ease-in;*/
     border-radius: 10px;
 }
 
-.UpdateTeach-form input[type="submit"]:hover{
-    background-color: orange;
-}
-
-#updateTeacherSubmit{
-    background-color: #0b2e5e;
-    color: white;
-    border-radius: 10px;
-}
-
-#updateTeacherSubmit:hover{
-    background-color: orange;
-
-}
-
-.subb-Update{
-    width: 130px;
-    height: 35px;
-    /*padding: 20px 50px;*/
-    /*margin-top: 10px;*/
-    /*margin-bottom: 10px;*/
-    /*margin-left: 50px;*/
-    cursor: pointer;
-    border: none;
-    background-color: #0b2e5e;
-    margin-left: 27vw;
-    margin-top: 100px;
-}
-/*.subb-button{*/
+/*.UpdateTeach-form input[type="submit"]:hover{*/
 /*    background-color: orange;*/
 /*}*/
 
-.addTeach-form input[type="submit"]:hover{
-    background-color:orange;
+#updateTeacherSubmit{
+    background-color: rgba(33, 158, 188);
     color: white;
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-left: 34.5vw;
+
 }
+
+/*#updateTeacherSubmit:hover{*/
+/*    background-color: orange;*/
+
+/*}*/
+
+/*.subb-add{*/
+/*    width: 130px;*/
+/*    height: 35px;*/
+/*    cursor: pointer;*/
+/*    border: none;*/
+/*    background-color: #0b2e5e;*/
+/*    margin-left: 23.5vw;*/
+/*    border-radius: 10px;*/
+/*    margin-top: 30px;*/
+/*}*/
+.subb-addContent{
+    width: 130px;
+    height: 35px;
+    cursor: pointer;
+    border: none;
+    background-color: rgba(33, 158, 188);
+    margin-left: 35vw;
+    border-radius: 10px;
+    /*margin-top: 10px;*/
+    color: white;
+
+}
+/*.subb-add:hover{*/
+/*    background-color:orange;*/
+/*}*/
+
+
+/*.addTeach-form input[type="submit"]:hover{*/
+/*    background-color:orange;*/
+/*    color: white;*/
+/*}*/
 
 .addTeacherText h4{
     padding-left: 40px;
@@ -456,17 +501,27 @@ textarea{
     margin-left: 35px;
 }
 
+
 .selectSub select{
     background-color: rgba(117, 114, 114, 0.31);
     padding: 5px;
     border-radius: 10px;
     margin-left: -60px;
+
     /*margin-bottom: 60px;*/
+}
+#subject-teacher{
+    width: 280px;
+}
+
+#label-selectUpdateTeacher{
+    margin-top: -5px;
 }
 
 .addTeach-form input[type="submit"]{
-    background-color: #0b2e5e;
+    background-color: rgba(33, 158, 188);
     color: white;
+    /*margin-left: 50%;*/
 }
 
 .popup-update h4{
@@ -476,39 +531,33 @@ textarea{
 
 .UpdateTeach-form select{
     margin-bottom: 200px;
-    margin-left: 180px;
+    margin-left: 30px;
+    width: 270px;
+    height: 40px;
+    border: none;
 }
 
 .popup-delete{
-    /*background-color: rgba(0,0,0,0.6);*/
-    /*height: 100%;*/
-    /*width: 100%;*/
-    /*position: absolute;*/
-    /*top: 0;*/
-    /*display: none;*/
-    /*justify-content: center;*/
-    /*z-index: 100;*/
-
-    background-color: rgba(0,0,0,0.6);
-    height: 150vh;
-    width: 100vw;
-    position: absolute;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
     top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 14;
     display: none;
     justify-content: center;
-    z-index: 100;
-    margin-left: -17.5vw;
-
 }
 
 .delete-teacherPop{
     width: 450px;
-    height: 200px;
+    height: 230px;
     background-color: white;
-    margin-left: 200px;
-    margin-top: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 250px;
     border-radius: 20px;
-    position: fixed;
+    /*position: fixed;*/
 }
 
 .delete-headerPop{
@@ -518,10 +567,34 @@ textarea{
     padding-left: 20px;
 }
 
+.delete-headerPop .close-deleteTeacher img{
+    width: 35px;
+    height: 35px;
+}
+
+.close-deleteTeacher{
+    margin-top: 8px;
+    margin-left: 150px;
+}
+
+.close-deleteCreator{
+    /*margin-top: 5px;*/
+    margin-left: 150px;
+}
+
+.delete-headerContentPop .close-deleteCreator img{
+    width: 35px;
+    height: 35px;
+}
+
 .delete-teacherPop img{
-    width: 40px;
-    height:30px;
+    width: 65px;
+    height:45px;
     padding-right: 10px;
+    margin-left: -10px;
+}
+.delete-teacherPop h3{
+    margin-top: 10px;
 }
 
 .deletePop-teacherBody{
@@ -529,30 +602,40 @@ textarea{
     width: 350px;
     padding: 5px;
     margin-left: 20px;
-    margin-top: 35px;
 }
 .deletePop-teacherBody p{
     font-weight: bold;
     font-size: 16px;
 }
 
-.deletePop-teacherButton .deleteYes-button{
-    background-color: #0b2e5e;
-    color: white;
-    width: 100px;
-    height: 30px;
-    border-radius: 8px;
-    margin-right: 10px;
-    margin-left: 200px;
+.deletePop-teacherButton{
+    display: flex;
+    flex-direction: row;
     margin-top: 30px;
 }
 
-.deletePop-teacherButton .deleteNo-button{
-    background-color: orange;
+
+.deletePop-teacherButton .deleteYes-button{
+    background-color: #219EBC;
     color: white;
-    width: 100px;
-    height: 30px;
-    border-radius: 8px;
+    width: 140px;
+    height: 33px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
+    margin-left: 115px;
+    margin-right: 30px;
+}
+
+.deletePop-teacherButton .deleteNo-button{
+    background-color: #F49F0A;
+    color: white;
+    width: 140px;
+    height: 33px;
+    border-radius: 10px;
+    /*margin-left: 40px;*/
+    /*margin-right: 170px;*/
+    float: right;
 }
 
 /*.deletePop-teacherButton{*/
@@ -564,26 +647,41 @@ textarea{
 }
 
 .popup-addContentCreator{
-    background-color: rgba(0,0,0,0.6);
-    height: 150vh;
-    width: 100vw;
-    position: absolute;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
     top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 14;
     display: none;
     justify-content: center;
-    z-index: 100;
-
 }
 
 .add-contentCreatorPop{
-    /*width: max-width: 200px;*/
-    /*width :100%;*/
     width: 700px;
-    height: 520px;
+    height: 470px;
     background-color: white;
-    margin-top: 200px;
+    margin-top: 120px;
     border-radius: 20px;
     /*position: fixed;*/
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.UpdateContent-form{
+    max-width: 650px;
+    width :100%;
+    display: grid;
+    grid-template-columns: 200px 200px;
+    grid-row: auto auto;
+    grid-column-gap: 160px;
+    grid-row-gap: 20px;
+    /*margin-left: 30px;*/
+}
+
+#select-addContent{
+    margin-top: -10px;
 }
 
 .popup-addContentCreator .update-ContentCreatorHeaderPop{
@@ -592,7 +690,7 @@ textarea{
     padding: 10px;
     display: flex;
     flex-direction: column;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 
 }
 
@@ -610,9 +708,10 @@ textarea{
 .popup-addContentCreator .update-ContentCreatorHeaderPop img{
     width: 30px;
     height: 30px;
-    margin-left: 650px;
+    margin-left: 640px;
     cursor: pointer;
     position: relative;
+    margin-top: 5px;
 
 
 }
@@ -624,24 +723,25 @@ textarea{
 }
 
 .update-ContentCreatorPop{
-    background-color: rgba(0,0,0,0.6);
-    height: 150vh;
-    width: 99vw;
-    position: absolute;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
     top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 14;
     display: none;
     justify-content: center;
-    z-index: 100;
-    margin-left: -16.5vw;
 }
 
 .update-ContentCreatorPop .updatePop-contentCreator{
     width: 700px;
     height: 475px;
     background-color: white;
-    margin-top: 200px;
-    border-radius: 20px;
-    position: fixed;
+    margin-top: 150px;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .update-ContentCreatorPop .updatePop-contentCreatorHeader{
@@ -649,11 +749,12 @@ textarea{
     padding: 10px;
     display: flex;
     flex-direction: column;
-    margin-bottom: 40px;
+    margin-bottom: 15px;
+    margin-top: 5px;
 }
 
 .update-ContentCreatorPop .updatePop-contentCreatorHeader h4{
-    margin-top: 10px;
+    margin-top: 15px;
     overflow-wrap: normal;
     /*background-color: red;*/
     margin-left: 20px;
@@ -665,9 +766,14 @@ textarea{
 .update-ContentCreatorPop .updatePop-contentCreatorHeader img{
     width: 30px;
     height: 30px;
-    margin-left: 650px;
+
     cursor: pointer;
-    position: relative;
+    /*position: relative;*/
+
+}
+.close-updateCreator{
+    margin-left: 640px;
+    margin-top: 10px;
 }
 
 .update-contentCreatorForm .UpdateContentCreator-form{
@@ -677,44 +783,65 @@ textarea{
     display: grid;
     grid-template-columns: 200px 200px;
     /*grid-row: auto auto;*/
-    grid-column-gap: 100px;
+    grid-column-gap: 160px;
     grid-row-gap: 20px;
-    padding-left: 38px;
+    /*padding-left: 38px;*/
     padding-top: 10px;
 }
+
+#select-subjectCreator{
+    margin-top: -10px;
+}
+
+/*.subb-Update{*/
+/*    width: 130px;*/
+/*    height: 35px;*/
+/*    cursor: pointer;*/
+/*    border: none;*/
+/*    background-color: #0b2e5e;*/
+/*    margin-left: 9vw;*/
+/*    border-radius: 10px;*/
+/*    margin-top: 85px;*/
+/*}*/
+
+/*.subb-Update:hover{*/
+/*    background-color: #F4C430;*/
+/*}*/
+
+/*.sub-Update-teacher{*/
+/*    width: 130px;*/
+/*    height: 35px;*/
+/*    cursor: pointer;*/
+/*    border: none;*/
+/*    background-color: rgba(33, 158, 188);*/
+/*    margin-left: 9vw;*/
+/*    border-radius: 10px;*/
+/*    margin-top: -10vh;*/
+/*}*/
 
 /*Delete Content Creator Pop Box*/
 
 .popup-deleteContent{
-    /*background-color: rgba(0,0,0,0.6);*/
-    /*height: 100%;*/
-    /*width: 100%;*/
-    /*position: absolute;*/
-    /*top: 0;*/
-    /*display: none;*/
-    /*justify-content: center;*/
-    /*z-index: 100;*/
-
-    background-color: rgba(0,0,0,0.6);
-    height: 150vh;
-    width: 98.9vw;
-    position: absolute;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
     top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 14;
     display: none;
     justify-content: center;
-    z-index: 100;
-    margin-left: 10vw;
-
 }
 
 .delete-contentPop{
     width: 450px;
-    height: 200px;
+    height: 230px;
     background-color: white;
-    margin-left: 200px;
-    margin-top: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 250px;
     border-radius: 20px;
-    position: fixed;
+    /*position: fixed;*/
 }
 
 .delete-headerContentPop{
@@ -725,9 +852,14 @@ textarea{
 }
 
 .delete-headerContentPop img{
-    width: 40px;
-    height:30px;
+    width: 65px;
+    height:45px;
     padding-right: 10px;
+    margin-left: -10px;
+}
+
+.delete-headerContentPop h3{
+    margin-top: 10px;
 }
 
 .deletePop-contentBody{
@@ -735,30 +867,38 @@ textarea{
     width: 350px;
     padding: 5px;
     margin-left: 20px;
-    margin-top: 35px;
 }
 .deletePop-contentBody p{
     font-weight: bold;
     font-size: 16px;
 }
 
-.deletePop-contentButton .deleteContentYes-button{
-    background-color: #0b2e5e;
+.deletePop-contentButton{
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+}
+
+.deletePop-contentButton .deleteYes-button{
+    background-color: #219EBC;
     color: white;
-    width: 100px;
-    height: 30px;
-    border-radius: 8px;
-    margin-right: 10px;
-    margin-left: 200px;
-    margin-top: 30px;
+    width: 140px;
+    height: 33px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
+    margin-left: 110px;
+    margin-right: 30px;
 }
 
 .deletePop-contentButton .deleteContentNo-button{
-    background-color: orange;
+    background-color: #F49F0A;
     color: white;
-    width: 100px;
-    height: 30px;
-    border-radius: 8px;
+    width: 140px;
+    height: 33px;
+    border-radius: 10px;
+    /*margin-left: 40px;*/
+    /*margin-right: 170px;*/
 }
 
 #assignTeacherID{
@@ -778,3 +918,116 @@ textarea{
 }
 
 
+/*Teacher tile css*/
+
+.allTeacherSet{
+    margin: 40px 40px 100px 30px;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 19px;
+}
+
+.oneTeacherTile{
+    height: 375px;
+    background-color: #edecec;
+    width: 32%;
+    border-radius: 10px;
+}
+
+.oneTeacherTile:hover{
+    transform: scale(1.05);
+}
+
+.iconDiv{
+    height: 8%;
+}
+
+.profilePic{
+    height: 35%;
+    position: relative;
+}
+
+.userInformation{
+    height:50%;
+    padding-top: 40px;
+}
+
+.iconDiv img{
+    width: 25px;
+    height: 25px;
+    margin-top: 5px;
+}
+
+#but-UpdateTeacher{
+    margin-left: 81%;
+    margin-top: 2%;
+    opacity: 0.4;
+}
+
+#but-deleteTeacher{
+    opacity: 0.4;
+}
+
+#but-deleteTeacher:hover{
+    opacity: 1;
+}
+
+#but-UpdateTeacher:hover{
+    opacity: 1;
+}
+
+#profilePicUser{
+    width: 30px;
+    height: 30px;
+}
+
+#profilePictureUsers{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-top: 8px;
+    margin-left: 8px;
+    margin-bottom: 10px;
+}
+
+.profilePicBorder{
+    /*background-color: red;*/
+    width: 115px;
+    height: 115px;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 50%;
+    border-width: 10px;
+    border-style: double;
+    border-color: #0b2e5e;
+}
+.allInfo{
+    /*margin-left: 18px;*/
+    text-align: center;
+}
+
+.userInformation .con-tea-info{
+    /*font-size: 14px;*/
+    /*margin-left: 25px;*/
+   margin-top: -25px;
+}
+
+#but-ContentCreator{
+    margin-left: 81%;
+    margin-top: 2%;
+    opacity: 0.4;
+}
+
+#but-ContentCreator:hover{
+    opacity: 1;
+}
+
+#but-ContentCreatorDelete{
+    opacity: 0.4;
+}
+#but-ContentCreatorDelete:hover{
+    opacity: 1;
+}

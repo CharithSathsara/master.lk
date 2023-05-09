@@ -6,15 +6,25 @@
     <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../../public/css/adminDashboard.css">
+    <script src="../../public/js/adminDashboard.js"></script>
 
     <title>Admin Dashboard</title>
 </head>
     <body>
 
     <?php
+    include_once('../../config/app.php');
+    include_once('../../controller/authController/authentication/Authentication.php');
+    include_once('../../controller/authController/authorization/Authorization.php');
+
+    //User Authentication
+    Authentication::userAuthentication();
+    //User Authorization
+    Authorization::authorizingAdmin();
 
     include_once('../../controller/adminController/dashboardController/AdminDashboardController.php');
-
+    include_once('../../controller/adminController/dashboardController/allSubjectController.php');
+    include_once('../../model/User.php');
     include_once('../../model/Admin.php');
     include_once ('../../model/Subject.php');
     include_once ('../../model/Teacher.php');
@@ -32,36 +42,52 @@
                     <p>Teachers &nbsp;&nbsp;&nbsp;</p>
                 </div>
                 <div class="getTeacher">
-                    <table  class="styled-table"  cellspacing="0">
+
 
                         <?php
 
                         $adminDashboardController = new AdminDashboardController();
                         $teachers = $adminDashboardController->getAllTeachers();
-
+                        ?>
+                    <div class="allTeacherSet">
+                    <?php
                         if($teachers){
                             foreach($teachers as $teacher){
 
                                 $teacherId = $teacher['userId'];
                                 $subject = $adminDashboardController->getTeacherSubject($teacherId);
                                 ?>
-                                <tr>
-                                    <td class="td-1"><?= $teacher['firstName'] ." ". $teacher['lastName'] ?></td>
-
-                                    <td class="td-1"><?= $subject ?></td>
-<!--    Update teacher button   -->
-                                    <td class="td-2"><button class="Update-teacher" id="but-UpdateTeacher" onclick="showUpdateTeacherForm('<?php echo $teacher['userId']; ?>','<?php echo  $teacher['firstName']; ?>','<?php echo $teacher['lastName']; ?>','<?php echo  $teacher['addLine01']; ?>','<?php echo  $teacher['addLine02']; ?>','<?php echo  $teacher['mobile']; ?>','<?php echo  $teacher['email']; ?>')"><img src="../../public/img/update.svg"></button></td>
-<!-- Delete teacher button -->
-                                    <td class="td-2"><button class="delete-teacher" id="but-deleteTeacher" onclick="showDeleteTeacherForm('<?php echo $teacher['userId']; ?>')" ><img src="../../public/img/delete.svg"></button></td>
-                                </tr>
-
+                                    <div class="oneTeacherTile">
+                                        <div class="iconDiv">
+                                            <button class="Update-teacher" id="but-UpdateTeacher" onclick="showUpdateTeacherForm('<?php echo $teacher['userId']; ?>','<?php echo  $teacher['firstName']; ?>','<?php echo $teacher['lastName']; ?>','<?php echo  $teacher['addLine01']; ?>','<?php echo  $teacher['addLine02']; ?>','<?php echo  $teacher['mobile']; ?>','<?php echo  $teacher['email']; ?>')"><img src="../../public/img/update.svg"></button>
+                                            <button class="delete-teacher" id="but-deleteTeacher" onclick="showDeleteTeacherForm('<?php echo $teacher['userId']; ?>')" ><img src="../../public/img/delete.svg"></button>
+                                        </div>
+                                        <div class="profilePic">
+                                            <div class="profilePicBorder">
+                                                <?php
+                                                $UserProfilePhoto = new profilePhotoViewController();
+                                                $UserProfilePhoto->getProfilePhotoUsers($teacherId);
+                                                ?>
+                                            </div>
+                                        </div>
+                                        <div class="userInformation">
+                                            <div class="allInfo">
+                                                <p class="con-tea-info">Name : <?= $teacher['firstName'] . " " . $teacher['lastName'] ?></p><br>
+                                                <p class="con-tea-info">Address 01 : <?= $teacher['addLine01'] ?></p><br>
+                                                <p class="con-tea-info">Address 02 : <?= $teacher['addLine02'] ?></p><br>
+                                                <p class="con-tea-info">Email : <?= $teacher['email'] ; ?></p><br>
+                                                <p class="con-tea-info">Number : <?= $teacher['mobile']; ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 <?php
                             }
-                        } else{
-                            echo "No Record Found";
                         }
                                ?>
-                    </table>
+                        <div class="oneTeacherTile">
+                                <button  class="but-teacher" id="but-AddTeacher" onclick="clickButton()"><img src="<?= base_url('public/img/add.svg') ?>"></button>
+                        </div>
+                    </div>
 
                     <!--   Update teacher Form-->
                     <?php include_once 'dashboard/updateTeacher.php';?>
@@ -76,9 +102,9 @@
                     <script src="../../public/js/deleteTecher.js"></script>
 
 
-                    <div class="anchor-1">
-                        <button class="but-teacher" id="but-AddTeacher">Add Teacher</button>
-                    </div>
+<!--                    <div class="anchor-1">-->
+<!--                        <button class="but-teacher" id="but-AddTeacher" onclick="clickButton()">Add Teacher</button>-->
+<!--                    </div>-->
                 </div>
 
                 <!-- Add teacher page pop up box -->
@@ -89,48 +115,56 @@
 
 <!-- Content Creators List -->
 
+
                 <div class="content-1">
                     <p>Content Creator &nbsp;&nbsp;&nbsp;</p>
                 </div>
-                <div class="getContentCreator">
-                    <table class="styled-table" cellspacing="0" style="border-radius: 10px;">
-                        <tbody>
-                        <?php
 
-                        $contentCreators = $adminDashboardController->getAllContentCreators();
+                <?php
 
-                        if($contentCreators){
-                            foreach($contentCreators as $contentCreator){
-                                ?>
-                                <tr>
-                                    <td class="td-1"><?= $contentCreator['firstName'] ." ". $contentCreator['lastName'] ?></td>
-                                    <?php
+                $contentCreators = $adminDashboardController->getAllContentCreators();
+                ?>
+                <div class="allTeacherSet">
+                    <?php
+                    if($contentCreators){
+                        foreach($contentCreators as $contentCreator){
 
-                                    $creatorId= $contentCreator['userId'];
-                                    $subject = $adminDashboardController->getContentCreatorSubject($creatorId);
+                            $creatorId = $contentCreator['userId'];
+                            $subject = $adminDashboardController->getTeacherSubject($creatorId);
+                            ?>
+                            <div class="oneTeacherTile">
+                                <div class="iconDiv">
 
-                                    ?>
-                                    <td class="td-1"><?= $subject ?></td>
-<!--   Update content creator button  -->
-                                    <td class="td-2"><button class="Update-ContentCreator" id="but-ContentCreator" onclick="showUpdateCreatorForm('<?php echo $contentCreator['userId']; ?>','<?php echo  $contentCreator['firstName']; ?>','<?php echo $contentCreator['lastName']; ?>','<?php echo  $contentCreator['addLine01']; ?>','<?php echo  $contentCreator['addLine02']; ?>','<?php echo  $contentCreator['mobile']; ?>','<?php echo  $contentCreator['email']; ?>')" ><img src="../../public/img/update.svg"></button></td>
-<!--   Delete content creator button  -->
-                                    <td class="td-2"><button class="Update-ContentCreator" id="but-ContentCreatorDelete" onclick="showDeleteCreatorForm('<?php echo $contentCreator['userId']; ?>')"><img src="../../public/img/delete.svg"></button></td>
-                                </tr>
-                                <?php
-                            }
+                                    <button class="Update-teacher" id="but-ContentCreator" onclick="showUpdateCreatorForm('<?php echo $contentCreator['userId']; ?>','<?php echo  $contentCreator['firstName']; ?>','<?php echo $contentCreator['lastName']; ?>','<?php echo  $contentCreator['addLine01']; ?>','<?php echo  $contentCreator['addLine02']; ?>','<?php echo  $contentCreator['mobile']; ?>','<?php echo  $contentCreator['email']; ?>')" ><img src="../../public/img/update.svg"></button>
+                                    <button class="delete-teacher" id="but-ContentCreatorDelete" onclick="showDeleteCreatorForm('<?php echo $contentCreator['userId']; ?>')"><img src="../../public/img/delete.svg"></button>
+
+                                </div>
+                                <div class="profilePic">
+                                    <div class="profilePicBorder">
+                                        <?php
+                                        $UserProfilePhoto = new profilePhotoViewController();
+                                        $UserProfilePhoto->getProfilePhotoUsers($creatorId);
+                                        ?>
+                                    </div>
+                                </div>
+                                <div class="userInformation">
+                                    <div class="allInfo">
+                                        <p class="con-tea-info">Name : <?= $contentCreator['firstName'] . " " . $contentCreator['lastName'] ?></p><br>
+                                        <p class="con-tea-info">Address 01 : <?= $contentCreator['addLine01'] ?></p><br>
+                                        <p class="con-tea-info">Address 02 : <?= $contentCreator['addLine02'] ?></p><br>
+                                        <p class="con-tea-info">Email : <?= $contentCreator['email'] ; ?></p><br>
+                                        <p class="con-tea-info">Number : <?= $contentCreator['mobile']; ?></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php
                         }
-                        else{
-                            echo "No Record Found";
-                        }
-                        ?>
-                        </tbody>
-                    </table>
-                        <div class="anchor-2">
-                             <button class="but-content" id="but-content">Add Content Creator</button>
-                        </div>
+                    }
+                    ?>
+                    <div class="oneTeacherTile">
+                        <button class="but-teacher" id="but-content" onclick="addCreator()"><img src="../../public/img/add.svg"></button>
+                    </div>
                 </div>
-             </div>
-        </div>
 
 
     <!--    Update content creator      -->
@@ -151,5 +185,53 @@
     <!-- Add Content Creator pop up box js script -->
     <script src="../../public/js/addContentCreator.js"></script>
 
+    <?php
+    if(isset($_SESSION['add_Teacher'])){
+        echo"
+                <style>
+                        .popup{
+                            display:flex;
+                        }
+                </style>
+            ";
+        unset($_SESSION['add_Teacher']);
+    }
+    if(isset($_SESSION['update_Teacher'])){
+        echo"
+                <style>
+                      .popup-update{
+                         display:flex;
+                      }
+                </style>
+            ";
+        unset($_SESSION['update_Teacher']);
+    }
+
+    if(isset($_SESSION['add_Creator'])){
+        echo"
+                <style>
+                        .popup-addContentCreator{
+                            display:block;
+                        }
+                </style>
+           ";
+        unset($_SESSION['add_Creator']);
+    }
+
+    if(isset($_SESSION['upp_Creator'])){
+        echo"
+                <style>
+                        .update-ContentCreatorPop{
+                            display:flex;
+                        }
+                </style>
+           ";
+        unset($_SESSION['upp_Creator']);
+    }
+
+    ?>
+
+
     </body>
 </html>
+

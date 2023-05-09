@@ -2,7 +2,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="../../../public/css/QandA_Forum.css?<?php echo time(); ?>">
-    <title>Real-time Q&A Forum Student</title>
+    <title>Q&A Forum</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
@@ -21,13 +21,13 @@ Authentication::userAuthentication();
 //User Authorization
 Authorization::authorizingStudent();
 
+include_once('../../common/navBar-Student.php');
+
 $studentForumController = new StudentForumController();
 
 ?>
 
 <div class="content">
-
-    <?php include_once '../../common/navBar-Student.php'; ?>
 
     <div class="main" id="main">
 
@@ -74,7 +74,7 @@ $studentForumController = new StudentForumController();
 
                 </select>
 
-                <input type="text" id="new-question" name="new-question" placeholder="Ask Your Question?">
+                <input type="text" id="new-question" name="new-question" placeholder="Type your question">
                 <button type="submit" class="submit-btn">Ask</button>
 
             </form>

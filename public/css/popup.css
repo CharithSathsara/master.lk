@@ -5,12 +5,6 @@
   border-radius: 10px;
   float: right;
   margin: 20px 20px 0 0;
-  /* display: none; */
-  /* display: block; */
-  /* display: none;
-  transition-property: display;
-  transition-duration: 2s;
-  transition-delay: 2s;          */
 }
 
 #img-div{
@@ -22,7 +16,6 @@
 }
 
 #popup-container img{
-  /* display: inline-block; */
   width: 40px;
   margin: 24%;
 }
@@ -35,3 +28,34 @@
 
 }
 
+/* Session expire error */
+
+#error-popup-container{
+  width: 32%;
+  background-color: white;
+  height: 10vh;
+  border-radius: 10px;
+  float: right;
+  margin: 20px 20px 0 0;
+}
+
+#img-div-error{
+  background-color: #e74006;
+  display: inline-block;
+  height: 100%;
+  width: 20%;
+  border-radius: 10px 0 0 10px;
+}
+
+#error-popup-container img{
+  width: 40px;
+  margin: 17% 30%;
+}
+
+#error-popup-container p{
+  display: inline-block;
+  margin-top: 26px;
+  position: absolute;
+  margin-left: 15px;
+
+}

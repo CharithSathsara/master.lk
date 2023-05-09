@@ -48,7 +48,19 @@ class paymentVerifyController
             $data = slipPayment::getSlipPhoto($paymentId,$this->connection);
 
             if($data){
+                return true;
                // header("Location : ../../../view/admin/payment/slipImage.php");
+            }else{
+                return false;
+            }
+        }
+
+        public function getBankDetails(){
+
+            $data = BankDetails::getBankDetails($this->connection);
+
+            if($data){
+                return $data;
             }else{
                 return false;
             }

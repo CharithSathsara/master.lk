@@ -26,3 +26,7 @@ if(isset($_SESSION['password-reset-error'])){
     echo "<p>".$_SESSION['password-reset-error']."</p>";
 }
 
+if(isset($_SESSION['change-info-error'])){
+    echo "<p>".$_SESSION['change-info-error']."</p>";
+}
+

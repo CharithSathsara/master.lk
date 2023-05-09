@@ -24,6 +24,16 @@ class profilePhotoViewController{
 
     }
 
+    public function getProfilePhotoUsers($UserId){
+
+        $data = User::getUserProfilePicture($this->connection,$UserId);
+        if($data){
+            return;
+        }else{
+            return false;
+        }
+    }
+
 }
 
 ?>
