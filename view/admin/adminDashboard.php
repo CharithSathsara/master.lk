@@ -33,7 +33,7 @@
                 </div>
                 <div class="getTeacher">
                     <table  class="styled-table"  cellspacing="0">
-<!--                        <tbody>-->
+
                         <?php
 
                         $adminDashboardController = new AdminDashboardController();
@@ -47,16 +47,6 @@
                                 ?>
                                 <tr>
                                     <td class="td-1"><?= $teacher['firstName'] ." ". $teacher['lastName'] ?></td>
-                                <div class="pass-para">
-                                    <label class="user-id"> <?=  $teacher['userId'] ?> </label>
-                                    <label class="first-name"> <?=  $teacher['firstName'] ?> </label>
-                                    <label class="last-name"><?= $teacher['lastName'] ?></label>
-                                    <label class="address-1"> <?=  $teacher['addLine01'] ?> </label>
-                                    <label class="address-2"> <?=  $teacher['addLine02'] ?> </label>
-                                    <label class="telephone-number"> <?=  $teacher['mobile'] ?> </label>
-                                    <label class="email"> <?=  $teacher['email'] ?> </label>
-                                    <label class="userName"> <?=  $teacher['userName'] ?> </label>
-                                </div>
 
                                     <td class="td-1"><?= $subject ?></td>
 <!--    Update teacher button   -->
@@ -71,10 +61,7 @@
                             echo "No Record Found";
                         }
                                ?>
-<!--                        </tbody>-->
                     </table>
-
-
 
                     <!--   Update teacher Form-->
                     <?php include_once 'dashboard/updateTeacher.php';?>
@@ -93,6 +80,12 @@
                         <button class="but-teacher" id="but-AddTeacher">Add Teacher</button>
                     </div>
                 </div>
+
+                <!-- Add teacher page pop up box -->
+                <?php include_once 'dashboard/addTeacher.php';?>
+
+                <!-- Add Teacher pop up box js script -->
+                <script src="../../public/js/addTeacher.js"></script>
 
 <!-- Content Creators List -->
 
@@ -119,65 +112,10 @@
                                     ?>
                                     <td class="td-1"><?= $subject ?></td>
 <!--   Update content creator button  -->
-                                    <td class="td-2"><button class="Update-ContentCreator" id="but-ContentCreator" ><img src="../../public/img/update.svg"></button></td>
-                                    <td class="td-2"><button class="Update-ContentCreator" id="but-ContentCreatorDelete" onclick="hello()"><img src="../../public/img/delete.svg"></button></td>
+                                    <td class="td-2"><button class="Update-ContentCreator" id="but-ContentCreator" onclick="showUpdateCreatorForm('<?php echo $contentCreator['userId']; ?>','<?php echo  $contentCreator['firstName']; ?>','<?php echo $contentCreator['lastName']; ?>','<?php echo  $contentCreator['addLine01']; ?>','<?php echo  $contentCreator['addLine02']; ?>','<?php echo  $contentCreator['mobile']; ?>','<?php echo  $contentCreator['email']; ?>')" ><img src="../../public/img/update.svg"></button></td>
+<!--   Delete content creator button  -->
+                                    <td class="td-2"><button class="Update-ContentCreator" id="but-ContentCreatorDelete" onclick="showDeleteCreatorForm('<?php echo $contentCreator['userId']; ?>')"><img src="../../public/img/delete.svg"></button></td>
                                 </tr>
-<!--    Update content creator      -->
-                                    <div class="update-ContentCreatorPop">
-                                        <div class="updatePop-contentCreator">
-                                            <div class="updatePop-contentCreatorHeader">
-                                                <h4>Update Content Creator</h4>
-                                                <img src="../../public/img/close.png" class="CloseContentCreatorPop" >
-                                            </div>
-
-                                            <div class="update-contentCreatorForm">
-                                                <div class="forms-div">
-
-                                                    <form class="UpdateContentCreator-form" action="../../controller/adminController/dashboardController/addTeacherController.php" method="POST">
-                                                        <!--                <label class="teachrHead"><b>Add Teacher</b></label>-->
-                                                        <input type="text" name="fname" placeholder="Full Name" required>
-                                                        <input type="text" name="lname" placeholder="Last Name" required>
-                                                        <input type="text" name="address1" placeholder="Address Line 1" required>
-                                                        <input type="text" name="address2" placeholder="Address Line 2" required>
-                                                        <input type="text" name="number" placeholder="Telephone Number" required>
-                                                        <input type="email" name="email" placeholder="Email" required>
-                                                        <input type="text" name="username" placeholder="User name" required>
-                                                        <input type="password" name="password" placeholder="Password" required>
-                                                        <div class="selectSub">
-                                                            <label>Select the Subject : </label>
-                                                            <select name="subjects" id="subjects" >
-                                                                <!--            <option value="">Select Subject</option>-->
-                                                                <option value="Chemistry">Chemistry</option>
-                                                                <option value="Physics">Physics</option>
-                                                            </select>
-                                                        </div>
-                                                        <!--                        <textarea name="qualification" placeholder="Qualification"></textarea>-->
-                                                        <input type="submit" name="updateContentCreator-button" value="Save" class="subb-Update" style="background-color: #0b2e5e; color: #D9D9D9; border-radius: 10px">
-                                                    </form>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                    <!--    Delete Content creator popup Box-->
-
-                                    <div class="popup-deleteContent" id="Delete-contentPop">
-                                        <div class="delete-contentPop">
-                                            <div class="delete-headerContentPop">
-                                                <img src="../../public/img/important.png" id="closeDelete-popBox">
-                                                <h3>Delete Confirmation</h3>
-                                            </div>
-                                            <div class="deletePop-contentBody">
-                                                <p>Are you sure you want to delete this Teacher?</p>
-                                            </div>
-
-                                            <div class="deletePop-contentButton">
-                                                <button class="deleteContentYes-button" onclick="hi()">Yes</button>
-                                                <button class="deleteContentNo-button" id="deleteContentNo-btn" onclick="Bye()">No</button>
-                                            </div>
-                                        </div>
-                                    </div>
                                 <?php
                             }
                         }
@@ -194,52 +132,24 @@
              </div>
         </div>
 
-    <!-- Add teacher page pop up box -->
-     <?php include_once 'dashboard/addTeacher.php';?>
 
-    <!-- Add Teacher pop up box js script -->
-    <script src="../../public/js/addTeacher.js"></script>
+    <!--    Update content creator      -->
+    <?php include_once 'dashboard/updateContentCreator.php';?>
 
+    <!--    Update content creator js-->
+    <script src="../../public/js/updateContentCreator.js"></script>
+
+    <!--    Delete Content creator popup Box-->
+    <?php include_once 'dashboard/deleteContentCreator.php';?>
+
+    <!--delete content creator popup box js script-->
+    <script src="../../public/js/deleteContentCreator.js"></script>
 
     <!--  Add content creator popup box  -->
-    <?php include_once 'dashboard/addContentcreator.php';?>
+    <?php include_once 'dashboard/addContentCreator.php';?>
 
     <!-- Add Content Creator pop up box js script -->
-    <script src="../../public/js/addContentcreator.js"></script>
-
-
-
-<!--delete content creator popup box js script-->
-        <script>
-            function hello(){
-                document.querySelector(".popup-deleteContent").style.display ="flex";
-                // document.querySelector("body").style.backgroundColor="rgba(0,0,0,0.6)";
-            }
-
-            function hi(){
-                document.querySelector(".popup-deleteContent").style.display ="none";
-            }
-
-            function Bye(){
-                document.querySelector(".popup-deleteContent").style.display ="none";
-            }
-
-            //     document.querySelector(".popup-deleteContent").style.display ="none";
-            // })
-        </script>
-
-<!--    update content creator popup box js script-->
-
-        <script>
-            document.getElementById("but-ContentCreator").addEventListener("click",function (){
-                document.querySelector(".update-ContentCreatorPop").style.display ="flex";
-                // document.querySelector("body").style.backgroundColor ="rgba(0,0,0,0.6)";
-            })
-
-            document.querySelector(".CloseContentCreatorPop").addEventListener("click",function (){
-                document.querySelector(".update-ContentCreatorPop").style.display ="none";
-            })
-        </script>
+    <script src="../../public/js/addContentCreator.js"></script>
 
     </body>
 </html>
