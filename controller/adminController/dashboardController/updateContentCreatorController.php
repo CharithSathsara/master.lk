@@ -2,12 +2,12 @@
 
 
 include_once('../../../config/app.php');
-include_once('../../../model/contentCreator.php');
+include_once('../../../model/ContentCreator.php');
 //$currentDir = __DIR__;
 //
 //include_once $currentDir.'\..\..\..\config\app.php';
 //
-//include_once $currentDir.'\..\..\..\model\contentCreator.php';
+//include_once $currentDir.'\..\..\..\model\ContentCreator.php';
 
     if(isset($_POST['updateContentCreator-button'])){
 
