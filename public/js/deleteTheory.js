@@ -9,7 +9,6 @@ function deleteTheoryPopup() {
 }
 
 function showDeleteSuccessfulPopup() {
-    console.log("awa");
     // Show the popup
     document.getElementById("page-mask-delete-success").style.display = "block";
 

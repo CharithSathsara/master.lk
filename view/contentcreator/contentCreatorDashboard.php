@@ -129,7 +129,7 @@
                 <!-- Dashboard Fixed Background Image -->
                 <img src="../../public/img/fixed-img1.svg" id="fixed-image1">
 
-                <!-- Add New Topic Popup  -->
+                <!-- Add New Topic Popup 
                 <div class="page-mask" id="page-mask-addTopic">
                     <div id="addTopicPopup">
                         <button onclick="closeAddTopicPopup()">
@@ -138,23 +138,23 @@
                         <p class="addTopicPopup-title"><b>Add New Title</b></p>
                         <form action="" class="addTopic-form" method="POST">
                             <div class="selectSub">
-                                <p id="add_theory-heading">You Can Add Topics to <?= $_SESSION['subject']; ?>
+                                <p id="add_theory-heading">You Can Add Topics to 
                                     Subject:</p>
                             </div>
                             <div class="selectlesson">Select Lesson:
-                                <select id="selectlesson" name="selectLesson">
-                                    <?php
+                                <select id="selectlesson" name="selectLesson"> -->
+                <?php
                                     
 
-                    $lessons = $viewTheoryContentController->getAllLessons($_SESSION['subject']);
+                    // $lessons = $viewTheoryContentController->getAllLessons($_SESSION['subject']);
                     
-                    foreach($lessons as $lesson){
-                        echo $lesson['lessonId'];
-                        echo "<option value=\"{$lesson['lessonId']}\">{$lesson['lessonName']}</option>";
-                    }
+                    // foreach($lessons as $lesson){
+                    //     echo $lesson['lessonId'];
+                    //     echo "<option value=\"{$lesson['lessonId']}\">{$lesson['lessonName']}</option>";
+                    // }
 
                     ?>
-                                    <!-- </select>
+                <!-- </select>
                             </div>
                             <div class="topic-title">Topic Title :
                                 <input type="text" id="topicTitle" placeholder="Add new topic title here" required>
@@ -162,12 +162,6 @@
 
                             <input type="submit" name="addNewTopic-btn" value="Add" id="add-NewTopic-btn"
                                 class="add-NewTopic-btn"> -->
-                            </div>
-
-
-                    </div>
-
-                </div>
 
 
                 <!-- Table to view Loaded Theory Contents -->
@@ -328,7 +322,7 @@
 
 
     </div>
-
+    </div>
 
 
 
