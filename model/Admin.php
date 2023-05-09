@@ -2,6 +2,7 @@
 
 class Admin{
 
+
     public static function getAllTeachers($connection)
     {
 
