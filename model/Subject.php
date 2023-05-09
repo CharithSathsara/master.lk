@@ -130,7 +130,7 @@ class Subject {
 
     }
 
-    public static function getSubjectDescription($connection,$subjectId){
+    public static function getSubjectDescriptionUsingId($connection,$subjectId){
 
         $query = "SELECT * from subject where subjectId = '$subjectId'";
         $data = $connection->query($query);
