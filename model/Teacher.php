@@ -127,7 +127,7 @@ class Teacher {
 
             // Add a filter if a search parameter is provided
             if (!empty($search)) {
-                $query .= " AND (firstName LIKE '%{$search}%' OR lastName LIKE '%{$search}%' OR email LIKE '%{$search}%')";
+                $query .= " AND (firstName LIKE '%{$search}%' OR lastName LIKE '%{$search}%' OR CONCAT(firstName, ' ', lastName) LIKE '%{$search}%' OR email LIKE '%{$search}%')";
             }
 
             $data = $connection->query($query);
@@ -166,10 +166,32 @@ class Teacher {
 
     }
 
-    public static function getAllFeedbacks($connection){
+    public static function getAllFeedbacks($connection, $lessonId, $subjectId){
 
         try {
-            $query = "SELECT * FROM feedback";
+
+            // common part
+            $query = "SELECT feedback.* FROM feedback";
+
+            if (!empty($lessonId) && !empty($subjectId)) {
+                $query .= " JOIN lesson ON feedback.lessonId = lesson.lessonId
+                            JOIN subject ON lesson.subjectId = subject.subjectId";
+            }else {
+                $query .= " JOIN lesson ON feedback.lessonId = lesson.lessonId";
+            }
+
+            // If both lessonId and subjectId are provided, add WHERE clause
+            if (!empty($lessonId) && !empty($subjectId)) {
+                $query .= " WHERE lesson.lessonId = $lessonId AND subject.subjectId = $subjectId";
+            }else if (!empty($lessonId)) {
+                $query .= " WHERE lesson.lessonId = $lessonId";
+            }else if (!empty($subjectId)) {
+                $query .= " WHERE lesson.subjectId = $subjectId";
+            }
+
+            // Add order by clause
+            $query .= " ORDER BY timestamp DESC";
+
             $data = $connection->query($query);
 
             if($data){
@@ -185,6 +207,50 @@ class Teacher {
         }
 
     }
+
+    public static function getAllSubjects($connection) {
+
+        try {
+            $query = "SELECT * FROM subject";
+            $data = $connection->query($query);
+
+            if($data){
+                return $data;
+            }else{
+                throw new Exception("Error: Unable to get subjects:");
+            }
+
+        } catch (Exception $e) {
+            $errorMessage = "An error occurred while fetching subjects: " . $e->getMessage();
+            echo '<script>console.error("' . $errorMessage . '")</script>';
+            return false;
+        }
+
+    }
+
+    public static function getAllLessons($connection, $subject){
+
+        try {
+
+            $query = "SELECT * From lesson 
+                      WHERE subjectId IN (SELECT subjectId From subject WHERE subjectTitle = '$subject')";
+
+            $data = $connection->query($query);
+
+            if($data){
+                return $data;
+            }else{
+                throw new Exception("Error: Unable to get lessons:");
+            }
+
+        } catch (Exception $e) {
+            $errorMessage = "An error occurred while fetching lessons: " . $e->getMessage();
+            echo '<script>console.error("' . $errorMessage . '")</script>';
+            return false;
+        }
+
+    }
+
     /**
      * End of
      * @author Charith Sathsara section

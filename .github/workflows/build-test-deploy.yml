@@ -1,0 +1,44 @@
+name: CI/CD Pipeline with Github Actions
+
+on:
+  push:
+    branches:
+      - sathsara
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y apache2 libapache2-mod-php composer
+          composer install
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.4'
+
+      - name: Install dependencies
+        run: composer install
+
+      - name: Grant Permission
+        run: chmod +x vendor/bin/phpunit
+
+      - name: Run tests
+        run: vendor/bin/phpunit --testdox tests/

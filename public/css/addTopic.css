@@ -1,51 +1,30 @@
-.popup1-title {
+.addTopicPopup-title {
     margin-left: 5%;
-    margin-top: -2.5%;
+    margin-top: -9.2%;
     margin-bottom: 0%;
     font-size: 18px;
 }
 
-#popup1 {
-    position: fixed;
-    top: 49%;
-    left: 51.44%;
-    transform: translate(-50%, -50%);
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
-    width: 600px;
-    padding: 50px;
-    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
-    background: #fff;
-    visibility: hidden;
-    opacity: 0;
-    transition: 0.5s;
-    -webkit-transition: 0.5s;
-    -moz-transition: 0.5s;
-    -ms-transition: 0.5s;
-    -o-transition: 0.5s;
-}
 
 .close-btn {
-    text-decoration: none;
+    height: 25px;
+    right: 30px;
+    top: 8%;
+    margin-top: -0.8%;
+    /* margin: 25px; */
+    position: absolute;
     float: right;
-    margin-top: -4%;
 }
 
-#popup1.active {
-    top: 49%;
-    left: 51.44%;
-    width: 35%;
+#addTopicPopup {
+    top: 25%;
+    left: 34.44%;
+    width: 30%;
     height: 44%;
-    visibility: visible;
-    opacity: 1;
-    border-radius: 8px;
-    transition: 0.5s;
-    -webkit-transition: 0.5s;
-    -moz-transition: 0.5s;
-    -ms-transition: 0.5s;
-    -o-transition: 0.5s;
+    padding: 2%;
+    position: fixed;
+    border-radius: 10px;
+    background-color: white;
 }
 
 .selectSub {
@@ -65,45 +44,42 @@
 #selectlesson,
 #topicTitle {
     width: 67%;
-    margin-right: 9%;
+    margin-right: 6%;
     margin-top: -2%;
-    padding: 2.4%;
+    padding: 1.7%;
     float: right;
     opacity: 0.8;
     text-align: justify;
     border: 3px solid #D9D9D9;
-    border-radius: 7px;
+    border-radius: 10px;
     background-color: #D9D9D9;
+    font-size: 16px;
 }
 
 #topicTitle {
-    width: 61.5%;
-    margin-right: 9%;
-    margin-top: -2.1%;
-    padding: 2.4%;
+    width: 62.5%;
+    margin-right: 6%;
+    margin-top: -2%;
+    padding: 1.8%;
     float: right;
     opacity: 0.8;
     text-align: justify;
     border: 3px solid #D9D9D9;
-    border-radius: 7px;
+    border-radius: 10px;
     background-color: #D9D9D9;
+    font-size: 16px;
 }
 
 #add-NewTopic-btn {
     background: rgba(33, 158, 188);
-    padding: 1.7%;
-    width: 307px;
+    padding: 2.1%;
+    width: 300px;
     border: none;
     border-radius: 10px;
     color: white;
     font-size: 16px;
     cursor: pointer;
-    margin-top: 9%;
-    margin-left: 130px;
+    margin-top: 11%;
+    margin-left: 139px;
 
-}
-
-#add-NewTopic-btn:hover {
-    background: rgb(244 159 10);
-    color: rgba(33, 158, 188);
 }

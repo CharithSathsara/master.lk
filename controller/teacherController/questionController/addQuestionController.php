@@ -1,30 +1,35 @@
 <?php
 
 include('../../../config/app.php');
-require_once('AddQuestionController.php');
 require_once('../../../model/Teacher.php');
 
 if(isset($_POST['add-question'])){
 
-    $topicId = validateInput($db_connection->getConnection(), $_POST['topicId']);
-    $type = validateInput($db_connection->getConnection(), $_POST['type']);
-    $question = validateInput($db_connection->getConnection(), $_POST['question']);
-    $answer1 = validateInput($db_connection->getConnection(), $_POST['answer1']);
-    $answer2 = validateInput($db_connection->getConnection(), $_POST['answer2']);
-    $answer3 = validateInput($db_connection->getConnection(), $_POST['answer3']);
-    $answer4 = validateInput($db_connection->getConnection(), $_POST['answer4']);
-    $answer5 = validateInput($db_connection->getConnection(), $_POST['answer5']);
+    if (!empty($db_connection)) {
 
-    $correctAnswer = validateInput($db_connection->getConnection(), $_POST['correctAnswer']);
-    $answerDescription = validateInput($db_connection->getConnection(), $_POST['description']);
+        $topicId = validateInput($db_connection->getConnection(), $_POST['topicId']);
+        $type = validateInput($db_connection->getConnection(), $_POST['type']);
+        $question = validateInput($db_connection->getConnection(), $_POST['question']);
+        $answer1 = validateInput($db_connection->getConnection(), $_POST['answer1']);
+        $answer2 = validateInput($db_connection->getConnection(), $_POST['answer2']);
+        $answer3 = validateInput($db_connection->getConnection(), $_POST['answer3']);
+        $answer4 = validateInput($db_connection->getConnection(), $_POST['answer4']);
+        $answer5 = validateInput($db_connection->getConnection(), $_POST['answer5']);
 
-    $data = Teacher::addQuestion($question, $answer1, $answer2, $answer3, $answer4, $answer5,
-        $correctAnswer, $answerDescription, $type, $_SESSION['subject'], $topicId, $_SESSION['auth_user']['userId'], $db_connection->getConnection());
+        $correctAnswer = validateInput($db_connection->getConnection(), $_POST['correctAnswer']);
+        $answerDescription = validateInput($db_connection->getConnection(), $_POST['description']);
 
-    if($data){
-        redirect("Question Added Successfully","view/teacher/teacherDashboard.php");
-    }else{
-        redirect("Something Went Wrong while Adding a Question","view/teacher/question/addQuestion.php");
+        $data = Teacher::addQuestion($question, $answer1, $answer2, $answer3, $answer4, $answer5,
+            $correctAnswer, $answerDescription, $type, $_SESSION['subject'], $topicId, $_SESSION['auth_user']['userId'], $db_connection->getConnection());
+
+        unset($_POST["add-question"]);
+        if($data){
+            $_SESSION['question-upload-success']="Uploaded the question successfully!";
+        }else{
+            $_SESSION['question-upload-fail']="Question upload failed, please try again!";
+        }
+        redirect("","view/teacher/question/addQuestion.php");
+
     }
 
 }

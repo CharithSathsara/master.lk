@@ -15,15 +15,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $question_id = $_POST['question_id'];
     $answer_text = $_POST['answer_text'];
 
-    $data = ForumAnswer::insertAnswer($db_connection->getConnection(), $answer_text, $question_id, $_SESSION['auth_user']['userId']);
+    if (!empty($db_connection)) {
 
-    if($data) {
-        // Return a success response
-        echo json_encode(array('success' => true));
-    }else {
-        echo json_encode(array('success' => false));
+        $data = ForumAnswer::insertAnswer($db_connection->getConnection(), $answer_text, $question_id, $_SESSION['auth_user']['userId']);
+
+        if($data) {
+            // Return a success response
+            echo json_encode(array('success' => true));
+        }else {
+            echo json_encode(array('success' => false));
+        }
+
     }
-
 }
 
 // Handle the GET request to retrieve all questions and answers

@@ -2,7 +2,7 @@
 
 class DatabaseConnection {
 
-    private $db_host = 'localhost';
+    private $db_host = '127.0.0.1';
     private $db_user = 'root';
     private $db_password = '';
     private $db_name = 'master_db';

@@ -2,8 +2,8 @@
 
 $currentDir = __DIR__;
 
-include_once $currentDir.'\..\..\config\app.php';
-include_once $currentDir.'\..\..\model\Topic.php';
+include_once('../../../config/app.php');
+include_once('../../../model/Topic.php');
 
 class StudentForumController {
 

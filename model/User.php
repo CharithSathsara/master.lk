@@ -1,10 +1,12 @@
 <?php
 
+// include_once $currentDir . '/../../config/app.php';
+
 class User {
 
     public static function login($connection, $username_email, $password){
 
-        // Reads data from the database
+        // Check whether username/email and password exists
         if(!empty($username_email) && !empty($password)){
 
             //Checks whether the entered text is an email
@@ -21,14 +23,17 @@ class User {
 
                 $user_data = mysqli_fetch_assoc($result);
                 if(password_verify($password, $user_data['password'])){
-
                     //Sets the session with user ID
                     self::userAuthentication($user_data);
                     return true;
-
+                }else {
+                    return false;
                 }
 
+            }else {
+                return false;
             }
+        } else {
             return false;
         }
     }
@@ -45,11 +50,12 @@ class User {
             'userLastName' => $user_data['lastName']
         ];
         $_SESSION["cart-subjects"]=array();
+        $_SESSION['start_time'] = time();
 
     }
 
     //In here we unset session values
-    public static function logout(){
+    public static function logout($connection){
 
         if(isset($_SESSION['authenticated']) === TRUE){
 
@@ -57,9 +63,29 @@ class User {
                 unset($_SESSION['subject']);
             }
 
+            $userId = $_SESSION['auth_user']['userId'];
+            $date = date('Y-m-d');
+
             unset($_SESSION['authenticated']);
             unset($_SESSION['auth_user']);
             unset($_SESSION['auth_role']);
+
+            // Add daily usage times to the database
+            
+            $sql = "SELECT * FROM daily_usage_times WHERE userId='$userId' AND date='$date'";
+            $result = mysqli_query($connection, $sql);
+            $usage_time = $_SESSION['usage_time'];
+            if (mysqli_num_rows($result) == 0) {
+                // There is no existing row for this user and date, so insert a new row with the usage time
+                $sql = "INSERT INTO daily_usage_times (userId, date, total_usage_time) VALUES ('$userId', '$date', $usage_time)";
+                mysqli_query($connection, $sql);
+            } else {
+                // There is an existing row for this user and date, so update the total usage time
+                $row = mysqli_fetch_assoc($result);
+                $total_usage_time = $row['total_usage_time'] + $usage_time;
+                $sql = "UPDATE daily_usage_times SET total_usage_time='$total_usage_time' WHERE userId='$userId' AND date='$date'";
+                mysqli_query($connection, $sql);
+            }
 
             return true;
 
@@ -113,14 +139,13 @@ class User {
 
         if($row['image']!=null){
 
-            $to_echo = "<img id='profile-pic' src='data:image/jpg;charset=utf8;base64,";
+            $to_echo = "data:image/jpg;charset=utf8;base64,";
             $to_echo .= base64_encode($row['image']);
-            $to_echo .= "'/>";
             echo $to_echo;
 
             return true;
         }else{
-            echo "<img id='profile-pic' src='../../public/img/default-profPic.png'/>";
+            echo base_url('public/img/default-profPic.png');
             return false;
         }
 
@@ -161,10 +186,10 @@ class User {
             $password = $row['password'];
 
             //Checks whether the current password is correct
-            if($current_password==$password){
+            if(password_verify($current_password,$password)){
                 
                 //Checks whether the new password is equal to the old password
-                if(!($new_password==$password)){
+                if(!(password_verify($new_password,$password))){
 
                     //Checks the length of the new password
                     if(!(strlen($new_password)<8)){
@@ -172,7 +197,8 @@ class User {
                         //Checks the validation of the password re-entry
                         if($new_password == $retype_new_password){
 
-                            $query = "UPDATE user SET password = '$new_password' WHERE userId='$userId'";
+                            $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
+                            $query = "UPDATE user SET password = '$hashed_password' WHERE userId='$userId'";
                             $result = $connection->query($query);
 
                             if($result){
@@ -262,29 +288,58 @@ class User {
 
         $userId = $_SESSION['auth_user']['userId'];
 
-        $query = "UPDATE user 
-        SET firstName = '$first_name', 
-            lastName = '$last_name',
-            addLine01 = '$address_first',
-            addLine02 = '$address_second',
-            mobile = '$telephone',
-            email = '$email',
-            userName = '$username'
-        WHERE userId = '$userId' ;";
+        //Checks email validity
 
-        $result = $connection->query($query);
+        $query1 = "SELECT email FROM user WHERE email = '$email' AND userId!='$userId' LIMIT 1";
+        $data = $connection->query($query1);
 
-        $query2 = "UPDATE student 
-        SET dob = '$dob', 
-        WHERE userId = '$userId' ;";
-
-        $result2 = $connection->query($query2);
-
-        if($result && $result2){
-            return true;
-        }else{
+        if($data && $data->num_rows > 0){
+            $_SESSION['change-info-error']="This email already exists";
             return false;
+        }else{
             
+            //Checks username validity
+
+            if(preg_match("/^[\w\-]+@[\w\-]+.[\w\-]+$/",$username)){
+                $_SESSION['change-info-error']="The username should not include '@' symbol";
+                return false;
+            }else {
+                
+                $query2 = "SELECT username FROM user WHERE username='$username' AND userId!='$userId' limit 1";
+                $result2 = $connection->query($query2);
+                if($result2 && mysqli_num_rows($result2) > 0){
+                    $_SESSION['change-info-error']="This username already exists";
+                    return false;
+                }else {
+                    
+                    $query3 = "UPDATE user 
+                        SET firstName = '$first_name', 
+                            lastName = '$last_name',
+                            addLine01 = '$address_first',
+                            addLine02 = '$address_second',
+                            mobile = '$telephone',
+                            email = '$email',
+                            userName = '$username'
+                        WHERE userId = '$userId' ;";
+
+                    $result3 = $connection->query($query3);
+
+                    $query4 = "UPDATE student 
+                    SET dob = '$dob', 
+                    WHERE userId = '$userId' ;";
+
+                    $result4 = $connection->query($query4);
+
+                    if($result3 && $result4){
+                        return true;
+                    }else{
+                        return false;
+                        
+                    }
+
+                }
+            }
+
         }
 
     }

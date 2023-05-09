@@ -1,7 +1,7 @@
 <?php
 
-class slipPayment
-{
+class slipPayment {
+
     public  static function getAllPaymentSlip($connection){
         $query = "SELECT * FROM slip_payment WHERE isCheck = '0' ";
 

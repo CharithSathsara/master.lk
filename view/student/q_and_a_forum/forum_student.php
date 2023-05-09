@@ -2,32 +2,32 @@
 <html>
 <head>
     <link rel="stylesheet" href="../../../public/css/QandA_Forum.css?<?php echo time(); ?>">
-    <title>Real-time Q&A Forum Student</title>
+    <title>Q&A Forum</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
-
 <body>
 
 <?php
 
 include_once('../../../controller/authController/authentication/Authentication.php');
 include_once('../../../controller/authController/authorization/Authorization.php');
-include('../../../controller/q_and_a_controller/StudentForumController.php');
-include_once '../../common/header.php';
+include_once('../../../config/app.php');
+include_once('../../../controller/q_and_a_controller/StudentForumController.php');
+include_once('../../common/header.php');
 
 //User Authentication
 Authentication::userAuthentication();
 //User Authorization
 Authorization::authorizingStudent();
 
+include_once('../../common/navBar-Student.php');
+
 $studentForumController = new StudentForumController();
 
 ?>
 
 <div class="content">
-
-    <?php include_once '../../common/navBar-Student.php'; ?>
 
     <div class="main" id="main">
 
@@ -36,7 +36,9 @@ $studentForumController = new StudentForumController();
         </div>
 
         <div id="container" class="container"></div>
+
         <div class="form-container">
+
             <form id="new-question-form">
 
                 <select id="dropdown" name="dropdown">
@@ -69,11 +71,16 @@ $studentForumController = new StudentForumController();
                         ?>
 
                     </optgroup>
+
                 </select>
-                <input type="text" id="new-question" name="new-question" placeholder="Ask Your Question?">
+
+                <input type="text" id="new-question" name="new-question" placeholder="Type your question">
                 <button type="submit" class="submit-btn">Ask</button>
+
             </form>
+
         </div>
+
         <script src="../../../public/js/q_and_a_forum_student.js"></script>
 
     </div>
@@ -81,5 +88,4 @@ $studentForumController = new StudentForumController();
 </div>
 
 </body>
-
 </html>

@@ -37,13 +37,19 @@ $viewStudentDetailsController = new ViewStudentDetailsController();
             <p class="subheading">Students &nbsp;&nbsp;&nbsp;</p>
         </div>
 
-        <div id="search-container">
-            <form action="" method="GET">
-                <input type="text" name="search" placeholder="Search by name or email">
-                <input type="submit" value="Search"/>
+        <div class="search-container">
+            <form action="" class="search-form" method="GET">
+                <div class="search-field">
+                    <input type="text" name="search" placeholder="Search by name or email" value="<?php echo isset($_GET['search']) ? ($_GET['search']) : ''; ?>">
+                    <?php if (isset($_GET['search']) && !empty($_GET['search'])) : ?>
+                        <button type="button" class="clear-search"><img src='../../../public/icons/close-round.svg' class='close-round-icon'></button>
+                    <?php endif; ?>
+                </div>
+                <input class="search-button" type="submit" value="Search"/>
             </form>
         </div>
 
+        <script src="../../../public/js/studentDetails.js"></script>
 
         <?php
 

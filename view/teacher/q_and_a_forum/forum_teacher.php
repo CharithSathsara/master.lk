@@ -5,7 +5,6 @@
     <title>Real-time Q&A Forum Teacher</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
-
 <body>
 
 <?php
@@ -33,6 +32,7 @@ Authorization::authorizingTeacher();
         </div>
 
         <div id="container" class="container"></div>
+
         <script src="../../../public/js/q_and_a_forum_teacher.js"></script>
 
     </div>
@@ -40,5 +40,4 @@ Authorization::authorizingTeacher();
 </div>
 
 </body>
-
 </html>

@@ -16,7 +16,7 @@ class lessonController{
         $data = Lesson::getLessons($this->connection,$subject);
 
         if($data){
-            return true;
+            return;
         }else{
             return false;
         }
@@ -27,6 +27,32 @@ class lessonController{
         $lesson = mysqli_real_escape_string($this->connection,$_POST['lesson']);
         $_SESSION['current-lesson'] = $lesson;
         die();
+    }
+
+    // Controller to call the function which gets the completion of each lesson 
+
+    public function getLessonCompletion($subject){
+
+        $data = Lesson::getLessonCompletion($this->connection,$subject);
+
+        if($data){
+            return;
+        }else{
+            return false;
+        }
+
+    }
+
+    public function getAllLessons($subject){
+
+        $data = Lesson::getAllLessons($this->connection,$subject);
+
+        if($data){
+            return $data;
+        }else{
+            return false;
+        }
+
     }
 
 }

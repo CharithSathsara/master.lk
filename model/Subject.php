@@ -40,6 +40,16 @@ class Subject {
 
     }
 
+    public static function getSubjectDescription($connection,$subject){
+
+        $query = "SELECT * from subject where subjectTitle = '$subject' limit 1 ";
+        $data = $connection->query($query);
+        $price = $data->fetch_assoc();
+
+        return $price['description'];
+
+    }
+
     public static function addToCart($connection,$subject){
 
         $userId = $_SESSION['auth_user']['userId'];
