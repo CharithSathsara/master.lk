@@ -13,13 +13,37 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 
 
-    <script src="../../../public/js/modelQuiz.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 
 </head>
 
+<style>
+.slider {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+}
+
+.slide {
+    flex-shrink: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+/* Show only the active slide */
+.slide.active {
+    opacity: 1;
+}
+</style>
+
 <body>
     <?php
-
 include('../../../controller/studentController/quizController/modelQuizController.php');
 include_once('../../../controller/authController/authentication/Authentication.php');
 include_once('../../../controller/authController/authorization/Authorization.php');
@@ -37,102 +61,124 @@ include_once '../../common/header.php';
 @include '../../common/navBar-Student.php';
 
 $modelQuizController = new ModelQuizController();
-    
-// $_SESSION["quiz_time"] = 20;
-// $quizDate = date("Y-m-d H:i:s");
 
-// $_SESSION["quiz_end_time"] = date("Y-m-d H:i:s" , strtotime($quizDate."+$_SESSION[quiz_time] minutes"));
-// $_SESSION["quiz_start"] = "yes";
+
+    
 
 ?>
     <div class="content">
         <div class="container">
 
-            <div class="home-box custom-box">
-                <p class="quiz-instuctions"><b>Instructions: </b><br>Duration is 20 minutes.<br>
-                    The quiz consists of 10 short questions, and you must answer all questions.<br>
-                    Not All questions carry equal marks.<br>
-                    Once you attempt a question and click on ‘next’, you cannot go back to the previous
-                    question(s).<br>
-                </p>
-                <a href="../../../view/student/modelQuiz/modelQuizStarted.php"><button type="button" id="start-quiz-btn"
-                        onclick="startQuiz()" class="quiz-btn">Start Quiz</button></a>
-            </div>
+
+            <p>Time remaining: <span id="countdown"></span></p>
+
+            <script>
+            var timeLimit = 5 * 60; // 20 minutes in seconds
+            var timer = setInterval(function() {
+                var minutes = Math.floor(timeLimit / 60);
+                var seconds = timeLimit % 60;
+                document.getElementById("countdown").innerHTML = minutes + ":" + seconds;
+                timeLimit--;
+                if (timeLimit < 0) {
+                    clearInterval(timer);
+                    window.location.href = "quizResult.php";
+                }
+            }, 1000);
+            </script>
 
 
-            <div class="quiz-box custom-box ">
-                <p>Time remaining: <span id="countdown"></span></p>
+            <?php 
+                $_SESSION['topicId'] = 2;
+                $questions = $modelQuizController->getModelQuizQuestions($_SESSION['topicId']);
+                
+                // Encode the quiz data array as JSON
+                if($questions){
+                $json_quiz_data = json_encode($questions);
+                
+            } else {
+                echo "No questions found.";
+            }
 
-                <script>
-                var timeLimit = 5 * 60; // 20 minutes in seconds
-                var timer = setInterval(function() {
-                    var minutes = Math.floor(timeLimit / 60);
-                    var seconds = timeLimit % 60;
-                    document.getElementById("countdown").innerHTML = minutes + ":" + seconds;
-                    timeLimit--;
-                    if (timeLimit < 0) {
-                        clearInterval(timer);
-                        window.location.href = "quizResult.php";
-                    }
-                }, 1000);
-                </script>
+                ?>
+            <script>
+            const model_quiz = <?php echo $json_quiz_data; ?>;
+            </script>
 
-
-
-
-                <!-- // $_SESSION['topicId'] = 2;
-                // $questions = $modelQuizController->getModelQuizQuestions($_SESSION['topicId']);
-                // encode the PHP array as a JSON string -->
-
-
-
-                <div class="question-number">
-                    Question <p class="current-question">0</p> of 10
-                </div>
-
-                <div class="question-text" id="load_questions">
-
-
-                </div>
-
-                <div class="option-container"> -->
-
-                    <div class="question-btn">
-                        <input type="button" id="next-quiz-btn" class="next quiz-btn" onclick="loadNext()">Next</button>
-                        <input type="button" id="previous-quiz-btn" class="previous quiz-btn"
-                            onclick="loadPrevious()">Previous</button>
+            <!-- <div class="slider">
+                <
+                <div class="slide">
+                    <div class="question-number">
+                        Question of 10
                     </div>
+                    <div class="question-text" id="load_questions"></div>
 
-                </div>
-                <!-- echo "<p>Question ID: " . $question['questionId'] . "</p>"; -->
-
-
-
-
-
-
-                <!-- echo "<p>Correct Answer: " . $question['correctAnswer'] . "</p>";
-                        echo "<p>Question Type: " . $question['questionType'] . "</p>";
-                        echo "<p>Topic ID: " . $question['topicId'] . "</p>";
-                        echo "<hr>"; -->
-
-                <div class="slider-indicator">
+                    <div class="option-container"></div>
 
                 </div>
 
+                <div class="question-btn">
+                    <button class="next-btn" id="next-quiz-btn"></button>
+                    <button type="button" id="next-btn" class="next quiz-btn">Next</button> -->
 
 
 
 
 
 
-
+            <div class="slider-indicator">
 
             </div>
+
+            <!-- <script>
+            $(document).ready(function() {
+                var currentSlide = 1;
+                var totalSlides = $('.slider .slide').length;
+
+                // Show the first slide
+                $('.slider .slide:first-child').addClass('active');
+
+                $('.next-btn').click(function() {
+                    // Hide the current slide
+                    $('.slider .slide.active').removeClass('active');
+
+                    // Show the next slide
+                    currentSlide++;
+                    $('.slider .slide:nth-child(' + currentSlide + ')').addClass('active');
+
+                    // Change the button text to "Finish" on the last slide
+                    if (currentSlide === totalSlides) {
+                        $('.next-btn').text('Finish');
+                    }
+                });
+            });
+            </script>
+
+
+ -->
+
+
+
+
+
         </div>
     </div>
 
-    <script>
+    <!-- <script>
+    function load_total_questions() {
+
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                document.getElementById("total_question").innerHTML = xmlhttp.responseText;
+
+            }
+        };
+
+        xmlhttp.open("GET", "../../../view/student/modelQuiz/loadTotalQuestions.php", true);
+        xmlhttp.send(null);
+
+    }
+
     var questionNo = "1";
     load_questions(questionNo);
 
@@ -145,6 +191,7 @@ $modelQuizController = new ModelQuizController();
                     window.location = "quizResult.php";
                 } else {
                     document.getElementById("load_questions").innerHTML = xmlhttp.responseText;
+                    load
                 }
 
             }
@@ -154,7 +201,25 @@ $modelQuizController = new ModelQuizController();
         xmlhttp.send(null);
 
     }
-    </script>
+
+    function loadPrevious() {
+        if (questionNo == "1") {
+            load_questions(questionNo);
+        } else {
+            questionNo = eval(questionNo) - 1;
+            load_questions(questionNo);
+        }
+
+
+    };
+
+
+    function loadNext() {
+        questionNo = eval(questionNo) + 1;
+        load_questions(questionNo);
+
+    }
+    </script> -->
 
 
 

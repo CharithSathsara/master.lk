@@ -13,18 +13,22 @@ Authentication::userAuthentication();
 //User Authorization
 Authorization::authorizingStudent();
 
-if(!isset($_SESSION ["quiz_end_time"])){
-echo "00:00:00";
-}
-else{
-$quiztime = gmdate("C",strtotime($_SESSION["quiz_end_time"]) - strtotime(date("Y-m-d H:i:s")));
-    if(strtotime($_SESSION["quiz_end_time"]) < strtotime(date("Y-m-d H:i:s"))){
-    echo "00:00:00";
-    }
-    else{
-    echo $quiztime;
-    }
-}
+$total_question = 10;
+echo $total_question;
+
+
+// if(!isset($_SESSION ["quiz_end_time"])){
+// echo "00:00:00";
+// }
+// else{
+// $quiztime = gmdate("C",strtotime($_SESSION["quiz_end_time"]) - strtotime(date("Y-m-d H:i:s")));
+//     if(strtotime($_SESSION["quiz_end_time"]) < strtotime(date("Y-m-d H:i:s"))){
+//     echo "00:00:00";
+//     }
+//     else{
+//     echo $quiztime;
+//     }
+// }
 
 
 
