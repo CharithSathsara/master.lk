@@ -18,9 +18,6 @@
 include_once('../../config/app.php');
 include_once('../common/header.php');
 
-$_SESSION['studentNavItems-profile'] = array();
-array_push($_SESSION['studentNavItems-profile'], 'profile.php');
-
 if($_SESSION['auth_role']=='STUDENT'){
     include_once('./navBar-Student.php'); 
 }else if($_SESSION['auth_role']=='ADMIN'){

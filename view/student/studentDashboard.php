@@ -40,6 +40,16 @@ include_once('../../model/Topic.php');
 $_SESSION['studentNavItems-dashboard'] = array();
 array_push($_SESSION['studentNavItems-dashboard'], 'Leaderboard.php', 'modelQuiz.php', 'modelQuizEnd.php','modelQuizStarted.php','review.php','reviewQuizzes.php',
 'studentDashboard.php','theoryContents.php','topicsAndFeedbacks.php');
+
+$_SESSION['studentNavItems-newSubjects'] = array();
+array_push($_SESSION['studentNavItems-newSubjects'], 'newSubjects.php', 'bankDeposit.php', 'cart.php','checkout.php');
+
+$_SESSION['studentNavItems-q&aForum'] = array();
+array_push($_SESSION['studentNavItems-q&aForum'], 'forum_student.php');
+
+$_SESSION['studentNavItems-profile'] = array();
+array_push($_SESSION['studentNavItems-profile'], 'profile.php');
+
 include_once('../common/navBar-Student.php');
 
 

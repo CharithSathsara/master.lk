@@ -1,6 +1,6 @@
 <?php
 
-include_once $currentDir . '/../../config/app.php';
+// include_once $currentDir . '/../../config/app.php';
 
 class User {
 

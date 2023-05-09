@@ -54,8 +54,8 @@ function renderForumTeacher(questions) {
         let options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true };
         let formattedDateTime = dateObject.toLocaleString('en-US', options);
 
-        let details = "Subject : <b>" + question.subject + " </b>Lesson : <b>" + question.lesson + " </b>Topic : <b>" + question.topic + "</b><br>";
-        details = details +  "By <b>" + question.student + "</b> - " + formattedDateTime;
+        let details = "Subject : <b>" + question.subject + " </b>&nbsp;&nbsp;|&nbsp;&nbsp;Lesson : <b>" + question.lesson + " </b>&nbsp;&nbsp;|&nbsp;&nbsp;Topic : <b>" + question.topic + "</b><br>";
+        details = details +  "<span><i>By " + question.student + " - " + formattedDateTime +"</i></span>";
 
         detailsText.innerHTML = details;
 
@@ -74,7 +74,7 @@ function renderForumTeacher(questions) {
         // Add reply button to question
         const replyButton = document.createElement('button');
         replyButton.className = 'reply-button';
-        replyButton.innerHTML = 'Give Your Answer';
+        replyButton.innerHTML = 'Reply';
         // const replyIcon = document.createElement('img');
         // replyIcon.className = 'reply-icon';
         // replyIcon.src = '../../../public/icons/reply-solid.svg';
@@ -87,6 +87,7 @@ function renderForumTeacher(questions) {
             replyForm.style.display = (replyForm.style.display === 'none') ? 'block' : 'none';
             // Set focus on the reply input field
             replyForm.getElementsByTagName('input')[0].focus();
+            replyButton.style.display ="none";
         });
         questionDiv.appendChild(replyButton);
 
@@ -115,6 +116,7 @@ function renderForumTeacher(questions) {
         });
 
         const sendButton = document.createElement('button');
+        sendButton.id = 'send-btn';
         sendButton.innerHTML = 'Send';
         sendButton.type = 'submit';
 
@@ -157,7 +159,7 @@ function renderForumTeacher(questions) {
 
                 // Create the question element
                 const answerDiv = document.createElement('div');
-                answerDiv.className = 'answer';
+                answerDiv.className = 'answer tri-right left-top';
 
                 // Create the question details element
                 const answerDetailsDiv = document.createElement('div');
@@ -180,7 +182,7 @@ function renderForumTeacher(questions) {
                 let options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true };
                 let formattedDateTime = dateObject.toLocaleString('en-US', options);
 
-                detailsText.innerHTML = "Teacher : <b>" + answer.teacher + "</b><br>" + formattedDateTime;
+                detailsText.innerHTML = "Teacher : " + answer.teacher + "<br><span><i>" + formattedDateTime + "</i></span>";
 
                 detailsDiv.appendChild(detailsText);
                 answerDetailsDiv.appendChild(detailsDiv);

@@ -33,8 +33,6 @@ include('../../model/Student.php');
 include('../../model/Subject.php');
 include('../../model/Cart.php');
 
-$_SESSION['studentNavItems-newSubjects'] = array();
-array_push($_SESSION['studentNavItems-newSubjects'], 'newSubjects.php', 'bankDeposit.php', 'cart.php','checkout.php');
 include_once('../common/navBar-Student.php');
 
 $subjectController = new subjectController();

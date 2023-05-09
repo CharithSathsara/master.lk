@@ -21,8 +21,6 @@ Authentication::userAuthentication();
 //User Authorization
 Authorization::authorizingStudent();
 
-$_SESSION['studentNavItems-q&aForum'] = array();
-array_push($_SESSION['studentNavItems-q&aForum'], 'forum_student.php');
 include_once('../../common/navBar-Student.php');
 
 $studentForumController = new StudentForumController();
@@ -72,7 +70,7 @@ $studentForumController = new StudentForumController();
 
                     </optgroup>
                 </select>
-                <input type="text" id="new-question" name="new-question" placeholder="Ask Your Question?">
+                <input type="text" id="new-question" name="new-question" placeholder="Type your question">
                 <button type="submit" class="submit-btn">Ask</button>
             </form>
         </div>
