@@ -1,4 +1,3 @@
-/* Container Styling */
 .container {
     width: 85%;
     height: 100%;
@@ -11,7 +10,6 @@
     margin: 120px 40px 100px 30px;
 }
 
-/* Title Elements Styling  */
 .title {
 
     margin-top: 0;
@@ -36,14 +34,10 @@
     margin-right: 10px;
 }
 
-/* Add Theory Content Form Styling */
 
-.selectSubject,
-.selectTopic,
-.selectSection,
 .visibility {
     text-align: left;
-    margin: 20px 5px 5px 0px;
+    margin: 45px 5px -15px 0px;
     font-size: 16px;
     font-family: Arial, Helvetica, sans-serif;
     padding-top: 0.1%;
@@ -76,14 +70,6 @@
     border-radius: 10px;
 }
 
-/* Section No Already Exists Error Message */
-#content_id_error {
-    font-size: 16px;
-    margin-left: 2%;
-    font-weight: bold;
-    color: rgb(244 159 10);
-
-}
 
 #physics,
 #chemistry {
@@ -160,7 +146,7 @@
     padding-right: 10.8%;
     width: 250px;
     border: none;
-    border-radius: 4px;
+    border-radius: 10px;
     color: white;
     font-size: 16px;
     cursor: pointer;
@@ -169,15 +155,14 @@
     text-decoration: none;
 }
 
-#updateTheory-btn,
-#add-btn {
+#updateTheory-btn {
     background: rgb(244 159 10);
-    padding: 1.1%;
+    padding: 1.36%;
     padding-left: 2%;
     padding-right: 2%;
     width: 159px;
     border: none;
-    border-radius: 4px;
+    border-radius: 10px;
     color: white;
     font-size: 16px;
     cursor: pointer;
@@ -188,7 +173,7 @@
 
 
 
-.container form .error-msg {
+/* .container form .error-msg {
     margin: 10px 20px 20px 50px;
     display: block;
     font-size: 14px;
@@ -199,27 +184,27 @@
     padding: 5px;
     width: 20%;
     text-align: center;
-}
+} */
 
 .textContent {
     margin-top: 4%;
     margin-right: 10px;
 }
 
-#fixed-image2 {
+#fixed-image3 {
     position: fixed;
-    bottom: 187px;
-    right: 247px;
-    z-index: -1;
-    width: 20%;
+    bottom: 2px;
+    right: 158px;
+    z-index: -5;
+    width: 40%;
     height: auto;
-    opacity: 0.7;
+    opacity: 0.4;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 
-/* Add Theory Content Uncsuccesful Popup */
+/* Update Theory Content Uncsuccesful Popup */
 .page-mask {
     background: rgba(0, 0, 0, 0.5);
     position: fixed;
@@ -231,7 +216,7 @@
     display: none;
 }
 
-#add-unsuccessful-popup {
+#update-unsuccessful-popup {
     z-index: 101;
     position: absolute;
     height: 222px;
@@ -245,7 +230,7 @@
     margin-top: 272px;
 }
 
-#add-unsuccessful-popup img {
+#update-unsuccessful-popup img {
     width: 80px;
     height: auto;
     margin-left: 190px;
@@ -253,7 +238,7 @@
 }
 
 
-#add-unsuccessful-popup h2 {
+#update-unsuccessful-popup h2 {
     margin-top: 20px;
     font-size: 25px;
     font-weight: 600;
@@ -261,7 +246,7 @@
     text-align: center;
 }
 
-#add-unsuccessful-popup h3 {
+#update-unsuccessful-popup h3 {
     font-size: 16px;
     font-weight: 500;
     color: #333;
