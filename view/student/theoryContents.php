@@ -60,7 +60,9 @@ $_SESSION['current-topic'] = $_GET['topic'];
 
         <div id="test-question-container">
             <b><p class="sub-title">Test Questions&nbsp;&nbsp;&nbsp;</p></b><br>
-                
+                <?php
+                    $status = $gamifiedQuestionsController->getGamifiedQuestions();
+                ?>
             </div>
         </div>
         
