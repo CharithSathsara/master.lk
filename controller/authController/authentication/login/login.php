@@ -29,16 +29,16 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             }
 
             if($_SESSION['auth_role'] == "ADMIN"){
-                popup_redirect("Logged In Successfully !", "view/admin/adminDashboard.php");
+                redirect("Logged In Successfully !", "view/admin/adminDashboard.php");
             }else if($_SESSION['auth_role'] == "TEACHER"){
                 $_SESSION['subject'] = Teacher::getTeacherSubject($db_connection->getConnection(), $_SESSION['auth_user']['userId']);
-                popup_redirect("Logged In Successfully !", "view/teacher/teacherDashboard.php");
+                redirect("Logged In Successfully !", "view/teacher/teacherDashboard.php");
             }else if($_SESSION['auth_role'] == "CONTENTCREATOR"){
-                popup_redirect("Logged In Successfully !", "view/contentcreator/contentCreatorDashboard.php");
+                redirect("Logged In Successfully !", "view/contentcreator/contentCreatorDashboard.php");
             }else if($_SESSION['auth_role'] == "STUDENT"){
-                popup_redirect("Logged In Successfully !", "view/student/studentDashboard.php");
+                redirect("Logged In Successfully !", "view/student/studentDashboard.php");
             }else{
-                popup_redirect("Something Went Wrong", "view/authentication/index.php");
+                redirect("Something Went Wrong", "view/authentication/index.php");
             }
 
         }else{

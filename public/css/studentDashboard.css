@@ -6,7 +6,7 @@
 
 }
 
-#student-dashboard{
+#student-dashboard, #no-subjects-bought{
     margin: 120px 40px 100px 30px;
 }
 
@@ -14,6 +14,10 @@
     margin-top:0;
     font-size:18px;
     color:#0b2e5e;
+}
+
+#dashboard-section{
+    height:auto;
 }
 
 .sub-title{
@@ -29,11 +33,30 @@
     margin: auto;
 }
 
+/* My Subjects Container */
+
 #my-subjects-container{
     margin-top:35px;
     height:auto;
     display: flex;
     align-items: flex-start;
+    padding: 20px 0 20px 0;
+    position: relative;
+}
+
+#my-subjects-container::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../img/science-bg1.jpg");
+    background-repeat: repeat;
+    background-position: center center;
+    background-size: 100% auto;
+    opacity: 0.05;
+    z-index: -1;
 }
 
 .subject-card{
@@ -43,6 +66,7 @@
     margin-right: 30px;
     border-radius: 10px;
     position: relative;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 #chemistry{
@@ -60,87 +84,6 @@
     height: 30px;
 }
 
-.lesson-container{
-    width:100%;
-    margin-top: 150px;
-    height: auto;
-}
-
-.lesson-container a{
-    text-decoration: none;
-    color: black;
-}
-
-.lesson{
-    background-color:#EDECEC;
-    margin-left: 10px;
-    margin-right: 10px;
-    height: 40px;
-    border-radius: 5px;
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-.lesson:hover{
-    background-color:black;
-    color: white;
-}
-
-.lesson-title{
-    margin-top:0;
-    margin-bottom: 0;
-    padding:8px 0;
-}
-
-.goToLesson-button{
-    width:100%;
-}
-
-#progress-container{
-    margin-top:35px;
-    height:350px;
-    
-}
-
-.progress-card{
-    display:inline-block;
-    width: 47%;
-    height: 100%;
-    border-radius: 10px;
-    position: relative;
-}
-
-#completion-card{
-    /* background-color:#0b2e5e; */
-    margin-right: 30px;
-}
-
-#scores-card{
-    background-color:black;
-}
-
-.progress-title{
-    color: #fff;
-    font-size:17px;
-    margin-left: 15px;
-}
-
-#badge-container{
-    margin-top:35px;
-    height:350px;
-    background-color:#EDECEC;
-    border-radius: 10px;
-    width:97%;
-}
-
-#rec-container{
-    margin-top:35px;
-    height:350px;
-    background-color:#219ebc;
-    border-radius: 10px;
-    width:97%;
-}
-
 /* Subject Completion Status Bars */
 
 progress[value] {
@@ -148,7 +91,7 @@ progress[value] {
     -webkit-appearance: none;
      appearance: none;
   
-     width: 225px;
+     width: 100%;
      height: 6px;
      
   }
@@ -175,116 +118,450 @@ progress[value] {
   .progress-container{
     top: 135px;
     position: absolute;
+    width: 92%;
   }
 
+.lesson-container{
+    width:100%;
+    margin-top: 150px;
+    height: auto;
+}
 
-/* .progress-container{
-    background:#222;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-} */
+.lesson-container a{
+    text-decoration: none;
+    color: black;
+}
 
-
-
-/* .progress-bar{
-    background-color: #959595;
-    width:250px;
-    height: 10px;
+.lesson{
+    background-color: #EDECEC;
+    margin-left: 10px;
+    margin-right: 10px;
+    height: auto;
     border-radius: 5px;
+    text-align: center;
+    margin-bottom: 10px;
+    word-wrap: break-word;
+}
 
-} */
+.lesson:hover{
+    background-color:black;
+    color: white;
+}
 
-/* .progress-value{
-    height:10px;
-    border-radius:5px;
-    width:0%;
-    background: red;
-    animation: progress-value 1s linear forwards;
-} */
+.lesson-title{
+    margin-top:0;
+    margin-bottom: 0;
+    padding:8px 0;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
 
-/* .progress-value span{
-    height: 40px;
-    width:40px;
-    border-radius: 50%;
-    background-color: #333;
-    float: right;
-    margin-top:-15px;
-    margin-right: -20px;
-    color:#FFF;
+.goToLesson-button{
+    width:100%;
+}
+
+/* Completion Section */
+
+#completion-container{
+    margin-top:35px;
+    height:auto;
     display: flex;
-    align-items: center;
+}
+
+.subject-progress-card{
+    width: 97%;
+    height: auto;
+    background-color: white;
+    padding: 15px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 10px;
+}
+
+.progress-card-title{
+    margin-left:15px;
+    margin-bottom: 0;
+    color:#0b2e5e;
+    font-weight: bold;
+}
+
+#chem-sec{
+    margin-right: 20px;
+}
+
+#inner-container{
+    height: auto;
+    display: flex;
+    align-items: flex-start;
+}
+
+#lesson-names{
+    display: inline-block;
+    width: 30%;
+}
+
+.lesson-name-item{
+    margin-left: 15px;
+    margin-bottom: 50px;
+    font-weight: bold;
+    word-wrap: break-word;
+}
+
+#progress-values{
+    display: inline-block;
+    width: 60%;
+
+}
+
+.progress-value{
+    width: 50px;
+    margin: 0 0 5px 10px;
+}
+
+.lesson-progress-bars,.lesson-progress-bars-phy {
+    width: 100% !important;
+    height: 15px !important;
+  }
+  
+  .lesson-progress-bars::-webkit-progress-bar {
+    background-color: #d9d9d9 !important;
+  }
+  
+  .lesson-progress-bars::-webkit-progress-value {
+    background-color: #219ebc !important;
+  }
+  
+  .lesson-progress-bars::-moz-progress-bar {
+    background-color: #219ebc !important;
+  }
+
+  .lesson-progress-bars-phy::-webkit-progress-bar {
+    background-color: #d9d9d9 !important;
+  }
+
+  .lesson-progress-bars-phy::-webkit-progress-value {
+    background-color: #f49f0a !important;
+  }
+  
+  .lesson-progress-bars-phy::-moz-progress-bar {
+    background-color: #f49f0a !important;
+  }
+
+/* Progress Section */
+
+#progress-container{
+    margin-top:35px;
+    height:340px;
+    display: flex;
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    outline: 0;
+    box-shadow: none;
+    border: 0!important;
+    background: #edecec;
+    background-image: none;
+    flex: 1;
+    padding: 0 0.5em;
+    cursor: pointer;
+ }
+ select::-ms-expand {
+    display: none;
+ }
+ .select {
+    position: relative;
+    display: inline-flex;
+    width: 320px;
+    height: 38px;
+    line-height: 3;
+    background: #edecec;
+    overflow: hidden;
+    border-radius: 10px;
+ }
+ .select::after {
+    content: '\25BC';
+    position: absolute;
+    top: -3px;
+    right: 12px;
+    cursor: pointer;
+    pointer-events: none;
+    transition: .25s all ease;
+    color: #808080;
+ }
+ .select:hover::after {
+    color: #0b2e5e;
+ }
+
+#select-lesson-btn{
+    background-color: #0b2e5e;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 10px;
+    background-color: none;
+    border: none;
+    font-weight: bold;
+}
+
+#select-lesson-btn:hover{
+    background-color:black;
+    color: white;
+    cursor: pointer;
+}
+
+#progressChart{
+    width: 100%;
+    max-width: 700px;
+    margin-left: 30px;
+    margin-top: 40px;
+}
+
+#no-lesson-selected{
+    text-align: center;
+    margin: auto;
+    background-color: #EDECEC;
+    width: 700px;
+    height:350px;
+    margin-top: 40px;
+    display: flex;
     justify-content: center;
-    border: 1px solid red;
-} */
+    align-items: center;
+    border-radius: 10px;
+}
 
-/* @keyframes progress-value{
-    100%{
-        width:75%;
-    }
-}*/
-
-
-
-/* Progress - Completion Section */
-
-.completion{
+#no-lesson-img{
     width: 100px;
-    height:100px;
-    /* background: #219ebc; */
+    opacity: .50;
+}
+
+#no-lesson-text{
+    color: #f49f0a;
+}
+
+/* Badges Section */
+
+/* Activity Time Log Section */
+
+#activity-time-log-container{
+    margin-top:35px;
+    display: flex;
+    width: 100%;
+    /* max-width: 700px; */
+    justify-content: center;
+}
+
+#timeUsageChart{
+    width: 100%;
+    max-width: 700px;
+
+}
+
+/* Recommendations Section */
+
+#rec-container{
+    margin-top:35px;
+    height:auto;
+    border-radius: 10px;
+    width:100%;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}
+
+#rec-card{
+    background-color:#EDECEC;
+    width: 80%;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     position: relative;
 }
 
-.outer{
-    height: 100px;
-    width: 100px;
-    border-radius: 50%;
-    box-shadow: 6px 6px 10px -1px rgba(0,0,0,0.15),
-                -6px -6px 10px -1px rgba(255, 255, 255, 0.7);
-    padding:20px;
+#rec-card::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../img/science-bg1.jpg");
+    background-repeat: repeat;
+    background-position: center center;
+    background-size: 100% auto;
+    opacity: 0.1;
+    z-index: 1;
 }
 
-.inner{
-    height: 96px;
-    width: 96px;
-    border-radius: 50%;
+.flex {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow:inset 4px 4px 6px -1px rgba(0,0,0,0.2),
-                inset -4px -4px 6px -1px rgba(255,255,255,0.7),
-                -0.5px -0.5px 0px  rgba(255, 255, 255, 1),
-                0.5px 0.5px 0px  rgba(0, 0, 0, 0.15),
-                0px 12px 10px -10px rgba(0, 0, 0, 0.05);
+}
+  
+.slides-list {
+    list-style: none;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100px;
+    width: 85%;
+    top: 0;
+    left: 0;
+}
+  
+.slide {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+  
+.rec-msg-slides {
+    height: 80%;
+    position: relative;
+    background-color: #EDECEC;
+    border-radius: 0 0 10px 10px;
 }
 
-#number{
-    font-weight: 600px;
-    color: #555;
-
+.slide-figure{
+    margin-top:0;
+}
+  
+.slide-figure-text {
+    font-size: 22px;
+    line-height: 1.6;
+    top: 20px;
+    position: relative;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 12px;
+}
+  
+.nav-btns {
+    border: none;
+    top: 35%;
+    position: absolute;
+    transition: all 0.3s ease;
+    margin-left: -23%;
+    margin-right: -24%;
+}
+  
+.nav-btns img:hover{
+    height: 35px;
 }
 
-circle{
-    fill:none;
-    stroke:url(#GradientColor);
-    stroke-width: 20px;
-    stroke-dasharray: 472;
-    stroke-dashoffset: 165.2;
-    animation: anim 2s linear forwards;
+.nav-btns:hover {
+    cursor: pointer;
 }
-
-svg{
-    position:absolute;
-    top:0;
-    left:0;
+  
+.arrow-icon {
+    height: 30px;
 }
-
-/* @keyframes anim{
-    100%{
-        stroke-dashoffset: 165.2;
+  
+.nav-btns-next {
+    left: 25%;
+    z-index: 1;
+}
+  
+.nav-btns-prev {
+    right: 25%;
+    z-index: 1;
+}
+  
+.active-slide {
+    display: list-item;
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+  
+@keyframes fade {
+    from {
+      opacity: 0;
     }
-} */
+    to {
+      opacity: 1;
+    }
+}
+  
+.btn-dots {
+    margin-top: 35px;
+    justify-content: center;
+    gap: 0.8rem;
+    padding-bottom: 1rem;
+}
+  
+.active-dot {
+    background-color: #219ebc !important;
+}
+  
+.btn-dot {
+    border: 1px solid #808080;
+    border-radius: 100px;
+    height: 15px;
+    width: 15px;
+    background-color: white;
+    transition: all 0.3s ease-out;
+}
+  
+.btn-dot:hover {
+    cursor: pointer;
+    background-color: #219ebc !important;
+    transition: all delay 0.3s ease-in;
+}
+
+#no-rec-text{
+    font-size: 18px;
+    position: relative;
+    top: 23%;
+    left: 35%;
+}
+
+/* No Subjects Bought Section */
+
+#no-subjects-bought{
+    display: none;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#no-subjects-img{
+    height: 280px;
+    position: absolute;
+    top: 215px;
+    left: 650px;
+}
+
+#no-subjects-text{
+    position: absolute;
+    bottom: 150px;
+    left: 600px;
+    font-size: 18px;
+}
+
+#buy-btn{
+    border: 2px solid #f49f0a;
+    padding: 10px 30px;
+    border-radius: 15px;
+    text-decoration: none;
+    color: #f49f0a;
+    position: absolute;
+    bottom: 100px;
+    left: 770px;
+}
+
+#buy-btn:hover{
+    background-color: #f49f0a;
+    color: black;
+}
 
 
 
- 
+
+
+
+
+
+
+

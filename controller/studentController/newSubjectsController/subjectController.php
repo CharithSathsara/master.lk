@@ -22,6 +22,16 @@ class subjectController{
 
     }
 
+    public function getSubjectDescription($subject){
+
+        $data = Subject::getSubjectDescription($this->connection,$subject);
+
+        if($data){
+            return $data;
+        }
+
+    }
+
 }
 
 ?>

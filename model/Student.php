@@ -174,11 +174,11 @@ class Student {
 
         //Gets the number of covered topics of the relavant subject
 
-        $query2 = "SELECT quiz_details.quizId
+        $query2 = "SELECT DISTINCT quiz_details.topicId
         FROM quiz_details
         INNER JOIN topic ON quiz_details.topicId=topic.topicId
         INNER JOIN lesson ON topic.lessonId=lesson.lessonId
-        INNER JOIN subject ON lesson.subjectId=subject.subjectId WHERE subject.subjectId='$subjectId'
+        INNER JOIN subject ON lesson.subjectId=subject.subjectId WHERE subject.subjectId='$subjectId' && quiz_details.studentId='$userId'
         ;";
         $result2 = $connection->query($query2);
 
@@ -195,8 +195,7 @@ class Student {
 
             if (mysqli_num_rows($result2) > 0) {
                 $no_of_covered_topics = mysqli_num_rows($result2);
-                $covered_percentage = ($no_of_covered_topics / $total_no_of_topics) * 100;
-
+                $covered_percentage = round(($no_of_covered_topics/$total_no_of_topics)*100);
                 return $covered_percentage;
 
             } else {
@@ -226,5 +225,129 @@ class Student {
         }
     }
 
+    //Function to get recommendations for the student
+
+    public static function getRecommendations($connection){
+
+        $userId = $_SESSION['auth_user']['userId'];
+        $msgs = array(); 
+        
+        //Checks if the student has started any lessons
+
+        $query1 = "SELECT * FROM quiz_details WHERE studentId='$userId'";
+        $result1 = $connection->query($query1);
+
+        if(mysqli_num_rows($result1)>0){
+
+            $query2 = "SELECT * FROM lesson ORDER BY lessonId ASC";
+            $result2 = $connection->query($query2);
+
+            foreach($result2 as $lessonAttribute){
+                $lesson = $lessonAttribute['lessonName'];
+                $lessonId = $lessonAttribute['lessonId'];
+
+                //Checks if the student has started the selected lesson
+
+                $hasStarted = Lesson::hasStarted($connection,$lesson);
+                if($hasStarted){
+
+                    $query3="SELECT * FROM topic WHERE lessonId = '$lessonId'";
+                    $result3 = $connection->query($query3);
+
+                    if(mysqli_num_rows($result3)>0){
+
+                        foreach($result3 as $topicAttribute){
+                            $topic = $topicAttribute['topicTitle'];
+                            $topicId = $topicAttribute['topicId'];
+
+                            //Checks whether the average marks of Model Paper quizzes are < 5 in the quiz
+
+                            $query5 = "SELECT score FROM quiz_details WHERE studentId='$userId' AND topicId='$topicId' AND quizType='MODELPAPER'";
+                            $result5 = $connection->query($query5);
+                            if(mysqli_num_rows($result5)>0){
+                                $model_count=0;
+                                $model_sum=0;
+                                foreach($result5 as $model_scores){
+                                    $model_count++;
+                                    $model_sum = $model_sum + $model_scores['score'];
+                                }
+                                $model_avg = $model_sum / $model_count;
+                                if($model_avg<5){
+                                    $msgs[] = "Do more model papers from <b>".$topic."</b> of <b>".$lesson."</b>.";
+                                }
+                            }
+                            //Checks whether the average marks of Past Paper quizzes are < 5 in the quiz
+
+                            $query6 = "SELECT score FROM quiz_details WHERE studentId='$userId' AND topicId='$topicId' AND quizType='PASTPAPER'";
+                            $result6 = $connection->query($query6);
+                            if(mysqli_num_rows($result6)>0){
+                                $past_count=0;
+                                $past_sum=0;
+                                foreach($result6 as $past_scores){
+                                    $past_count++;
+                                    $past_sum = $past_sum + $past_scores['score'];
+                                }
+                                $past_avg = $past_sum / $past_count;
+                                if($past_avg<5){
+                                    $msgs[] = "Do more past papers from <b>".$topic."</b> of <b>".$lesson."</b>.";
+                                }
+                            }
+
+                            //Checks whether there are marks < 5 in the quizzes of selected topic
+
+                            $query4 = "SELECT score FROM quiz_details WHERE score<5 AND studentId='$userId' AND topicId='$topicId'";
+                            $result4 = $connection->query($query4);
+
+                            if(mysqli_num_rows($result4)>0){
+                                $msgs[] = "Pay more attention to <b>".$topic."</b> of <b>".$lesson."</b>.";
+                            }
+                        }
+                    }
+                }else{
+                    $msgs[] = "Start your quizzes of <b>".$lesson."</b>.";
+                }
+            }
+
+        }else{
+            $msgs[]="Go ahead and start your quizzes to expand your knowledge. ";
+        }
+
+        //Store the messages in a session array
+
+        $_SESSION['rec-msgs'] = $msgs;
+        return true;
+        
+    }
+
+    // Function to get a student's daily time usage
+
+    public static function getTimes($connection){
+
+        $userId = $_SESSION['auth_user']['userId'];
+
+        $last_week_dates = array();
+        $current_date = new DateTime();
+        for ($i = 1; $i <= 7; $i++) {
+            $last_week_dates[] = $current_date->modify('-1 day')->format('Y-m-d');
+        }
+        $last_week_dates = array_reverse($last_week_dates);
+        $daily_usages = array();
+
+        for($i = 0; $i < 7; $i++){
+            $day = $last_week_dates[$i];
+            $query1 = "SELECT * FROM daily_usage_times WHERE userId = '$userId' && date='$day'";
+            $result1 = $connection->query($query1);
+
+            if($result1 && mysqli_num_rows($result1) > 0){
+                $data1 = $result1->fetch_assoc();
+                $time_seconds = $data1['total_usage_time'];
+                $daily_usages[] = round($time_seconds/60);
+            }else{
+                $daily_usages[] = 0;
+            }
+        }
+        $_SESSION['daily_usages']= $daily_usages;
+        return true;
+    }
 
 }

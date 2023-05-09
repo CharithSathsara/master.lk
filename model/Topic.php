@@ -50,14 +50,7 @@ class Topic {
         
         if($result3->num_rows > 0){
             while($row_data = mysqli_fetch_array($result3)){
-                // echo "<form method='post' action='../../controller/dasboardController/studentSubjectController.php' name='selectsubejct-form' id='selectsubejct-form'>
-                //         <button class='goToLesson-button' type='submit'>
-                //             <div class='lesson'>
-                //                 <p class='lesson-title'>".$row_data['lessonName']."</p>
-                //             </div>
-                //         </button>
-                //     </form>";
-                echo "<a href ='../student/theoryContents.php'>
+                echo "<a href ='../student/theoryContents.php?topic=".$row_data['topicTitle']."'>
                 <div class='topic'>
                     <p class='topic-title'>".$row_data['topicTitle']."</p>
                 </div>
@@ -78,5 +71,23 @@ class Topic {
 
     }
 
+    public static function getTopicsOfLesson($connection,$lesson){
+
+        $query2 = "SELECT lessonId FROM lesson WHERE lessonName='$lesson'";
+        $result2 = $connection->query($query2);
+        $data2 = $result2->fetch_assoc();
+        $lessonId = $data2['lessonId'];
+
+        $query3 = "SELECT topicTitle FROM topic WHERE lessonId='$lessonId' ORDER BY topicId ASC";
+        $result3 = $connection->query($query3);
+        
+        if($result3->num_rows > 0){
+            return $result3;
+        }else{
+            return false;
+        }
+        
+
+    }
 
 }

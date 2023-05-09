@@ -25,10 +25,6 @@
     height:10px;
 }
 
-/* .list-item{
-    display: inline-block;
-} */
-
 div.scrollmenu {
     background-color: #EDECEC;
     overflow: auto;
@@ -52,8 +48,20 @@ div.scrollmenu {
     margin-right: 5px;
     border-radius:10px;
     margin-top: 14px;
-    
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    position: relative;
+    transition: transform 0.2s ease-in-out;
+    backface-visibility: hidden;
   }
+
+.list-item p{
+    margin:0;
+    display: inline;
+}
+
+#scrollmenu-contents a:hover{
+    transform: scaleY(1.15);
+}
 
 #model-quiz-item{
     background-color:#219ebc ;
@@ -63,20 +71,12 @@ div.scrollmenu {
     background-color:#f49f0a ;
 }
 
-#leaderboard-item{
+#review-item{
     background-color: #0b2e5e;
 }
 
-#pp-quiz-item:hover{
-    background-color:black ;
-}
-
-#model-quiz-item:hover{
-    background-color:black ;
-}
-
-#leaderboard-item:hover{
-    background-color:black ;
+#leaderboard-item{
+    background-color: black;
 }
 
 .sub-title{

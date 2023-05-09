@@ -29,7 +29,7 @@ include_once('../../config/app.php');
     <img src="../../public/img/401 Error Unauthorized-bro.svg" id="error-img">
     <p id="no-access-text">401 - Access Denied!</p>
     <p id="reason"><?=$_SESSION['restrict-error-message']?></p>
-    <button id="back-btn" onclick="history.back()"><b>Go Back</b></button>
+    <a href="./index.php"><button id="back-btn"><b>Log In</b></button></a>
 </div>
 
 </body>
