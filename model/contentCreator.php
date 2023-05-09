@@ -1,6 +1,6 @@
 <?php
 
-    class contentCreator
+    class ContentCreator
     {
         public static function updateContentCreator($userId,$fname,$lname,$address1,$address2,$number,$email,$subject,$connection){
 
