@@ -95,6 +95,24 @@ class Lesson{
 
     }
 
+    public static function getAllLessons($connection,$subject){
+
+        $query1 = "SELECT subjectId FROM subject WHERE subjectTitle='$subject'";
+        $result1 = $connection->query($query1);
+        $data1 = $result1->fetch_assoc();
+        $subjectId = $data1['subjectId'];
+
+        $query2 = "SELECT * FROM lesson WHERE subjectId='$subjectId'";
+        $result2 = $connection->query($query2);
+
+        if($result2 && mysqli_num_rows($result2) > 0){
+            return $result2;
+        }else{
+            return false;
+        }
+
+    }
+
     // Function to get completion of each lesson
 
     public static function getLessonCompletion($connection,$subject){

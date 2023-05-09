@@ -364,7 +364,12 @@ $timeUsageController = new timeUsageController();
             <b><p class="sub-title">Badges&nbsp;&nbsp;&nbsp;</p></b>
 
             <div id="badge-container">
-
+            <div class="show-badges">
+               <?php
+                   $userId =  $_SESSION['auth_user']['userId'];
+                   $details = $badgeController->getAllDetails($userId);
+               ?>
+           </div>
             </div>
 
             <br><br>
@@ -537,15 +542,15 @@ $timeUsageController = new timeUsageController();
         </div>
     </div>
 
-<<<<<<< HEAD
-        <br><br> 
+
+        <!-- <br><br> 
         <b><p class="sub-title">Badges&nbsp;&nbsp;&nbsp;</p></b>
 
         <div id="badge-container">
            <div class="show-badges">
                <?php
-                   $userId =  $_SESSION['auth_user']['userId'];
-                   $details = $badgeController->getAllDetails($userId);
+                //    $userId =  $_SESSION['auth_user']['userId'];
+                //    $details = $badgeController->getAllDetails($userId);
                ?>
            </div>
         </div>
@@ -555,14 +560,14 @@ $timeUsageController = new timeUsageController();
 
         <div id="rec-container">
 
-        </div>
+        </div> -->
 
-=======
+
     <div id="no-subjects-bought">
         <img src="../../public/img/cart-bg.svg" id="no-subjects-img">
         <p id="no-subjects-text">Buy subjects and join our community to view your dashboard.</p>
         <a href="./newSubjects.php" class="header-btns" id="buy-btn">Buy Now</a>
->>>>>>> 8555f323bfd869d9b64c69cf8550c028f8b6c74e
+
     </div>
 </div>
 

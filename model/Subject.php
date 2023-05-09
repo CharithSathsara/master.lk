@@ -130,19 +130,19 @@ class Subject {
 
     }
 
-    public static function getSubjectDescription($connection,$subjectId){
+    // public static function getSubjectDescription($connection,$subjectId){
 
-        $query = "SELECT * from subject where subjectId = '$subjectId'";
-        $data = $connection->query($query);
-        $description = $data->fetch_assoc();
+    //     $query = "SELECT * from subject where subjectId = '$subjectId'";
+    //     $data = $connection->query($query);
+    //     $description = $data->fetch_assoc();
 
-        if ($description){
-            return $description['description'];
-        }else{
-           return false;
-        }
+    //     if ($description){
+    //         return $description['description'];
+    //     }else{
+    //        return false;
+    //     }
 
-    }
+    // }
 
     public static function updateSubjectDescription($connection,$subjectId,$description,$price){
 
