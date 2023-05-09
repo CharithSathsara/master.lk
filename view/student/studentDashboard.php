@@ -30,11 +30,20 @@ include_once('../common/header.php');
 include_once('../../controller/studentController/dashboardController/lessonController.php');
 include_once('../../controller/studentController/dashboardController/studentSubjectController.php');
 include_once('../../controller/studentController/dashboardController/subjectProgressController.php');
+
+include_once ('../../controller/studentController/leaderBoardController/leaderBoardController.php');
+include_once ('../../controller/studentController/dashboardController/badgesController.php');
+
 include_once('../../controller/studentController/dashboardController/progressController.php');
 include_once('../../controller/studentController/dashboardController/recommendationsController.php');
 include_once('../../controller/studentController/dashboardController/timeUsageController.php');
+
 include_once('../../model/Student.php');
+include_once('../../model/Badges.php');
+include_once('../../model/Subject.php');
 include_once('../../model/Lesson.php');
+
+include_once ('../../model/Leaderboard.php');
 include_once('../../model/Topic.php');
 
 $_SESSION['studentNavItems-dashboard'] = array();
@@ -52,10 +61,12 @@ array_push($_SESSION['studentNavItems-profile'], 'profile.php');
 
 include_once('../common/navBar-Student.php');
 
-
 $lessonController = new lessonController();
 $studentSubjectController = new studentSubjectController();
 $subjectProgressController = new subjectProgressController();
+
+$badgeController = new badgesController();
+
 $progressController = new progressController();
 $recommendationsController = new recommendationsController();
 $timeUsageController = new timeUsageController();
@@ -526,10 +537,32 @@ $timeUsageController = new timeUsageController();
         </div>
     </div>
 
+<<<<<<< HEAD
+        <br><br> 
+        <b><p class="sub-title">Badges&nbsp;&nbsp;&nbsp;</p></b>
+
+        <div id="badge-container">
+           <div class="show-badges">
+               <?php
+                   $userId =  $_SESSION['auth_user']['userId'];
+                   $details = $badgeController->getAllDetails($userId);
+               ?>
+           </div>
+        </div>
+
+        <br><br> 
+        <b><p class="sub-title">Recommendations&nbsp;&nbsp;&nbsp;</p></b>
+
+        <div id="rec-container">
+
+        </div>
+
+=======
     <div id="no-subjects-bought">
         <img src="../../public/img/cart-bg.svg" id="no-subjects-img">
         <p id="no-subjects-text">Buy subjects and join our community to view your dashboard.</p>
         <a href="./newSubjects.php" class="header-btns" id="buy-btn">Buy Now</a>
+>>>>>>> 8555f323bfd869d9b64c69cf8550c028f8b6c74e
     </div>
 </div>
 

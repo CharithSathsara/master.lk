@@ -10,6 +10,15 @@
     <title>Admin Dashboard</title>
 </head>
     <body>
+    <?php
+    include_once('../../controller/authController/authentication/Authentication.php');
+    include_once('../../controller/authController/authorization/Authorization.php');
+
+    //User Authentication
+    Authentication::userAuthentication();
+    //User Authorization
+    Authorization::authorizingAdmin();
+    ?>
 
     <?php
 
@@ -25,6 +34,9 @@
                 <div class="delete-headerPop">
                     <img src="<?= base_url('public/img/important.png') ?>" id="closeDelete-popBox">
                     <h3>Delete Confirmation</h3>
+                    <div class="close-deleteTeacher">
+                        <button onclick="closeDeleteTeacherPop()"><img src="<?= base_url('public/img/close.png') ?>"> </button>
+                    </div>
                 </div>
                 <div class="deletePop-teacherBody">
                     <p>Are you sure you want to delete this Teacher?</p>

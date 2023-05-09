@@ -1,66 +1,66 @@
-#profile-container{
-    width:85%;
+#profile-container {
+    width: 85%;
     height: 100vh;
     float: right;
 }
 
-#profile-contents{
+#profile-contents {
     margin: 120px 40px 100px 30px;
     z-index: 1;
 }
 
-#title{
-    margin-top:0;
-    font-size:18px;
-    color:#0b2e5e;
+#title {
+    margin-top: 0;
+    font-size: 18px;
+    color: #0b2e5e;
 }
 
-#photo-password-container{
-    margin-top:35px;
-    height:350px;
+#photo-password-container {
+    margin-top: 35px;
+    height: 350px;
 }
 
-.photo-password-card{
-    display:inline-block;
+.photo-password-card {
+    display: inline-block;
     width: 49%;
     height: 100%;
     border-radius: 10px;
     position: relative;
 }
 
-#profilePhoto-card{
-    background-color:black;
+#profilePhoto-card {
+    background-color: black;
     margin-right: 8px;
 }
 
 
-.circle{
+.circle {
     width: 200px;
     height: 200px;
     border-radius: 50%;
     overflow: hidden;
     margin: 0 auto;
- }
+}
 
- #circle{
+#circle {
     width: 200px;
     height: 200px;
- }
+}
 
- .circle img{
+.circle img {
     width: 100%;
     height: 100%;
     object-fit: cover;
- }
+}
 
-#password-card{
-    background-color:#f49f0a;
+#password-card {
+    background-color: #f49f0a;
     position: absolute;
     width: 39.7%;
     height: 48.5%;
 }
 
-#pw-img{
+#pw-img {
     height: 150px;
     position: absolute;
     opacity: .50;
@@ -69,49 +69,49 @@
     top: 25%;
 }
 
-.card-title{
+.card-title {
     color: #fff;
-    font-size:17px;
+    font-size: 17px;
     margin-left: 15px;
     display: inline-block;
 }
 
-#profile-photo-title{
+#profile-photo-title {
     margin-bottom: 30px;
 }
 
-#pw-card-title{
-    color:black;
+#pw-card-title {
+    color: black;
 }
 
-.edit-button{
+.edit-button {
     display: inline-block;
     position: absolute;
     right: 0;
-    top:0; 
+    top: 0;
 }
 
-.remove-button{
+.remove-button {
     display: inline-block;
     right: 0;
-    top:0;
+    top: 0;
 }
 
-.edit-icon{
+.edit-icon {
     height: 25px;
     margin: 15px;
     right: 0;
     position: absolute;
 }
 
-#profile-photo{
+#profile-photo {
     height: 180px;
     display: block;
     margin: auto;
     margin-top: 30px;
 }
 
-#photo-upload-popup{
+#photo-upload-popup {
     z-index: 15;
     position: absolute;
     height: 370px;
@@ -125,7 +125,7 @@
     margin-top: 230px;
 }
 
-#photo-remove-popup{
+#photo-remove-popup {
     z-index: 15;
     position: absolute;
     height: 170px;
@@ -139,19 +139,19 @@
     margin-top: 300px;
 }
 
-#photo-remove-form{
+#photo-remove-form {
     display: inline-block;
 }
 
-#photo-remove-yes{
+#photo-remove-yes {
     display: inline-block;
     width: 160px;
     height: 40px;
     left: 20px;
     top: 20px;
-    background-color:#219ebc;
+    background-color: #219ebc;
     border-radius: 5px;
-    color:#fff;
+    color: #fff;
     margin-top: 35px;
     border: none;
     cursor: pointer;
@@ -163,7 +163,7 @@
     background-color:black;
 } */
 
-#photo-remove-no{
+#photo-remove-no {
     display: inline-block;
     width: 160px;
     height: 40px;
@@ -171,7 +171,7 @@
     top: 20px;
     background-color: #f49f0a;
     border-radius: 5px;
-    color:#fff;
+    color: #fff;
     margin-top: 35px;
     border: none;
     cursor: pointer;
@@ -181,24 +181,24 @@
     background-color:black;
 } */
 
-#update-photo-password-title{
+#update-photo-password-title {
     display: inline-block;
-    margin-left:25px;
+    margin-left: 25px;
     margin-top: 25px;
 }
 
-.close-button{
+.close-button {
     display: inline-block;
     right: 0;
     position: absolute;
 }
 
-.close-icon{
-    height:25px;
+.close-icon {
+    height: 25px;
     right: 0;
     position: absolute;
     margin: 25px;
-    
+
 }
 
 .drop-container {
@@ -220,30 +220,30 @@
     margin: auto;
     margin-top: 30px;
     margin-bottom: 10px;
-  }
-  
-  .drop-container:hover {
+}
+
+.drop-container:hover {
     background: #eee;
     border-color: #111;
-  }
-  
-  .drop-container:hover .drop-title {
+}
+
+.drop-container:hover .drop-title {
     color: #222;
-  }
-  
-  .drop-title {
+}
+
+.drop-title {
     color: #444;
     font-size: 16px;
     font-weight: bold;
     text-align: center;
     transition: color .2s ease-in-out;
-  }
+}
 
-#change-photo-error{
+#change-photo-error {
     height: 25px;
 }
 
-  
+
 input[type=file] {
     width: 300px;
     max-width: 100%;
@@ -252,9 +252,9 @@ input[type=file] {
     background: #fff;
     border-radius: 10px;
     border: 1px solid #555;
-  }
-  
-  input[type=file]::file-selector-button {
+}
+
+input[type=file]::file-selector-button {
     margin-right: 20px;
     border: none;
     background: #808080;
@@ -264,30 +264,31 @@ input[type=file] {
     color: #fff;
     cursor: pointer;
     transition: background .2s ease-in-out;
-  }
-  
-  input[type=file]::file-selector-button:hover {
-    background: black;
-  }
+}
 
-#photo-upload-submit,#pw-upload-submit{
+input[type=file]::file-selector-button:hover {
+    background: black;
+}
+
+#photo-upload-submit,
+#pw-upload-submit {
     width: 160px;
     height: 40px;
     left: 20px;
     top: 20px;
-    background-color:#219ebc;
+    background-color: #219ebc;
     border-radius: 5px;
-    color:#fff;
+    color: #fff;
     margin-top: 10px;
     border: none;
     cursor: pointer;
 }
 
-#photo-upload-form{
+#photo-upload-form {
     text-align: center;
 }
 
-.page-mask{
+.page-mask {
     background: rgba(0, 0, 0, 0.5);
     position: fixed;
     top: 0;
@@ -298,7 +299,7 @@ input[type=file] {
     display: none;
 }
 
-#change-password-popup{
+#change-password-popup {
     z-index: 15;
     position: absolute;
     height: 370px;
@@ -312,35 +313,38 @@ input[type=file] {
     margin-top: 230px;
 }
 
-#change-password-form{
+#change-password-form {
     text-align: center;
 }
 
-input[type=password],input[type=text],input[type=email]{
-    border:none;
+input[type=password],
+input[type=text],
+input[type=email] {
+    border: none;
     border-radius: 4px;
-    color : #808080;
+    color: #808080;
     background-color: #EDECEC;
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 10px;
     margin-bottom: 15px;
-    width:80%;
+    width: 80%;
 }
 
-#change-pw-error{
+#change-pw-error {
     height: 40px;
     width: 80%;
     margin: auto;
 }
 
-#change-pw-error p,#change-photo-error p,#change-info-error p{
-    font-size: 14px;
+#change-pw-error p,
+#change-photo-error p {
+    >>>>>>>kaumadi font-size: 14px;
     color: red;
     margin: 0 auto;
 }
 
-#profile-info-container{
+#profile-info-container {
     background-color: #219ebc;
     width: 99%;
     border-radius: 10px;
@@ -351,44 +355,44 @@ input[type=password],input[type=text],input[type=email]{
 }
 
 
-#first-info-sec{
+#first-info-sec {
     display: inline-block;
 }
 
-#second-info-sec{
+#second-info-sec {
     display: inline-block;
 }
 
-.profile-info-tag{
+.profile-info-tag {
     margin-left: 50px;
     font-size: 13px;
     margin-bottom: 2px;
     color: #d9d9d9;
 }
 
-.profile-info-data{
+.profile-info-data {
     margin-left: 50px;
     margin-top: 0;
-    color:white;
+    color: white;
 }
 
-#info-sec{
+#info-sec {
     display: flex;
     height: 75%;
     width: 50%;
 }
 
-#img-sec{
+#img-sec {
     position: absolute;
     top: 80px;
     left: 700px;
 }
 
-#profile-image{
+#profile-image {
     height: 250px;
 }
 
-#change-profile-info-popup{
+#change-profile-info-popup {
     z-index: 15;
     position: absolute;
     height: 400px;
@@ -403,34 +407,44 @@ input[type=password],input[type=text],input[type=email]{
 
 }
 
-#change-info-sec-first{
+#change-info-sec-first {
     display: inline-block;
-    margin-left:30px;
+    margin-left: 30px;
 }
 
-#change-info-sec-second{
+#change-info-sec-second {
     display: inline-block;
     position: absolute;
     top: 85px;
     width: 49%;
-    
+
 }
 
-#profile-info-update-button{
+#profile-info-update-button {
     width: 160px;
     height: 40px;
     left: 20px;
     top: 20px;
-    background-color:#219ebc;
+    background-color: #219ebc;
     border-radius: 5px;
-    color:#fff;
+    color: #fff;
     margin-top: 55px;
     float: right;
     margin-right: 55px;
 }
 
-#change-info-error{
+#change-info-error {
     height: 40px;
     /* width: 80%;
     margin: auto; */
+}
+
+#change-pw-error p,
+#change-photo-error p,
+#change-info-error p {
+    color: #fff;
+    margin-top: 10px;
+    margin-top: 100px;
+    float: right;
+    margin-right: 55px;
 }

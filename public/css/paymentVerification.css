@@ -1,30 +1,35 @@
 .main-container{
-    /*background-color: #F4C430;*/
-    height: 90vh;
-    width: 85vw;
-    margin-left: 15vw;
-    margin-top: 5vh;
+    width: 85%;
+    height: 100%;
+    float: right;
+    z-index: 1;
+}
+
+#paymentPage{
+    margin: 120px 40px 100px 30px;
 }
 
 .container-1 p{
-    /*background-color: #F4C430;*/
     color: #0b2e5e;
     font-weight: bold;
     font-size: 25px;
-    /*padding: 10px;*/
     width: 50%;
-    padding-top: 60px;
-    padding-left: 60px;
+    /*padding-top: 60px;*/
+    /*padding-left: 60px;*/
 }
 
-.container-1{
-    /*background-color: red;*/
-    /*margin-top: 5%;*/
-    height: 15%;
+.container-1 p{
+    font-size:18px;
+    margin-top: 0;
+    color: #0b2e5e;
+    font-weight: bold;
 }
 
 .container-2 {
-    margin-top: 30px;
+    /*margin-top: 30px;*/
+    /*display: flex;*/
+    /*flex-direction: row;*/
+    margin-top: 20px;
     display: flex;
     flex-direction: row;
     /*background-color: #F4C430;*/
@@ -32,9 +37,6 @@
 
 .container-2 p{
     font-weight: bold;
-    /*background-color: #F4C430;*/
-    padding-left: 30px;
-    font-size: 20px;
 }
 
 .container-2:after{
@@ -46,7 +48,7 @@
 
 .styled-table tr{
     padding: 10px;
-    background-color: #D9D9D9;
+    background-color: #edecec;
     /*margin-right: 20px;*/
 }
 
@@ -56,15 +58,18 @@ th{
 }
 
 .styled-table{
-    width: 90%;
+    width: 100%;
     border-collapse: separate;
     border-spacing: 0 20px;
+}
+
+.styled-table tr:hover{
+    transform: scale(1.03);
 }
 
 .get-AllSlip table{
     margin-top: 20px;
     margin-bottom: 20px;
-    margin-left: 80px;
 }
 
 #accept{
@@ -75,12 +80,16 @@ th{
 }
 
 .td-1{
-    font-weight: bold;
-    font-size: 18px;
     color: #111111;
     padding-top: 10px;
     padding-bottom: 10px;
-    padding-left: 50px;
+    padding-left: 30px;
+}
+
+.styled-table a, .styled-table a:hover , .styled-table a:active , .styled-table a:visited{
+    color: orange;
+    margin-left: 100px;
+    font-weight: bold;
 }
 
 #reject{
@@ -100,74 +109,114 @@ th{
 
 
 .access-popBox{
-    background-color: rgba(0,0,0,0.6);
-    height: 100vh;
-    width: 100vw;
-    position: absolute;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
     top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 14;
     display: none;
     justify-content: center;
-    z-index: 100;
 }
 
 .accessPop{
-    width: 550px;
-    height: 300px;
+    width: 530px;
+    height: 250px;
     background-color: white;
-    margin-top: 300px;
     border-radius: 20px;
     position: fixed;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 230px;
 }
 
 .access-popBox .accessHead{
     /*background-color: #F4C430;*/
     display: flex;
     flex-direction: row;
-    width: 400px;
-    margin-top: 40px;
-    margin-left: 20px;
+    width:45vw;
+    margin-top: 10px;
 }
 
 .access-popBox .accessHead img{
     width: 40px;
     height: 40px;
-    margin-left: 50px;
+    margin-left: 25px;
     margin-right: 30px;
     margin-top: 10px;
 }
 
-.access-popBox .accessHead h4{
+.access-popBox .accessHead h3{
     font-weight: bold;
     margin-bottom: 5px;
+    width: 15vw;
+    margin-left: -10px;
 }
 
-.access-popBox .accessBody p{
-    /*background-color: #F4C430;*/
-    margin-left: 30px;
-    padding-top: 30px;
-    padding-bottom: 30px;
+#close-accept{
+    width: 40px;
+    height: 40px;
+    margin-left: 10vw;
+    cursor: pointer;
 }
 
+
+#acceptBody-text{
+    font-weight: bold;
+    margin-top: 25px;
+    width: 90%;
+    margin-left: 25px;
+    font-size: 15px;
+}
 .access-popBox .access-button{
     /*background-color: #F4C430;*/
     display: flex;
     flex-direction: row;
+    margin-top: 40px;
 }
 
-.access-popBox .access-button .no-button{
-    /*padding-right: 20px;*/
-    /*padding-left: 20px;*/
-
-    background-color: #0b2e5e;
+.access-popBox .access-button .yesButton-pop{
+    border: none;
+    background-color: orange;
     color: white;
-    width: 75px;
-    height: 30px;
+    width: 140px;
+    height: 40px;
     border-radius: 8px;
-    padding-top: 10px;
-    padding-left: 50px;
-    margin-left: 200px;
-    margin-right: 40px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    cursor: pointer;
+    font-size: 17px;
+    /*font-weight: bold;*/
 }
+
+/*.access-popBox .access-button .yesButton-pop:hover{*/
+/*    background-color: #0b2e5e;*/
+/*    color: white;*/
+/*    !*font-weight: bold;*!*/
+/*}*/
+
+#close-verifyPop{
+    background-color: rgba(33, 158, 188);
+    cursor: pointer;
+    color: white;
+    width: 140px;
+    height: 40px;
+    border-radius: 8px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    /*padding-left: 50px;*/
+    margin-left: 12.5vw;
+    margin-right: 25px;
+}
+
+/*.access-popBox .access-button .no-button:hover{*/
+/*    background-color: orange;*/
+/*    !*color: black;*!*/
+/*    !*font-weight: bold;*!*/
+/*}*/
 
 
 .access-popBox .access-button .yes-button{
@@ -180,55 +229,69 @@ th{
     padding-left: 20px;
 }
 
-/*reject button*/
-
 .reject-popBox{
-    background-color: rgba(0,0,0,0.6);
-    height: 100vh;
-    width: 100vw;
-    position: absolute;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
     top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 14;
     display: none;
     justify-content: center;
-    z-index: 100;
 }
 
 .rejectPop{
-    width: 550px;
-    height: 300px;
+    width: 500px;
+    height: 250px;
     background-color: white;
-    margin-top: 300px;
     border-radius: 20px;
     position: fixed;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 230px;
+
 }
 
 .reject-popBox .rejectHead{
     /*background-color: #F4C430;*/
     display: flex;
     flex-direction: row;
-    width: 400px;
-    margin-top: 40px;
-    margin-left: 20px;
+    width:45vw;
+    margin-top: 10px;
+    /*margin-left: -30px;*/
 }
 
+
 .reject-popBox .rejectHead img{
-    width: 60px;
-    height: 40px;
-    margin-left: 50px;
+    width: 70px;
+    height: 50px;
+    margin-left: 15px;
     margin-right: 30px;
     margin-top: 10px;
 }
 
-.reject-popBox .rejectHead h4{
+#close-reject{
+    width: 40px;
+    height: 40px;
+    margin-left: 7vw;
+    cursor: pointer;
+}
+
+.reject-popBox .rejectHead h3{
     font-weight: bold;
     margin-bottom: 5px;
+    width: 15vw;
+    margin-left: -10px;
 }
 
 .reject-popBox .rejectBody p{
     /*background-color: #F4C430;*/
     margin-left: 30px;
     padding-top: 30px;
-    padding-bottom: 30px;
+    padding-bottom: 20px;
 }
 
 .reject-popBox .reject-button{
@@ -237,31 +300,62 @@ th{
     flex-direction: row;
 }
 
-.reject-popBox .reject-button .no-button{
-    /*padding-right: 20px;*/
-    /*padding-left: 20px;*/
+/*.reject-popBox .reject-button .no-button{*/
+/*    background-color: rgba(33, 158, 188);*/
+/*    cursor: pointer;*/
+/*    color: white;*/
+/*    width: 75px;*/
+/*    height: 30px;*/
+/*    border-radius: 8px;*/
+/*    padding-top: 10px;*/
+/*    padding-left: 50px;*/
+/*    margin-left: 12.5vw;*/
+/*    margin-right: 10px;*/
+/*}*/
 
-    background-color: #0b2e5e;
+#close-rejectPop{
+    background-color: rgba(33, 158, 188);
+    cursor: pointer;
     color: white;
-    width: 75px;
-    height: 30px;
+    margin-left: 12.5vw;
+    margin-right: 10px;
+    width: 130px;
+    height: 40px;
     border-radius: 8px;
-    padding-top: 10px;
-    padding-left: 50px;
-    margin-left: 200px;
-    margin-right: 40px;
+    padding: 10px;
+    border: none;
+    font-size: 16px;
 }
 
+/*.reject-popBox .reject-button .no-button:hover{*/
+/*    background-color: orange;*/
+/*}*/
 
-.reject-popBox .reject-button .yes-button{
+
+.reject-popBox .reject-button .rejectButton-slip{
     background-color: orange;
     color: white;
-    width: 100px;
-    height: 30px;
+    width: 130px;
+    height: 40px;
     border-radius: 8px;
-    padding-top: 10px;
-    padding-left: 20px;
+    padding: 10px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 15px;
 }
+
+/*.reject-popBox .reject-button .rejectButton-slip:hover{*/
+/*    background-color: #0b2e5e;*/
+/*}*/
+
+.rejectBody{
+    font-weight: bold;
+    margin-top: -10px;
+    width: 95%;
+
+}
+
 
 /*view payment slip*/
 
@@ -330,3 +424,14 @@ th{
     display: none;
 }
 
+
+.Bank-Details{
+    background-color: #0b2e5e;
+    color: whitesmoke;
+    padding: 10px 15px;
+    border-radius: 10px;
+    margin-left: 75vw;
+}
+.Bank-Details:hover{
+    background-color: #F4C430;
+}

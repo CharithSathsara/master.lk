@@ -5,6 +5,7 @@ $currentDir = __DIR__;
 
 include_once $currentDir.'\..\..\..\config\app.php';
 include_once $currentDir.'\..\..\..\model\Admin.php';
+include_once $currentDir.'\..\..\..\model\User.php';
 
 if (isset($_POST['addContentCreator-button'])) {
 
@@ -15,7 +16,7 @@ if (isset($_POST['addContentCreator-button'])) {
     $number = validateInput($db_connection->getConnection(), $_POST['number']);
     $email = validateInput($db_connection->getConnection(), $_POST['email']);
     $username = validateInput($db_connection->getConnection(), $_POST['username']);
-   // $password = validateInput($db_connection->getConnection(), $_POST['password']);
+    // $password = validateInput($db_connection->getConnection(), $_POST['password']);
     $subject = validateInput($db_connection->getConnection(), $_POST['subjects']);
     $qualification = validateInput($db_connection->getConnection(), $_POST['qualification']);
 
@@ -31,17 +32,91 @@ if (isset($_POST['addContentCreator-button'])) {
         return $result;
     }
 
+    $data_setEmail = User::checkEmailExist($db_connection->getConnection(), $email);
+    $data_setUsername = User::checkUsernameExist($db_connection->getConnection(), $username);
+
+    if (empty(trim(($fname)))) {
+        unset($_POST['addContentCreator-button']);
+        $_SESSION['add_Creator'] = 'First name is required';
+
+        redirect("", "view/admin/adminDashboard.php");
+
+    } else if (empty(trim(($lname)))) {
+        unset($_POST['addContentCreator-button']);
+        $_SESSION['add_Creator'] = 'Last name is required';
+
+        redirect("", "view/admin/adminDashboard.php");
+
+    } else if (empty(trim(($address1)))) {
+        unset($_POST['addContentCreator-button']);
+        $_SESSION['add_Creator'] = 'Address is required';
+
+        redirect("", "view/admin/adminDashboard.php");
+
+    } else if (empty(trim(($address2)))) {
+        unset($_POST['addContentCreator-button']);
+        $_SESSION['add_Creator'] = 'Address is required';
+
+        redirect("", "view/admin/adminDashboard.php");
+
+    } else if (empty(trim(($number)))) {
+        unset($_POST['addContentCreator-button']);
+        $_SESSION['add_Creator'] = 'Number is required';
+
+        redirect("", "view/admin/adminDashboard.php");
+
+    } else if (empty(trim(($email)))) {
+        unset($_POST['addContentCreator-button']);
+        $_SESSION['add_Creator'] = 'Email is required';
+
+        redirect("", "view/admin/adminDashboard.php");
+
+    } else if (empty(trim(($username)))) {
+        unset($_POST['addContentCreator-button']);
+        $_SESSION['add_Creator'] = 'Username is required';
+
+        redirect("", "view/admin/adminDashboard.php");
+
+    } else if (empty(trim(($subject)))) {
+        unset($_POST['addContentCreator-button']);
+        $_SESSION['add_Creator'] = 'Subject is required';
+
+        redirect("", "view/admin/adminDashboard.php");
+
+    } else if (preg_match("/^[\w\-]+@[\w\-]+.[\w\-]+$/", $username)) {
+        unset($_POST['addContentCreator-button']);
+        $_SESSION['add_Creator'] = "The username should not include '@' symbol";
+
+        redirect("", "view/admin/adminDashboard.php");
+
+    } else if (strlen($number) != 10) {
+        unset($_POST['addContentCreator-button']);
+        $_SESSION['add_Creator'] = "should be include 10 numbers";
+
+        redirect("", "view/admin/adminDashboard.php");
+
+    } else if (mysqli_num_rows($data_setEmail) == 1) {
+        $_SESSION['add_Creator'] = 'Email is exist';
+//
+        redirect("", "view/admin/adminDashboard.php");
+
+    } else if (mysqli_num_rows($data_setUsername) == 1) {
+        $_SESSION['add_Creator'] = 'User name is exist';
+//
+        redirect("", "view/admin/adminDashboard.php");
+    } else {
+
 // Generate a random password for the content creator
-    $passwordLength = 10; // set the desired length of the password
-    $password = generateRandomString($passwordLength);
+        $passwordLength = 10; // set the desired length of the password
+        $password = generateRandomString($passwordLength);
 
 
 // for mail function variable
-    $from_email = "master.lk.pvt@gmail.com";
-    $ContentCreatorName = $fname ." ". $lname;
-    $to = $email;
-    $mail_subject = 'Secure Password Transfer';
-    $mail_body = "<div style='background-color: #B1D4E0;color: black;width: 400px;padding: 15px'>
+        $from_email = "master.lk.pvt@gmail.com";
+        $ContentCreatorName = $fname . " " . $lname;
+        $to = $email;
+        $mail_subject = 'Secure Password Transfer';
+        $mail_body = "<div style='background-color: #B1D4E0;color: black;width: 400px;padding: 15px'>
                        <p >Dear $ContentCreatorName</p> <br>
                        <p>
                             <p>Welcome to <a href='#'>Master.lk</a> ! We are writing to provide you with a secure password that you will
@@ -61,24 +136,24 @@ if (isset($_POST['addContentCreator-button'])) {
                            </p> 
                         </p>
                   </div> ";
-    $header = "From :$from_email\r\nContent-Type: text/html;";
+        $header = "From :$from_email\r\nContent-Type: text/html;";
 
 
 // Insert the content creator details and password into the database
 // Code to insert the details into the database goes here
-    $data = Admin::addContentCreator($fname, $lname, $address1, $address2, $number, $email, $username, $password, $subject, $db_connection->getConnection());
+        $data = Admin::addContentCreator($fname, $lname, $address1, $address2, $number, $email, $username, $password, $subject, $db_connection->getConnection());
 
 
-    if ($data) {
+        if ($data) {
 
-    mail($to,$mail_subject,$mail_body,$header);
+            mail($to, $mail_subject, $mail_body, $header);
 
 
-        header('Location: ../../../view/admin/adminDashboard.php');
-    } else {
-        header("Location: ../../../view/admin/dashboard/addContentCreator.php");
+            header('Location: ../../../view/admin/adminDashboard.php');
+        } else {
+            header("Location: ../../../view/admin/dashboard/addContentCreator.php");
+        }
     }
 }
-
 
 ?>

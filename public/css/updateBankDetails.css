@@ -1,0 +1,96 @@
+.Update-BankDetails{
+    background-color: rgba(0,0,0,0.6);
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: fixed;
+    top: 0;
+    display: none;
+    justify-content: center;
+    z-index: 15;
+    /*margin-left: -15vw;*/
+}
+
+.BankDetails-table{
+    width: 35vw;
+    height: 45vh;
+    background-color: whitesmoke;
+    margin-top: 24vh;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 8px;
+}
+
+.UpdateBankForm{
+    display: grid;
+    margin-left: 25px;
+    margin-right: auto;
+    grid-template-columns: 175px 175px;
+    grid-row: auto auto;
+    grid-column-gap: 110px;
+    grid-row-gap: 30px;
+    padding-top: 25px;
+}
+
+.box-header{
+    display: flex;
+    flex-direction: row;
+}
+
+.close-updateBank{
+    margin-left: 310px;
+}
+.box-header p{
+    font-weight: bold;
+    margin-left: 25px;
+}
+.box-header img{
+    width: 33px;
+    height: 33px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.details{
+
+}
+
+.details input[type='text']{
+    width: 195px;
+    /*margin-left: 6vw;*/
+    height: 40px;
+    background-color: #D9D9D9;
+    border: none;
+    border-radius: 10px;
+    padding-left: 15px;
+}
+
+
+.details input[type='submit']{
+    background-color: rgba(33, 158, 188);
+    width: 140px;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+}
+
+.error-message-update-bankDetails{
+    color: red;
+    width: 300px;
+    margin-top: -30px;
+    font-weight: bold;
+    margin-left: 100px;
+    margin-bottom: -20px;
+}
+
+.Update-BankButton{
+    margin-left: 22vw;
+    margin-top: 30px;
+}
+
+
+
+
+

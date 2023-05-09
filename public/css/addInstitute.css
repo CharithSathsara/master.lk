@@ -1,0 +1,97 @@
+.main-AddSection{
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 14;
+    justify-content: center;
+    position: fixed;
+}
+
+.AddSecond-section{
+    width: 39%;
+    height: 54.5%;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 12%;
+    border-radius: 10px;
+}
+
+.header-section{
+    display: flex;
+    flex-direction: row;
+}
+
+.header-section img{
+    width: 33px;
+    height: 33px;
+    cursor: pointer;
+}
+
+.closeAddInstitute{
+    margin-left: 23.2vw;
+    margin-top: 15px;
+}
+
+.header-section p{
+    font-weight: bold;
+    font-size: 17px;
+    padding-left: 25px;
+}
+
+.addInstitute-form{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    padding-left: 25px;
+}
+
+.form-add-institute{
+    display: grid;
+    margin-left: auto;
+    margin-right: auto;
+    grid-template-columns: 180px 180px;
+    grid-row: auto auto;
+    grid-column-gap: 110px;
+    grid-row-gap: 30px;
+
+}
+
+.form-add-institute input[type='text'],.form-add-institute input[type='email']{
+    width: 230px;
+    border: none;
+    background-color: #D9D9D9;
+    height: 35px;
+    border-radius: 10px;
+    padding-left: 15px;
+}
+
+.form-add-institute input[type='submit']{
+    width: 130px;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    background-color: rgba(33, 158, 188);
+    color: white;
+    cursor: pointer;
+    margin-top: -10px;
+}
+
+.submitButton-addInstitute{
+    margin-top: 40px;
+    margin-left: 26.6vw;
+}
+
+.error-message-add-institute{
+    /*background-color: red;*/
+    width: 350px;
+    margin-top: -20px;
+    margin-bottom: -25px;
+    margin-left: 180px;
+    color: red;
+    font-weight: bold;
+}

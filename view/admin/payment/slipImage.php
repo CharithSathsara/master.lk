@@ -12,6 +12,17 @@
 <body>
 
     <?php
+        include_once('../../../config/app.php');
+        include_once('../../../controller/authController/authentication/Authentication.php');
+        include_once('../../../controller/authController/authorization/Authorization.php');
+
+        //User Authentication
+        Authentication::userAuthentication();
+        //User Authorization
+        Authorization::authorizingAdmin();
+    ?>
+
+    <?php
 
             include_once ('../../../controller/adminController/paymentVerificationController/paymentVerifyController.php');
             include_once ('../../../model/slipPayment.php');
@@ -20,59 +31,66 @@
             include_once('../../common/navBar-Admin.php');
     ?>
 
-    <div class="main">
-        <div class="slip-image">
-            <h2><a href="paymentVerification.php">Payment</a> > View Payment Slip </h2>
-            <hr>
-            <h2>Slip Image</h2>
-
-            <?php
-            $slipImage = new paymentVerifyController();
-            $paymentId = $_GET['paymentId'];
-            $slipImage->getSlipImage($paymentId);
-            ?>
-            <div class="payment-button">
-                <button id="accept-button" onclick="viewAcceptPage('<?php echo $paymentId ?>')">Accept</button>
-                <button id="reject-button" onclick="viewRejectPage('<?php echo $paymentId ?>')">Reject</button>
+   <div class="main-container">
+        <div class="slipImage-second">
+            <div class="header-container">
+                <b><p><span><a href="paymentVerification.php">Payments</a></span>&nbsp;&nbsp;>&nbsp;&nbsp;View Payment Slip</p></b>
+            </div>
+            <div class="container-2">
+                <p>Payment Slip &nbsp;&nbsp;&nbsp;</p>
             </div>
 
-<!--            accept slip page-->
-            <?php include_once ('acceptSlip.php');?>
+            <div class="body-container">
+                <div class="view-imageDiv">
+                    <div class="slipImage-container">
+                        <?php
+                        $slipImage = new paymentVerifyController();
+                        $paymentId = $_GET['paymentId'];
+                        $slipImage->getSlipImage($paymentId);
+                        ?>
+                    </div>
 
-<!--            accept slip js file-->
-            <script src="../../../public/js/acceptSlipImage.js"></script>
+                    <div class="slipDetails-container">
+                        <div class="details-student">
+                            <div class="details-table">
+                                <?php
+                                $object = new paymentVerifyController();
+                                $details = $object->getSlipOwner($paymentId);
+                                foreach ($details as $detail){
+                                    $userId = $detail['studentId'];
+                                    $name = $object->getStudentName($userId);
+                                    ?>
+                                    <p>Student full name&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;<?php echo $name;?></p>
+                                    <p>Course amount&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;Rs. <?php echo $detail['amount'];?></p>
+                                    <p>Submit date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp;&nbsp;&nbsp;&nbsp; <?php echo $detail['date'];?></p>
+                                <?php }
+                                ?>
+                            </div>
 
-  <!--            reject slip page-->
-            <?php include_once ('rejectSlip.php');?>
+                            <div class="payment-button">
+                                <button id="reject-button" class="reject-button-slipImage" onclick="viewRejectPage('<?php echo $paymentId ?>')">Reject</button>
+                                <button id="accept-button" onclick="viewAcceptPage('<?php echo $paymentId ?>')">Accept</button>
+                            </div>
+
+                            <!--            accept slip page-->
+                            <?php include_once ('acceptSlip.php');?>
+
+                            <!--            accept slip js file-->
+                            <script src="../../../public/js/acceptSlipImage.js"></script>
+
+                            <!--            reject slip page-->
+                            <?php include_once ('rejectSlip.php');?>
 
 
-<!--            reject slip js  file-->
-            <script src="../../../public/js/rejectSlipImage.js"></script>
+                            <!--            reject slip js  file-->
+                            <script src="../../../public/js/rejectSlipImage.js"></script>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
-    </div>
-    <div class="payment-details">
-        <h1>Details</h1>
-        <div class="details-table">
-            <?php
-            $object = new paymentVerifyController();
-            $details = $object->getSlipOwner($paymentId);
-            foreach ($details as $detail){
-                $userId = $detail['studentId'];
-                $name = $object->getStudentName($userId);
-//                        echo $name;
-                ?>
-
-                <p>Student full name : <?php echo $name;?></p><br>
-                <p>Course amount : Rs. <?php echo $detail['amount'];?></p><br>
-                <p>Submit date : <?php echo $detail['date'];?></p>
-
-            <?php }
-            ?>
-        </div>
-    </div>
-
-
+   </div>
 </body>
 
 

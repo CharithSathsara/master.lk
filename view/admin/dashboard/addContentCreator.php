@@ -10,18 +10,28 @@
     <title>Admin Dashboard</title>
 </head>
     <body>
+    <?php
 
+        include_once('../../controller/authController/authentication/Authentication.php');
+        include_once('../../controller/authController/authorization/Authorization.php');
+
+        //User Authentication
+        Authentication::userAuthentication();
+        //User Authorization
+        Authorization::authorizingAdmin();
+    ?>
         <div class="popup-addContentCreator">
             <div class="add-contentCreatorPop">
                 <div class="update-ContentCreatorHeaderPop">
                     <h4>Add New Content Creator</h4>
                     <img src="<?= base_url('public/img/close.png') ?>" class="CloseContentPop">
                 </div>
+
                 <!-- Add content creator popup form  -->
                 <div class="update-contentCreatorForm">
                     <div class="forms-div">
 
-                        <form class="UpdateTeach-form" action="<?= base_url('controller/adminController/dashboardController/addContentCreatorController.php') ?>" method="POST">
+                        <form class="UpdateContent-form" action="<?= base_url('controller/adminController/dashboardController/addContentCreatorController.php') ?>" method="POST">
                             <!--                <label class="teachrHead"><b>Add Teacher</b></label>-->
                             <input type="text" name="fname" placeholder="Full Name" >
                             <input type="text" name="lname" placeholder="Last Name" >
@@ -32,14 +42,21 @@
                             <input type="text" name="username" placeholder="User name" >
         <!--                    <input type="password" name="password" placeholder="Password" >-->
                             <div class="selectSub">
-                                <label>Select the Subject : </label>
+                                <label id="select-addContent">Select the Subject : </label>
                                 <select name="subjects" id="subjects" >
+                                    <option value="" disabled selected hidden>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ----- Select a Subject -----</option>
                                     <option value="Chemistry">Chemistry</option>
                                     <option value="Physics">Physics</option>
                                 </select>
                             </div>
-                            <!--                        <textarea name="qualification" placeholder="Qualification"></textarea>-->
-                            <input type="submit" name="addContentCreator-button" value="Save" class="subb-Update" style="color: #D9D9D9">
+                            <!-- <textarea name="qualification" placeholder="Qualification"></textarea>-->
+                            <div class="show-errorAddContent">
+                                <div class="error-message-add-content" id="error-message-add-content">
+                                    <?php include "validationMessage.php"?>
+                                </div>
+                                <input type="submit" name="addContentCreator-button" value="Save" class="subb-addContent">
+                            </div>
+
                         </form>
                     </div>
                 </div>

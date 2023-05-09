@@ -5,4 +5,7 @@ function viewRejectPage(paymentId){
     document.getElementById('close-rejectPop').addEventListener('click',function (){
         document.getElementById('reject-popBox').style.display='none';
     })
+    document.getElementById('close-reject').addEventListener('click',function (){
+        document.getElementById('reject-popBox').style.display='none';
+    })
 }

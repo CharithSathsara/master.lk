@@ -84,6 +84,103 @@
     height: 30px;
 }
 
+.lesson-container{
+    width:100%;
+    margin-top: 150px;
+    height: auto;
+}
+
+.lesson-container a{
+    text-decoration: none;
+    color: black;
+}
+
+.lesson{
+    background-color:#EDECEC;
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 40px;
+    border-radius: 5px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.lesson:hover{
+    background-color:black;
+    color: white;
+}
+
+.lesson-title{
+    margin-top:0;
+    margin-bottom: 0;
+    padding:8px 0;
+}
+
+.goToLesson-button{
+    width:100%;
+}
+
+#progress-container{
+    margin-top:35px;
+    height:350px;
+    
+}
+
+.progress-card{
+    display:inline-block;
+    width: 47%;
+    height: 100%;
+    border-radius: 10px;
+    position: relative;
+}
+
+#completion-card{
+    /* background-color:#0b2e5e; */
+    margin-right: 30px;
+}
+
+#scores-card{
+    background-color:black;
+}
+
+.progress-title{
+    color: #fff;
+    font-size:17px;
+    margin-left: 15px;
+}
+
+#badge-container{
+    margin-top:35px;
+    min-height:350px;
+    height: auto;
+    background-color:#EDECEC;
+    border-radius: 10px;
+    width:97%;
+}
+.show-badges{
+    width: 92%;
+    /*background-color: red;*/
+    height: auto;
+    margin-right: auto;
+    margin-left: auto;
+    padding-top: 45px;
+    display: flex;
+    flex-wrap: wrap;
+    grid-column-gap: 35px;
+}
+
+#BadgePicture{
+    width: 250px;
+    height: 250px;
+}
+
+#rec-container{
+    margin-top:35px;
+    height:350px;
+    background-color:#219ebc;
+    border-radius: 10px;
+    width:97%;
+}
 /* Subject Completion Status Bars */
 
 progress[value] {
