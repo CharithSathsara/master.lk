@@ -32,7 +32,7 @@
                     <form class="add-subjectDescription-form" action="<?= base_url('controller/adminController/systemInformationController/addSubjectDescriptionController.php') ?>" method="post">
 
                         <p>Description :</p>
-                        <input type="text" class="description-details" name="physicsDescription">
+                        <textarea class="description-details" name="physicsDescription"></textarea>
                         <p>Price :</p>
                         <input type="text" class="price-details" name="physicsName">
 
@@ -59,7 +59,7 @@
                     <form class="add-subjectDescription-form" action="<?= base_url('controller/adminController/systemInformationController/addSubjectDescriptionController.php') ?>" method="post">
 
                         <p>Description :</p>
-                        <input type="text" class="description-details" name="ChemistryDescription">
+                        <textarea class="description-details" name="ChemistryDescription"></textarea>
                         <p>Price :</p>
                         <input type="text" class="price-details" name="ChemistryName">
 
