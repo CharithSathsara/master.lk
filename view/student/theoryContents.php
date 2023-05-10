@@ -27,9 +27,12 @@ Authentication::userAuthentication();
 Authorization::authorizingStudent();
 
 include('../../controller/studentController/contentController/theoryContentController.php');
+include('../../controller/studentController/contentController/gamifiedQuestionsController.php');
 include('../../model/Theory.php');
+include('../../model/GamifiedQuestion.php');
 
 $theoryContentController = new theoryContentController();
+$gamifiedQuestionsController = new gamifiedQuestionsController();
 
 $_SESSION['current-topic'] = $_GET['topic'];
 
@@ -61,7 +64,29 @@ $_SESSION['current-topic'] = $_GET['topic'];
         <div id="test-question-container">
             <b><p class="sub-title">Test Questions&nbsp;&nbsp;&nbsp;</p></b><br>
                 <?php
-                    $status = $gamifiedQuestionsController->getGamifiedQuestions();
+                    $status = $gamifiedQuestionsController->getGamifiedQuestions($_SESSION['current-subject'],$_SESSION['current-lesson'],$_SESSION['current-topic']);
+                    if($status){
+                        foreach($status as $gamified_question){
+                            $question = $gamified_question['question'];
+                            $opt01 = $gamified_question['opt01'];
+                            $opt02 = $gamified_question['opt02'];
+                            $opt03 = $gamified_question['opt03'];
+                            $opt04 = $gamified_question['opt04'];
+                            $opt05 = $gamified_question['opt05'];
+                            $correctAnswer = $gamified_question['correctAnswer'];
+                            $description = $gamified_question['description'];
+                            $type = $gamified_question['type'];
+
+                            // viewing options here
+                        }
+                    }else{
+                        echo"
+                            <div class='no-content-sec'>
+                                <img src='../../public/img/no-content.png' class='no-content-img'>
+                                <p class='no-content-text'>No test questions to display!</p>
+                            </div>
+                        ";
+                    }
                 ?>
             </div>
         </div>
