@@ -97,18 +97,18 @@ div.scrollmenu {
     margin: 15px;
 }
 
-#no-content-img{
+.no-content-img{
     height:100px;
     margin-left: 35px;
 
 }
 
-#no-content-text{
+.no-content-text{
     color:#f49f0a;
 }
 
-#no-content-sec{
-    width: 180px;
+.no-content-sec{
+    width: 230px;
     margin: 0 auto;
 }
 
