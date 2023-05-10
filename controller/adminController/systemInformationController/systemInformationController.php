@@ -43,7 +43,7 @@ class systemInformationController
 
     public function getSubjectDetails($SubjectId){
 
-        $details = Subject::getSubjectDescription($this->connection,$SubjectId);
+        $details = Subject::getSubjectDescriptionUsingId($this->connection,$SubjectId);
 
         if($details){
             return $details;
