@@ -36,9 +36,9 @@ class Theory{
             return true;
         }else{
             echo"
-                <div id='no-content-sec'>
-                    <img src='../../public/img/no-content.png' id='no-content-img'><br>
-                    <p id='no-content-text'>No Contents to Display!</p><br>
+                <div class='no-content-sec'>
+                    <img src='../../public/img/no-content.png' class='no-content-img'><br>
+                    <p class='no-content-text'>No contents to display!</p><br>
                 </div>
                 ";
             return false;
