@@ -76,7 +76,7 @@ $studentForumController = new StudentForumController();
 
                 <input type="text" id="new-question" name="new-question" placeholder="Type your question">
                 <button type="submit" class="submit-btn">Ask</button>
-
+                <!-- <button id="scrollDown" onclick="window.scrollTo(0,document.body.scrollHeight)"><img src="../../../public/icons/goToDown.svg" id="goDown-icon"></button> -->
             </form>
 
         </div>

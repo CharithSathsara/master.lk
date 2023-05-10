@@ -2,6 +2,34 @@
 
 
 include_once('../../../config/app.php');
+<<<<<<< HEAD
+include_once('../../../model/ContentCreator.php');
+//$currentDir = __DIR__;
+//
+//include_once $currentDir.'\..\..\..\config\app.php';
+//
+//include_once $currentDir.'\..\..\..\model\ContentCreator.php';
+
+    if(isset($_POST['updateContentCreator-button'])){
+
+        $userId = validateInput($db_connection->getConnection(),$_POST['userId']);
+        $fname = validateInput($db_connection->getConnection(),$_POST['fname']);
+        $lname = validateInput($db_connection->getConnection(),$_POST['lname']);
+        $address1 = validateInput($db_connection->getConnection(),$_POST['address1']);
+        $address2 = validateInput($db_connection->getConnection(),$_POST['address2']);
+        $number = validateInput($db_connection->getConnection(),$_POST['number']);
+        $email = validateInput($db_connection->getConnection(),$_POST['email']);
+        $subjects = validateInput($db_connection->getConnection(),$_POST['subjects']);
+
+
+        $data = contentCreator::updateContentCreator($userId,$fname,$lname,$address1,$address2,$number,$email,$subjects,$db_connection->getConnection());
+
+        if ($data){
+            header("Location: ../../../view/admin/adminDashboard.php");
+        }else{
+//            header("Location: ../../../view/admin/adminDashboard.php");
+            echo "ERROr";
+=======
 include_once('../../../model/contentCreator.php');
 include_once('../../../model/User.php');
 
@@ -92,6 +120,7 @@ include_once('../../../model/User.php');
                 //            header("Location: ../../../view/admin/adminDashboard.php");
                 echo "ERROr";
             }
+>>>>>>> 9778a3edd457407b11ccbfd97240e0b25cdd5ba4
         }
     }
 ?>

@@ -87,77 +87,83 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["reset-password"])){
     $new_password = $_POST['reset-pwd'];
     $retype_new_password = $_POST['retype-reset-pwd'];
 
-    if($new_password === $retype_new_password) {
+    if(strlen($new_password) >= 8) {
+        if($new_password === $retype_new_password) {
 
-        $email = $_POST['email'];
-        $token = $_POST['token'];
+            $email = $_POST['email'];
+            $token = $_POST['token'];
 
-        $isTokenValid = $passwordResetController->verify_token_and_time($email, $token);
+            $isTokenValid = $passwordResetController->verify_token_and_time($email, $token);
 
-        if($isTokenValid){
+            if($isTokenValid){
 
-            if(!empty($db_connection)){
+                if(!empty($db_connection)){
 
-                //new password
-                $password = password_hash($new_password, PASSWORD_DEFAULT);
-                $updateResult = PasswordReset::updatePassword($db_connection->getConnection(), $email, $password);
+                    //new password
+                    $password = password_hash($new_password, PASSWORD_DEFAULT);
+                    $updateResult = PasswordReset::updatePassword($db_connection->getConnection(), $email, $password);
 
-                if($updateResult){
+                    if($updateResult){
 
-                    // Send email with password reset link
-                    $body='<p>Dear user,</p>';
-                    $body.='<p>-------------------------------------------------------------</p>';
-                    $body.='<p>This email is to confirm that your password has been successfully updated. If you did not initiate this change, please contact us immediately at master.lk@gmail.com to report any unauthorized access to your account.</p>';
-                    $body.='<p>-------------------------------------------------------------</p>';
-                    $body.='<p>Thanks,</p>';
-                    $body.='<p>Master.lk Team</p>';
+                        // Send email with password reset link
+                        $body='<p>Dear user,</p>';
+                        $body.='<p>-------------------------------------------------------------</p>';
+                        $body.='<p>This email is to confirm that your password has been successfully updated. If you did not initiate this change, please contact us immediately at master.lk@gmail.com to report any unauthorized access to your account.</p>';
+                        $body.='<p>-------------------------------------------------------------</p>';
+                        $body.='<p>Thanks,</p>';
+                        $body.='<p>Master.lk Team</p>';
 
-                    try {
-                        $mail = new PHPMailer();
+                        try {
+                            $mail = new PHPMailer();
 
-                        // Enable verbose debug output
-                        $mail->isSMTP();                        // Set mailer to use SMTP
-                        $mail->Host       = 'smtp.gmail.com;';    // Specify main SMTP server
-                        $mail->SMTPAuth   = true;               // Enable SMTP authentication
-                        $mail->Username   = 'cloudcharith@gmail.com';     // SMTP username
-                        $mail->Password   = 'kqlownfkdeeqvrob';         // SMTP password
-                        $mail->SMTPSecure = 'tls';              // Enable TLS encryption
-                        $mail->Port       = 587;
+                            // Enable verbose debug output
+                            $mail->isSMTP();                        // Set mailer to use SMTP
+                            $mail->Host       = 'smtp.gmail.com;';    // Specify main SMTP server
+                            $mail->SMTPAuth   = true;               // Enable SMTP authentication
+                            $mail->Username   = 'cloudcharith@gmail.com';     // SMTP username
+                            $mail->Password   = 'kqlownfkdeeqvrob';         // SMTP password
+                            $mail->SMTPSecure = 'tls';              // Enable TLS encryption
+                            $mail->Port       = 587;
 
-                        $mail->setFrom('cloudcharith@gmail.com', 'Master.lk Academy');// Set sender of the mail
+                            $mail->setFrom('cloudcharith@gmail.com', 'Master.lk Academy');// Set sender of the mail
 
-                        $mail->addAddress($email);// Add a recipient
+                            $mail->addAddress($email);// Add a recipient
 
-                        $mail->isHTML(true);
-                        $mail->Subject = 'Password Updated - Master.lk';
-                        $mail->Body    = $body;
+                            $mail->isHTML(true);
+                            $mail->Subject = 'Password Updated - Master.lk';
+                            $mail->Body    = $body;
 
-                        if($mail->Send()) {
-                            $_SESSION['update-password-success']="Password update success!";
-                            redirect("","view/authentication/index.php?action=reset");
-                        }else {
-                            echo "Message could not be sent. Mailer Error " . $mail->ErrorInfo;
+                            if($mail->Send()) {
+                                $_SESSION['update-password-success']="Password update success!";
+                                redirect("","view/authentication/index.php?action=reset");
+                            }else {
+                                echo "Message could not be sent. Mailer Error " . $mail->ErrorInfo;
+                            }
+
+                        } catch (Exception $e) {
+                            verify_email_error_redirect("Mail Error","view/authentication/index.php?action=verify-email");
                         }
 
-                    } catch (Exception $e) {
-                        verify_email_error_redirect("Mail Error","view/authentication/index.php?action=verify-email");
+                    }else {
+                        $_SESSION['password-reset-error'] = "Something went wrong.";
+                        $url = "view/authentication/index.php?email=".$_POST['email']."&token=".$_POST['token']."&action=reset";
+                        redirect("",$url);
                     }
 
-                }else {
-                    $_SESSION['password-reset-error'] = "Something went wrong.";
-                    $url = "view/authentication/index.php?email=".$_POST['email']."&token=".$_POST['token']."&action=reset";
-                    redirect("",$url);
                 }
 
+            }else {
+                $_SESSION['password-reset-error'] = "your password reset link has expired or invalid. Please try again by verifying your email.";
+                $url = "view/authentication/index.php?email=".$_POST['email']."&token=".$_POST['token']."&action=reset";
+                redirect("",$url);
             }
-
         }else {
-            $_SESSION['password-reset-error'] = "your password reset link has expired or invalid. Please try again by verifying your email.";
+            $_SESSION['password-reset-error'] = "Password and retype password does not match!";
             $url = "view/authentication/index.php?email=".$_POST['email']."&token=".$_POST['token']."&action=reset";
             redirect("",$url);
         }
     }else {
-        $_SESSION['password-reset-error'] = "Password and retype password does not match!";
+        $_SESSION['password-reset-error'] = "The password must be at least 8 characters long!";
         $url = "view/authentication/index.php?email=".$_POST['email']."&token=".$_POST['token']."&action=reset";
         redirect("",$url);
     }
