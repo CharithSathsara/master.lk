@@ -128,11 +128,14 @@ $viewCartController = new viewCartController();
 
             <div id="option-container">
                 <p id="payment-title">Choose your payment method </p>
-                <a href="">
-                    <button id="card-payment-btn" class="payment-btns">
-                        Card Payment
-                    </button>
-                </a>
+<!--                <a href="">-->
+<!--                    <button id="card-payment-btn" class="payment-btns" onclick="paymentGateway();">-->
+<!--                        Card Payment-->
+<!--                    </button>-->
+<!--                </a>-->
+                <button id="card-payment-btn" class="payment-btns" onclick="paymentGateway();">
+                    Card Payment
+                </button>
                 <a href="./bankDeposit.php">
                     <button id="bank-deposit-btn" class="payment-btns">
                         Bank Deposit
@@ -146,3 +149,9 @@ $viewCartController = new viewCartController();
 
     </div>
 </div>
+
+<script src="../../public/js/payment-gateway.js"></script>
+<script type="text/javascript" src="https://www.payhere.lk/lib/payhere.js"></script>
+
+</body>
+</html>
