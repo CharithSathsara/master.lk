@@ -66,7 +66,9 @@ $_SESSION['current-topic'] = $_GET['topic'];
                 <?php
                     $status = $gamifiedQuestionsController->getGamifiedQuestions($_SESSION['current-subject'],$_SESSION['current-lesson'],$_SESSION['current-topic']);
                     if($status){
+                        $q_count=0;
                         foreach($status as $gamified_question){
+                            $q_count++;
                             $question = $gamified_question['question'];
                             $opt01 = $gamified_question['opt01'];
                             $opt02 = $gamified_question['opt02'];
@@ -77,7 +79,11 @@ $_SESSION['current-topic'] = $_GET['topic'];
                             $description = $gamified_question['description'];
                             $type = $gamified_question['type'];
 
-                            // viewing options here
+                            // viewing options
+
+                            if($type=='flip_cards'){
+                                include_once('./flipCards.php');
+                            }
                         }
                     }else{
                         echo"

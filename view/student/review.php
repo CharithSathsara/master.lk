@@ -117,8 +117,7 @@ $attempt = $_GET['attempt'];
                     }
                 }
                 else{
-                    // sth went wrong
-                   
+                   echo "<p>Something went wrong!</p>";
                 }
             ?>
 

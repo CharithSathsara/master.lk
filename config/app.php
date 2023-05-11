@@ -82,8 +82,8 @@ function session_expire_redirect($message, $page){
     exit(0);
 }
 
-// Set the session timeout period (20 minutes)
-$timeout_duration = 1200; 
+// Set the session timeout period (30 minutes)
+$timeout_duration = 1800; 
 
 // Check if the session has expired
 if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > $timeout_duration)) {
