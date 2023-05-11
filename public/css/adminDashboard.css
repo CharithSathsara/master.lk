@@ -265,12 +265,12 @@ th{
 }
 .error-message-up-teacher{
     color: red;
-    margin-left: 150px;
+    /*margin-left: 50px;*/
     height: 20px;
     text-align: center;
     font-weight: bold;
-    margin-top: -35px;
-    margin-bottom: 5px;
+    margin-top: 70px;
+    margin-bottom: -90px;
     width: 300px;
 }
 
@@ -360,7 +360,7 @@ th{
     display: grid;
     grid-template-columns: 200px 200px;
     grid-row: auto auto;
-    grid-column-gap: 155px;
+    grid-column-gap: 160px;
     grid-row-gap: 20px;
     /*padding-left: 35px;*/
     padding-top: 10px;
@@ -396,6 +396,7 @@ textarea{
 }
 
 .selectSub{
+    margin-top: 10px;
     text-align: center;
     margin-left: 0px;
     height: 100px;
@@ -444,8 +445,8 @@ textarea{
     background-color: rgba(33, 158, 188);
     color: white;
     border-radius: 10px;
-    margin-top: 20px;
-    margin-left: 34.5vw;
+    margin-top: 145px;
+    /*margin-left: 34.5vw;*/
 
 }
 
@@ -913,6 +914,10 @@ textarea{
     display: none;
 }
 
+#teacher-username{
+    display: none;
+}
+
 #Creator-userId{
     display: none;
 }
@@ -930,7 +935,7 @@ textarea{
 }
 
 .oneTeacherTile{
-    height: 375px;
+    height: 400px;
     background-color: #edecec;
     width: 32%;
     border-radius: 10px;
@@ -1013,6 +1018,13 @@ textarea{
     /*font-size: 14px;*/
     /*margin-left: 25px;*/
    margin-top: -25px;
+}
+#creatorViewSubject{
+    margin-top: 5px;
+}
+
+#teacherViewSubject{
+    margin-top: 5px;
 }
 
 #but-ContentCreator{

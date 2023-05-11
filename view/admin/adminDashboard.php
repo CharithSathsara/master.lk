@@ -77,6 +77,7 @@
                                                 <p class="con-tea-info">Address 02 : <?= $teacher['addLine02'] ?></p><br>
                                                 <p class="con-tea-info">Email : <?= $teacher['email'] ; ?></p><br>
                                                 <p class="con-tea-info">Number : <?= $teacher['mobile']; ?></p>
+                                                <p class="con-tea-info" id="teacherViewSubject">Subject : <?= $subject ?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -130,7 +131,7 @@
                         foreach($contentCreators as $contentCreator){
 
                             $creatorId = $contentCreator['userId'];
-                            $subject = $adminDashboardController->getTeacherSubject($creatorId);
+                            $subject = $adminDashboardController->getContentCreatorSubject($creatorId);
                             ?>
                             <div class="oneTeacherTile">
                                 <div class="iconDiv">
@@ -154,6 +155,7 @@
                                         <p class="con-tea-info">Address 02 : <?= $contentCreator['addLine02'] ?></p><br>
                                         <p class="con-tea-info">Email : <?= $contentCreator['email'] ; ?></p><br>
                                         <p class="con-tea-info">Number : <?= $contentCreator['mobile']; ?></p>
+                                        <p class="con-tea-info" id="creatorViewSubject">Subject : <?= $subject ?></p>
                                     </div>
                                 </div>
                             </div>

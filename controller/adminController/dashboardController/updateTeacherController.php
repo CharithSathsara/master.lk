@@ -13,6 +13,7 @@ include_once('../../../model/User.php');
         $number = validateInput($db_connection->getConnection(),$_POST['number']);
         $email = validateInput($db_connection->getConnection(),$_POST['email']);
         $subject = validateInput($db_connection->getConnection(),$_POST['subjects']);
+        $qualification = validateInput($db_connection->getConnection(),$_POST['subjects']);
 
         $data_setEmail = User::checkEmailExist($db_connection->getConnection(), $email);
 
