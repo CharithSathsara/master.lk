@@ -133,7 +133,7 @@ $viewCartController = new viewCartController();
 <!--                        Card Payment-->
 <!--                    </button>-->
 <!--                </a>-->
-                <button id="card-payment-btn" class="payment-btns" onclick="paymentGateway();">
+                <button id="card-payment-btn" class="payment-btns" name="online-payment" onclick="paymentGateway(<?php echo $totalPrice; ?>);">
                     Card Payment
                 </button>
                 <a href="./bankDeposit.php">
@@ -149,6 +149,62 @@ $viewCartController = new viewCartController();
 
     </div>
 </div>
+
+<div class="page-mask" id="page-mask-payment-success">
+
+    <div id="upload-success-popup">
+        <img id="success-icon" src="../../public/icons/success-yellow.svg">
+        <b><p id="upload-title">Payment Successfully!</p></b>
+        <button onclick="closePaymentSuccessPopup()" class="close-button">
+            <img src="../../public/icons/close.svg" class="close-icon">
+        </button>
+        <p id="upload-success-text">Your payment has been successfully.</p>
+        <a href="studentDashboard.php"><button id="ok-btn" onclick="closePaymentSuccessPopup()">Go to Dashboard</button></a>
+    </div>
+
+</div>
+
+<div class="page-mask" id="page-mask-payment-fail">
+
+    <div id="upload-success-popup">
+        <img id="success-icon" src="../../public/icons/delete-alert.png">
+        <b><p id="upload-title">Payment failed!</p></b>
+        <button onclick="closePaymentFailPopup()" class="close-button">
+            <img src="../../public/icons/close.svg" class="close-icon">
+        </button>
+        <p id="upload-success-text">Your payment has been unsuccessfully.</p>
+        <button id="ok-btn" onclick="closePaymentFailPopup()">OK</button>
+    </div>
+
+</div>
+
+<script src="../../public/js/checkout.js"></script>
+
+<?php
+
+if($_GET['payment'] == 'success'){
+    echo"
+                <style>
+                        #page-mask-payment-success {
+                            display:block;
+                        }
+                </style>
+            ";
+}
+
+if($_GET['payment'] == 'fail'){
+    echo"
+                <style>
+                        #page-mask-payment-fail {
+                            display:block;
+                        }
+                </style>
+            ";
+}
+
+?>
+
+
 
 <script src="../../public/js/payment-gateway.js"></script>
 <script type="text/javascript" src="https://www.payhere.lk/lib/payhere.js"></script>

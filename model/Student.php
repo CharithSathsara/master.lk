@@ -140,6 +140,106 @@ class Student {
 
     }
 
+    public static function onlinePayment($connection, $amount, $studentId){
+
+        try {
+
+            $queryToPayment = "INSERT INTO `payment` (`amount`, `date`, `paymentType`, `studentId`) VALUES ($amount, NOW(), 'ONLINE', $studentId);";
+            $response = $connection->query($queryToPayment);
+
+            if($response){
+
+                // Get the last inserted paymentId
+                $paymentId = mysqli_insert_id($connection);
+
+                $queryToOnline = "INSERT INTO online_payment (`paymentId`)
+                                VALUES ($paymentId)";
+
+                $data = $connection->query($queryToOnline);
+
+                if($data){
+                    return true;
+                }else{
+                    throw new Exception("Error: Unable insert to online payment table");
+                }
+
+            }else{
+                throw new Exception("Error: Unable insert to payment table");
+            }
+
+        } catch(Exception $e) {
+            $errorMessage = "An error occurred while updating payments : " . $e->getMessage();
+            echo '<script>console.error("' . $errorMessage . '")</script>';
+            return false;
+        }
+
+    }
+
+    public static function giveSubjectAccess($connection, $studentId, $subjectId){
+
+        try {
+            $currentDate = date('Y-m-d');
+            $query = "INSERT INTO `student_subject` (`studentId`, `subjectId`, `startDate`) VALUES ($studentId, $subjectId, '$currentDate')";
+
+            $data = $connection->query($query);
+
+            if($data){
+                return true;
+            }else{
+                throw new Exception("Error: Unable to give subject access");
+            }
+
+        } catch(Exception $e) {
+            $errorMessage = "An error occurred while giving subject access: " . $e->getMessage();
+            echo '<script>console.error("' . $errorMessage . '")</script>';
+            return false;
+        }
+
+    }
+
+    public static function clearCart($connection, $cartId){
+
+        try {
+
+            $query = "DELETE FROM `cart` WHERE cartId = $cartId";
+
+            $data = $connection->query($query);
+
+            if($data){
+                return true;
+            }else{
+                throw new Exception("Error: Unable to clear cart");
+            }
+
+        } catch(Exception $e) {
+            $errorMessage = "An error occurred while clearing student cart : " . $e->getMessage();
+            echo '<script>console.error("' . $errorMessage . '")</script>';
+            return false;
+        }
+
+    }
+
+    public static function getStudent($connection, $studentId){
+
+        try {
+            $query = "SELECT * FROM user WHERE userId = $studentId";
+            $data = $connection->query($query);
+            $student = $data->fetch_assoc();
+
+            if($student){
+                return $student;
+            }else{
+                throw new Exception("Error: Unable to fetch student");
+            }
+
+        } catch(Exception $e) {
+            $errorMessage = "An error occurred while fetching student: " . $e->getMessage();
+            echo '<script>console.error("' . $errorMessage . '")</script>';
+            return false;
+        }
+
+    }
+
 
     /**
      * End of

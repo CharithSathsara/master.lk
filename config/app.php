@@ -6,6 +6,10 @@ $db_connection = DatabaseConnection::getInstance();
 
 const SITE_URL = 'http://localhost/master.lk/';
 
+// Define constants for merchant_id and merchant_secret
+const MERCHANT_ID = '1223165';
+const MERCHANT_SECRET = 'MTQwNDc2NzIyOTEwODI1NzcyNjQyMjg3OTI1OTY4MTQwNzU2Njk2MA==';
+
 function base_url($slug){
     // SITE_URL.$slug concatenating
     echo SITE_URL.$slug;
@@ -70,6 +74,8 @@ function verify_email_error_redirect($message, $page){
     $redirectTo = SITE_URL.$page;
 
     $_SESSION['verify-email-error'] = "$message";
+    header("Location: $redirectTo");
+    exit(0);
 }
 
 function session_expire_redirect($message, $page){

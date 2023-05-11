@@ -51,8 +51,8 @@ $_SESSION['current-lesson'] = $_GET['lesson'];
         <div id="feedbacks-container">
             <form method="post" action="../../controller/teacherController/feedbackController/insertFeedbackController.php" name="feedback-form" id="feedback-form">
                 <textarea id="feedback" name="feedback" placeholder="Write Your Feedback here" required></textarea>
-                <input type="text" id="lesson" name="lesson" value=<?php echo $_GET["lesson"] ?> hidden>
-                <input type="text" id="subject" name="subject" value=<?php echo $_GET["subject"] ?> hidden>
+                <input type="text" id="lesson" name="lesson" value="<?php echo $_GET['lesson']; ?>" hidden>
+                <input type="text" id="subject" name="subject" value="<?php echo $_GET["subject"] ?>" hidden>
                 <button type="submit" id="feedback-submit" name="feedback-submit">Submit</button>
             </form>
         </div>
