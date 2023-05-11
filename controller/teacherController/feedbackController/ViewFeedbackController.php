@@ -133,17 +133,18 @@ class ViewFeedbackController {
 
     }
 
-    public function getAllLessons($subject){
+    public function getAllLessons($subject)
+    {
 
         try {
             $data = Teacher::getAllLessons($this->connection, $subject);
 
-            if($data){
+            if ($data) {
                 return $data;
-            }else{
+            } else {
                 throw new Exception("Error: can not get all lessons");
             }
-        } catch(Exception $e) {
+        } catch (Exception $e) {
             $errorMessage = "An error occurred while getting all lessons:  " . $e->getMessage();
             echo '<script>console.error("' . $errorMessage . '")</script>';
             return false;

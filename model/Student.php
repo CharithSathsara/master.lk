@@ -118,6 +118,28 @@ class Student {
 
     }
 
+    public static function insertFeedback($connection, $feedback, $studentId, $lesson){
+
+        try {
+
+            $query = "INSERT INTO `feedback` (`feedback`, `studentId`, `lessonId`) VALUES ('$feedback', $studentId , (SELECT lessonId FROM lesson WHERE lessonName = '$lesson'));";
+            $data = $connection->query($query);
+
+            if($data){
+                return true;
+            }else{
+                throw new Exception("Error: Unable insert to feedback table");
+            }
+
+        } catch(Exception $e) {
+            $errorMessage = "An error occurred while inserting feedback : " . $e->getMessage();
+            echo '<script>console.error("' . $errorMessage . '")</script>';
+            return false;
+        }
+
+
+    }
+
 
     /**
      * End of
