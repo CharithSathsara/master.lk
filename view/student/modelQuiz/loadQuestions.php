@@ -12,15 +12,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 
-    <!-- <script src="../../../public/js/modelQuizQuestion.js"></script>
-    <script src="../../../public/js/modelQuiz.js"></script> -->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 </head>
 
 <body>
     <?php
-include('../../../config/app.php');
-// include('../../../controller/studentController/quizController/modelQuizController.php');
+
+include('../../../controller/studentController/quizController/modelQuizController.php');
 include_once('../../../controller/authController/authentication/Authentication.php');
 include_once('../../../controller/authController/authorization/Authorization.php');
 
@@ -35,49 +35,47 @@ Authentication::userAuthentication();
 //User Authorization
 Authorization::authorizingStudent();
 
-$question_no = "";
-$question = "";
-$opt1 = "";
-$opt2 = "";
-$opt3 = "";
-$opt4 = "";
-$opt5 = "";
-$correctAnswer = "";
-$count=0;
-
-$questionNo = $_GET["questionNo"];
-
-if(isset($_SESSION["answer"][$questionNo])){
-$correctAnswer = $_SESSION["answer"][$questionNo];
-}
 
 $_SESSION['topicId'] = 2;
-$topicId = 2;
-$sql = "SELECT * FROM question WHERE topicId = '$topicId' AND questionType = 'MODELQUESTION' ORDER BY RAND() LIMIT 10";
-$questions = mysqli_query($db_connection->getConnection(), $sql);
 
-if($count ==0){
-echo"over";
-}else{
-while($row = mysqli_fetch_array($questions)){
-    $question_no = $row['questionId'];
-    $question = $row['question'];
-    $opt1 = $row['opt01'];
-    $opt2 = $row['opt02'];
-    $opt3 = $row['opt03'];
-    $opt4 = $row['opt04'];
-    $opt5 = $row['opt05'];
+if(!isset($_SESSION['modelQuizScore'])){
+$_SESSION['modelQuizScore'] = 0;
 }
+
+if($_POST){
+$questionNumber = $_POST['questionNumber'];
+$selectedChoice = $_POST['choice'];
+$next = $questionNumber+1;
+
+// $modelQuizController = new ModelQuizController();
+// $questions = $modelQuizController->getModelQuizQuestions($_SESSION['topicId']);
+$questions = $_SESSION['model_question_array'];
+
+
+$correctChoice = $questions['correctAnswer'];
+
+
+//Compare selected and correct choice
+if($correctChoice == $selectedChoice){
+    $_SESSION['modelQuizScore'] += 1;
+}
+
+//Check Wheather It Reached Last Question
+if($questionNumber == 3){
+header("Location: modelQuizResult.php");
+exit();
+}
+else{
+    header("Location: modelQuizStarted.php?n=".$next);
+}
+
+}
+
+
 ?>
-    <br>
-    <?php echo "(".$question_no .")". $question;?>
-    <br>
-    <input type="radio" id="option" name="option" value="<?php echo $opt1;?>">
-    <?php if($correctAnswer == $opt1){
-    echo "checked";
-    }
-}
-    ?>
+
+
+
 
 
 </body>

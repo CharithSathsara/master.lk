@@ -2,26 +2,35 @@
 
 include_once('../../../config/app.php');
 include('../../../model/Quiz.php');
-$questions = array();
-class ModelQuizController{
 
-    private $connection;
 
-    public function __construct(){
 
-        $db_connection = DatabaseConnection::getInstance();
-        $this->connection = $db_connection->getConnection();
-        
+if(isset($_POST['deleteTheory-Yes-btn'])){
+$deleteId = $_GET['deleteId'];
+$result = ContentCreator::DeleteTheoryContents($db_connection->getConnection(), $deleteId);
 
+if($result){
+    $_SESSION['delete_successful'] = true;
+    redirect("Theory Content Deleted Successfully", "view/contentcreator/contentCreatorDashboard.php");
+    
+    
+}else{
+    $_SESSION['delete_unsuccessful'] = true;
+    redirect("Something Went Wrong while Deleting the Theory Content", "view/contentcreator/contentCreatorDashboard.php");
+    return false;
+}
+
+}
+?>
     }
 
     public function getModelQuizQuestions($topicId){
     
-    $questions = Quiz::getModelQuizQuestions($topicId, $this->connection);
+    $result = Quiz::getModelQuizQuestions($topicId, $this->connection);
         
             
-    if($questions){
-        return $questions;
+    if($result){
+        return $result;
     }
 
 }

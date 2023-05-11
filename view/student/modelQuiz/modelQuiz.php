@@ -47,91 +47,46 @@ include_once '../../../view/common/header.php';
                 <div class="title-modelQuiz"><b>Model Quiz</b>
                     <hr class="hr-line">
                 </div>
-                <div class="home-box custom-box hide">
+
+                <div class="home-box custom-box ">
                     <p class="quiz-instuctions"><b>Instructions: </b><br>Duration is 20 minutes.<br>
                         The quiz consists of 10 short questions, and you must answer all questions.<br>
                         Not All questions carry equal marks.<br>
                         Once you attempt a question and click on ‘next’, you cannot go back to the previous
                         question(s).<br>
                     </p>
-                    <button type="button" id="start-quiz-btn" class="quiz-btn">Start Quiz</button>
+                    <a href=""><button type="button" id="start-quiz-btn" class="quiz-btn"
+                            onclick="loadModelQuizData()">Start Quiz</button></a>
                 </div>
 
-                <div class="quiz-box custom-box">
-                    <div class="countdown">
-                        <p class="timer">Time remaining: <span id="countdown"></span></p>
 
-                        <script>
-                        var timeLimit = 20 * 60; // 20 minutes in seconds
-                        var timer = setInterval(function() {
-                            var minutes = Math.floor(timeLimit / 60);
-                            var seconds = timeLimit % 60;
-                            document.getElementById("countdown").innerHTML = minutes + ":" + seconds;
-                            timeLimit--;
-                            if (timeLimit < 0) {
-                                clearInterval(timer);
-                                window.location.href = "quizResult.php";
+
+                <script>
+                $(document).ready(function() {
+                    // Define the function that loads data from the database
+                    function loadModelQuizData() {
+                        $.ajax({
+                            url: '../../../controller/studentController/quizController/modelQuizController.php', // the URL of the server-side script that retrieves data from the database
+                            type: 'GET',
+                            success: function(data) {
+                                window.location.href =
+                                    '../../../view/student/modelQuiz/modelQuizStarted.php?n=1'
+                            },
+                            error: function(xhr, status, error) {
+                                // Handle any errors that occur
+                                console.error(error);
                             }
-                        }, 1000);
-                        </script>
-                    </div>
-                    <div class="question-number">
-                        Question 1 of 3
-                    </div>
-                    <div class="question-text">The quiz consists of 10 short questions</div>
+                        });
+                    }
 
-                    <div class="option-container">
-                        <div class="quiz-option">aaa</div>
-                        <div class="quiz-option">aaa</div>
-                        <div class="quiz-option">aaa</div>
-                        <div class="quiz-option">aaa</div>
-                        <div class="quiz-option">aaa</div>
-                    </div>
-                    <div class="question-btn">
-                        <button class="quiz-btn" id="next-quiz-btn">Next</button>
-                    </div>
-                    <div class="slider-indicator">
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </div>
-                </div>
+                    // Attach the loadData function to a button click event
+                    $('#start-quiz-btn').on('click', function() {
+                        loadModelQuizData();
+                    });
+                });
+                </script>
 
-                <div class="result-box custom-box hide">
-                    <h1>Quiz Result</h1>
 
-                    <table>
-                        <tr>
-                            <td>Total Questions</td>
-                            <td><span class="total-question">1</span></td>
-                        </tr>
-                        <tr>
-                            <td>Attempt</td>
-                            <td><span class="total-attempt">1</span></td>
-                        </tr>
-                        <tr>
-                            <td>Total Correct</td>
-                            <td><span class="total-correct">1</span></td>
-                        </tr>
-                        <tr>
-                            <td>Total Wrong</td>
-                            <td><span class="total-wrong">1</span></td>
-                        </tr>
-                        <tr>
-                            <td>Percentage</td>
-                            <td><span class="percentage">60.00%</span></td>
-                        </tr>
-                        <tr>
-                            <td>Your Total Score</td>
-                            <td><span class="total-score">6/10</span></td>
-                        </tr>
-                    </table>
-
-                    <button type="button" class="quiz-btn">Try Again</button>
-                    <button type="button" class="quiz-btn">Review Questions</button>
-                    <button type="button" class="quiz-btn">Go to Dashboard</button>
-
-                </div>
 
             </div>
         </div>

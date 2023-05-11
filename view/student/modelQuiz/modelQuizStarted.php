@@ -13,40 +13,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
 
 </head>
 
-<style>
-.slider {
-    display: flex;
-    overflow: hidden;
-    width: 100%;
-}
-
-.slide {
-    flex-shrink: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 3rem;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-}
-
-/* Show only the active slide */
-.slide.active {
-    opacity: 1;
-}
-</style>
-
 <body>
     <?php
+
 include('../../../controller/studentController/quizController/modelQuizController.php');
 include_once('../../../controller/authController/authentication/Authentication.php');
 include_once('../../../controller/authController/authorization/Authorization.php');
+
+
 
 //check user authenticated or not
 //$authentication = new Authentication();
@@ -57,169 +34,140 @@ Authentication::userAuthentication();
 //User Authorization
 Authorization::authorizingStudent();
 
-include_once '../../common/header.php';
-@include '../../common/navBar-Student.php';
+// include_once '../../../view/common/header.php';
+// @include '../../../view/common/navBar-Student.php';
+
+//Set Question Number
+$questionNumber = (int) $_GET['n'];
+$_SESSION['topicId'] = 2;
+
 
 $modelQuizController = new ModelQuizController();
+$result = $modelQuizController->getModelQuizQuestions($_SESSION['topicId']);
 
+// Initialize an empty array to store the query result
+$rows = array();
 
-    
+// Fetch each row from the result set and add it to the array
+while ($row = mysqli_fetch_assoc($result)) {
+    $rows[] = $row;
+}
+
+$_SESSION['model_question_array'] = $rows;
+
+$questions = $result->fetch_assoc();
 
 ?>
-    <div class="content">
-        <div class="container">
 
 
-            <p>Time remaining: <span id="countdown"></span></p>
+    <div class="quiz-box custom-box">
+        <div class="model-quiz">
+            <div class="countdown">
+                <p class="timer">Time remaining: <span id="countdown"></span></p>
 
-            <script>
-            var timeLimit = 5 * 60; // 20 minutes in seconds
-            var timer = setInterval(function() {
-                var minutes = Math.floor(timeLimit / 60);
-                var seconds = timeLimit % 60;
-                document.getElementById("countdown").innerHTML = minutes + ":" + seconds;
-                timeLimit--;
-                if (timeLimit < 0) {
-                    clearInterval(timer);
-                    window.location.href = "quizResult.php";
-                }
-            }, 1000);
-            </script>
-
-
-            <?php 
-                $_SESSION['topicId'] = 2;
-                $questions = $modelQuizController->getModelQuizQuestions($_SESSION['topicId']);
-                
-                // Encode the quiz data array as JSON
-                if($questions){
-                $json_quiz_data = json_encode($questions);
-                
-            } else {
-                echo "No questions found.";
-            }
-
-                ?>
-            <script>
-            const model_quiz = <?php echo $json_quiz_data; ?>;
-            </script>
-
-            <!-- <div class="slider">
-                <
-                <div class="slide">
-                    <div class="question-number">
-                        Question of 10
-                    </div>
-                    <div class="question-text" id="load_questions"></div>
-
-                    <div class="option-container"></div>
-
-                </div>
-
-                <div class="question-btn">
-                    <button class="next-btn" id="next-quiz-btn"></button>
-                    <button type="button" id="next-btn" class="next quiz-btn">Next</button> -->
-
-
-
-
-
-
-            <div class="slider-indicator">
-
+                <script>
+                var timeLimit = 20 * 60; // 20 minutes in seconds
+                var timer = setInterval(function() {
+                    var minutes = Math.floor(timeLimit / 60);
+                    var seconds = timeLimit % 60;
+                    document.getElementById("countdown").innerHTML = minutes + ":" + seconds;
+                    timeLimit--;
+                    if (timeLimit < 0) {
+                        clearInterval(timer);
+                        window.location.href = "modelQuizResult.php";
+                    }
+                }, 1000);
+                </script>
             </div>
 
-            <!-- <script>
-            $(document).ready(function() {
-                var currentSlide = 1;
-                var totalSlides = $('.slider .slide').length;
+            <div class="question-number current">
+                Question <?php echo"$questionNumber";?> of 10
+            </div>
+            <div class="question-text">
+                <p class="quiz-question"><?php echo $questions['question']; ?></p>
+            </div>
 
-                // Show the first slide
-                $('.slider .slide:first-child').addClass('active');
+            <form id="model-quiz-form" action="../../../view/student/modelQuiz/loadQuestions.php" method="post">
 
-                $('.next-btn').click(function() {
-                    // Hide the current slide
-                    $('.slider .slide.active').removeClass('active');
+                <ul class="option-container choices">
 
-                    // Show the next slide
-                    currentSlide++;
-                    $('.slider .slide:nth-child(' + currentSlide + ')').addClass('active');
+                    <li>
+                        <div class="quiz-option"><input name="choice" value="1"
+                                type="radio" /><?php echo $questions['opt01'];?></div>
+                    </li>
 
-                    // Change the button text to "Finish" on the last slide
-                    if (currentSlide === totalSlides) {
-                        $('.next-btn').text('Finish');
-                    }
-                });
-            });
-            </script>
+                    <li>
+                        <div class="quiz-option"><input name="choice" value="2"
+                                type="radio" /><?php echo $questions['opt02'];?></div>
+                    </li>
+                    <li>
+                        <div class="quiz-option"><input name="choice" value="3"
+                                type="radio" /><?php echo $questions['opt03'];?></div>
+                    </li>
+                    <li>
+                        <div class="quiz-option"><input name="choice" value="4"
+                                type="radio" /><?php echo $questions['opt04'];?></div>
+                    </li>
+                    <li>
+                        <div class="quiz-option"><input name="choice" value="5"
+                                type="radio" /><?php echo $questions['opt05'];?></div>
+                    </li>
+
+                </ul>
+
+                <div class="question-btn">
+                    <input class="quiz-btn" id="next-quiz-btn" type="submit" value="Submit">
+
+                </div>
+                <input type="hidden" name="questionNumber" value="<?php echo "$questionNumber"; ?>" />
+
+            </form>
+        </div>
 
 
- -->
 
-
-
-
-
+        <div class="slider-indicator">
+            <div></div>
+            <div></div>
+            <div></div>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('#model-quiz-form').submit(function(event) {
+            event.preventDefault(); // prevent form from submitting
 
-    <!-- <script>
-    function load_total_questions() {
+            // Send an AJAX request to loadQuestions.php
+            $.ajax({
+                type: 'POST',
+                url: '../../../view/student/modelQuiz/loadQuestions.php',
+                data: $(this).serialize(),
+                success: function(response) {
+                    // Update the question and options on the page
+                    $('.question-text').html(response.question);
+                    $('.choices').html(response.options);
 
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                document.getElementById("total_question").innerHTML = xmlhttp.responseText;
+                    // Update the question number
+                    $('.question-number').html('Question ' + response.questionNumber +
+                        ' of 10');
 
-            }
-        };
-
-        xmlhttp.open("GET", "../../../view/student/modelQuiz/loadTotalQuestions.php", true);
-        xmlhttp.send(null);
-
-    }
-
-    var questionNo = "1";
-    load_questions(questionNo);
-
-    function load_questions() {
-        document.getElementById("current_question").innerHTML = questionNo;
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                if (xmlhttp.responseText == "over") {
-                    window.location = "quizResult.php";
-                } else {
-                    document.getElementById("load_questions").innerHTML = xmlhttp.responseText;
-                    load
+                    // Update the slider indicator
+                    $('.slider-indicator div').removeClass('active');
+                    $('.slider-indicator div').eq(response.questionNumber - 1).addClass(
+                        'active');
+                },
+                error: function() {
+                    alert('An error occurred while loading the question.');
                 }
-
-            }
-        };
-
-        xmlhttp.open("GET", "../../../view/student/modelQuiz/loadQuestions.php?questionNo=" + questionNo, true);
-        xmlhttp.send(null);
-
-    }
-
-    function loadPrevious() {
-        if (questionNo == "1") {
-            load_questions(questionNo);
-        } else {
-            questionNo = eval(questionNo) - 1;
-            load_questions(questionNo);
-        }
+            });
+        });
+    });
+    </script>
 
 
-    };
 
 
-    function loadNext() {
-        questionNo = eval(questionNo) + 1;
-        load_questions(questionNo);
-
-    }
-    </script> -->
 
 
 

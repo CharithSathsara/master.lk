@@ -82,32 +82,20 @@ class Quiz {
     
     public static function getModelQuizQuestions($topicId, $connection){
     
-        $sql = "SELECT * FROM question WHERE topicId = '$topicId' AND questionType = 'MODELQUESTION' ORDER BY RAND() LIMIT 10";
+        $sql = "SELECT * FROM question WHERE topicId = '$topicId' AND questionType = 'MODELQUESTION' ORDER BY RAND() LIMIT 3";
         $result = mysqli_query($connection, $sql);
         
         if (mysqli_num_rows($result) > 0) {
             // Create an empty array to store the data
-            $questions = array();
+            // $questions = $result->fetch_assoc();
+            return $result;
         
-            // Loop through each row of data
-            while($row = mysqli_fetch_assoc($result)) {
-                // Create an associative array to store the row data
-                $question = array(
-                    'questionId' => $row['questionId'],
-                    'q' => $row['question'],
-                    'options' => array($row['opt01'], $row['opt02'], $row['opt03'], $row['opt04'], $row['opt05']),
-                    'answer' => $row['correctAnswer'],
-                    'questionType' => $row['questionType'],
-                    'topicId' => $row['topicId']
-                );
+        }
         
-                $questions[] = $question;
-            }
         
-        return $questions;
 
     }
-}
+
 
 
 

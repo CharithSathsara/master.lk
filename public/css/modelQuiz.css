@@ -139,7 +139,9 @@ body {
     margin: 0;
 }
 
-/* .quiz-box .option-container {} */
+.quiz-box .option-container {
+    list-style: none;
+}
 
 .quiz-option {
     background-color: white;
