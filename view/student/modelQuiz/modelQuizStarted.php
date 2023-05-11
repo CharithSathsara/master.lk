@@ -12,6 +12,35 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('#model-quiz-form').submit(function(event) {
+            // Prevent the form from submitting normally
+            event.preventDefault();
+
+            // Get form data
+            var formData = $(this).serialize();
+
+            // Send the data using AJAX
+            $.ajax({
+                type: 'POST',
+                url: '../../../view/student/modelQuiz/loadQuestions.php',
+                data: formData,
+                success: function(response) {
+                    // $('#myForm')[0].reset(); // Reset the form
+                },
+                error: function(xhr, status, error) {
+                    // Handle errors here
+                    console.log(error);
+                }
+            });
+        });
+    });
+    </script>
+
+
+
 
 
 </head>
@@ -39,23 +68,15 @@ Authorization::authorizingStudent();
 
 //Set Question Number
 $questionNumber = (int) $_GET['n'];
-$_SESSION['topicId'] = 2;
+// Get the session array
+$rows = $_SESSION['model_question_array'];
 
+// if($questionNumber == 1){
+$questions =  $rows[$questionNumber-1];
+// }else{
+// $questions =  $rows[$_SESSION['questionNo'] - 1];
+// }
 
-$modelQuizController = new ModelQuizController();
-$result = $modelQuizController->getModelQuizQuestions($_SESSION['topicId']);
-
-// Initialize an empty array to store the query result
-$rows = array();
-
-// Fetch each row from the result set and add it to the array
-while ($row = mysqli_fetch_assoc($result)) {
-    $rows[] = $row;
-}
-
-$_SESSION['model_question_array'] = $rows;
-
-$questions = $result->fetch_assoc();
 
 ?>
 
@@ -87,7 +108,7 @@ $questions = $result->fetch_assoc();
                 <p class="quiz-question"><?php echo $questions['question']; ?></p>
             </div>
 
-            <form id="model-quiz-form" action="../../../view/student/modelQuiz/loadQuestions.php" method="post">
+            <form id="model-quiz-form" method="post">
 
                 <ul class="option-container choices">
 
@@ -132,8 +153,8 @@ $questions = $result->fetch_assoc();
             <div></div>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
+
+    <!-- <script>
     $(document).ready(function() {
         $('#model-quiz-form').submit(function(event) {
             event.preventDefault(); // prevent form from submitting
@@ -163,7 +184,7 @@ $questions = $result->fetch_assoc();
             });
         });
     });
-    </script>
+    </script> -->
 
 
 

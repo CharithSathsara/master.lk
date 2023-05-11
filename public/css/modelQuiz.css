@@ -70,6 +70,10 @@ body {
     display: none;
 }
 
+#model-quiz {
+    display: none;
+}
+
 .custom-box::before,
 .custom-box::after {
     content: '';

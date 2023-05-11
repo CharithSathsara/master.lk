@@ -91,7 +91,7 @@ include_once '../../../view/common/header.php';
 
     <?php 
     // Unset the session variable to destroy it
-    unset($_SESSION['modelQuizScore']); 
+    // unset($_SESSION['modelQuizScore']); 
     ?>
 </body>
 

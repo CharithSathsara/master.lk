@@ -42,14 +42,21 @@ if(!isset($_SESSION['modelQuizScore'])){
 $_SESSION['modelQuizScore'] = 0;
 }
 
+if(!isset($_SESSION['questionNo'])){
+    $_SESSION['questionNo'] = 1;
+    }
+
 if($_POST){
 $questionNumber = $_POST['questionNumber'];
 $selectedChoice = $_POST['choice'];
-$next = $questionNumber+1;
+$next = $_SESSION['questionNo']+1;
+
 
 // $modelQuizController = new ModelQuizController();
 // $questions = $modelQuizController->getModelQuizQuestions($_SESSION['topicId']);
-$questions = $_SESSION['model_question_array'];
+$rows = $_SESSION['model_question_array'];
+
+$questions =  $rows[$_SESSION['questionNo']-1];
 
 
 $correctChoice = $questions['correctAnswer'];
@@ -66,7 +73,20 @@ header("Location: modelQuizResult.php");
 exit();
 }
 else{
-    header("Location: modelQuizStarted.php?n=".$next);
+?>
+    <script>
+    $.ajax({
+        url: "modelQuizStarted.php",
+        type: "GET",
+        success: function() {
+            window.location.href = "modelQuizStarted.php";
+        }
+    });
+    </script>
+
+
+
+    <?php
 }
 
 }
