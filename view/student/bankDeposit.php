@@ -150,6 +150,7 @@ $viewCartController = new viewCartController();
                          <div id="slip-upload-error">
                              <?php include "../../controller/authController/message.php"?>
                          </div>
+                         <input type="text" name="totalAmount" value=<?php echo $totalPrice ?> hidden>
                         <button type="submit" name="slip-upload-submit" id="slip-upload-submit">Upload</button>
                     </form>
                 </div>

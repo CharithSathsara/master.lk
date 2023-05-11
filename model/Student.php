@@ -83,11 +83,11 @@ class Student {
         }
     }
 
-    public static function slipUpload($connection, $slipContent, $studentId){
+    public static function slipUpload($connection, $amount, $slipContent, $studentId){
 
         try {
 
-            $queryToPayment = "INSERT INTO payment (`date`, `paymentType`, `studentId`) VALUES (NOW(), 'SLIP', $studentId)";
+            $queryToPayment = "INSERT INTO payment (`amount`, `date`, `paymentType`, `studentId`) VALUES ($amount, NOW(), 'SLIP', $studentId)";
             $response = $connection->query($queryToPayment);
 
             if($response){

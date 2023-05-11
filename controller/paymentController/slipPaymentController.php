@@ -15,7 +15,7 @@ if(isset($_POST["slip-upload-submit"])){
 
         if (!empty($db_connection)) {
 
-            $isUploadSuccess = Student::slipUpload($db_connection->getConnection(),$slipContent, $_SESSION['auth_user']['userId']);
+            $isUploadSuccess = Student::slipUpload($db_connection->getConnection(),$_POST["totalAmount"], $slipContent, $_SESSION['auth_user']['userId']);
 
             unset($_POST["slip-upload-submit"]);
             if($isUploadSuccess){
