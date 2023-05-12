@@ -29,6 +29,20 @@
     include_once ('../../model/Subject.php');
     include_once ('../../model/Teacher.php');
     include_once('../common/header.php');
+
+    
+    $_SESSION['adminNavItems-dashboard'] = array();
+    array_push($_SESSION['adminNavItems-dashboard'], 'adminDashboard.php');
+
+    $_SESSION['adminNavItems-payments'] = array();
+    array_push($_SESSION['adminNavItems-payments'], 'paymentVerification.php', 'slipImage.php');
+
+    $_SESSION['adminNavItems-systemInfo'] = array();
+    array_push($_SESSION['adminNavItems-systemInfo'], 'systemInformation.php');
+
+    $_SESSION['adminNavItems-profile'] = array();
+    array_push($_SESSION['adminNavItems-profile'], 'profile.php');
+
     include_once('../common/navBar-Admin.php');
     ?>
 

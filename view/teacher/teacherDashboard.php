@@ -30,6 +30,25 @@ Authorization::authorizingTeacher();
 
 include_once '../common/header.php';
 
+$_SESSION['teacherNavItems-dashboard'] = array();
+array_push($_SESSION['teacherNavItems-dashboard'], 'teacherDashboard.php', 'addQuestion.php', 'viewPhysicsModelQuestions.php','viewPhysicsPastQuestions.php',
+'viewChemistryModelQuestions.php','viewChemistryPastQuestions.php');
+
+$_SESSION['teacherNavItems-quizDetails'] = array();
+array_push($_SESSION['teacherNavItems-quizDetails'], 'viewQuizDetails.php');
+
+$_SESSION['teacherNavItems-studentDetails'] = array();
+array_push($_SESSION['teacherNavItems-studentDetails'], 'viewStudentDetails.php');
+
+$_SESSION['teacherNavItems-qaForum'] = array();
+array_push($_SESSION['teacherNavItems-qaForum'], 'forum_teacher.php');
+
+$_SESSION['teacherNavItems-feedbacks'] = array();
+array_push($_SESSION['teacherNavItems-feedbacks'], 'viewFeedbacks.php');
+
+$_SESSION['teacherNavItems-profile'] = array();
+array_push($_SESSION['teacherNavItems-profile'], 'profile.php');
+
 ?>
 
 <div class="content">
