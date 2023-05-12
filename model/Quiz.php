@@ -7,6 +7,7 @@ class Quiz
      * Author:
      * @author Charith Sathsara
      */
+
     public static function getNoOfAttendees($connection)
     {
 
@@ -79,6 +80,30 @@ class Quiz
     }
 
     public static function getModelQuizQuestions($topicId, $connection)
+    {
+
+        $sql = "SELECT * FROM question WHERE topicId = '$topicId' AND questionType = 'MODELQUESTION' ORDER BY RAND() LIMIT 10";
+        $result = mysqli_query($connection, $sql);
+
+        if (mysqli_num_rows($result) > 0) {
+            // Create an empty array to store the data
+            // $questions = $result->fetch_assoc();
+
+            // Initialize an empty array to store the query result
+            $rows = array();
+
+            // Fetch each row from the result set and add it to the array
+            while ($row = mysqli_fetch_assoc($result)) {
+                $rows[] = $row;
+            }
+
+            $_SESSION['model_question_array'] = $rows;
+
+            return $result;
+        }
+    }
+
+    public static function setUserModelQuizChoices($selectedChoice, $connection)
     {
 
         $sql = "SELECT * FROM question WHERE topicId = '$topicId' AND questionType = 'MODELQUESTION' ORDER BY RAND() LIMIT 10";

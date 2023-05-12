@@ -154,11 +154,7 @@
         $selectedChoice = array($selectedChoice1, $selectedChoice2, $selectedChoice3, $selectedChoice4, $selectedChoice5, $selectedChoice6, $selectedChoice7, $selectedChoice8, $selectedChoice9, $selectedChoice10);
         $_SESSION['selectedAnsArray'] = $selectedChoice;
         //check wheather array is empty
-        if (empty($_SESSION['selectedAnsArray'])) {
-            echo "The session array is empty";
-        } else {
-            echo "The session array is not empty";
-        }
+
 
 
         // $modelQuizController = new ModelQuizController();
