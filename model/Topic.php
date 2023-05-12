@@ -90,6 +90,21 @@ class Topic {
 
     }
 
+    public static function getTopicTitle($connection,$topicId){
+
+        $query = "SELECT topicTitle FROM topic WHERE topicId = '$topicId'";
+
+        $topic = $connection->query($query);
+
+        $topicTitle = $topic->fetch_assoc();
+
+        if($topicTitle){
+            return $topicTitle['topicTitle'];
+        }else{
+            return false;
+        }
+    }
+
 
 
 }

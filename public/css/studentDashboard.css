@@ -169,9 +169,16 @@
     grid-column-gap: 35px;
 }
 
-#BadgePicture{
-    width: 250px;
-    height: 250px;
+.BadgePicture{
+    width: 200px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.BadgePicture img{
+    width: 150px;
 }
 
 #rec-container{
@@ -651,6 +658,44 @@ select {
 #buy-btn:hover{
     background-color: #f49f0a;
     color: black;
+}
+
+.main-detailOneDiv{
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 14;
+    display: none;
+    justify-content: center;
+}
+
+.first-badgeDetails{
+    height: 500px;
+    width: 700px;
+    background-color: white;
+    /*padding: 20px;*/
+    border-radius: 10px;
+    /*position: fixed;*/
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.main-detailOneDiv .header-firstBadge{
+    height: 50px;
+    /*background-color: #0b2e5e;*/
+}
+
+.main-detailOneDiv .header-firstBadge img{
+    width: 35px;
+    height: 35px;
+}
+
+.first-physicsTopic{
+    background-color: #F4C430;
 }
 
 

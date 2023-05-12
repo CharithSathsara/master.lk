@@ -359,17 +359,188 @@ $timeUsageController = new timeUsageController();
 
             <br><br>
 
-            <!-- Badges Section -->
+   <!-- Badges Section -->
 
             <b><p class="sub-title">Badges&nbsp;&nbsp;&nbsp;</p></b>
 
             <div id="badge-container">
-            <div class="show-badges">
-               <?php
-                   $userId =  $_SESSION['auth_user']['userId'];
-                   $details = $badgeController->getAllDetails($userId);
-               ?>
-           </div>
+                <div class="show-badges">
+                   <?php
+                       $userId =  $_SESSION['auth_user']['userId'];
+                       $details = $badgeController->getAllTopicId();
+
+                   $_SESSION['topicId'] = array();
+                   $physicsTopicOne = array();
+                   $ChemistryTopicOne = array();
+                   $loopCount = 0;
+                       foreach ($details as $detail){
+                           $_SESSION['topicId'][]= $detail['topicId'];
+                           }
+
+                   $arrayLength = count($_SESSION['topicId']);
+
+                   for ($i=0 ; $i < $arrayLength;$i++){
+
+                       $StudentsId = $badgeController->getThreeStudents($_SESSION['topicId'][$i]);
+
+                       $lengthOfStudent = mysqli_num_rows($StudentsId);
+
+                       if($lengthOfStudent == 1){
+                            $studentId = mysqli_fetch_assoc($StudentsId);
+
+                           if($studentId['studentId'] == $userId){
+                               $subjectId = $badgeController->getSubjectId($_SESSION['topicId'][$i]);
+
+                               if($subjectId == 1){
+                                   $physicsTopicOne[] = $_SESSION['topicId'][$i];
+                                   echo "<div class='BadgePicture'>";
+                                       echo  $badgeController->getBadge(1,$subjectId);
+                                       echo $badgeController->getTopic($_SESSION['topicId'][$i]);
+                                   echo "</div>";
+
+                               }else if($subjectId == 2){
+                                   $ChemistryTopicOne[] = $_SESSION['topicId'][$i];
+                                   echo "<div class='BadgePicture'>";
+                                       echo $badgeController->getBadge(1,$subjectId);
+                                       echo $badgeController->getTopic($_SESSION['topicId'][$i]);
+                                   echo "</div>";
+
+                               }
+                           }
+
+                       }else if($lengthOfStudent == 2){
+
+                           for($j=0 ; $j < $lengthOfStudent; $j++){
+
+                               $studentId = mysqli_fetch_assoc($StudentsId);
+
+                               if($studentId['studentId'] == $userId){
+                                   $subjectId = $badgeController->getSubjectId($_SESSION['topicId'][$i]);
+
+                                   if($subjectId == 1){
+                                       if($i == 0){
+                                           $physicsTopicOne[] = $_SESSION['topicId'][$i];
+                                       }
+
+                                       echo "<div class='BadgePicture'>";
+                                           echo  $badgeController->getBadge($j+1,$subjectId);
+                                           echo $badgeController->getTopic($_SESSION['topicId'][$i]);
+                                       echo "</div>";
+
+                                   }else if($subjectId == 2){
+                                       if($i == 0){
+                                           $ChemistryTopicOne[] = $_SESSION['topicId'][$i];
+                                       }
+
+                                       echo "<div class='BadgePicture'>";
+                                           echo $badgeController->getBadge($j+1,$subjectId);
+                                           echo $badgeController->getTopic($_SESSION['topicId'][$i]);
+                                       echo "</div>";
+
+                                   }
+                               }
+                           }
+                       }else if($lengthOfStudent == 3){
+
+                           for($j=0 ; $j < $lengthOfStudent; $j++){
+
+                               $studentId = mysqli_fetch_assoc($StudentsId);
+
+                               if($studentId['studentId'] == $userId){
+                                   $subjectId = $badgeController->getSubjectId($_SESSION['topicId'][$i]);
+
+                                   if($subjectId == 1){
+                                       if($i == 0){
+                                           $physicsTopicOne[] = $_SESSION['topicId'][$i];
+                                       }
+
+                                       echo "<div class='BadgePicture'>";
+                                       echo  $badgeController->getBadge($j+1,$subjectId);
+                                       echo $badgeController->getTopic($_SESSION['topicId'][$i]);
+                                       echo "</div>";
+
+                                   }else if($subjectId == 2){
+                                       if($i == 0){
+                                           $ChemistryTopicOne[] = $_SESSION['topicId'][$i];
+                                       }
+
+                                       echo "<div class='BadgePicture'>";
+                                       echo $badgeController->getBadge($j+1,$subjectId);
+                                       echo $badgeController->getTopic($_SESSION['topicId'][$i]);
+                                       echo "</div>";
+
+                                   }
+                               }
+                           }
+                       }
+                   }
+
+                   $physicsArrayCount = count($physicsTopicOne);
+                   $chemistryArrayCount = count($ChemistryTopicOne);
+
+                   if(count($physicsTopicOne) >= 2 && count($ChemistryTopicOne) >= 2){
+                       echo "<div class='BadgePicture'>";
+                       ?>
+                       <button onclick="openDescriptionOne()"><?php $badgeController->specialOne() ?></button>
+                    <?php
+                       echo "</div>";
+
+                   }
+
+                   if(count($physicsTopicOne) >= 3){
+                       echo "<div class='BadgePicture'>";
+                       $badgeController->specialTwo();
+                       echo "</div>";
+                   }
+                   if(count($physicsTopicOne) >= 3){
+                       echo "<div class='BadgePicture'>";
+                       $badgeController->specialTwo();
+                       echo "</div>";
+                   }
+
+////      show badge details
+            ?>
+                    <div class="main-detailOneDiv">
+                        <div class="first-badgeDetails">
+                            <div class="header-firstBadge">
+                                <button id="detailOneDiv-close"><img src="../../public/img/close.png"></button>
+                            </div>
+
+                            <div class="first-physicsTopic">
+                                <?php
+                                    for ($k=0 ; $k < $physicsArrayCount; $k++){
+                                        echo $badgeController->getTopic($physicsTopicOne[$k]);
+                                        echo "<br>";
+                                    }
+                                ?>
+                            </div>
+
+                            <div class="first-chemistryTopic">
+                                <?php
+                                for ($k=0 ; $k < $chemistryArrayCount; $k++){
+                                    echo $badgeController->getTopic($ChemistryTopicOne[$k]);
+                                    echo "<br>";
+                                }
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+                        <script>
+                            function openDescriptionOne(){
+                                document.querySelector('.main-detailOneDiv').style.display='block';
+
+                                document.getElementById('detailOneDiv-close').addEventListener('click',function (){
+                                    document.querySelector('.main-detailOneDiv').style.display='none';
+                                });
+                            }
+                        </script>
+
+                </div>
             </div>
 
             <br><br>

@@ -50,6 +50,33 @@ class Cart{
 
     }
 
+    public static function viewCartSubject($connection,$userId){
+
+
+        $query1 = "SELECT * FROM cart WHERE studentId='$userId' limit 1";
+        $result = $connection->query($query1);
+
+        if($result && mysqli_num_rows($result) > 0){
+
+            $data_set1 = $result->fetch_assoc();
+            $cartId = $data_set1['cartId'];
+
+            $query2 = "SELECT * FROM cart_subject WHERE cartId='$cartId'";
+            $result2 = $connection->query($query2);
+
+            if($result2 && mysqli_num_rows($result2) > 0){
+
+                return $result2;
+
+            }else{
+                return false;
+            }
+        }else{
+            return false;
+        }
+
+    }
+
     public static function existsInCart($connection,$subject){
 
         $userId = $_SESSION['auth_user']['userId'];
@@ -83,6 +110,19 @@ class Cart{
             return false;
         }
 
+    }
+
+    public static function getCardId($connection,$userId){
+
+        $query = "SELECT cartId FROM cart WHERE studentId = '$userId' LIMIT 1";
+
+        $result = $connection->query($query);
+
+        if($result){
+            return $result;
+        }else{
+            return false;
+        }
     }
 
 

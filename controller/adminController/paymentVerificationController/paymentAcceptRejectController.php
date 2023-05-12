@@ -6,6 +6,7 @@ $currentDir = __DIR__;
 include_once $currentDir.'\..\..\..\config\app.php';
 include_once $currentDir.'\..\..\..\model\slipPayment.php';
 include_once $currentDir.'\..\..\..\model\Student.php';
+include_once $currentDir.'\..\..\..\model\Cart.php';
 
 // for Accept payment slip
     if(isset($_POST['yesButton-pop'])){
@@ -48,7 +49,25 @@ include_once $currentDir.'\..\..\..\model\Student.php';
 
         $data = slipPayment::acceptPaymentSlip($paymentId,$db_connection->getConnection());
 
-        if($data){
+        if ($data){
+
+            $subjects = Cart::viewCartSubject($db_connection->getConnection(),$studentId);
+
+            if($subjects){
+                foreach ($subjects as $subject){
+                    Student::giveSubjectAccess($db_connection->getConnection(),$studentId,$subject['subjectId']);
+                }
+
+                $cardIdSet = Cart::getCardId($db_connection->getConnection(),$studentId);
+                $Id = $cardIdSet->fetch_assoc();
+                $cardId = $Id['cartId'];
+
+                $data1 = Student::clearCart($db_connection->getConnection(),$cardId );
+            }
+
+        }
+
+        if($data1){
 
             mail($to,$mail_subject,$mail_body,$header);
             header('Location: ../../../view/admin/payment/paymentVerification.php');

@@ -183,4 +183,19 @@ class Subject {
             return false;
         }
     }
+
+    public static function getSubjectPriceUsingId($connection,$subjectId){
+
+        $query = "SELECT price FROM subject WHERE subjectId = '$subjectId'";
+
+        $PriceList = $connection->query($query);
+
+        $price = $PriceList->fetch_assoc();
+
+        if($price){
+            return $price['price'];
+        }else{
+            return false;
+        }
+    }
 }

@@ -208,6 +208,51 @@ class Student {
         }
     }
 
+    public static function giveSubjectAccess($connection, $studentId, $subjectId){
+
+        try {
+            $currentDate = date('Y-m-d');
+            $query = "INSERT INTO `student_subject` (`studentId`, `subjectId`, `startDate`) VALUES ($studentId, $subjectId, '$currentDate')";
+
+            $data = $connection->query($query);
+
+            if($data){
+                return true;
+            }else{
+                throw new Exception("Error: Unable to give subject access");
+            }
+
+        } catch(Exception $e) {
+            $errorMessage = "An error occurred while giving subject access: " . $e->getMessage();
+            echo '<script>console.error("' . $errorMessage . '")</script>';
+            return false;
+        }
+
+    }
+
+    public static function clearCart($connection, $cartId){
+
+        try {
+
+            $query = "DELETE FROM `cart` WHERE cartId = '$cartId'";
+
+            $data = $connection->query($query);
+
+            if($data){
+                return true;
+            }else{
+                throw new Exception("Error: Unable to clear cart");
+            }
+
+        } catch(Exception $e) {
+            $errorMessage = "An error occurred while clearing student cart : " . $e->getMessage();
+            echo '<script>console.error("' . $errorMessage . '")</script>';
+            return false;
+        }
+
+    }
+
+
     // get student email
 
     public  static function getStudentEmail($connection,$userId){

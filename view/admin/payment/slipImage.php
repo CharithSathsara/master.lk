@@ -27,6 +27,8 @@
             include_once ('../../../controller/adminController/paymentVerificationController/paymentVerifyController.php');
             include_once ('../../../model/slipPayment.php');
             include_once ('../../../model/Student.php');
+            include_once ('../../../model/Subject.php');
+            include_once ('../../../model/Cart.php');
             include_once('../../common/header.php');
             include_once('../../common/navBar-Admin.php');
     ?>
@@ -61,8 +63,20 @@
                                     $name = $object->getStudentName($userId);
                                     ?>
                                     <p>Student full name&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;<?php echo $name;?></p>
-                                    <p>Course amount&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;Rs. <?php echo $detail['amount'];?></p>
+                                    <p>Paid amount&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;Rs. <?php echo $detail['amount'];?></p>
                                     <p>Submit date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp;&nbsp;&nbsp;&nbsp; <?php echo $detail['date'];?></p>
+                                    <?php
+                                        $subjectsId = $object->getAllSubjectByCart($userId);
+                                    $toBePaid = 0;
+                                        if($subjectsId){
+                                            foreach ($subjectsId as $subjectId){
+
+                                                $toBePaid = $toBePaid + $object->getSubjectPrice($subjectId['subjectId']);
+                                            }
+                                        }
+                                    ?>
+                                    <p>To be Paid&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rs.  <?php echo $toBePaid;?></p>
+
                                 <?php }
                                 ?>
                             </div>
