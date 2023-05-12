@@ -82,7 +82,7 @@ $_SESSION['current-topic'] = $_GET['topic'];
                             // viewing options
 
                             if($type=='flip_cards'){
-                                include_once('./flipCards.php');
+                                include('./flipCards.php');
                             }
                         }
                     }else{
@@ -101,6 +101,6 @@ $_SESSION['current-topic'] = $_GET['topic'];
 
 </div>
 
-
+<script src="../../public/js/flipCards.js"></script>
 </body>
 </html>

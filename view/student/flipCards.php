@@ -20,7 +20,7 @@ include_once('../../config/app.php');
 
 ?>
 
-<div id="main-container">
+<div class="main-container" onload="applyJsToDiv(this)">
     <div class="question-card">
         <?php
             echo "
@@ -71,6 +71,12 @@ include_once('../../config/app.php');
     
 </div>
 
-<script src="../../public/js/flipCards.js"></script>
+<?php
+// require_once('../../public/js/flipCards.js');
+?>
+
+<!-- <script src="../../public/js/flipCards.js"></script> -->
+
+
 </body>
 </html>
