@@ -31,12 +31,12 @@
                 <div class="UpdateInstitute-form">
                     <form class="form-Update-institute" method="post" action="<?= base_url('controller/adminController/systemInformationController/updateInstituteController.php') ?>">
 
-                        <input type="text" id="updateInstitute-name" name="instituteName" value="&nbsp;&nbsp;<?= $_SESSION['institute']['name']; ?>" >
-                        <input type="email" id="updateInstitute-email" name="email" value="&nbsp;&nbsp;<?= $_SESSION['institute']['email']; ?>" >
-                        <input type="text" id="updateInstitute-number" name="Number" value="&nbsp;&nbsp;<?= $_SESSION['institute']['Number']; ?>"  >
-                        <input type="text" id="updateInstitute-fax" name="fax" value="&nbsp;&nbsp;<?= $_SESSION['institute']['fax']; ?>" >
-                        <input type="text" id="updateInstitute-address1" name="address01" value="&nbsp;&nbsp;<?= $_SESSION['institute']['address01']; ?>" >
-                        <input type="text" id="updateInstitute-address2" name="address02" value="&nbsp;&nbsp;<?= $_SESSION['institute']['address02']; ?>" >
+                        <input type="text" id="updateInstitute-name" name="instituteName" value="<?= $_SESSION['institute']['name']; ?>" >
+                        <input type="email" id="updateInstitute-email" name="email" value="<?= $_SESSION['institute']['email']; ?>" >
+                        <input type="text" id="updateInstitute-number" name="Number" value="<?= $_SESSION['institute']['Number']; ?>"  >
+                        <input type="text" id="updateInstitute-fax" name="fax" value="<?= $_SESSION['institute']['fax']; ?>" >
+                        <input type="text" id="updateInstitute-address1" name="address01" value="<?= $_SESSION['institute']['address01']; ?>" >
+                        <input type="text" id="updateInstitute-address2" name="address02" value="<?= $_SESSION['institute']['address02']; ?>" >
 
                         <div class="error-div">
                             <div class="error-message-Update-institute" id="error-message-Update-institute">

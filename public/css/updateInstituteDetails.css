@@ -50,14 +50,14 @@
     margin: 0 auto;
 }
 
-.form-Update-institute input[type='text'],input[type='email']{
+.form-Update-institute input[type='text'],.form-Update-institute input[type='email']{
     background-color: #D9D9D9;
     border: none;
     border-radius: 10px;
     width: 230px;
     height: 40px;
-    padding: 1px 0;
-    /*padding-left: 15px;*/
+    /*padding: 1px 0;*/
+    padding-left: 15px;
 }
 
 .form-Update-institute input[type='submit']{
