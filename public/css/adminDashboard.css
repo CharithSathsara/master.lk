@@ -790,6 +790,14 @@ textarea{
     padding-top: 10px;
 }
 
+.update-contentCreatorForm .UpdateContentCreator-form .Creator-userId{
+    display: none;
+}
+
+/*#content-userId{*/
+/*    display: none;*/
+/*}*/
+
 #select-subjectCreator{
     margin-top: -10px;
 }
@@ -919,6 +927,9 @@ textarea{
 }
 
 #Creator-userId{
+    display: none;
+}
+.UpdateTeach-form .teacher-username , .UpdateTeach-form .teacher-userId{
     display: none;
 }
 
