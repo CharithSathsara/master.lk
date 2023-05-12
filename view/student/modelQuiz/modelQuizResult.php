@@ -47,24 +47,125 @@
         $_SESSION['modelQuizScore'] = 0;
     }
 
+    if (!isset($_SESSION['modelQuizTotalCorrectAns'])) {
+        $_SESSION['modelQuizTotalCorrectAns'] = 0;
+    }
+
+    if (!isset($_SESSION['modelQuizWrongCorrectAns'])) {
+        $_SESSION['modelQuizTotalWrongAns'] = 0;
+    }
+
+    if (!isset($_SESSION['modelQuizPercentage'])) {
+        $_SESSION['modelQuizPercentage'] = 0;
+    }
+
+
 
     if (isset($_POST['submit'])) {
 
-        $selectedChoice1 = $_POST['choice1'];
-        $selectedChoice2 = $_POST['choice2'];
-        $selectedChoice3 = $_POST['choice3'];
-        $selectedChoice4 = $_POST['choice4'];
-        $selectedChoice5 = $_POST['choice5'];
-        $selectedChoice6 = $_POST['choice6'];
-        $selectedChoice7 = $_POST['choice7'];
-        $selectedChoice8 = $_POST['choice8'];
-        $selectedChoice9 = $_POST['choice9'];
-        $selectedChoice10 = $_POST['choice10'];
+        if (isset($_POST['choice1'])) {
+            $selectedChoice1 = $_POST['choice1'];
+        } else {
+            // Handle the case where 'choice1' is not set
+            $selectedChoice1 = 0;
+        }
+
+        if (isset($_POST['choice2'])) {
+            $selectedChoice2 = $_POST['choice2'];
+        } else {
+            // Handle the case where 'choice2' is not set
+            $selectedChoice2 = 0;
+        }
+
+
+        if (isset($_POST['choice3'])) {
+            $selectedChoice3 = $_POST['choice3'];
+        } else {
+            // Handle the case where 'choice3' is not set
+            $selectedChoice3 = 0;
+        }
+
+        if (isset($_POST['choice4'])) {
+            $selectedChoice4 = $_POST['choice4'];
+        } else {
+            // Handle the case where 'choice4' is not set
+            $selectedChoice4 = 0;
+        }
+
+        if (isset($_POST['choice5'])) {
+            $selectedChoice5 = $_POST['choice5'];
+        } else {
+            // Handle the case where 'choice5' is not set
+            $selectedChoice5 = 0;
+        }
+
+        if (isset($_POST['choice6'])) {
+            $selectedChoice6 = $_POST['choice6'];
+        } else {
+            // Handle the case where 'choice6' is not set
+            $selectedChoice6 = 0;
+        }
+
+        if (isset($_POST['choice7'])) {
+            $selectedChoice7 = $_POST['choice7'];
+        } else {
+            // Handle the case where 'choice7' is not set
+            $selectedChoice7 = 0;
+        }
+
+        if (isset($_POST['choice8'])) {
+            $selectedChoice8 = $_POST['choice8'];
+        } else {
+            // Handle the case where 'choice8' is not set
+            $selectedChoice8 = 0;
+        }
+
+        if (isset($_POST['choice9'])) {
+            $selectedChoice9 = $_POST['choice9'];
+        } else {
+            // Handle the case where 'choice9' is not set
+            $selectedChoice9 = 0;
+        }
+
+        if (isset($_POST['choice10'])) {
+            $selectedChoice10 = $_POST['choice10'];
+        } else {
+            // Handle the case where 'choice10' is not set
+            $selectedChoice10 = 0;
+        }
+
+
+
+
+
+
+
+        // $selectedChoice1 = $_POST['choice1'];
+        // $selectedChoice2 = $_POST['choice2'];
+        // $selectedChoice3 = $_POST['choice3'];
+        // $selectedChoice4 = $_POST['choice4'];
+        // $selectedChoice5 = $_POST['choice5'];
+        // $selectedChoice6 = $_POST['choice6'];
+        // $selectedChoice7 = $_POST['choice7'];
+        // $selectedChoice8 = $_POST['choice8'];
+        // $selectedChoice9 = $_POST['choice9'];
+        // $selectedChoice10 = $_POST['choice10'];
 
         $selectedChoice = array($selectedChoice1, $selectedChoice2, $selectedChoice3, $selectedChoice4, $selectedChoice5, $selectedChoice6, $selectedChoice7, $selectedChoice8, $selectedChoice9, $selectedChoice10);
+        $_SESSION['selectedAnsArray'] = $selectedChoice;
+        //check wheather array is empty
+        if (empty($_SESSION['selectedAnsArray'])) {
+            echo "The session array is empty";
+        } else {
+            echo "The session array is not empty";
+        }
+
+
         // $modelQuizController = new ModelQuizController();
         // $questions = $modelQuizController->getModelQuizQuestions($_SESSION['topicId']);
         $rows = $_SESSION['model_question_array'];
+
+
 
         //Get Correct Answer Array
         $correctChoice = array();
@@ -77,10 +178,14 @@
 
         //Compare selected and correct choice
         // compare the arrays
-        if (count($selectedChoice) == count($correctChoice) && array_diff($selectedChoice, $correctChoice) == array_diff($correctChoice, $selectedChoice)) {
-            // arrays are equal, increase score
-            $_SESSION['modelQuizScore'] += 1;
+        for ($i = 0; $i < count($selectedChoice); $i++) {
+            if ($selectedChoice[$i] === $correctChoice[$i]) {
+                $_SESSION['modelQuizScore'] += 1;
+            } else {
+                $_SESSION['modelQuizTotalWrongAns'] += 1;
+            }
         }
+        $_SESSION['modelQuizTotalCorrectAns'] = $_SESSION['modelQuizScore'];
 
         // if ($correctChoice == $selectedChoice) {
 
@@ -92,12 +197,8 @@
         //     exit();
         // } else {
 
-
-
-
-
-
-
+        //Percentage Score of the student
+        $_SESSION['modelQuizPercentage'] = ($_SESSION['modelQuizScore'] / 10) * 100;
     }
 
 
@@ -118,20 +219,17 @@
                             <td><span class="total-question">10</span></td>
                         </tr>
                         <tr>
-                            <td>Attempt</td>
-                            <td><span class="total-attempt">1</span></td>
-                        </tr>
-                        <tr>
                             <td>Total Correct</td>
-                            <td><span class="total-correct">1</span></td>
+                            <td><span class="total-correct"><?php echo $_SESSION['modelQuizTotalCorrectAns']; ?></span>
+                            </td>
                         </tr>
                         <tr>
                             <td>Total Wrong</td>
-                            <td><span class="total-wrong">1</span></td>
+                            <td><span class="total-wrong"><?php echo $_SESSION['modelQuizTotalWrongAns']; ?></span></td>
                         </tr>
                         <tr>
                             <td>Percentage</td>
-                            <td><span class="percentage">60.00%</span></td>
+                            <td><span class="percentage"><?php echo $_SESSION['modelQuizPercentage']; ?></span></td>
                         </tr>
                         <tr>
                             <td>Your Total Score</td>
@@ -153,7 +251,10 @@
 
     <?php
     // Unset the session variable to destroy it
-    // unset($_SESSION['modelQuizScore']); 
+    unset($_SESSION['modelQuizScore']);
+    unset($_SESSION['modelQuizPercentage']);
+    unset($_SESSION['modelQuizScore']);
+    unset($_SESSION['modelQuizScore']);
     ?>
 </body>
 

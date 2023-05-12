@@ -190,8 +190,8 @@ body {
 
 .quiz-box .option-container {
     list-style: none;
-    margin: 0px 0px 0px -40px;
-    width: 104%;
+    margin: 0px 0px 0px 0px;
+    width: 97%;
 }
 
 .quiz-option {

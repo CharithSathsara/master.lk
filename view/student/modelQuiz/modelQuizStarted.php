@@ -63,8 +63,8 @@
     //User Authorization
     Authorization::authorizingStudent();
 
-    // include_once '../../../view/common/header.php';
-    // @include '../../../view/common/navBar-Student.php';
+    include_once '../../../view/common/header.php';
+    @include '../../../view/common/navBar-Student.php';
 
     if (!isset($_SESSION['questionNo'])) {
         $_SESSION['questionNo'] = 1;
@@ -646,7 +646,7 @@
                         </ul>
 
                         <div class="question-btn">
-                            <button class="quiz-btn" id="next-quiz-btn" type="submit">Finish</button>
+                            <button class="quiz-btn" id="next-quiz-btn" name="submit" type="submit">Finish</button>
 
                         </div>
                         <input type="hidden" name="questionNumber" value="<?php echo $_SESSION['questionNo']; ?>" />
