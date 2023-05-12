@@ -395,14 +395,14 @@ $timeUsageController = new timeUsageController();
                                    $physicsTopicOne[] = $_SESSION['topicId'][$i];
                                    echo "<div class='BadgePicture'>";
                                        echo  $badgeController->getBadge(1,$subjectId);
-                                       echo $badgeController->getTopic($_SESSION['topicId'][$i]);
+                                       ?> <p class="topic-nameBadge"> <?php echo $badgeController->getTopic($_SESSION['topicId'][$i]); ?></p> <?php
                                    echo "</div>";
 
                                }else if($subjectId == 2){
                                    $ChemistryTopicOne[] = $_SESSION['topicId'][$i];
                                    echo "<div class='BadgePicture'>";
                                        echo $badgeController->getBadge(1,$subjectId);
-                                       echo $badgeController->getTopic($_SESSION['topicId'][$i]);
+                                   ?> <p class="topic-nameBadge"> <?php echo $badgeController->getTopic($_SESSION['topicId'][$i]); ?></p> <?php
                                    echo "</div>";
 
                                }
@@ -424,7 +424,7 @@ $timeUsageController = new timeUsageController();
 
                                        echo "<div class='BadgePicture'>";
                                            echo  $badgeController->getBadge($j+1,$subjectId);
-                                           echo $badgeController->getTopic($_SESSION['topicId'][$i]);
+                                       ?> <p class="topic-nameBadge"> <?php echo $badgeController->getTopic($_SESSION['topicId'][$i]); ?></p> <?php
                                        echo "</div>";
 
                                    }else if($subjectId == 2){
@@ -434,7 +434,7 @@ $timeUsageController = new timeUsageController();
 
                                        echo "<div class='BadgePicture'>";
                                            echo $badgeController->getBadge($j+1,$subjectId);
-                                           echo $badgeController->getTopic($_SESSION['topicId'][$i]);
+                                       ?> <p class="topic-nameBadge"> <?php echo $badgeController->getTopic($_SESSION['topicId'][$i]); ?></p> <?php
                                        echo "</div>";
 
                                    }
@@ -456,7 +456,7 @@ $timeUsageController = new timeUsageController();
 
                                        echo "<div class='BadgePicture'>";
                                        echo  $badgeController->getBadge($j+1,$subjectId);
-                                       echo $badgeController->getTopic($_SESSION['topicId'][$i]);
+                                       ?> <p class="topic-nameBadge"> <?php echo $badgeController->getTopic($_SESSION['topicId'][$i]); ?></p> <?php
                                        echo "</div>";
 
                                    }else if($subjectId == 2){
@@ -466,7 +466,7 @@ $timeUsageController = new timeUsageController();
 
                                        echo "<div class='BadgePicture'>";
                                        echo $badgeController->getBadge($j+1,$subjectId);
-                                       echo $badgeController->getTopic($_SESSION['topicId'][$i]);
+                                       ?> <p class="topic-nameBadge"> <?php echo $badgeController->getTopic($_SESSION['topicId'][$i]); ?></p> <?php
                                        echo "</div>";
 
                                    }
@@ -478,7 +478,7 @@ $timeUsageController = new timeUsageController();
                    $physicsArrayCount = count($physicsTopicOne);
                    $chemistryArrayCount = count($ChemistryTopicOne);
 
-                   if(count($physicsTopicOne) >= 2 && count($ChemistryTopicOne) >= 2){
+                   if(count($physicsTopicOne) >= 2 || count($ChemistryTopicOne) >= 2){
                        echo "<div class='BadgePicture'>";
                        ?>
                        <button onclick="openDescriptionOne()"><?php $badgeController->specialOne() ?></button>
@@ -487,52 +487,98 @@ $timeUsageController = new timeUsageController();
 
                    }
 
-                   if(count($physicsTopicOne) >= 3){
-                       echo "<div class='BadgePicture'>";
-                       $badgeController->specialTwo();
-                       echo "</div>";
-                   }
-                   if(count($physicsTopicOne) >= 3){
-                       echo "<div class='BadgePicture'>";
-                       $badgeController->specialTwo();
-                       echo "</div>";
-                   }
+//                   if(count($physicsTopicOne) >= 3){
+//                       echo "<div class='BadgePicture'>";
+//                       $badgeController->specialTwo();
+//                       echo "</div>";
+//                   }
+//                   if(count($physicsTopicOne) >= 3){
+//                       echo "<div class='BadgePicture'>";
+//                       $badgeController->specialTwo();
+//                       echo "</div>";
+//                   }
 
 ////      show badge details
             ?>
-                    <div class="main-detailOneDiv">
+
+                    <div class="main-detailOneDiv" id="main-detailOneDiv">
                         <div class="first-badgeDetails">
                             <div class="header-firstBadge">
                                 <button id="detailOneDiv-close"><img src="../../public/img/close.png"></button>
                             </div>
+                            <?php
 
-                            <div class="first-physicsTopic">
-                                <?php
-                                    for ($k=0 ; $k < $physicsArrayCount; $k++){
-                                        echo $badgeController->getTopic($physicsTopicOne[$k]);
-                                        echo "<br>";
-                                    }
-                                ?>
-                            </div>
+                                if($physicsArrayCount >=2 && $chemistryArrayCount >=2){ ?>
+                                    <div class="first-physicsTopic">
+                                        <P style="font-weight: bold; margin-top: 10px">Physics Topic</P>
+                                        <ul>
+                                            <?php
+                                            for ($k=0 ; $k < $physicsArrayCount; $k++){
+                                                echo "<li>";
+                                                echo $badgeController->getTopic($physicsTopicOne[$k]);
+                                                echo "</li>";
+                                            }
+                                            ?>
+                                        </ul>
+                                    </div>
+
+                                    <div class="first-chemistryTopic">
+                                        <P style="font-weight: bold ; margin-top: 10px">Chemistry Topic</P>
+                                        <ul>
+                                            <?php
+                                            for ($k=0 ; $k < $chemistryArrayCount; $k++){
+                                                echo "<li>";
+                                                echo $badgeController->getTopic($ChemistryTopicOne[$k]);
+                                                echo "</li>";
+                                            }
+                                            ?>
+                                        </ul>
+                                    </div>
+                                 <?php
+                                }else if($physicsArrayCount >= 2){ ?>
+
+                                    <div class="first-physicsTopic">
+                                        <P style="font-weight: bold ; margin-top: 10px">Physics Topic</P>
+                                        <ul>
+                                        <?php
+                                        for ($k=0 ; $k < $physicsArrayCount; $k++){
+                                            echo "<li>";
+                                            echo $badgeController->getTopic($physicsTopicOne[$k]);
+                                            echo "</li>";
+                                        }
+                                        ?>
+                                        </ul>
+                                    </div>
+                            <?php
+                            }else if($chemistryArrayCount >= 2){ ?>
 
                             <div class="first-chemistryTopic">
-                                <?php
-                                for ($k=0 ; $k < $chemistryArrayCount; $k++){
-                                    echo $badgeController->getTopic($ChemistryTopicOne[$k]);
-                                    echo "<br>";
-                                }
-                                ?>
+                                <P style="font-weight: bold ; margin-top: 10px">Chemistry Topic</P>
+                                <ul>
+                                    <?php
+                                    for ($k=0 ; $k < $chemistryArrayCount; $k++){
+                                        echo "<li>";
+                                        echo $badgeController->getTopic($ChemistryTopicOne[$k]);
+                                        echo "</li>";
+                                    }
+                                    ?>
+                                </ul>
                             </div>
+
+                            <?php
+                                }
+                            ?>
+
                         </div>
                     </div>
-
 
                 </div>
             </div>
 
                         <script>
                             function openDescriptionOne(){
-                                document.querySelector('.main-detailOneDiv').style.display='block';
+                                console.log(2);
+                                document.getElementById('main-detailOneDiv').style.display='block';
 
                                 document.getElementById('detailOneDiv-close').addEventListener('click',function (){
                                     document.querySelector('.main-detailOneDiv').style.display='none';
@@ -540,8 +586,7 @@ $timeUsageController = new timeUsageController();
                             }
                         </script>
 
-                </div>
-            </div>
+
 
             <br><br>
             

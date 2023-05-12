@@ -153,7 +153,8 @@
     margin-top:35px;
     min-height:350px;
     height: auto;
-    background-color:#EDECEC;
+    background-color:white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border-radius: 10px;
     width:97%;
 }
@@ -167,18 +168,22 @@
     display: flex;
     flex-wrap: wrap;
     grid-column-gap: 35px;
+    grid-row-gap: 15px;
 }
 
 .BadgePicture{
     width: 200px;
-    height: 150px;
+    height: 250px;
     display: flex;
     flex-direction: column;
     text-align: center;
+    /*background-color: #F4C430;*/
 }
 
 .BadgePicture img{
     width: 150px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #rec-container{
@@ -673,13 +678,14 @@ select {
 }
 
 .first-badgeDetails{
-    height: 500px;
-    width: 700px;
+    min-height: 200px;
+    width: 350px;
+    height: auto;
     background-color: white;
     /*padding: 20px;*/
     border-radius: 10px;
     /*position: fixed;*/
-    margin-top: 100px;
+    margin-top: 200px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -695,9 +701,21 @@ select {
 }
 
 .first-physicsTopic{
-    background-color: #F4C430;
+    /*background-color: #F4C430;*/
+    padding-left: 35px;
+    margin-bottom:10px ;
 }
 
+.topic-nameBadge{
+    font-weight: bold;
+    font-size: 14px;
+    /*margin-top: -15px;*/
+}
+
+#detailOneDiv-close{
+    margin-left: 300px;
+    margin-top: 15px;
+}
 
 
 
