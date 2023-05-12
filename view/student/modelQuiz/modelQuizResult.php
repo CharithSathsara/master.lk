@@ -19,27 +19,89 @@
 <body>
     <?php
 
-include('../../../controller/studentController/quizController/modelQuizController.php');
-include_once('../../../controller/authController/authentication/Authentication.php');
-include_once('../../../controller/authController/authorization/Authorization.php');
+    include('../../../controller/studentController/quizController/modelQuizController.php');
+    include_once('../../../controller/authController/authentication/Authentication.php');
+    include_once('../../../controller/authController/authorization/Authorization.php');
 
 
 
-//check user authenticated or not
-//$authentication = new Authentication();
-//$authentication->authorizingAdmin();
+    //check user authenticated or not
+    //$authentication = new Authentication();
+    //$authentication->authorizingAdmin();
 
-//User Authentication
-Authentication::userAuthentication();
-//User Authorization
-Authorization::authorizingStudent();
+    //User Authentication
+    Authentication::userAuthentication();
+    //User Authorization
+    Authorization::authorizingStudent();
 
 
 
-include_once '../../../view/common/header.php';
-@include '../../../view/common/navBar-Student.php';
+    include_once '../../../view/common/header.php';
+    @include '../../../view/common/navBar-Student.php';
 
-?>
+
+
+    $_SESSION['topicId'] = 2;
+
+    if (!isset($_SESSION['modelQuizScore'])) {
+        $_SESSION['modelQuizScore'] = 0;
+    }
+
+
+    if (isset($_POST['submit'])) {
+
+        $selectedChoice1 = $_POST['choice1'];
+        $selectedChoice2 = $_POST['choice2'];
+        $selectedChoice3 = $_POST['choice3'];
+        $selectedChoice4 = $_POST['choice4'];
+        $selectedChoice5 = $_POST['choice5'];
+        $selectedChoice6 = $_POST['choice6'];
+        $selectedChoice7 = $_POST['choice7'];
+        $selectedChoice8 = $_POST['choice8'];
+        $selectedChoice9 = $_POST['choice9'];
+        $selectedChoice10 = $_POST['choice10'];
+
+        $selectedChoice = array($selectedChoice1, $selectedChoice2, $selectedChoice3, $selectedChoice4, $selectedChoice5, $selectedChoice6, $selectedChoice7, $selectedChoice8, $selectedChoice9, $selectedChoice10);
+        // $modelQuizController = new ModelQuizController();
+        // $questions = $modelQuizController->getModelQuizQuestions($_SESSION['topicId']);
+        $rows = $_SESSION['model_question_array'];
+
+        //Get Correct Answer Array
+        $correctChoice = array();
+
+        foreach ($rows as $row) {
+            $correctChoice[] = $row['correctAnswer'];
+        }
+
+
+
+        //Compare selected and correct choice
+        // compare the arrays
+        if (count($selectedChoice) == count($correctChoice) && array_diff($selectedChoice, $correctChoice) == array_diff($correctChoice, $selectedChoice)) {
+            // arrays are equal, increase score
+            $_SESSION['modelQuizScore'] += 1;
+        }
+
+        // if ($correctChoice == $selectedChoice) {
+
+        // }
+
+        //Check Wheather It Reached Last Question
+        // if ($questionNumber == 3) {
+        //     header("Location: modelQuizResult.php");
+        //     exit();
+        // } else {
+
+
+
+
+
+
+
+    }
+
+
+    ?>
     <div class="content">
         <div class="container">
             <div class="modelQuiz-container">
@@ -73,7 +135,7 @@ include_once '../../../view/common/header.php';
                         </tr>
                         <tr>
                             <td>Your Total Score</td>
-                            <td><span class="total-score"><?php echo $_SESSION['modelQuizScore'];?>/10</span></td>
+                            <td><span class="total-score"><?php echo $_SESSION['modelQuizScore']; ?>/10</span></td>
                         </tr>
                     </table>
 
@@ -89,7 +151,7 @@ include_once '../../../view/common/header.php';
         </div>
     </div>
 
-    <?php 
+    <?php
     // Unset the session variable to destroy it
     // unset($_SESSION['modelQuizScore']); 
     ?>

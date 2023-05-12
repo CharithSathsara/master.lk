@@ -64,15 +64,60 @@ body {
     }
 } */
 
-
-
+/* .hide,
 .custom-box.hide {
     display: none;
+} */
+
+.home-box {
+    display: block;
 }
 
-#model-quiz {
+/* .quiz-box {
+    display: none;
+} */
+
+
+
+.model-quiz10 {
     display: none;
 }
+
+.model-quiz9 {
+    display: none;
+}
+
+.model-quiz8 {
+    display: none;
+}
+
+.model-quiz7 {
+    display: none;
+}
+
+.model-quiz6 {
+    display: none;
+}
+
+.model-quiz5 {
+    display: none;
+}
+
+.model-quiz4 {
+    display: none;
+}
+
+.model-quiz3 {
+    display: none;
+}
+
+.model-quiz2 {
+    display: none;
+}
+
+
+
+
 
 .custom-box::before,
 .custom-box::after {
@@ -145,6 +190,8 @@ body {
 
 .quiz-box .option-container {
     list-style: none;
+    margin: 0px 0px 0px -40px;
+    width: 104%;
 }
 
 .quiz-option {

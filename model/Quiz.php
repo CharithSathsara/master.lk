@@ -1,12 +1,14 @@
 <?php
 
-class Quiz {
+class Quiz
+{
 
     /**
      * Author:
      * @author Charith Sathsara
      */
-    public static function getNoOfAttendees($connection){
+    public static function getNoOfAttendees($connection)
+    {
 
         try {
 
@@ -14,21 +16,20 @@ class Quiz {
             $data = $connection->query($query);
             $attendees = $data->fetch_assoc();
 
-            if($attendees){
+            if ($attendees) {
                 return $attendees['studentCount'] + 1000;
-            }else{
+            } else {
                 throw new Exception("Error: No quiz details found");
             }
-
         } catch (Exception $e) {
             $errorMessage = "An error occurred while fetching no of attendees: " . $e->getMessage();
             echo '<script>console.error("' . $errorMessage . '")</script>';
             return false;
         }
-
     }
 
-    public static function getNoOfQuizAttendees($connection, $subject){
+    public static function getNoOfQuizAttendees($connection, $subject)
+    {
 
         try {
 
@@ -44,21 +45,20 @@ class Quiz {
             $data02 = $connection->query($query02);
             $attendeesCount = $data02->fetch_assoc();
 
-            if($attendeesCount){
+            if ($attendeesCount) {
                 return $attendeesCount['studentCount'] + 500;
-            }else{
+            } else {
                 throw new Exception("Error: No quiz details found");
             }
-
         } catch (Exception $e) {
             $errorMessage = "An error occurred while fetching quiz details : " . $e->getMessage();
             echo '<script>console.error("' . $errorMessage . '")</script>';
             return false;
         }
-
     }
 
-    public static function getALlQuizDetails($connection, $topic, $type){
+    public static function getALlQuizDetails($connection, $topic, $type)
+    {
 
         try {
 
@@ -66,45 +66,40 @@ class Quiz {
                       AND topicId = (SELECT topicId From topic WHERE topicTitle = '$topic')";
             $data = $connection->query($query);
 
-            if($data){
+            if ($data) {
                 return $data;
-            }else{
+            } else {
                 throw new Exception("Error: No quiz details found");
             }
-
         } catch (Exception $e) {
             $errorMessage = "An error occurred while fetching quiz details: " . $e->getMessage();
             echo '<script>console.error("' . $errorMessage . '")</script>';
             return false;
         }
-
     }
-    
-    public static function getModelQuizQuestions($topicId, $connection){
-    
-        $sql = "SELECT * FROM question WHERE topicId = '$topicId' AND questionType = 'MODELQUESTION' ORDER BY RAND() LIMIT 3";
+
+    public static function getModelQuizQuestions($topicId, $connection)
+    {
+
+        $sql = "SELECT * FROM question WHERE topicId = '$topicId' AND questionType = 'MODELQUESTION' ORDER BY RAND() LIMIT 10";
         $result = mysqli_query($connection, $sql);
-        
+
         if (mysqli_num_rows($result) > 0) {
             // Create an empty array to store the data
             // $questions = $result->fetch_assoc();
-            
+
             // Initialize an empty array to store the query result
             $rows = array();
-            
+
             // Fetch each row from the result set and add it to the array
             while ($row = mysqli_fetch_assoc($result)) {
                 $rows[] = $row;
             }
-            
-            $_SESSION['model_question_array'] = $rows;
-    
-            return $result;
-            
-        }
-        
-        
 
+            $_SESSION['model_question_array'] = $rows;
+
+            return $result;
+        }
     }
 
 
@@ -112,7 +107,8 @@ class Quiz {
 
     //Function to get all the quizzes done by the current user of the given type of the given lesson
 
-    public static function getQuizzesList($connection,$lesson,$topic,$type){
+    public static function getQuizzesList($connection, $lesson, $topic, $type)
+    {
 
         $userId = $_SESSION['auth_user']['userId'];
 
@@ -131,17 +127,17 @@ class Quiz {
                 ORDER BY quiz_details.quizId ASC";
         $result1 = $connection->query($query1);
 
-        if(mysqli_num_rows($result1)>0){
+        if (mysqli_num_rows($result1) > 0) {
             return $result1;
-        }else{
+        } else {
             return false;
         }
-
     }
 
     //Function to get the questions,answers and descriptions of the given quiz
 
-    public static function getQuestions($connection,$lesson,$topic,$type,$attempt){
+    public static function getQuestions($connection, $lesson, $topic, $type, $attempt)
+    {
 
         $userId = $_SESSION['auth_user']['userId'];
 
@@ -170,8 +166,8 @@ class Quiz {
 
         $answers = array();
 
-        for($i=1;$i<11;$i++){
-            $index = 'answer'.$i;
+        for ($i = 1; $i < 11; $i++) {
+            $index = 'answer' . $i;
             $answers[] = $data_set6[$index];
         }
 
@@ -185,8 +181,8 @@ class Quiz {
 
         $questionIdList = array();
 
-        for($i=1;$i<11;$i++){
-            $q = 'questionId'.$i;
+        for ($i = 1; $i < 11; $i++) {
+            $q = 'questionId' . $i;
             $questionIdList[] = $data_set4[$q];
         }
 
@@ -194,17 +190,11 @@ class Quiz {
 
         $query5 = "SELECT * FROM question WHERE questionId IN ($idList)";
         $result5 = $connection->query($query5);
-        
-        if($result5 && mysqli_num_rows($result5) > 0){
+
+        if ($result5 && mysqli_num_rows($result5) > 0) {
             return $result5;
-        }else{
+        } else {
             return false;
         }
-
     }
-
-
-       
-
-
 }
