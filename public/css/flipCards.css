@@ -1,3 +1,11 @@
+.main-container{
+   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 15px;
+    border-radius: 15px;
+    margin-bottom: 50px;
+    display: flow-root;
+}
+ 
  .cards-container{
     margin: 20px;
  }
@@ -85,4 +93,54 @@
  .question-card p{
     margin: 0;
  }
+
+ .button-container{
+   margin: 20px;
+}
  
+ .show-description-btn, .hide-description-btn{
+   border: solid 2px #f49f0a;
+   width: 48%;
+   margin: 0 20px 20px 0px;
+   border-radius: 10px;
+   padding: 10px 0 10px 0;
+   float: right;
+ }
+
+ .show-description-btn:hover{
+   background-color: #f49f0a;
+   color: white;
+ }
+
+ .hide-description-btn:hover{
+   background-color: #f49f0a;
+   color: white;
+ }
+
+ .show-answer-btn, .hide-answer-btn{
+   border: solid 2px #219ebc;
+   width: 48%;
+   margin: 0 20px 20px 0px;
+   border-radius: 10px;
+   padding: 10px 0 10px 0;
+   float: left;
+ }
+
+ .show-answer-btn:hover{
+   background-color: #219ebc;
+   color: white;
+ }
+
+ .hide-answer-btn:hover{
+   background-color: #219ebc;
+   color: white;
+ }
+
+ .description-container{
+   margin: 20px;
+    background-color: #edecec;
+    padding: 10px;
+    display: none;
+    border-radius: 15px;
+    width: 93.5%;
+ }

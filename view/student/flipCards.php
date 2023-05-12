@@ -20,7 +20,12 @@ include_once('../../config/app.php');
 
 ?>
 
+<!-- Main div which contains the gamified question -->
+
 <div class="main-container" onload="applyJsToDiv(this)">
+
+    <!-- Question Section -->
+
     <div class="question-card">
         <?php
             echo "
@@ -29,6 +34,9 @@ include_once('../../config/app.php');
             " ;
         ?>
     </div>
+
+    <!-- Answers Section -->
+
     <div class="cards-container">
         <?php 
         for($i=1;$i<=5;$i++) {
@@ -64,18 +72,25 @@ include_once('../../config/app.php');
         }
         ?>
     </div>
+
+    <!-- Buttons Section -->
+
     <div class="button-container">
         <button class='show-answer-btn'>Show Answer</button>
         <button class='show-description-btn'>Show Description</button>
     </div>
+
+    <!-- Description Section -->
+
+    <div class="description-container">
+        <?php
+            echo "
+            <p class='description-text'>".$description."</p>
+            ";
+        ?>
+    </div>
     
 </div>
-
-<?php
-// require_once('../../public/js/flipCards.js');
-?>
-
-<!-- <script src="../../public/js/flipCards.js"></script> -->
 
 
 </body>
