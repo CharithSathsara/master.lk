@@ -45,17 +45,19 @@ if(isset($_POST['UpdateInstitute-button'])){
         $_SESSION['Update-institute'] = "Institute fax is required";
 
         redirect("",'view/admin/systemInfo/systemInformation.php');
-    }else if(empty(trim(($address01)))){
-        unset($_POST['UpdateInstitute-button']);
-        $_SESSION['Update-institute'] = "Institute address 01 is required";
-
-        redirect("",'view/admin/systemInfo/systemInformation.php');
-    }else if(empty(trim(($address02)))){
-        unset($_POST['UpdateInstitute-button']);
-        $_SESSION['Update-institute'] = "Institute address 02 is required";
-
-        redirect("",'view/admin/systemInfo/systemInformation.php');
-    }else if(strlen($number)!= 10) {
+    }
+//    else if(empty(trim(($address01)))){
+//        unset($_POST['UpdateInstitute-button']);
+//        $_SESSION['Update-institute'] = "Institute address 01 is required";
+//
+//        redirect("",'view/admin/systemInfo/systemInformation.php');
+//    }else if(empty(trim(($address02)))){
+//        unset($_POST['UpdateInstitute-button']);
+//        $_SESSION['Update-institute'] = "Institute address 02 is required";
+//
+//        redirect("",'view/admin/systemInfo/systemInformation.php');
+//    }
+    else if(strlen($number)!= 10) {
         unset($_POST['UpdateInstitute-button']);
         $_SESSION['Update-institute'] = "should be include 10 numbers";
 

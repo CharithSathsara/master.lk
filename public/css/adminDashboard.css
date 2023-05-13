@@ -265,12 +265,12 @@ th{
 }
 .error-message-up-teacher{
     color: red;
-    margin-left: 150px;
+    /*margin-left: 50px;*/
     height: 20px;
     text-align: center;
     font-weight: bold;
-    margin-top: -35px;
-    margin-bottom: 5px;
+    margin-top: 70px;
+    margin-bottom: -90px;
     width: 300px;
 }
 
@@ -330,6 +330,7 @@ th{
     border: none;
     height: 40px;
     border-radius: 10px;
+    background-color: #edecec;
 }
 
 .sub-UpdateContent{
@@ -350,6 +351,7 @@ th{
     height:40px ;
     margin-left: 13%;
     border: none;
+    background-color: #edecec;
 }
 
 .UpdateTeach-form{
@@ -360,7 +362,7 @@ th{
     display: grid;
     grid-template-columns: 200px 200px;
     grid-row: auto auto;
-    grid-column-gap: 155px;
+    grid-column-gap: 160px;
     grid-row-gap: 20px;
     /*padding-left: 35px;*/
     padding-top: 10px;
@@ -382,7 +384,8 @@ input[type="email"],input[type="password"],input[type="text"],input[type="date"]
     padding:0 15px;
     border:none;
     border-radius: 10px;
-    background-color: rgba(117, 114, 114, 0.31);
+    /*background-color: rgba(117, 114, 114, 0.31);*/
+    background-color: #edecec;
 }
 textarea{
     width : 230px;
@@ -392,10 +395,13 @@ textarea{
     padding-left: 50px;
     border:none;
     border-radius: 6px;
-    background-color: rgba(117, 114, 114, 0.31);
+    /*background-color: rgba(117, 114, 114, 0.31);*/
+    background-color: #edecec;
+    resize: none;
 }
 
 .selectSub{
+    margin-top: 10px;
     text-align: center;
     margin-left: 0px;
     height: 100px;
@@ -444,8 +450,8 @@ textarea{
     background-color: rgba(33, 158, 188);
     color: white;
     border-radius: 10px;
-    margin-top: 20px;
-    margin-left: 34.5vw;
+    margin-top: 145px;
+    /*margin-left: 34.5vw;*/
 
 }
 
@@ -512,6 +518,7 @@ textarea{
 }
 #subject-teacher{
     width: 280px;
+    background-color: #edecec;
 }
 
 #label-selectUpdateTeacher{
@@ -789,6 +796,14 @@ textarea{
     padding-top: 10px;
 }
 
+.update-contentCreatorForm .UpdateContentCreator-form .Creator-userId{
+    display: none;
+}
+
+/*#content-userId{*/
+/*    display: none;*/
+/*}*/
+
 #select-subjectCreator{
     margin-top: -10px;
 }
@@ -913,7 +928,14 @@ textarea{
     display: none;
 }
 
+#teacher-username{
+    display: none;
+}
+
 #Creator-userId{
+    display: none;
+}
+.UpdateTeach-form .teacher-username , .UpdateTeach-form .teacher-userId{
     display: none;
 }
 
@@ -930,7 +952,7 @@ textarea{
 }
 
 .oneTeacherTile{
-    height: 375px;
+    height: 400px;
     background-color: #edecec;
     width: 32%;
     border-radius: 10px;
@@ -1013,6 +1035,13 @@ textarea{
     /*font-size: 14px;*/
     /*margin-left: 25px;*/
    margin-top: -25px;
+}
+#creatorViewSubject{
+    margin-top: 5px;
+}
+
+#teacherViewSubject{
+    margin-top: 5px;
 }
 
 #but-ContentCreator{

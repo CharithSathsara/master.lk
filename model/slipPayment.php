@@ -13,7 +13,7 @@ class slipPayment {
     }
 
     public static function getAllOwner($paymentId,$connection){
-            $query = "SELECT * FROM payment WHERE paymentId='$paymentId'";
+            $query = "SELECT * FROM payment WHERE paymentId='$paymentId'AND paymentType = 'SLIP'";
 
             $result = $connection->query($query);
 

@@ -66,5 +66,27 @@ class paymentVerifyController
             }
         }
 
+        public function getAllSubjectByCart($userId){
+
+            $subjects = Cart::viewCartSubject($this->connection,$userId);
+
+            if($subjects){
+                return $subjects;
+            }else{
+                return false;
+            }
+        }
+
+        public function getSubjectPrice($subjectId){
+
+            $price = Subject::getSubjectPriceUsingId($this->connection,$subjectId);
+
+            if ($price){
+                return $price;
+            }else{
+                return false;
+            }
+        }
+
     }
  ?>

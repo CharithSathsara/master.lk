@@ -310,4 +310,21 @@ class Teacher {
             return $result;
         }
     }
+
+    public static function addQualification($qualification ,$email, $connection){
+
+        $query1 = "SELECT userId FROM user WHERE email = '$email'";
+
+        $IdValue = $connection->query($query1);
+        $result = $IdValue -> fetch_assoc();
+
+        $teacherId = $result['userId'];
+
+        $query2 = "INSERT INTO tchqualification (teacherId,qualification) VALUES ('$teacherId','$qualification')";
+
+        $result2 = $connection->query($query2);
+        if($result2){
+            return $result2;
+        }
+    }
 }

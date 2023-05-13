@@ -5,6 +5,7 @@ $currentDir = __DIR__;
 include_once $currentDir.'\..\..\..\config\app.php';
 include_once $currentDir.'\..\..\..\model\Admin.php';
 include_once $currentDir.'\..\..\..\model\User.php';
+include_once $currentDir.'\..\..\..\model\Teacher.php';
 
 if(isset($_POST['addteacher-button'])) {
 
@@ -17,6 +18,16 @@ if(isset($_POST['addteacher-button'])) {
     $username = validateInput($db_connection->getConnection(), $_POST['username']);
     $subject = validateInput($db_connection->getConnection(), $_POST['subjects']);
     $qualification = validateInput($db_connection->getConnection(), $_POST['qualification']);
+
+//    $_SESSION['user']['firstName'] =$fname;
+//    $_SESSION['user']['lastName'] = $lname;
+//    $_SESSION['user']['addLine01'] = $address1;
+//    $_SESSION['user']['addLine02'] = $address2;
+//    $_SESSION['user']['mobile'] = $number;
+//    $_SESSION['user']['email'] = $email;
+//    $_SESSION['user']['username'] =$username;
+////    $_SESSION['user']['subject'] =$subject;
+//    $_SESSION['user']['qualification'] =$qualification;
 
 
 //    function is_email($email)
@@ -153,8 +164,13 @@ if(isset($_POST['addteacher-button'])) {
             $data = Admin::addTeacher($fname, $lname, $address1, $address2, $number, $email, $username, $password, $subject, $db_connection->getConnection());
 
 
-            $id = $_GET['id'];
+
+           // $id = $_GET['id'];
             if ($data) {
+                if(isset($_POST['qualification'])){
+                    $data1 = Teacher::addQualification($qualification,$email,$db_connection->getConnection());
+                }
+
                 mail($to, $mail_subject, $mail_body, $header);
                 header('Location: ../../../view/admin/adminDashboard.php');
             } else {

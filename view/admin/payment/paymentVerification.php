@@ -65,7 +65,7 @@
                         <tr>
                             <td class="td-1" id="user_fullName"><?= $name; ?></td>
                             <td class="td-2" id="user_fullName"><?= $user['date']; ?></td>
-                            <td> <a href="<?=base_url('view/admin/payment/slipImage.php?paymentId='.$slip['paymentId']) ?>"><button>View Slip</button></a> </td>
+                            <td> <a href="<?=base_url('view/admin/payment/slipImage.php?paymentId='.$slip['paymentId'].'&userId='.$user['studentId']) ?>"><button>View Slip</button></a> </td>
                         </tr>
                         <?php   } ?>
                  <?php   } ?>

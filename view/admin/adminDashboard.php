@@ -91,6 +91,7 @@
                                                 <p class="con-tea-info">Address 02 : <?= $teacher['addLine02'] ?></p><br>
                                                 <p class="con-tea-info">Email : <?= $teacher['email'] ; ?></p><br>
                                                 <p class="con-tea-info">Number : <?= $teacher['mobile']; ?></p>
+                                                <p class="con-tea-info" id="teacherViewSubject">Subject : <?= $subject ?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -144,7 +145,7 @@
                         foreach($contentCreators as $contentCreator){
 
                             $creatorId = $contentCreator['userId'];
-                            $subject = $adminDashboardController->getTeacherSubject($creatorId);
+                            $subject = $adminDashboardController->getContentCreatorSubject($creatorId);
                             ?>
                             <div class="oneTeacherTile">
                                 <div class="iconDiv">
@@ -168,6 +169,7 @@
                                         <p class="con-tea-info">Address 02 : <?= $contentCreator['addLine02'] ?></p><br>
                                         <p class="con-tea-info">Email : <?= $contentCreator['email'] ; ?></p><br>
                                         <p class="con-tea-info">Number : <?= $contentCreator['mobile']; ?></p>
+                                        <p class="con-tea-info" id="creatorViewSubject">Subject : <?= $subject ?></p>
                                     </div>
                                 </div>
                             </div>
@@ -245,6 +247,19 @@
 
     ?>
 
+<!--                unset all session-->
+
+                <?php
+                unset($_SESSION['user']['firstName']);
+                unset($_SESSION['user']['lastName']);
+                unset($_SESSION['user']['addLine01']);
+                unset($_SESSION['user']['addLine02']);
+                unset($_SESSION['user']['mobile']);
+                unset($_SESSION['user']['email']);
+                unset($_SESSION['user']['userId']);
+
+                
+                ?>
 
     </body>
 </html>
