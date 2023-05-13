@@ -375,11 +375,6 @@ $timeUsageController = new timeUsageController();
                            $ChemistryTopicOne = array();
                            $loopCount = 0;
 
-
-
-
-
-
                                foreach ($details as $detail){
                                    $_SESSION['topicId'][]= $detail['topicId'];
                                    }
@@ -482,33 +477,7 @@ $timeUsageController = new timeUsageController();
                                }
                            }
 
-//                           $physicsArrayCount = count($physicsTopicOne);
-//                           $chemistryArrayCount = count($ChemistryTopicOne);
-//
-//                           if(count($physicsTopicOne) >= 2 || count($ChemistryTopicOne) >= 2){
-//                               echo "<div class='BadgePicture'>";
-//                               ?>
-<!--                               <button onclick="openDescriptionOne()">--><?php //$badgeController->specialOne() ?><!--</button>-->
-<!--                            --><?php
-//                               echo "</div>";
-//
-//                           }
-
-        //                   if(count($physicsTopicOne) >= 3){
-        //                       echo "<div class='BadgePicture'>";
-        //                       $badgeController->specialTwo();
-        //                       echo "</div>";
-        //                   }
-        //                   if(count($physicsTopicOne) >= 3){
-        //                       echo "<div class='BadgePicture'>";
-        //                       $badgeController->specialTwo();
-        //                       echo "</div>";
-        //                   }
-
-
                          ?>
-
-
 
                     </div>
 
@@ -531,7 +500,7 @@ $timeUsageController = new timeUsageController();
                                 ?>
                                 <button onclick="openDescriptionOne()"><?php $badgeController->specialOne() ?></button>
                                 <?php
-                                   echo "</div>";
+                                echo "</div>";
 
                                }?>
 
@@ -572,38 +541,6 @@ $timeUsageController = new timeUsageController();
                                         </div>
                                         <?php
                                     }
-                                        //else if($physicsArrayCount >= 2){ ?>
-<!---->
-<!--                                        <div class="first-physicsTopic">-->
-<!--                                            <P style="font-weight: bold ; margin-top: 10px">Physics Topic</P>-->
-<!--                                            <ul>-->
-<!--                                                --><?php
-//                                                for ($k=0 ; $k < $physicsArrayCount; $k++){
-//                                                    echo "<li>";
-//                                                    echo $badgeController->getTopic($physicsTopicOne[$k]);
-//                                                    echo "</li>";
-//                                                }
-//                                                ?>
-<!--                                            </ul>-->
-<!--                                        </div>-->
-<!--                                        --><?php
-//                                    }else if($chemistryArrayCount >= 2){ ?>
-<!---->
-<!--                                        <div class="first-chemistryTopic">-->
-<!--                                            <P style="font-weight: bold ; margin-top: 10px">Chemistry Topic</P>-->
-<!--                                            <ul>-->
-<!--                                                --><?php
-//                                                for ($k=0 ; $k < $chemistryArrayCount; $k++){
-//                                                    echo "<li>";
-//                                                    echo $badgeController->getTopic($ChemistryTopicOne[$k]);
-//                                                    echo "</li>";
-//                                                }
-//                                                ?>
-<!--                                            </ul>-->
-<!--                                        </div>-->
-<!---->
-<!--                                        --><?php
-//                                    }
                                     ?>
 
                                 </div>
