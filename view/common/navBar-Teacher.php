@@ -152,5 +152,7 @@ else if (in_array($page_name, $_SESSION['teacherNavItems-profile'])){
             </ul>
         </div>
     </div>
+
+    <script src=<?= base_url('public/js/navBar.js') ?>></script>
 </body>
 </html>

@@ -103,7 +103,7 @@ else if (in_array($page_name, $_SESSION['ccNavItems-profile'])){
         </div>
     </div>
 
-    <!-- <script src="../../public/js/navBar.js"></script> -->
+    <script src=<?= base_url('public/js/navBar.js') ?>></script>
 
 </body>
 
