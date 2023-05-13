@@ -32,6 +32,23 @@
     border-bottom: 2px solid #D9D9D9;
     margin: auto;
 }
+.subTitle-Badge{
+    margin-top:30px;
+    display: flex;
+    flex-direction: row;
+}
+
+.subTitle-Badge:after {
+    content: "";
+    flex: 1 1;
+    border-bottom: 2px solid #D9D9D9;
+    margin: auto;
+}
+
+.subTitle-Badge{
+    color: #219ebc;
+}
+
 
 /* My Subjects Container */
 
@@ -159,16 +176,34 @@
     width:97%;
 }
 .show-badges{
-    width: 92%;
+    width: 96.5%;
     /*background-color: red;*/
     height: auto;
-    margin-right: auto;
-    margin-left: auto;
-    padding-top: 45px;
+    /*margin-right: auto;*/
+    /*margin-left: auto;*/
+    /*padding-top: 45px;*/
+    /*display: flex;*/
+    /*flex-wrap: wrap;*/
+    /*grid-column-gap: 25px;*/
+    /*grid-row-gap: 15px;*/
+    display: flex;
+    flex-direction: column;
+}
+
+.show-normalBadges{
+    height: auto;
+    /*margin-right: auto;*/
+    /*margin-left: auto;*/
+    padding-top: 30px;
     display: flex;
     flex-wrap: wrap;
-    grid-column-gap: 35px;
+    grid-column-gap: 25px;
     grid-row-gap: 15px;
+}
+
+.special-badge .specialBadge-header{
+    margin-top: -15px;
+    padding-left: 30px;
 }
 
 .BadgePicture{

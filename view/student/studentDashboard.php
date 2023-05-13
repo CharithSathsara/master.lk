@@ -365,210 +365,247 @@ $timeUsageController = new timeUsageController();
 
             <div id="badge-container">
                 <div class="show-badges">
-                   <?php
-                       $userId =  $_SESSION['auth_user']['userId'];
-                       $details = $badgeController->getAllTopicId();
+                    <div class="show-normalBadges">
+                           <?php
+                               $userId =  $_SESSION['auth_user']['userId'];
+                               $details = $badgeController->getAllTopicId();
 
-                   $_SESSION['topicId'] = array();
-                   $physicsTopicOne = array();
-                   $ChemistryTopicOne = array();
-                   $loopCount = 0;
-                       foreach ($details as $detail){
-                           $_SESSION['topicId'][]= $detail['topicId'];
-                           }
+                           $_SESSION['topicId'] = array();
+                           $physicsTopicOne = array();
+                           $ChemistryTopicOne = array();
+                           $loopCount = 0;
 
-                   $arrayLength = count($_SESSION['topicId']);
 
-                   for ($i=0 ; $i < $arrayLength;$i++){
 
-                       $StudentsId = $badgeController->getThreeStudents($_SESSION['topicId'][$i]);
 
-                       $lengthOfStudent = mysqli_num_rows($StudentsId);
 
-                       if($lengthOfStudent == 1){
-                            $studentId = mysqli_fetch_assoc($StudentsId);
 
-                           if($studentId['studentId'] == $userId){
-                               $subjectId = $badgeController->getSubjectId($_SESSION['topicId'][$i]);
+                               foreach ($details as $detail){
+                                   $_SESSION['topicId'][]= $detail['topicId'];
+                                   }
 
-                               if($subjectId == 1){
-                                   $physicsTopicOne[] = $_SESSION['topicId'][$i];
-                                   echo "<div class='BadgePicture'>";
-                                       echo  $badgeController->getBadge(1,$subjectId);
-                                       ?> <p class="topic-nameBadge"> <?php echo $badgeController->getTopic($_SESSION['topicId'][$i]); ?></p> <?php
-                                   echo "</div>";
+                           $arrayLength = count($_SESSION['topicId']);
 
-                               }else if($subjectId == 2){
-                                   $ChemistryTopicOne[] = $_SESSION['topicId'][$i];
-                                   echo "<div class='BadgePicture'>";
-                                       echo $badgeController->getBadge(1,$subjectId);
-                                   ?> <p class="topic-nameBadge"> <?php echo $badgeController->getTopic($_SESSION['topicId'][$i]); ?></p> <?php
-                                   echo "</div>";
+                           for ($i=0 ; $i < $arrayLength;$i++){
 
-                               }
-                           }
+                               $StudentsId = $badgeController->getThreeStudents($_SESSION['topicId'][$i]);
 
-                       }else if($lengthOfStudent == 2){
+                               $lengthOfStudent = mysqli_num_rows($StudentsId);
 
-                           for($j=0 ; $j < $lengthOfStudent; $j++){
+                               if($lengthOfStudent == 1){
+                                    $studentId = mysqli_fetch_assoc($StudentsId);
 
-                               $studentId = mysqli_fetch_assoc($StudentsId);
+                                   if($studentId['studentId'] == $userId){
+                                       $subjectId = $badgeController->getSubjectId($_SESSION['topicId'][$i]);
 
-                               if($studentId['studentId'] == $userId){
-                                   $subjectId = $badgeController->getSubjectId($_SESSION['topicId'][$i]);
-
-                                   if($subjectId == 1){
-                                       if($i == 0){
+                                       if($subjectId == 1){
                                            $physicsTopicOne[] = $_SESSION['topicId'][$i];
-                                       }
+                                           echo "<div class='BadgePicture'>";
+                                               echo  $badgeController->getBadge(1,$subjectId);
+                                               ?> <p class="topic-nameBadge"> <?php echo $badgeController->getTopic($_SESSION['topicId'][$i]); ?></p> <?php
+                                           echo "</div>";
 
-                                       echo "<div class='BadgePicture'>";
-                                           echo  $badgeController->getBadge($j+1,$subjectId);
-                                       ?> <p class="topic-nameBadge"> <?php echo $badgeController->getTopic($_SESSION['topicId'][$i]); ?></p> <?php
-                                       echo "</div>";
-
-                                   }else if($subjectId == 2){
-                                       if($i == 0){
+                                       }else if($subjectId == 2){
                                            $ChemistryTopicOne[] = $_SESSION['topicId'][$i];
+                                           echo "<div class='BadgePicture'>";
+                                               echo $badgeController->getBadge(1,$subjectId);
+                                           ?> <p class="topic-nameBadge"> <?php echo $badgeController->getTopic($_SESSION['topicId'][$i]); ?></p> <?php
+                                           echo "</div>";
+
                                        }
+                                   }
 
-                                       echo "<div class='BadgePicture'>";
-                                           echo $badgeController->getBadge($j+1,$subjectId);
-                                       ?> <p class="topic-nameBadge"> <?php echo $badgeController->getTopic($_SESSION['topicId'][$i]); ?></p> <?php
-                                       echo "</div>";
+                               }else if($lengthOfStudent == 2){
 
+                                   for($j=0 ; $j < $lengthOfStudent; $j++){
+
+                                       $studentId = mysqli_fetch_assoc($StudentsId);
+
+                                       if($studentId['studentId'] == $userId){
+                                           $subjectId = $badgeController->getSubjectId($_SESSION['topicId'][$i]);
+
+                                           if($subjectId == 1){
+                                               if($i == 0){
+                                                   $physicsTopicOne[] = $_SESSION['topicId'][$i];
+                                               }
+
+                                               echo "<div class='BadgePicture'>";
+                                                   echo  $badgeController->getBadge($j+1,$subjectId);
+                                               ?> <p class="topic-nameBadge"> <?php echo $badgeController->getTopic($_SESSION['topicId'][$i]); ?></p> <?php
+                                               echo "</div>";
+
+                                           }else if($subjectId == 2){
+                                               if($i == 0){
+                                                   $ChemistryTopicOne[] = $_SESSION['topicId'][$i];
+                                               }
+
+                                               echo "<div class='BadgePicture'>";
+                                                   echo $badgeController->getBadge($j+1,$subjectId);
+                                               ?> <p class="topic-nameBadge"> <?php echo $badgeController->getTopic($_SESSION['topicId'][$i]); ?></p> <?php
+                                               echo "</div>";
+
+                                           }
+                                       }
+                                   }
+                               }else if($lengthOfStudent == 3){
+
+                                   for($j=0 ; $j < $lengthOfStudent; $j++){
+
+                                       $studentId = mysqli_fetch_assoc($StudentsId);
+
+                                       if($studentId['studentId'] == $userId){
+                                           $subjectId = $badgeController->getSubjectId($_SESSION['topicId'][$i]);
+
+                                           if($subjectId == 1){
+                                               if($i == 0){
+                                                   $physicsTopicOne[] = $_SESSION['topicId'][$i];
+                                               }
+
+                                               echo "<div class='BadgePicture'>";
+                                               echo  $badgeController->getBadge($j+1,$subjectId);
+                                               ?> <p class="topic-nameBadge"> <?php echo $badgeController->getTopic($_SESSION['topicId'][$i]); ?></p> <?php
+                                               echo "</div>";
+
+                                           }else if($subjectId == 2){
+                                               if($i == 0){
+                                                   $ChemistryTopicOne[] = $_SESSION['topicId'][$i];
+                                               }
+
+                                               echo "<div class='BadgePicture'>";
+                                               echo $badgeController->getBadge($j+1,$subjectId);
+                                               ?> <p class="topic-nameBadge"> <?php echo $badgeController->getTopic($_SESSION['topicId'][$i]); ?></p> <?php
+                                               echo "</div>";
+
+                                           }
+                                       }
                                    }
                                }
                            }
-                       }else if($lengthOfStudent == 3){
 
-                           for($j=0 ; $j < $lengthOfStudent; $j++){
+//                           $physicsArrayCount = count($physicsTopicOne);
+//                           $chemistryArrayCount = count($ChemistryTopicOne);
+//
+//                           if(count($physicsTopicOne) >= 2 || count($ChemistryTopicOne) >= 2){
+//                               echo "<div class='BadgePicture'>";
+//                               ?>
+<!--                               <button onclick="openDescriptionOne()">--><?php //$badgeController->specialOne() ?><!--</button>-->
+<!--                            --><?php
+//                               echo "</div>";
+//
+//                           }
 
-                               $studentId = mysqli_fetch_assoc($StudentsId);
+        //                   if(count($physicsTopicOne) >= 3){
+        //                       echo "<div class='BadgePicture'>";
+        //                       $badgeController->specialTwo();
+        //                       echo "</div>";
+        //                   }
+        //                   if(count($physicsTopicOne) >= 3){
+        //                       echo "<div class='BadgePicture'>";
+        //                       $badgeController->specialTwo();
+        //                       echo "</div>";
+        //                   }
 
-                               if($studentId['studentId'] == $userId){
-                                   $subjectId = $badgeController->getSubjectId($_SESSION['topicId'][$i]);
 
-                                   if($subjectId == 1){
-                                       if($i == 0){
-                                           $physicsTopicOne[] = $_SESSION['topicId'][$i];
-                                       }
+                         ?>
 
-                                       echo "<div class='BadgePicture'>";
-                                       echo  $badgeController->getBadge($j+1,$subjectId);
-                                       ?> <p class="topic-nameBadge"> <?php echo $badgeController->getTopic($_SESSION['topicId'][$i]); ?></p> <?php
-                                       echo "</div>";
 
-                                   }else if($subjectId == 2){
-                                       if($i == 0){
-                                           $ChemistryTopicOne[] = $_SESSION['topicId'][$i];
-                                       }
 
-                                       echo "<div class='BadgePicture'>";
-                                       echo $badgeController->getBadge($j+1,$subjectId);
-                                       ?> <p class="topic-nameBadge"> <?php echo $badgeController->getTopic($_SESSION['topicId'][$i]); ?></p> <?php
-                                       echo "</div>";
+                    </div>
 
-                                   }
-                               }
-                           }
-                       }
-                   }
-
-                   $physicsArrayCount = count($physicsTopicOne);
-                   $chemistryArrayCount = count($ChemistryTopicOne);
-
-                   if(count($physicsTopicOne) >= 2 && count($ChemistryTopicOne) >= 2){
-                       echo "<div class='BadgePicture'>";
-                       ?>
-                       <button onclick="openDescriptionOne()"><?php $badgeController->specialOne() ?></button>
                     <?php
-                       echo "</div>";
 
-                   }
+                        $physicsArrayCount = count($physicsTopicOne);
+                        $chemistryArrayCount = count($ChemistryTopicOne);
 
-//                   if(count($physicsTopicOne) >= 3){
-//                       echo "<div class='BadgePicture'>";
-//                       $badgeController->specialTwo();
-//                       echo "</div>";
-//                   }
-//                   if(count($physicsTopicOne) >= 3){
-//                       echo "<div class='BadgePicture'>";
-//                       $badgeController->specialTwo();
-//                       echo "</div>";
-//                   }
-
-////      show badge details
-            ?>
-
-                    <div class="main-detailOneDiv" id="main-detailOneDiv">
-                        <div class="first-badgeDetails">
-                            <div class="header-firstBadge">
-                                <button id="detailOneDiv-close"><img src="../../public/img/close.png"></button>
-                            </div>
+                    if(count($physicsTopicOne) >= 2 && count($ChemistryTopicOne) >= 2){ ?>
+                    <div class="special-badge">
+                        <div class="specialBadge-header">
+                            <b><p class="subTitle-Badge">Special Badges&nbsp;&nbsp;&nbsp;</p></b>
+                        </div>
+                        <div>
                             <?php
 
-                                if($physicsArrayCount >=2 && $chemistryArrayCount >=2){ ?>
-                                    <div class="first-physicsTopic">
-                                        <P style="font-weight: bold; margin-top: 10px">Physics Topic</P>
-                                        <ul>
-                                            <?php
-                                            for ($k=0 ; $k < $physicsArrayCount; $k++){
-                                                echo "<li>";
-                                                echo $badgeController->getTopic($physicsTopicOne[$k]);
-                                                echo "</li>";
-                                            }
-                                            ?>
-                                        </ul>
-                                    </div>
 
-                                    <div class="first-chemistryTopic">
-                                        <P style="font-weight: bold ; margin-top: 10px">Chemistry Topic</P>
-                                        <ul>
-                                            <?php
-                                            for ($k=0 ; $k < $chemistryArrayCount; $k++){
-                                                echo "<li>";
-                                                echo $badgeController->getTopic($ChemistryTopicOne[$k]);
-                                                echo "</li>";
-                                            }
-                                            ?>
-                                        </ul>
-                                    </div>
-                                 <?php
-                                }else if($physicsArrayCount >= 2){ ?>
 
-                                    <div class="first-physicsTopic">
-                                        <P style="font-weight: bold ; margin-top: 10px">Physics Topic</P>
-                                        <ul>
-                                        <?php
-                                        for ($k=0 ; $k < $physicsArrayCount; $k++){
-                                            echo "<li>";
-                                            echo $badgeController->getTopic($physicsTopicOne[$k]);
-                                            echo "</li>";
-                                        }
-                                        ?>
-                                        </ul>
-                                    </div>
-                            <?php
-                            }else if($chemistryArrayCount >= 2){ ?>
+                            echo "<div class='BadgePicture'>";
+                                ?>
+                                <button onclick="openDescriptionOne()"><?php $badgeController->specialOne() ?></button>
+                                <?php
+                                   echo "</div>";
 
-                            <div class="first-chemistryTopic">
-                                <P style="font-weight: bold ; margin-top: 10px">Chemistry Topic</P>
-                                <ul>
+                               }?>
+
+<!--           show badge details-->
+                            <div class="main-detailOneDiv" id="main-detailOneDiv">
+                                <div class="first-badgeDetails">
+                                    <div class="header-firstBadge">
+                                        <button id="detailOneDiv-close"><img src="../../public/img/close.png"></button>
+                                    </div>
                                     <?php
-                                    for ($k=0 ; $k < $chemistryArrayCount; $k++){
-                                        echo "<li>";
-                                        echo $badgeController->getTopic($ChemistryTopicOne[$k]);
-                                        echo "</li>";
+
+                                    if($physicsArrayCount >=2 && $chemistryArrayCount >=2){ ?>
+                                        <div class="first-physicsTopic">
+                                            <P style="font-weight: bold; margin-top: 10px">Physics Topic</P>
+                                            <ul>
+                                                <?php
+                                                for ($k=0 ; $k < $physicsArrayCount; $k++){
+                                                    echo "<li>";
+                                                    echo $badgeController->getTopic($physicsTopicOne[$k]);
+                                                    echo "</li>";
+                                                }
+                                                ?>
+                                            </ul>
+                                        </div>
+
+                                        <div class="first-chemistryTopic">
+                                            <P style="font-weight: bold ; margin-top: 10px">Chemistry Topic</P>
+                                            <ul>
+                                                <?php
+                                                for ($k=0 ; $k < $chemistryArrayCount; $k++){
+                                                    echo "<li>";
+                                                    echo $badgeController->getTopic($ChemistryTopicOne[$k]);
+                                                    echo "</li>";
+                                                }
+                                                ?>
+                                            </ul>
+                                        </div>
+                                        <?php
+                                    }else if($physicsArrayCount >= 2){ ?>
+
+                                        <div class="first-physicsTopic">
+                                            <P style="font-weight: bold ; margin-top: 10px">Physics Topic</P>
+                                            <ul>
+                                                <?php
+                                                for ($k=0 ; $k < $physicsArrayCount; $k++){
+                                                    echo "<li>";
+                                                    echo $badgeController->getTopic($physicsTopicOne[$k]);
+                                                    echo "</li>";
+                                                }
+                                                ?>
+                                            </ul>
+                                        </div>
+                                        <?php
+                                    }else if($chemistryArrayCount >= 2){ ?>
+
+                                        <div class="first-chemistryTopic">
+                                            <P style="font-weight: bold ; margin-top: 10px">Chemistry Topic</P>
+                                            <ul>
+                                                <?php
+                                                for ($k=0 ; $k < $chemistryArrayCount; $k++){
+                                                    echo "<li>";
+                                                    echo $badgeController->getTopic($ChemistryTopicOne[$k]);
+                                                    echo "</li>";
+                                                }
+                                                ?>
+                                            </ul>
+                                        </div>
+
+                                        <?php
                                     }
                                     ?>
-                                </ul>
+
+                                </div>
                             </div>
-
-                            <?php
-                                }
-                            ?>
-
                         </div>
                     </div>
 
@@ -577,7 +614,7 @@ $timeUsageController = new timeUsageController();
 
                         <script>
                             function openDescriptionOne(){
-                                console.log(2);
+                                // console.log(2);
                                 document.getElementById('main-detailOneDiv').style.display='block';
 
                                 document.getElementById('detailOneDiv-close').addEventListener('click',function (){
