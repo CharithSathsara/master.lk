@@ -120,7 +120,8 @@
                             <p class="quiz-question"><?php echo $questions['question']; ?></p>
                         </div>
 
-                        <form id="model-quiz-form" method="post" action="modelQuizResult.php">
+                        <form id="model-quiz-form" method="post"
+                            action="../../../controller/studentController/quizController/modelQuizController.php">
 
                             <ul class="option-container choices">
 
@@ -645,6 +646,8 @@
 
                         </ul>
 
+
+
                         <div class="question-btn">
                             <button class="quiz-btn" id="next-quiz-btn" name="submit" type="submit">Finish</button>
 
@@ -755,6 +758,24 @@
         var div = document.querySelector('.model-quiz10'); // Get reference to the div element
         div.style.display = "block";
     }
+
+    // function finishModelQuiz() {
+    //     $.ajax({
+    //         url: '../../../view/student/modelQuiz/loadResult.php', // the URL of the server-side script that retrieves data from the database
+    //         type: 'GET',
+    //         // async: false,
+    //         success: function(data) {
+
+
+    //         },
+    //         error: function(xhr, status, error) {
+    //             // Handle any errors that occur
+    //             console.error(error);
+    //         }
+    //     });
+
+
+    // }
     </script>
 
 </body>

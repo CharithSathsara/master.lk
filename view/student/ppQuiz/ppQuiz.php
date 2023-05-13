@@ -6,22 +6,22 @@
     <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Past Paper Quiz</title>
-    <link rel="stylesheet" href="../../../public/css/modelQuiz.css">
+    <title>Model Quiz</title>
+    <link rel="stylesheet" href="../../../public/css/ppQuiz.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <!-- <script src="../../../public/js/modelQuiz.js"></script> -->
+    <!-- <script src="../../../public/js/ppQuiz.js"></script> -->
 
 </head>
 
 <body>
     <?php
 
-    include('../../../controller/studentController/quizController/modelQuizController.php');
+    include('../../../controller/studentController/quizController/ppQuizController.php');
     include_once('../../../controller/authController/authentication/Authentication.php');
     include_once('../../../controller/authController/authorization/Authorization.php');
 
@@ -44,8 +44,8 @@
     ?>
     <div class="content">
         <div class="container">
-            <div class="ppQuiz-container">
-                <div class="title-ppQuiz"><b>Past Paper Quiz</b>
+            <div class="modelQuiz-container">
+                <div class="title-modelQuiz"><b>Model Quiz</b>
                     <hr class="hr-line">
                 </div>
 
@@ -56,7 +56,7 @@
                         Once you attempt a question and click on ‘next’, you cannot go back to the previous
                         question(s).<br>
                     </p>
-                    <button type="button" id="start-quiz-btn" class="quiz-btn" onclick="loadPpQuizData()">Start
+                    <button type="button" id="start-quiz-btn" class="quiz-btn" onclick="loadModelQuizData()">Start
                         Quiz</button>
                 </div>
 
@@ -72,7 +72,7 @@
                 //     var div = document.querySelector('.quiz-box'); // Get reference to the div element
                 //     // div.classList.remove('hide'); // Add the new class to the div
                 //     div.style.display = "block";
-                //     var div = document.querySelector('.model-quiz1'); // Get reference to the div element
+                //     var div = document.querySelector('.pp-quiz1'); // Get reference to the div element
                 //     // div.classList.remove('hide'); // Add the new class
                 //     div.style.display = "block";
 
@@ -81,7 +81,7 @@
 
 
                 // Define the function that loads data from the database
-                function loadPpQuizData() {
+                function loadModelQuizData() {
                     $.ajax({
                         url: '../../../controller/studentController/quizController/ppQuizController.php', // the URL of the server-side script that retrieves data from the database
                         type: 'GET',

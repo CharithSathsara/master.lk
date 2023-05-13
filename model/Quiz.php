@@ -114,9 +114,8 @@ class Quiz
 
     public static function setUserModelQuizQuestions($modelQuizQuestions, $modelQuizId, $connection)
     {
-        $question = array_column($modelQuizQuestions, 0);
 
-        $insert = "INSERT INTO `quiz_questions`(`quizId`, `questionId1`, `questionId2`, `questionId3`, `questionId4`, `questionId5`, `questionId6`, `questionId7`, `questionId8`, `questionId9`, `questionId10`) VALUES ('$modelQuizId','$question[0]','$question[1]','$question[2]','$question[3]','$question[4]','$question[5]','$question[6]','$question[7]','$question[8]','$question[9]')";
+        $insert = "INSERT INTO `quiz_questions`(`quizId`, `questionId1`, `questionId2`, `questionId3`, `questionId4`, `questionId5`, `questionId6`, `questionId7`, `questionId8`, `questionId9`, `questionId10`) VALUES ('$modelQuizId','$modelQuizQuestions[0]','$modelQuizQuestions[1]','$modelQuizQuestions[2]','$modelQuizQuestions[3]','$modelQuizQuestions[4]','$modelQuizQuestions[5]','$modelQuizQuestions[6]','$modelQuizQuestions[7]','$modelQuizQuestions[8]','$modelQuizQuestions[9]')";
         $data = $connection->query($insert);
 
         return $data;
@@ -125,7 +124,7 @@ class Quiz
     public static function setModelQuizDetails($topicId, $studentId, $modelQuizScore, $connection)
     {
         //Check the attempt of the User
-        $sql = "SELECT attempts FROM quiz_details  WHERE topicId = '$topicId' AND questionType = 'MODELQUESTION' AND  studentId = '$studentId'";
+        $sql = "SELECT attempts FROM quiz_details  WHERE topicId = '$topicId' AND quizType = 'MODELPAPER' AND  studentId = '$studentId'";
         $result = mysqli_query($connection, $sql);
 
         if (mysqli_num_rows($result) > 0) {
@@ -144,41 +143,25 @@ class Quiz
         if ($data) {
             $sqlSelect = "SELECT quizId FROM quiz_details  WHERE attempts =1 AND studentId = '$studentId'";
             $dataSelect = $connection->query($sqlSelect);
+            $row = $dataSelect->fetch_assoc(); // fetches the first row as an associative array
+            $modelQuizId = $row['quizId']; // accesses the value of the quizId column
 
-            $modelQuizId =  $dataSelect['quizId'];
 
             $selectedChoice = $_SESSION['selectedAnsArray'];
             $results = Quiz::setUserModelQuizChoices($selectedChoice, $modelQuizId, $connection);
 
-            $modelQuizQuestions = $_SESSION['model_question_array'];
+            $modelQuizQuestions = array(); // create an empty array to store the questionIds
+
+            // iterate over the $_SESSION['model_question_array'] array and extract the questionId column
+            foreach ($_SESSION['model_question_array'] as $modelQuestion) {
+                $modelQuizQuestions[] = $modelQuestion['questionId'];
+            }
             $results = Quiz::setUserModelQuizQuestions($modelQuizQuestions, $modelQuizId, $connection);
         }
         return $data;
     }
 
-    public static function getPpQuizQuestions($topicId, $connection)
-    {
 
-        $sql = "SELECT * FROM question WHERE topicId = '$topicId' AND questionType = 'PASTQUESTION' ORDER BY RAND() LIMIT 10";
-        $result = mysqli_query($connection, $sql);
-
-        if (mysqli_num_rows($result) > 0) {
-            // Create an empty array to store the data
-            // $questions = $result->fetch_assoc();
-
-            // Initialize an empty array to store the query result
-            $rows = array();
-
-            // Fetch each row from the result set and add it to the array
-            while ($row = mysqli_fetch_assoc($result)) {
-                $rows[] = $row;
-            }
-
-            $_SESSION['pp_question_array'] = $rows;
-
-            return $result;
-        }
-    }
 
 
 
@@ -209,6 +192,94 @@ class Quiz
             return $result1;
         } else {
             return false;
+        }
+    }
+
+
+    // Past paper Questions
+
+
+
+
+    public static function setUserPpQuizChoices($selectedChoice, $ppQuizId, $connection)
+    {
+
+        $insert = "INSERT INTO `quiz_answers`(`quizId`, `answer01`, `answer02`, `answer03`, `answer04`, `answer05`, `answer06`, `answer07`, `answer08`, `answer09`, `answer10`) VALUES ('$ppQuizId','$selectedChoice[0]','$selectedChoice[1]','$selectedChoice[2]','$selectedChoice[3]','$selectedChoice[4]','$selectedChoice[5]','$selectedChoice[6]','$selectedChoice[7]','$selectedChoice[8]','$selectedChoice[9]')";
+        $data = $connection->query($insert);
+
+        return $data;
+    }
+
+    public static function setUserPpQuizQuestions($ppQuizQuestions, $ppQuizId, $connection)
+    {
+
+        $insert = "INSERT INTO `quiz_questions`(`quizId`, `questionId1`, `questionId2`, `questionId3`, `questionId4`, `questionId5`, `questionId6`, `questionId7`, `questionId8`, `questionId9`, `questionId10`) VALUES ('$ppQuizId','$ppQuizQuestions[0]','$ppQuizQuestions[1]','$ppQuizQuestions[2]','$ppQuizQuestions[3]','$ppQuizQuestions[4]','$ppQuizQuestions[5]','$ppQuizQuestions[6]','$ppQuizQuestions[7]','$ppQuizQuestions[8]','$ppQuizQuestions[9]')";
+        $data = $connection->query($insert);
+
+        return $data;
+    }
+
+    public static function setPpQuizDetails($topicId, $studentId, $ppQuizScore, $connection)
+    {
+        //Check the attempt of the User
+        $sql = "SELECT attempts FROM quiz_details  WHERE topicId = '$topicId' AND quizType = 'PASTPAPER' AND  studentId = '$studentId'";
+        $result = mysqli_query($connection, $sql);
+
+        if (mysqli_num_rows($result) > 0) {
+            $num_rows = mysqli_num_rows($result);
+            $num_rows += 1;
+        } else {
+            $num_rows = 1;
+        }
+
+
+        $insert = "INSERT INTO `quiz_details`(`quizId`, `score`, `date`, `time`, `quizType`, `attempts`, `studentId`, `topicId`) 
+        VALUES ('','$ppQuizScore',NOW(),NOW(),'PASTPAPER','$num_rows','$studentId','$topicId')
+        ";
+        $data = $connection->query($insert);
+
+        if ($data) {
+            $sqlSelect = "SELECT quizId FROM quiz_details  WHERE attempts =1 AND studentId = '$studentId'";
+            $dataSelect = $connection->query($sqlSelect);
+            $row = $dataSelect->fetch_assoc(); // fetches the first row as an associative array
+            $ppQuizId = $row['quizId']; // accesses the value of the quizId column
+
+
+            $selectedChoice = $_SESSION['selectedAnsArray'];
+            $results = Quiz::setUserModelQuizChoices($selectedChoice, $ppQuizId, $connection);
+
+            $ppQuizQuestions = array(); // create an empty array to store the questionIds
+
+            // iterate over the $_SESSION['pp_question_array'] array and extract the questionId column
+            foreach ($_SESSION['pp_question_array'] as $ppQuestion) {
+                $ppQuizQuestions[] = $ppQuestion['questionId'];
+            }
+            $results = Quiz::setUserPpQuizQuestions($ppQuizQuestions, $ppQuizId, $connection);
+        }
+        return $data;
+    }
+
+    public static function getPpQuizQuestions($topicId, $connection)
+    {
+
+        $sql = "SELECT * FROM question WHERE topicId = '$topicId' AND questionType = 'PASTQUESTION' ORDER BY RAND() LIMIT 10";
+        $result = mysqli_query($connection, $sql);
+
+        if (mysqli_num_rows($result) > 0) {
+            // Create an empty array to store the data
+            // $questions = $result->fetch_assoc();
+
+            // Initialize an empty array to store the query result
+            $rows = array();
+
+            // Fetch each row from the result set and add it to the array
+            while ($row = mysqli_fetch_assoc($result)) {
+                $rows[] = $row;
+            }
+
+            $_SESSION['pp_question_array'] = $rows;
+
+            return $result;
         }
     }
 
