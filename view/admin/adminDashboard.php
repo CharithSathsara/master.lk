@@ -233,6 +233,19 @@
 
     ?>
 
+<!--                unset all session-->
+
+                <?php
+                unset($_SESSION['user']['firstName']);
+                unset($_SESSION['user']['lastName']);
+                unset($_SESSION['user']['addLine01']);
+                unset($_SESSION['user']['addLine02']);
+                unset($_SESSION['user']['mobile']);
+                unset($_SESSION['user']['email']);
+                unset($_SESSION['user']['userId']);
+
+                
+                ?>
 
     </body>
 </html>

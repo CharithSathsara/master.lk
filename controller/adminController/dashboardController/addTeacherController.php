@@ -19,6 +19,16 @@ if(isset($_POST['addteacher-button'])) {
     $subject = validateInput($db_connection->getConnection(), $_POST['subjects']);
     $qualification = validateInput($db_connection->getConnection(), $_POST['qualification']);
 
+//    $_SESSION['user']['firstName'] =$fname;
+//    $_SESSION['user']['lastName'] = $lname;
+//    $_SESSION['user']['addLine01'] = $address1;
+//    $_SESSION['user']['addLine02'] = $address2;
+//    $_SESSION['user']['mobile'] = $number;
+//    $_SESSION['user']['email'] = $email;
+//    $_SESSION['user']['username'] =$username;
+////    $_SESSION['user']['subject'] =$subject;
+//    $_SESSION['user']['qualification'] =$qualification;
+
 
 //    function is_email($email)
 //    {

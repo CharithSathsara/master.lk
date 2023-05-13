@@ -723,6 +723,7 @@ select {
     margin-top: 200px;
     margin-left: auto;
     margin-right: auto;
+    padding-bottom: 15px;
 }
 
 .main-detailOneDiv .header-firstBadge{
@@ -737,6 +738,11 @@ select {
 
 .first-physicsTopic{
     /*background-color: #F4C430;*/
+    padding-left: 35px;
+    margin-bottom:10px ;
+}
+
+.first-chemistryTopic{
     padding-left: 35px;
     margin-bottom:10px ;
 }

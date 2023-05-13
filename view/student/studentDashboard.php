@@ -570,38 +570,39 @@ $timeUsageController = new timeUsageController();
                                             </ul>
                                         </div>
                                         <?php
-                                    }else if($physicsArrayCount >= 2){ ?>
-
-                                        <div class="first-physicsTopic">
-                                            <P style="font-weight: bold ; margin-top: 10px">Physics Topic</P>
-                                            <ul>
-                                                <?php
-                                                for ($k=0 ; $k < $physicsArrayCount; $k++){
-                                                    echo "<li>";
-                                                    echo $badgeController->getTopic($physicsTopicOne[$k]);
-                                                    echo "</li>";
-                                                }
-                                                ?>
-                                            </ul>
-                                        </div>
-                                        <?php
-                                    }else if($chemistryArrayCount >= 2){ ?>
-
-                                        <div class="first-chemistryTopic">
-                                            <P style="font-weight: bold ; margin-top: 10px">Chemistry Topic</P>
-                                            <ul>
-                                                <?php
-                                                for ($k=0 ; $k < $chemistryArrayCount; $k++){
-                                                    echo "<li>";
-                                                    echo $badgeController->getTopic($ChemistryTopicOne[$k]);
-                                                    echo "</li>";
-                                                }
-                                                ?>
-                                            </ul>
-                                        </div>
-
-                                        <?php
                                     }
+                                        //else if($physicsArrayCount >= 2){ ?>
+<!---->
+<!--                                        <div class="first-physicsTopic">-->
+<!--                                            <P style="font-weight: bold ; margin-top: 10px">Physics Topic</P>-->
+<!--                                            <ul>-->
+<!--                                                --><?php
+//                                                for ($k=0 ; $k < $physicsArrayCount; $k++){
+//                                                    echo "<li>";
+//                                                    echo $badgeController->getTopic($physicsTopicOne[$k]);
+//                                                    echo "</li>";
+//                                                }
+//                                                ?>
+<!--                                            </ul>-->
+<!--                                        </div>-->
+<!--                                        --><?php
+//                                    }else if($chemistryArrayCount >= 2){ ?>
+<!---->
+<!--                                        <div class="first-chemistryTopic">-->
+<!--                                            <P style="font-weight: bold ; margin-top: 10px">Chemistry Topic</P>-->
+<!--                                            <ul>-->
+<!--                                                --><?php
+//                                                for ($k=0 ; $k < $chemistryArrayCount; $k++){
+//                                                    echo "<li>";
+//                                                    echo $badgeController->getTopic($ChemistryTopicOne[$k]);
+//                                                    echo "</li>";
+//                                                }
+//                                                ?>
+<!--                                            </ul>-->
+<!--                                        </div>-->
+<!---->
+<!--                                        --><?php
+//                                    }
                                     ?>
 
                                 </div>
