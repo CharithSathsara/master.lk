@@ -36,6 +36,8 @@
     //User Authorization
     Authorization::authorizingStudent();
 
+    $_SESSION['current-topic'] = $_GET['topic'];
+
     $leaderBoardController = new LeaderBoardController();
 
     include_once '../common/header.php';
@@ -43,12 +45,12 @@
 
     ?>
     <div class="content">
-        <div class="container">
+        <div class="container" id="container">
             <?php
-            $_SESSION['selectedTopicId'] = 2;
+
             $i = 0;
 
-            $leaderboard1 = $leaderBoardController->modelQuizLeaderBoard($_SESSION['selectedTopicId']);
+            $leaderboard1 = $leaderBoardController->modelQuizLeaderBoard($_SESSION['current-topic']);
             mysqli_data_seek($leaderboard1, 1); // move the pointer to the third row (0-based index)
             $row = mysqli_fetch_assoc($leaderboard1);
 
@@ -69,297 +71,196 @@
             <div class="title-leaderboard"><b>Leaderboard</b></div>
 
             <div class="sub-elements">
-                <p class="sub-title" onclick="toggleDivs()"><b>Model Paper Quiz Leaderboard</b></p>
-                <p class="sub-title" onclick="toggleDivs()"><b>Past Paper Quiz Leaderboard</b></p>
-
+                <a href="Leaderboard.php?topic=<?= $_SESSION['current-topic'] ?>"><button class="sub-title"
+                        id="sub-title" type=" button"><b>Model Paper Quiz
+                            Leaderboard</b></button></a>
+                <a href="ppLeaderboard.php?topic=<?= $_SESSION['current-topic'] ?>"><button class="sub-title"
+                        id="sub-title" type="button"><b>Past Paper Quiz
+                            Leaderboard</b></button></a>
             </div>
+
+            <!-- </div>
             <hr class="hr-line">
-        </div>
+        </div> -->
 
-        <br>
-        <div id="ModelLeaderboardPlace-container">
-            <div class="lbox-container">
-                <div class="lbox left">
-                    <div class="circle-imgbox">
-                        <?php
-                        if ($row['image'] != null) {
+            <br>
+            <div id="ModelLeaderboardPlace-container">
+                <div class="lbox-container">
+                    <div class="lbox left">
+                        <div class="circle-imgbox">
+                            <?php
+                            if ($row['image'] != null) {
 
-                            $to_echo = "<img id='profile-pic' src='data:image/jpg;charset=utf8;base64,";
-                            $to_echo .= base64_encode($row['image']);
-                            $to_echo .= "'/>";
-                            echo $to_echo;
-                        } else {
-                            echo "<img id='profile-pic' src='../../public/img/default-profPic.png'/>";
-                        }
-                        ?>
-                    </div>
-
-                    <div class="lcontent-left">
-                        <div class="left-header-container">
-                            <img src="../../public/img/second_place.png" class="second-icon">
-                            <h2 class="lcontent-left-h2">1<sup>st</sup> Runner Up</h2>
+                                $to_echo = "<img id='profile-pic' src='data:image/jpg;charset=utf8;base64,";
+                                $to_echo .= base64_encode($row['image']);
+                                $to_echo .= "'/>";
+                                echo $to_echo;
+                            } else {
+                                echo "<img id='profile-pic' src='../../public/img/default-profPic.png'/>";
+                            }
+                            ?>
                         </div>
 
-                        <p>
+                        <div class="lcontent-left">
+                            <div class="left-header-container">
+                                <img src="../../public/img/second_place.png" class="second-icon">
+                                <h2 class="lcontent-left-h2">1<sup>st</sup> Runner Up</h2>
+                            </div>
 
-                            <b>
+                            <p>
+
+                                <b>
+                                    <?= $row['firstName'] ?> <?= $row['lastName'] ?><br>
+
+                                    <?= $row['score'] ?>% Marks </b>
+                            </p>
+                        </div>
+                    </div>
+                    <?php
+
+
+                    mysqli_data_seek($leaderboard1, 0); // move the pointer to the third row (0-based index)
+                    $row = mysqli_fetch_assoc($leaderboard1);
+
+
+                    ?>
+
+                    <div class="lbox bigger">
+                        <div class="circle-imgbox-middle">
+                            <?php
+                            if ($row['image'] != null) {
+
+                                $to_echo = "<img id='profile-pic' src='data:image/jpg;charset=utf8;base64,";
+                                $to_echo .= base64_encode($row['image']);
+                                $to_echo .= "'/>";
+                                echo $to_echo;
+                            } else {
+                                echo "<img id='profile-pic' src='../../public/img/default-profPic.png'/>";
+                            }
+                            ?>
+                        </div>
+                        <div class="lcontent-middle">
+                            <div class="middle-header-container">
+                                <img src="../../public/img/first_place.png" class="winner-icon">
+                                <h2 class="lcontent-middle-h2">Winner</h2>
+                            </div>
+                            <p>
+
+                                <b>
+                                    <?= $row['firstName'] ?> <?= $row['lastName'] ?><br>
+
+                                    <?= $row['score'] ?>% Marks </b></b>
+
+                            </p>
+                        </div>
+                    </div>
+                    <?php
+                    mysqli_data_seek($leaderboard1, 2);
+                    $row = mysqli_fetch_assoc($leaderboard1); // move the pointer to the third row (0-based index)
+
+                    ?>
+                    <div class="lbox right">
+                        <div class="circle-imgbox">
+                            <?php
+                            if ($row['image'] != null) {
+
+                                $to_echo = "<img id='profile-pic' src='data:image/jpg;charset=utf8;base64,";
+                                $to_echo .= base64_encode($row['image']);
+                                $to_echo .= "'/>";
+                                echo $to_echo;
+                            } else {
+                                echo "<img id='profile-pic' src='../../public/img/default-profPic.png'/>";
+                            }
+                            ?>
+                        </div>
+                        <div class="lcontent-right">
+                            <div class="right-header-container">
+                                <img src="../../public/img/third_place.png" class="third-icon">
+                                <h2 class="lcontent-right-h2">2<sup>nd</sup> Runner Up</h2>
+                            </div>
+
+                            <p>
+
                                 <?= $row['firstName'] ?> <?= $row['lastName'] ?><br>
 
-                                <?= $row['score'] ?>% Marks </b>
-                        </p>
+                                <b> <?= $row['score'] ?>% Marks </b>
+
+                            </p>
+                        </div>
                     </div>
+
+
+
                 </div>
                 <?php
-
-
-                mysqli_data_seek($leaderboard1, 0); // move the pointer to the third row (0-based index)
-                $row = mysqli_fetch_assoc($leaderboard1);
-
-
+                // foreach($leaderboard1 as $row){
                 ?>
 
-                <div class="lbox bigger">
-                    <div class="circle-imgbox-middle">
-                        <?php
-                        if ($row['image'] != null) {
-
-                            $to_echo = "<img id='profile-pic' src='data:image/jpg;charset=utf8;base64,";
-                            $to_echo .= base64_encode($row['image']);
-                            $to_echo .= "'/>";
-                            echo $to_echo;
-                        } else {
-                            echo "<img id='profile-pic' src='../../public/img/default-profPic.png'/>";
-                        }
-                        ?>
-                    </div>
-                    <div class="lcontent-middle">
-                        <div class="middle-header-container">
-                            <img src="../../public/img/first_place.png" class="winner-icon">
-                            <h2 class="lcontent-middle-h2">Winner</h2>
-                        </div>
-                        <p>
-
-                            <b>
-                                <?= $row['firstName'] ?> <?= $row['lastName'] ?><br>
-
-                                <?= $row['score'] ?>% Marks </b></b>
-
-                        </p>
-                    </div>
-                </div>
                 <?php
-                mysqli_data_seek($leaderboard1, 2);
-                $row = mysqli_fetch_assoc($leaderboard1); // move the pointer to the third row (0-based index)
-
+                // echo ($i+1);
+                // i++;
                 ?>
-                <div class="lbox right">
-                    <div class="circle-imgbox">
-                        <?php
-                        if ($row['image'] != null) {
 
-                            $to_echo = "<img id='profile-pic' src='data:image/jpg;charset=utf8;base64,";
-                            $to_echo .= base64_encode($row['image']);
-                            $to_echo .= "'/>";
-                            echo $to_echo;
-                        } else {
-                            echo "<img id='profile-pic' src='../../public/img/default-profPic.png'/>";
-                        }
-                        ?>
-                    </div>
-                    <div class="lcontent-right">
-                        <div class="right-header-container">
-                            <img src="../../public/img/third_place.png" class="third-icon">
-                            <h2 class="lcontent-right-h2">2<sup>nd</sup> Runner Up</h2>
-                        </div>
-
-                        <p>
-
-                            <?= $row['firstName'] ?> <?= $row['lastName'] ?><br>
-
-                            <b> <?= $row['score'] ?>% Marks </b>
-
-                        </p>
-                    </div>
-                </div>
+                <p> </p>
+                <br>
 
 
 
             </div>
-            <?php
-            // foreach($leaderboard1 as $row){
-            ?>
-
-            <?php
-            // echo ($i+1);
-            // i++;
-            ?>
-
-            <p> </p>
-            <br>
 
 
+
+
+
+
+
+
+
+            <table id="modelPaperTable">
+
+
+
+                <tbody>
+                    <?php
+                    for ($i = 3; $i < mysqli_num_rows($leaderboard1); $i++) {
+
+
+                        mysqli_data_seek($leaderboard1, $i);
+                        $row = mysqli_fetch_assoc($leaderboard1); // move the pointer to the third row (0-based index)
+
+
+                    ?>
+                    <tr>
+                        <td id="winner">
+                            <?php echo $i;
+                                ?>
+                        </td>
+                        <td id="modelTableStudent">
+                            <p> <?= $row['firstName'] ?> <?= $row['lastName'] ?></p>
+                        </td>
+                        <td><?= $row['score'] ?></td>
+
+                    </tr>
+
+
+
+                </tbody>
+                <?php
+                    } ?>
+            </table>
+            <!-- <div class="gif-container">
+                        <img class="congratulations-gif" src="../../public/img/Congratulations.gif" alt="Animated GIF">
+                    </div> -->
 
         </div>
 
 
-        <!-- Past Paper Leaderboard -->
-
-        <?php
-        $_SESSION['selectedTopicId'] = 2;
-        $i = 0;
-
-        $leaderboard2 = $leaderBoardController->pastQuizLeaderBoard($_SESSION['selectedTopicId']);
-        mysqli_data_seek($leaderboard2, 1); // move the pointer to the third row (0-based index)
-        $row = mysqli_fetch_assoc($leaderboard2);
-
-
-
-        ?>
-
-
-        <br>
-        <div id="pastLeaderboardPlace-container">
-            <div class="lbox-container">
-                <div class="lbox left">
-                    <div class="circle-imgbox">
-                        <?php
-                        if ($row['image'] != null) {
-
-                            $to_echo = "<img id='profile-pic' src='data:image/jpg;charset=utf8;base64,";
-                            $to_echo .= base64_encode($row['image']);
-                            $to_echo .= "'/>";
-                            echo $to_echo;
-                        } else {
-                            echo "<img id='profile-pic' src='../../public/img/default-profPic.png'/>";
-                        }
-                        ?>
-                    </div>
-
-                    <div class="lcontent-left">
-                        <div class="left-header-container">
-                            <img src="../../public/img/second_place.png" class="second-icon">
-                            <h2 class="lcontent-left-h2">1<sup>st</sup> Runner Up</h2>
-                        </div>
-
-                        <p>
-
-                            <b>
-                                <?= $row['firstName'] ?> <?= $row['lastName'] ?><br>
-
-                                <?= $row['score'] ?>% Marks </b>
-                        </p>
-                    </div>
-                </div>
-                <?php
-
-
-                mysqli_data_seek($leaderboard2, 0); // move the pointer to the third row (0-based index)
-                $row = mysqli_fetch_assoc($leaderboard2);
-
-
-                ?>
-
-                <div class="lbox bigger">
-                    <div class="circle-imgbox-middle">
-                        <?php
-                        if ($row['image'] != null) {
-
-                            $to_echo = "<img id='profile-pic' src='data:image/jpg;charset=utf8;base64,";
-                            $to_echo .= base64_encode($row['image']);
-                            $to_echo .= "'/>";
-                            echo $to_echo;
-                        } else {
-                            echo "<img id='profile-pic' src='../../public/img/default-profPic.png'/>";
-                        }
-                        ?>
-                    </div>
-                    <div class="lcontent-middle">
-                        <div class="middle-header-container">
-                            <img src="../../public/img/first_place.png" class="winner-icon">
-                            <h2 class="lcontent-middle-h2">Winner</h2>
-                        </div>
-                        <p>
-
-                            <b>
-                                <?= $row['firstName'] ?> <?= $row['lastName'] ?><br>
-
-                                <?= $row['score'] ?>% Marks </b></b>
-
-                        </p>
-                    </div>
-                </div>
-                <?php
-                mysqli_data_seek($leaderboard2, 2);
-                $row = mysqli_fetch_assoc($leaderboard2); // move the pointer to the third row (0-based index)
-
-                ?>
-                <div class="lbox right">
-                    <div class="circle-imgbox">
-                        <?php
-                        if ($row['image'] != null) {
-
-                            $to_echo = "<img id='profile-pic' src='data:image/jpg;charset=utf8;base64,";
-                            $to_echo .= base64_encode($row['image']);
-                            $to_echo .= "'/>";
-                            echo $to_echo;
-                        } else {
-                            echo "<img id='profile-pic' src='../../public/img/default-profPic.png'/>";
-                        }
-                        ?>
-                    </div>
-                    <div class="lcontent-right">
-                        <div class="right-header-container">
-                            <img src="../../public/img/third_place.png" class="third-icon">
-                            <h2 class="lcontent-right-h2">2<sup>nd</sup> Runner Up</h2>
-                        </div>
-
-                        <p>
-
-                            <?= $row['firstName'] ?> <?= $row['lastName'] ?><br>
-
-                            <b> <?= $row['score'] ?>% Marks </b>
-
-                        </p>
-                    </div>
-                </div>
-
-
-
-            </div>
-            <?php
-            // foreach($leaderboard1 as $row){
-            ?>
-
-            <?php
-            // echo ($i+1);
-            // i++;
-            ?>
-
-            <p> </p>
-            <br>
-
-
-
-        </div>
-
-        <script>
-        function toggleDivs() {
-            var div1 = document.getElementById("pastLeaderboardPlace-container");
-            var div2 = document.getElementById("modelLeaderboardPlace-container");
-
-            if (div1.style.display === "none") {
-                div1.style.display = "block";
-                div2.style.display = "none";
-            } else {
-                div1.style.display = "none";
-                div2.style.display = "block";
-            }
-        }
-        </script>
 
 
 
 
+
+    </div>
     </div>
     </div>
 

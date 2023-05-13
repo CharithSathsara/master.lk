@@ -4,19 +4,41 @@
     float: right;
     z-index: 1;
     overflow: hidden;
+    margin-bottom: 100px;
 }
 
 #leaderboard-container {
-    margin: 140px 40px 100px 30px;
+    margin: 120px 40px 100px 30px;
 }
 
 #pastLeaderboardPlace-container {
     display: none;
+    position: fixed;
+
 }
 
 .modelLeaderboardPlace-container {
     display: block;
+    position: fixed;
+
 }
+
+#title {
+    margin-top: 120px;
+    font-size: 18px;
+    color: #0b2e5e;
+    margin-left: 25px;
+}
+
+#title span a {
+    text-decoration: none;
+    color: #0b2e5e;
+}
+
+#subject-shortcut {
+    height: 10px;
+}
+
 
 /* .leaderboard {
     background-color: #0b2e5e;
@@ -33,17 +55,23 @@
 .title-leaderboard {
     color: rgba(33, 158, 188);
     font-weight: bolder;
-    margin-top: 125px;
+    margin-top: 20px;
     margin-left: 25px;
     font-size: 19px;
 }
 
 .sub-title {
     margin-top: 30px;
-    margin-left: 2%;
-    display: flex;
-    flex-direction: row;
-    width: 20%;
+    margin-left: 5%;
+    display: inline-block;
+    margin-right: 20px;
+    width: 41%;
+    background-color: white;
+    padding: 0.5%;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    color: rgb(244 159 10);
+
 
 
 }
@@ -210,4 +238,58 @@
     margin: 5px 0px 0px 0px;
     text-align: center;
     line-height: 27px;
+}
+
+table {
+    margin-top: 1em;
+    width: 64em;
+    color: black;
+    margin-left: 105px;
+}
+
+table thead {
+    opacity: .8;
+}
+
+table img {
+    width: 2em;
+    height: 2em;
+    border-radius: 100%;
+
+}
+
+table td {
+    max-width: 1em;
+    padding-top: 0.6em;
+    text-align: center;
+}
+
+tbody tr {
+    box-shadow: 0 2px rgba(100, 100, 100, .5);
+    border-radius: 10px;
+}
+
+tbody tr:hover {
+    transform: scale(1.025);
+    transition: .2s ease-in-out;
+}
+
+tbody tr td:nth-child(2) p {
+    display: inline-block;
+    transform: translateY(-.5em);
+    padding-left: .5em;
+    text-align: left;
+}
+
+table td:nth-child(2) {
+    max-width: 14em;
+}
+
+tbody tr:nth-child(even) {
+    background-color: rgb(244 159 10);
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #edecec;
+    margin-bottom: 20px;
 }

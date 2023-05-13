@@ -2,14 +2,17 @@
 
 class Leaderboard
 {
-  public static function getmodelQuizLeaderBoard($topicId, $connection)
+  public static function getmodelQuizLeaderBoard($topic, $connection)
   {
-
+    $query = "SELECT * FROM topic WHERE topicTitle='$topic'";
+    $data1 = $connection->query($query);
+    $data_set = $data1->fetch_assoc();
+    $topicId = $data_set['topicId'];
     $select = "SELECT quiz_details.quizId, quiz_details.score, quiz_details.date, quiz_details.time, quiz_details.quizType, quiz_details.studentId, quiz_details.topicId,
     user.firstName, user.lastName, user.image
   FROM quiz_details
   INNER JOIN user
-  ON quiz_details.studentId = user.userId WHERE quiz_details.topicId = '$topicId' AND quiz_details.quizType = 'MODELPAPER'   ORDER  BY quiz_details.score DESC ;";
+  ON quiz_details.studentId = user.userId WHERE quiz_details.topicId = '$topicId' AND quiz_details.quizType = 'MODELPAPER' AND quiz_details.attempts = 1  ORDER  BY quiz_details.score DESC ;";
 
     $data = $connection->query($select);
 
@@ -29,14 +32,19 @@ class Leaderboard
     }
   }
 
-  public static function getpastQuizLeaderBoard($topicId, $connection)
+  public static function getpastQuizLeaderBoard($topic, $connection)
   {
 
+    $query = "SELECT * FROM topic WHERE topicTitle='$topic'";
+    $data1 = $connection->query($query);
+    $data_set = $data1->fetch_assoc();
+    $topicId = $data_set['topicId'];
+
     $select = "SELECT quiz_details.quizId, quiz_details.score, quiz_details.date, quiz_details.time, quiz_details.quizType, quiz_details.studentId, quiz_details.topicId,
-      user.firstName, user.lastName
+      user.firstName, user.lastName, user.image
     FROM quiz_details
     INNER JOIN user
-    ON quiz_details.studentId = user.userId WHERE quiz_details.topicId = '$topicId' AND quiz_details.quizType = 'PASTPAPER'   ORDER  BY quiz_details.score DESC ;";
+    ON quiz_details.studentId = user.userId WHERE quiz_details.topicId = '$topicId' AND quiz_details.quizType = 'PASTPAPER' AND quiz_details.attempts = 1  ORDER  BY quiz_details.score DESC ;";
 
     $data = $connection->query($select);
     // Get the number of rows in the result set
