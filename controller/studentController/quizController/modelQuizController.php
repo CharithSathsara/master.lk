@@ -145,9 +145,8 @@ if (isset($_POST['submit'])) {
     for ($i = 0; $i < count($selectedChoice); $i++) {
         if ($selectedChoice[$i] === $correctChoice[$i]) {
             $_SESSION['modelQuizScore'] += 1;
-        } else {
-            $_SESSION['modelQuizTotalWrongAns'] += 1;
-        }
+        } 
+        
     }
     $_SESSION['modelQuizTotalCorrectAns'] = $_SESSION['modelQuizScore'];
 
@@ -166,7 +165,7 @@ if (isset($_POST['submit'])) {
 
     $studentId = $_SESSION['auth_user']['userId'];
 
-
+    $_SESSION['modelQuizTotalWrongAns'] = 10 - $_SESSION['modelQuizScore'];
 
     $selectedArray = $_SESSION['selectedAnsArray'];
 

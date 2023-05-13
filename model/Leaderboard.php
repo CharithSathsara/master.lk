@@ -46,7 +46,7 @@ class Leaderboard
       return $data;
     } else {
       echo "
-        <div class=''>
+        <div class='no-contents'>
             <p >No Details to Show!</p>
         </div>
 

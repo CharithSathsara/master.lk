@@ -85,7 +85,7 @@ class Quiz
         $sql = "SELECT * FROM question WHERE topicId = '$topicId' AND questionType = 'MODELQUESTION' ORDER BY RAND() LIMIT 10";
         $result = mysqli_query($connection, $sql);
 
-        if (mysqli_num_rows($result) > 0) {
+        if (mysqli_num_rows($result) >= 10) {
             // Create an empty array to store the data
             // $questions = $result->fetch_assoc();
 
@@ -100,6 +100,13 @@ class Quiz
             $_SESSION['model_question_array'] = $rows;
 
             return $result;
+        }
+        else{
+            echo "
+            <div class='no-contents'>
+                <p >Sorry! There are No Enough Questions to Create a Quiz !</p>
+            </div>"
+        
         }
     }
 
@@ -265,7 +272,7 @@ class Quiz
         $sql = "SELECT * FROM question WHERE topicId = '$topicId' AND questionType = 'PASTQUESTION' ORDER BY RAND() LIMIT 10";
         $result = mysqli_query($connection, $sql);
 
-        if (mysqli_num_rows($result) > 0) {
+        if (mysqli_num_rows($result) > 10) {
             // Create an empty array to store the data
             // $questions = $result->fetch_assoc();
 
@@ -280,6 +287,13 @@ class Quiz
             $_SESSION['pp_question_array'] = $rows;
 
             return $result;
+        }
+        else{
+            echo "
+            <div class='no-contents'>
+                <p >Sorry! There are No Enough Questions to Create a Quiz !</p>
+            </div>"
+        
         }
     }
 
