@@ -100,13 +100,11 @@ class Quiz
             $_SESSION['model_question_array'] = $rows;
 
             return $result;
-        }
-        else{
-            echo "
-            <div class='no-contents'>
-                <p >Sorry! There are No Enough Questions to Create a Quiz !</p>
-            </div>"
-        
+        } else {
+            // echo "
+            // <div class='no-contents'>
+            //     <p >Sorry! There are No Enough Questions to Create a Quiz !</p>
+            // </div>";
         }
     }
 
@@ -148,7 +146,7 @@ class Quiz
         $data = $connection->query($insert);
 
         if ($data) {
-            $sqlSelect = "SELECT quizId FROM quiz_details  WHERE attempts =1 AND studentId = '$studentId'";
+            $sqlSelect = "SELECT quizId FROM quiz_details  WHERE attempts =' $num_rows' AND studentId = '$studentId'";
             $dataSelect = $connection->query($sqlSelect);
             $row = $dataSelect->fetch_assoc(); // fetches the first row as an associative array
             $modelQuizId = $row['quizId']; // accesses the value of the quizId column
@@ -246,7 +244,7 @@ class Quiz
         $data = $connection->query($insert);
 
         if ($data) {
-            $sqlSelect = "SELECT quizId FROM quiz_details  WHERE attempts =1 AND studentId = '$studentId'";
+            $sqlSelect = "SELECT quizId FROM quiz_details  WHERE attempts = ' $num_rows' AND studentId = '$studentId'";
             $dataSelect = $connection->query($sqlSelect);
             $row = $dataSelect->fetch_assoc(); // fetches the first row as an associative array
             $ppQuizId = $row['quizId']; // accesses the value of the quizId column
@@ -287,13 +285,11 @@ class Quiz
             $_SESSION['pp_question_array'] = $rows;
 
             return $result;
-        }
-        else{
-            echo "
-            <div class='no-contents'>
-                <p >Sorry! There are No Enough Questions to Create a Quiz !</p>
-            </div>"
-        
+        } else {
+            // echo "
+            // <div class='no-contents'>
+            //     <p >Sorry! There are No Enough Questions to Create a Quiz !</p>
+            // </div>";
         }
     }
 

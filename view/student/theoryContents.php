@@ -54,17 +54,20 @@
             <br>
             <div class="scrollmenu">
                 <div id="scrollmenu-contents">
-                    <a href="./modelQuiz/modelQuiz.php" class="list-item" id="model-quiz-item">
+                    <a href="./modelQuiz/modelQuiz.php?topic=<?= $_SESSION['current-topic'] ?>" class="list-item"
+                        id="model-quiz-item">
                         <p>Model Quiz</p>
                     </a>
-                    <a href="./ppQuiz/ppQuiz.php" class="list-item" id="pp-quiz-item">
+                    <a href="./ppQuiz/ppQuiz.php?topic=<?= $_SESSION['current-topic'] ?>" class="list-item"
+                        id="pp-quiz-item">
                         <p>Past Paper Quiz</p>
                     </a>
                     <a href="reviewQuizzes.php?topic=<?= $_SESSION['current-topic'] ?>" class="list-item"
                         id="review-item">
                         <p>Review Quizzes</p>
                     </a>
-                    <a href="Leaderboard.php" class="list-item" id="leaderboard-item">
+                    <a href="Leaderboard.php?topic=<?= $_SESSION['current-topic'] ?>" class="list-item"
+                        id="leaderboard-item">
                         <p>Leaderboard</p>
                     </a>
                 </div>

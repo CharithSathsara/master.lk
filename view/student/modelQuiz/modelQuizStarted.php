@@ -48,7 +48,7 @@
 <body>
     <?php
 
-    include('../../../controller/studentController/quizController/modelQuizController.php');
+    include('../../../controller/studentController/quizController/ppQuizController.php');
     include_once('../../../controller/authController/authentication/Authentication.php');
     include_once('../../../controller/authController/authorization/Authorization.php');
 
@@ -661,19 +661,6 @@
 
 
 
-
-
-
-
-
-
-
-
-                    <div class="slider-indicator">
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </div>
                 </div>
 
             </div>

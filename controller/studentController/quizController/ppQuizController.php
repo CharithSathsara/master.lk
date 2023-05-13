@@ -175,9 +175,9 @@ if (isset($_POST['submit'])) {
 
     if ($result) {
 
-        redirect("Model Quiz Completion Successful", "view/student/ppQuiz/ppQuizResult.php");
+        redirect("Past Paper Quiz Completion Successful", "view/student/ppQuiz/ppQuizResult.php");
     } else {
 
-        redirect("Model Quiz Completion Successful", "view/student/ppQuiz/ppQuiz.php");
+        redirect("Past Paper Quiz Completion Successful", "view/student/ppQuiz/ppQuiz.php");
     }
 }

@@ -55,6 +55,17 @@
 
 
             ?>
+            <b>
+                <p id="title">
+                    <span id="subject-shortcut"><a
+                            href="studentDashboard.php"><?= $_SESSION['current-subject'] ?></a></span>&nbsp;&nbsp;>&nbsp;&nbsp;
+                    <span id="lesson-shortcut"><a
+                            href="topicsAndFeedbacks.php?subject=<?= $_SESSION['current-subject'] ?>&lesson=<?= $_SESSION['current-lesson'] ?>"><?= $_SESSION['current-lesson'] ?></a></span>&nbsp;&nbsp;>&nbsp;&nbsp;
+                    <span id="topic-shortcut"><a
+                            href="theoryContents.php?subject=<?= $_SESSION['current-subject'] ?>&lesson=<?= $_SESSION['current-lesson'] ?>&topic=<?= $_SESSION['current-topic'] ?>"><?= $_SESSION['current-topic'] ?></a></span>&nbsp;&nbsp;>&nbsp;&nbsp;
+                    Leaderboard
+                </p>
+            </b>
             <div class="title-leaderboard"><b>Leaderboard</b></div>
 
             <div class="sub-elements">

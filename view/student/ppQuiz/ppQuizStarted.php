@@ -80,126 +80,71 @@
 
     <div class="content">
         <div class="container">
-            <div class="modelQuiz-container">
-                <div class="title-modelQuiz"><b>Model Quiz</b>
-                    <hr class="hr-line">
+            <div class="modelQuiz-container"></div>
+            <div class="title-modelQuiz"><b>Past Paper Quiz</b>
+                <hr class="hr-line">
+            </div>
+
+            <div class="quiz-box custom-box">
+                <?php
+
+                ?>
+
+                <div class="countdown">
+                    <p class="timer">Time remaining: <span id="countdown"></span></p>
+
+                    <script>
+                    var timeLimit = 20 * 60; // 20 minutes in seconds
+                    var timer = setInterval(function() {
+                        var minutes = Math.floor(timeLimit / 60);
+                        var seconds = timeLimit % 60;
+                        document.getElementById("countdown").innerHTML = minutes + ":" + seconds;
+                        timeLimit--;
+                        if (timeLimit < 0) {
+                            clearInterval(timer);
+                            window.location.href = "ppQuizResult.php";
+                        }
+                    }, 1000);
+                    </script>
+
                 </div>
-
-                <div class="quiz-box custom-box">
-                    <?php
-
-                    ?>
-
-                    <div class="countdown">
-                        <p class="timer">Time remaining: <span id="countdown"></span></p>
-
-                        <script>
-                        var timeLimit = 20 * 60; // 20 minutes in seconds
-                        var timer = setInterval(function() {
-                            var minutes = Math.floor(timeLimit / 60);
-                            var seconds = timeLimit % 60;
-                            document.getElementById("countdown").innerHTML = minutes + ":" + seconds;
-                            timeLimit--;
-                            if (timeLimit < 0) {
-                                clearInterval(timer);
-                                window.location.href = "ppQuizResult.php";
-                            }
-                        }, 1000);
-                        </script>
-
-                    </div>
-                    <!-- 1 div -->
-                    <div class="model-quiz1">
+                <!-- 1 div -->
+                <div class="model-quiz1">
 
 
-                        <div class="question-number current">
-                            Question 1 of 10
-
-                        </div>
-
-                        <div class="question-text">
-                            <p class="quiz-question"><?php echo $questions['question']; ?></p>
-                        </div>
-
-                        <form id="pp-quiz-form" method="post"
-                            action="../../../controller/studentController/quizController/ppQuizController.php">
-
-                            <ul class="option-container choices">
-
-                                <li></li>
-                                <div class="quiz-option"><input name="choice1" value="1"
-                                        type="radio" /><?php echo $questions['opt01']; ?></div>
-                                </li>
-
-                                <li>
-                                    <div class="quiz-option"><input name="choice1" value="2"
-                                            type="radio" /><?php echo $questions['opt02']; ?></div>
-                                </li>
-                                <li>
-                                    <div class="quiz-option"><input name="choice1" value="3"
-                                            type="radio" /><?php echo $questions['opt03']; ?></div>
-                                </li>
-                                <li>
-                                    <div class="quiz-option"><input name="choice1" value="4"
-                                            type="radio" /><?php echo $questions['opt04']; ?></div>
-                                </li>
-                                <li>
-                                    <div class="quiz-option"><input name="choice1" value="5"
-                                            type="radio" /><?php echo $questions['opt05']; ?></div>
-                                </li>
-
-                            </ul>
-
-                            <div class="question-btn">
-                                <button type="button" class="quiz-btn" id="next-quiz-btn"
-                                    onclick="showNextDiv2()">Next</button>
-
-                            </div>
-                            <input type="hidden" name="questionNumber" value="<?php echo $_SESSION['questionNo']; ?>" />
-
+                    <div class="question-number current">
+                        Question 1 of 10
 
                     </div>
 
-                    <!-- 2 Div -->
+                    <div class="question-text">
+                        <p class="quiz-question"><?php echo $questions['question']; ?></p>
+                    </div>
 
-                    <?php
-                    $questions =  $rows[1];
-                    ?>
-
-
-                    <div class="model-quiz2">
-
-                        <div class="question-number current">
-                            Question 2 of 10
-                        </div>
-
-                        <div class="question-text">
-                            <p class="quiz-question"><?php echo $questions['question']; ?></p>
-                        </div>
-
-                        <!-- <form id="model-quiz-form" method="post"> -->
+                    <form id="pp-quiz-form" method="post"
+                        action="../../../controller/studentController/quizController/ppQuizController.php">
 
                         <ul class="option-container choices">
 
                             <li></li>
-                            <div class="quiz-option"><input name="choice2" value="1"
+                            <div class="quiz-option"><input name="choice1" value="1"
                                     type="radio" /><?php echo $questions['opt01']; ?></div>
                             </li>
 
                             <li>
-                                <div class="quiz-option"><input name="choice2" value="2"
+                                <div class="quiz-option"><input name="choice1" value="2"
                                         type="radio" /><?php echo $questions['opt02']; ?></div>
                             </li>
                             <li>
-                                <div class="quiz-option"><input name="choice2" value="3"
+                                <div class="quiz-option"><input name="choice1" value="3"
                                         type="radio" /><?php echo $questions['opt03']; ?></div>
                             </li>
                             <li>
-                                <div class="quiz-option"><input name="choice2" value="4"
+                                <div class="quiz-option"><input name="choice1" value="4"
                                         type="radio" /><?php echo $questions['opt04']; ?></div>
                             </li>
                             <li>
-                                <div class="quiz-option"><input name="choice2" value="5"
+                                <div class="quiz-option"><input name="choice1" value="5"
                                         type="radio" /><?php echo $questions['opt05']; ?></div>
                             </li>
 
@@ -207,475 +152,509 @@
 
                         <div class="question-btn">
                             <button type="button" class="quiz-btn" id="next-quiz-btn"
-                                onclick="showNextDiv3()">Next</button>
+                                onclick="showNextDiv2()">Next</button>
 
                         </div>
                         <input type="hidden" name="questionNumber" value="<?php echo $_SESSION['questionNo']; ?>" />
 
 
-                    </div>
-
-                    <!-- 3 Div -->
-
-                    <?php
-                    $questions =  $rows[2];
-                    ?>
-
-
-                    <div class="model-quiz3">
-
-                        <div class="question-number current">
-                            Question 3 of 10
-                        </div>
-
-                        <div class="question-text">
-                            <p class="quiz-question"><?php echo $questions['question']; ?></p>
-                        </div>
-
-                        <!-- <form id="model-quiz-form" method="post"> -->
-
-                        <ul class="option-container choices">
-
-                            <li>
-                                <div class="quiz-option"><input name="choice3" value="1"
-                                        type="radio" /><?php echo $questions['opt01']; ?></div>
-                            </li>
-
-                            <li>
-                                <div class="quiz-option"><input name="choice3" value="2"
-                                        type="radio" /><?php echo $questions['opt02']; ?></div>
-                            </li>
-                            <li>
-                                <div class="quiz-option"><input name="choice3" value="3"
-                                        type="radio" /><?php echo $questions['opt03']; ?></div>
-                            </li>
-                            <li>
-                                <div class="quiz-option"><input name="choice3" value="4"
-                                        type="radio" /><?php echo $questions['opt04']; ?></div>
-                            </li>
-                            <li>
-                                <div class="quiz-option"><input name="choice3" value="5"
-                                        type="radio" /><?php echo $questions['opt05']; ?></div>
-                            </li>
-
-                        </ul>
-
-                        <div class="question-btn">
-                            <button type="button" class="quiz-btn" id="next-quiz-btn"
-                                onclick="showNextDiv4()">Next</button>
-
-                        </div>
-                        <input type="hidden" name="questionNumber" value="<?php echo $_SESSION['questionNo']; ?>" />
-
-
-                    </div>
-
-                    <!-- 4 Div -->
-
-                    <?php
-                    $questions =  $rows[3];
-                    ?>
-
-
-                    <div class="model-quiz4">
-
-                        <div class="question-number current">
-                            Question 4 of 10
-                        </div>
-
-                        <div class="question-text">
-                            <p class="quiz-question"><?php echo $questions['question']; ?></p>
-                        </div>
-
-                        <!-- <form id="model-quiz-form" method="post"> -->
-
-                        <ul class="option-container choices">
-
-                            <li>
-                                <div class="quiz-option"><input name="choice4" value="1"
-                                        type="radio" /><?php echo $questions['opt01']; ?></div>
-                            </li>
-
-                            <li>
-                                <div class="quiz-option"><input name="choice4" value="2"
-                                        type="radio" /><?php echo $questions['opt02']; ?></div>
-                            </li>
-                            <li>
-                                <div class="quiz-option"><input name="choice4" value="3"
-                                        type="radio" /><?php echo $questions['opt03']; ?></div>
-                            </li>
-                            <li>
-                                <div class="quiz-option"><input name="choice4" value="4"
-                                        type="radio" /><?php echo $questions['opt04']; ?></div>
-                            </li>
-                            <li>
-                                <div class="quiz-option"><input name="choice4" value="5"
-                                        type="radio" /><?php echo $questions['opt05']; ?></div>
-                            </li>
-
-                        </ul>
-
-                        <div class="question-btn">
-                            <button type="button" class="quiz-btn" id="next-quiz-btn"
-                                onclick="showNextDiv5()">Next</button>
-
-                        </div>
-                        <input type="hidden" name="questionNumber" value="<?php echo $_SESSION['questionNo']; ?>" />
-
-
-                    </div>
-
-                    <!-- 5 Div -->
-
-                    <?php
-                    $questions =  $rows[4];
-                    ?>
-
-
-                    <div class="model-quiz5">
-
-                        <div class="question-number current">
-                            Question 5 of 10
-                        </div>
-
-                        <div class="question-text">
-                            <p class="quiz-question"><?php echo $questions['question']; ?></p>
-                        </div>
-
-                        <!-- <form id="model-quiz-form" method="post"> -->
-
-                        <ul class="option-container choices">
-
-                            <li>
-                                <div class="quiz-option"><input name="choice5" value="1"
-                                        type="radio" /><?php echo $questions['opt01']; ?></div>
-                            </li>
-
-                            <li>
-                                <div class="quiz-option"><input name="choice5" value="2"
-                                        type="radio" /><?php echo $questions['opt02']; ?></div>
-                            </li>
-                            <li>
-                                <div class="quiz-option"><input name="choice5" value="3"
-                                        type="radio" /><?php echo $questions['opt03']; ?></div>
-                            </li>
-                            <li>
-                                <div class="quiz-option"><input name="choice5" value="4"
-                                        type="radio" /><?php echo $questions['opt04']; ?></div>
-                            </li>
-                            <li>
-                                <div class="quiz-option"><input name="choice5" value="5"
-                                        type="radio" /><?php echo $questions['opt05']; ?></div>
-                            </li>
-
-                        </ul>
-
-                        <div class="question-btn">
-                            <button type="button" class="quiz-btn" id="next-quiz-btn"
-                                onclick="showNextDiv6()">Next</button>
-
-                        </div>
-                        <input type="hidden" name="questionNumber" value="<?php echo $_SESSION['questionNo']; ?>" />
-
-
-                    </div>
-
-                    <!-- 6 Div -->
-
-                    <?php
-                    $questions =  $rows[5];
-                    ?>
-
-
-                    <div class="model-quiz6">
-
-                        <div class="question-number current">
-                            Question 6 of 10
-                        </div>
-
-                        <div class="question-text">
-                            <p class="quiz-question"><?php echo $questions['question']; ?></p>
-                        </div>
-
-                        <!-- <form id="model-quiz-form" method="post"> -->
-
-                        <ul class="option-container choices">
-
-                            <li>
-                                <div class="quiz-option"><input name="choice6" value="1"
-                                        type="radio" /><?php echo $questions['opt01']; ?></div>
-                            </li>
-
-                            <li>
-                                <div class="quiz-option"><input name="choice6" value="2"
-                                        type="radio" /><?php echo $questions['opt02']; ?></div>
-                            </li>
-                            <li>
-                                <div class="quiz-option"><input name="choice6" value="3"
-                                        type="radio" /><?php echo $questions['opt03']; ?></div>
-                            </li>
-                            <li>
-                                <div class="quiz-option"><input name="choice6" value="4"
-                                        type="radio" /><?php echo $questions['opt04']; ?></div>
-                            </li>
-                            <li>
-                                <div class="quiz-option"><input name="choice6" value="5"
-                                        type="radio" /><?php echo $questions['opt05']; ?></div>
-                            </li>
-
-                        </ul>
-
-                        <div class="question-btn">
-                            <button type="button" class="quiz-btn" id="next-quiz-btn"
-                                onclick="showNextDiv7()">Next</button>
-
-                        </div>
-                        <input type="hidden" name="questionNumber" value="<?php echo $_SESSION['questionNo']; ?>" />
-
-
-                    </div>
-
-                    <!-- 7 Div -->
-
-                    <?php
-                    $questions =  $rows[6];
-                    ?>
-
-
-                    <div class="model-quiz7">
-
-                        <div class="question-number current">
-                            Question 7 of 10
-                        </div>
-
-                        <div class="question-text">
-                            <p class="quiz-question"><?php echo $questions['question']; ?></p>
-                        </div>
-
-                        <!-- <form id="model-quiz-form" method="post"> -->
-
-                        <ul class="option-container choices">
-
-                            <li>
-                                <div class="quiz-option"><input name="choice7" value="1"
-                                        type="radio" /><?php echo $questions['opt01']; ?></div>
-                            </li>
-
-                            <li>
-                                <div class="quiz-option"><input name="choice7" value="2"
-                                        type="radio" /><?php echo $questions['opt02']; ?></div>
-                            </li>
-                            <li>
-                                <div class="quiz-option"><input name="choice7" value="3"
-                                        type="radio" /><?php echo $questions['opt03']; ?></div>
-                            </li>
-                            <li>
-                                <div class="quiz-option"><input name="choice7" value="4"
-                                        type="radio" /><?php echo $questions['opt04']; ?></div>
-                            </li>
-                            <li>
-                                <div class="quiz-option"><input name="choice7" value="5"
-                                        type="radio" /><?php echo $questions['opt05']; ?></div>
-                            </li>
-
-                        </ul>
-
-                        <div class="question-btn">
-                            <button type="button" class="quiz-btn" id="next-quiz-btn"
-                                onclick="showNextDiv8()">Next</button>
-
-                        </div>
-                        <input type="hidden" name="questionNumber" value="<?php echo $_SESSION['questionNo']; ?>" />
-
-
-                    </div>
-
-                    <!-- 8 Div -->
-
-                    <?php
-                    $questions =  $rows[7];
-                    ?>
-
-
-                    <div class="model-quiz8">
-
-                        <div class="question-number current">
-                            Question 8 of 10
-                        </div>
-
-                        <div class="question-text">
-                            <p class="quiz-question"><?php echo $questions['question']; ?></p>
-                        </div>
-
-                        <!-- <form id="model-quiz-form" method="post"> -->
-
-                        <ul class="option-container choices">
-
-                            <li>
-                                <div class="quiz-option"><input name="choice8" value="1"
-                                        type="radio" /><?php echo $questions['opt01']; ?></div>
-                            </li>
-
-                            <li>
-                                <div class="quiz-option"><input name="choice8" value="2"
-                                        type="radio" /><?php echo $questions['opt02']; ?></div>
-                            </li>
-                            <li>
-                                <div class="quiz-option"><input name="choice8" value="3"
-                                        type="radio" /><?php echo $questions['opt03']; ?></div>
-                            </li>
-                            <li>
-                                <div class="quiz-option"><input name="choice8" value="4"
-                                        type="radio" /><?php echo $questions['opt04']; ?></div>
-                            </li>
-                            <li>
-                                <div class="quiz-option"><input name="choice8" value="5"
-                                        type="radio" /><?php echo $questions['opt05']; ?></div>
-                            </li>
-
-                        </ul>
-
-                        <div class="question-btn">
-                            <button type="button" class="quiz-btn" id="next-quiz-btn"
-                                onclick="showNextDiv9()">Next</button>
-
-                        </div>
-                        <input type="hidden" name="questionNumber" value="<?php echo $_SESSION['questionNo']; ?>" />
-
-
-                    </div>
-
-
-                    <!-- 9 Div -->
-
-                    <?php
-                    $questions =  $rows[8];
-                    ?>
-
-
-                    <div class="model-quiz9">
-
-                        <div class="question-number current">
-                            Question 9 of 10
-                        </div>
-
-                        <div class="question-text">
-                            <p class="quiz-question"><?php echo $questions['question']; ?></p>
-                        </div>
-
-                        <!-- <form id="model-quiz-form" method="post"> -->
-
-                        <ul class="option-container choices">
-
-                            <li>
-                                <div class="quiz-option"><input name="choice9" value="1"
-                                        type="radio" /><?php echo $questions['opt01']; ?></div>
-                            </li>
-
-                            <li>
-                                <div class="quiz-option"><input name="choice9" value="2"
-                                        type="radio" /><?php echo $questions['opt02']; ?></div>
-                            </li>
-                            <li>
-                                <div class="quiz-option"><input name="choice9" value="3"
-                                        type="radio" /><?php echo $questions['opt03']; ?></div>
-                            </li>
-                            <li>
-                                <div class="quiz-option"><input name="choice9" value="4"
-                                        type="radio" /><?php echo $questions['opt04']; ?></div>
-                            </li>
-                            <li>
-                                <div class="quiz-option"><input name="choice9" value="5"
-                                        type="radio" /><?php echo $questions['opt05']; ?></div>
-                            </li>
-
-                        </ul>
-
-                        <div class="question-btn">
-                            <button type="button" class="quiz-btn" id="next-quiz-btn"
-                                onclick="showNextDiv10()">Next</button>
-
-                        </div>
-                        <input type="hidden" name="questionNumber" value="<?php echo $_SESSION['questionNo']; ?>" />
-
-
-                    </div>
-
-
-                    <!-- 10 Div -->
-
-                    <?php
-                    $questions =  $rows[9];
-                    ?>
-
-
-                    <div class="model-quiz10">
-
-                        <div class="question-number current">
-                            Question 10 of 10
-                        </div>
-
-                        <div class="question-text">
-                            <p class="quiz-question"><?php echo $questions['question']; ?></p>
-                        </div>
-
-                        <!-- <form id="model-quiz-form" method="post"> -->
-
-                        <ul class="option-container choices">
-
-                            <li>
-                                <div class="quiz-option"><input name="choice10" value="1"
-                                        type="radio" /><?php echo $questions['opt01']; ?></div>
-                            </li>
-
-                            <li>
-                                <div class="quiz-option"><input name="choice10" value="2"
-                                        type="radio" /><?php echo $questions['opt02']; ?></div>
-                            </li>
-                            <li>
-                                <div class="quiz-option"><input name="choice10" value="3"
-                                        type="radio" /><?php echo $questions['opt03']; ?></div>
-                            </li>
-                            <li>
-                                <div class="quiz-option"><input name="choice10" value="4"
-                                        type="radio" /><?php echo $questions['opt04']; ?></div>
-                            </li>
-                            <li>
-                                <div class="quiz-option"><input name="choice10" value="5"
-                                        type="radio" /><?php echo $questions['opt05']; ?></div>
-                            </li>
-
-                        </ul>
-
-
-
-                        <div class="question-btn">
-                            <button class="quiz-btn" id="next-quiz-btn" name="submit" type="submit">Finish</button>
-
-                        </div>
-                        <input type="hidden" name="questionNumber" value="<?php echo $_SESSION['questionNo']; ?>" />
-
-                        </form>
-
-
-                    </div>
-
-
-
-
-
-
-
-
-
-
-
-                    <div class="slider-indicator">
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </div>
                 </div>
+
+                <!-- 2 Div -->
+
+                <?php
+                $questions =  $rows[1];
+                ?>
+
+
+                <div class="model-quiz2">
+
+                    <div class="question-number current">
+                        Question 2 of 10
+                    </div>
+
+                    <div class="question-text">
+                        <p class="quiz-question"><?php echo $questions['question']; ?></p>
+                    </div>
+
+                    <!-- <form id="model-quiz-form" method="post"> -->
+
+                    <ul class="option-container choices">
+
+                        <li></li>
+                        <div class="quiz-option"><input name="choice2" value="1"
+                                type="radio" /><?php echo $questions['opt01']; ?></div>
+                        </li>
+
+                        <li>
+                            <div class="quiz-option"><input name="choice2" value="2"
+                                    type="radio" /><?php echo $questions['opt02']; ?></div>
+                        </li>
+                        <li>
+                            <div class="quiz-option"><input name="choice2" value="3"
+                                    type="radio" /><?php echo $questions['opt03']; ?></div>
+                        </li>
+                        <li>
+                            <div class="quiz-option"><input name="choice2" value="4"
+                                    type="radio" /><?php echo $questions['opt04']; ?></div>
+                        </li>
+                        <li>
+                            <div class="quiz-option"><input name="choice2" value="5"
+                                    type="radio" /><?php echo $questions['opt05']; ?></div>
+                        </li>
+
+                    </ul>
+
+                    <div class="question-btn">
+                        <button type="button" class="quiz-btn" id="next-quiz-btn" onclick="showNextDiv3()">Next</button>
+
+                    </div>
+                    <input type="hidden" name="questionNumber" value="<?php echo $_SESSION['questionNo']; ?>" />
+
+
+                </div>
+
+                <!-- 3 Div -->
+
+                <?php
+                $questions =  $rows[2];
+                ?>
+
+
+                <div class="model-quiz3">
+
+                    <div class="question-number current">
+                        Question 3 of 10
+                    </div>
+
+                    <div class="question-text">
+                        <p class="quiz-question"><?php echo $questions['question']; ?></p>
+                    </div>
+
+                    <!-- <form id="model-quiz-form" method="post"> -->
+
+                    <ul class="option-container choices">
+
+                        <li>
+                            <div class="quiz-option"><input name="choice3" value="1"
+                                    type="radio" /><?php echo $questions['opt01']; ?></div>
+                        </li>
+
+                        <li>
+                            <div class="quiz-option"><input name="choice3" value="2"
+                                    type="radio" /><?php echo $questions['opt02']; ?></div>
+                        </li>
+                        <li>
+                            <div class="quiz-option"><input name="choice3" value="3"
+                                    type="radio" /><?php echo $questions['opt03']; ?></div>
+                        </li>
+                        <li>
+                            <div class="quiz-option"><input name="choice3" value="4"
+                                    type="radio" /><?php echo $questions['opt04']; ?></div>
+                        </li>
+                        <li>
+                            <div class="quiz-option"><input name="choice3" value="5"
+                                    type="radio" /><?php echo $questions['opt05']; ?></div>
+                        </li>
+
+                    </ul>
+
+                    <div class="question-btn">
+                        <button type="button" class="quiz-btn" id="next-quiz-btn" onclick="showNextDiv4()">Next</button>
+
+                    </div>
+                    <input type="hidden" name="questionNumber" value="<?php echo $_SESSION['questionNo']; ?>" />
+
+
+                </div>
+
+                <!-- 4 Div -->
+
+                <?php
+                $questions =  $rows[3];
+                ?>
+
+
+                <div class="model-quiz4">
+
+                    <div class="question-number current">
+                        Question 4 of 10
+                    </div>
+
+                    <div class="question-text">
+                        <p class="quiz-question"><?php echo $questions['question']; ?></p>
+                    </div>
+
+                    <!-- <form id="model-quiz-form" method="post"> -->
+
+                    <ul class="option-container choices">
+
+                        <li>
+                            <div class="quiz-option"><input name="choice4" value="1"
+                                    type="radio" /><?php echo $questions['opt01']; ?></div>
+                        </li>
+
+                        <li>
+                            <div class="quiz-option"><input name="choice4" value="2"
+                                    type="radio" /><?php echo $questions['opt02']; ?></div>
+                        </li>
+                        <li>
+                            <div class="quiz-option"><input name="choice4" value="3"
+                                    type="radio" /><?php echo $questions['opt03']; ?></div>
+                        </li>
+                        <li>
+                            <div class="quiz-option"><input name="choice4" value="4"
+                                    type="radio" /><?php echo $questions['opt04']; ?></div>
+                        </li>
+                        <li>
+                            <div class="quiz-option"><input name="choice4" value="5"
+                                    type="radio" /><?php echo $questions['opt05']; ?></div>
+                        </li>
+
+                    </ul>
+
+                    <div class="question-btn">
+                        <button type="button" class="quiz-btn" id="next-quiz-btn" onclick="showNextDiv5()">Next</button>
+
+                    </div>
+                    <input type="hidden" name="questionNumber" value="<?php echo $_SESSION['questionNo']; ?>" />
+
+
+                </div>
+
+                <!-- 5 Div -->
+
+                <?php
+                $questions =  $rows[4];
+                ?>
+
+
+                <div class="model-quiz5">
+
+                    <div class="question-number current">
+                        Question 5 of 10
+                    </div>
+
+                    <div class="question-text">
+                        <p class="quiz-question"><?php echo $questions['question']; ?></p>
+                    </div>
+
+                    <!-- <form id="model-quiz-form" method="post"> -->
+
+                    <ul class="option-container choices">
+
+                        <li>
+                            <div class="quiz-option"><input name="choice5" value="1"
+                                    type="radio" /><?php echo $questions['opt01']; ?></div>
+                        </li>
+
+                        <li>
+                            <div class="quiz-option"><input name="choice5" value="2"
+                                    type="radio" /><?php echo $questions['opt02']; ?></div>
+                        </li>
+                        <li>
+                            <div class="quiz-option"><input name="choice5" value="3"
+                                    type="radio" /><?php echo $questions['opt03']; ?></div>
+                        </li>
+                        <li>
+                            <div class="quiz-option"><input name="choice5" value="4"
+                                    type="radio" /><?php echo $questions['opt04']; ?></div>
+                        </li>
+                        <li>
+                            <div class="quiz-option"><input name="choice5" value="5"
+                                    type="radio" /><?php echo $questions['opt05']; ?></div>
+                        </li>
+
+                    </ul>
+
+                    <div class="question-btn">
+                        <button type="button" class="quiz-btn" id="next-quiz-btn" onclick="showNextDiv6()">Next</button>
+
+                    </div>
+                    <input type="hidden" name="questionNumber" value="<?php echo $_SESSION['questionNo']; ?>" />
+
+
+                </div>
+
+                <!-- 6 Div -->
+
+                <?php
+                $questions =  $rows[5];
+                ?>
+
+
+                <div class="model-quiz6">
+
+                    <div class="question-number current">
+                        Question 6 of 10
+                    </div>
+
+                    <div class="question-text">
+                        <p class="quiz-question"><?php echo $questions['question']; ?></p>
+                    </div>
+
+                    <!-- <form id="model-quiz-form" method="post"> -->
+
+                    <ul class="option-container choices">
+
+                        <li>
+                            <div class="quiz-option"><input name="choice6" value="1"
+                                    type="radio" /><?php echo $questions['opt01']; ?></div>
+                        </li>
+
+                        <li>
+                            <div class="quiz-option"><input name="choice6" value="2"
+                                    type="radio" /><?php echo $questions['opt02']; ?></div>
+                        </li>
+                        <li>
+                            <div class="quiz-option"><input name="choice6" value="3"
+                                    type="radio" /><?php echo $questions['opt03']; ?></div>
+                        </li>
+                        <li>
+                            <div class="quiz-option"><input name="choice6" value="4"
+                                    type="radio" /><?php echo $questions['opt04']; ?></div>
+                        </li>
+                        <li>
+                            <div class="quiz-option"><input name="choice6" value="5"
+                                    type="radio" /><?php echo $questions['opt05']; ?></div>
+                        </li>
+
+                    </ul>
+
+                    <div class="question-btn">
+                        <button type="button" class="quiz-btn" id="next-quiz-btn" onclick="showNextDiv7()">Next</button>
+
+                    </div>
+                    <input type="hidden" name="questionNumber" value="<?php echo $_SESSION['questionNo']; ?>" />
+
+
+                </div>
+
+                <!-- 7 Div -->
+
+                <?php
+                $questions =  $rows[6];
+                ?>
+
+
+                <div class="model-quiz7">
+
+                    <div class="question-number current">
+                        Question 7 of 10
+                    </div>
+
+                    <div class="question-text">
+                        <p class="quiz-question"><?php echo $questions['question']; ?></p>
+                    </div>
+
+                    <!-- <form id="model-quiz-form" method="post"> -->
+
+                    <ul class="option-container choices">
+
+                        <li>
+                            <div class="quiz-option"><input name="choice7" value="1"
+                                    type="radio" /><?php echo $questions['opt01']; ?></div>
+                        </li>
+
+                        <li>
+                            <div class="quiz-option"><input name="choice7" value="2"
+                                    type="radio" /><?php echo $questions['opt02']; ?></div>
+                        </li>
+                        <li>
+                            <div class="quiz-option"><input name="choice7" value="3"
+                                    type="radio" /><?php echo $questions['opt03']; ?></div>
+                        </li>
+                        <li>
+                            <div class="quiz-option"><input name="choice7" value="4"
+                                    type="radio" /><?php echo $questions['opt04']; ?></div>
+                        </li>
+                        <li>
+                            <div class="quiz-option"><input name="choice7" value="5"
+                                    type="radio" /><?php echo $questions['opt05']; ?></div>
+                        </li>
+
+                    </ul>
+
+                    <div class="question-btn">
+                        <button type="button" class="quiz-btn" id="next-quiz-btn" onclick="showNextDiv8()">Next</button>
+
+                    </div>
+                    <input type="hidden" name="questionNumber" value="<?php echo $_SESSION['questionNo']; ?>" />
+
+
+                </div>
+
+                <!-- 8 Div -->
+
+                <?php
+                $questions =  $rows[7];
+                ?>
+
+
+                <div class="model-quiz8">
+
+                    <div class="question-number current">
+                        Question 8 of 10
+                    </div>
+
+                    <div class="question-text">
+                        <p class="quiz-question"><?php echo $questions['question']; ?></p>
+                    </div>
+
+                    <!-- <form id="model-quiz-form" method="post"> -->
+
+                    <ul class="option-container choices">
+
+                        <li>
+                            <div class="quiz-option"><input name="choice8" value="1"
+                                    type="radio" /><?php echo $questions['opt01']; ?></div>
+                        </li>
+
+                        <li>
+                            <div class="quiz-option"><input name="choice8" value="2"
+                                    type="radio" /><?php echo $questions['opt02']; ?></div>
+                        </li>
+                        <li>
+                            <div class="quiz-option"><input name="choice8" value="3"
+                                    type="radio" /><?php echo $questions['opt03']; ?></div>
+                        </li>
+                        <li>
+                            <div class="quiz-option"><input name="choice8" value="4"
+                                    type="radio" /><?php echo $questions['opt04']; ?></div>
+                        </li>
+                        <li>
+                            <div class="quiz-option"><input name="choice8" value="5"
+                                    type="radio" /><?php echo $questions['opt05']; ?></div>
+                        </li>
+
+                    </ul>
+
+                    <div class="question-btn">
+                        <button type="button" class="quiz-btn" id="next-quiz-btn" onclick="showNextDiv9()">Next</button>
+
+                    </div>
+                    <input type="hidden" name="questionNumber" value="<?php echo $_SESSION['questionNo']; ?>" />
+
+
+                </div>
+
+
+                <!-- 9 Div -->
+
+                <?php
+                $questions =  $rows[8];
+                ?>
+
+
+                <div class="model-quiz9">
+
+                    <div class="question-number current">
+                        Question 9 of 10
+                    </div>
+
+                    <div class="question-text">
+                        <p class="quiz-question"><?php echo $questions['question']; ?></p>
+                    </div>
+
+                    <!-- <form id="model-quiz-form" method="post"> -->
+
+                    <ul class="option-container choices">
+
+                        <li>
+                            <div class="quiz-option"><input name="choice9" value="1"
+                                    type="radio" /><?php echo $questions['opt01']; ?></div>
+                        </li>
+
+                        <li>
+                            <div class="quiz-option"><input name="choice9" value="2"
+                                    type="radio" /><?php echo $questions['opt02']; ?></div>
+                        </li>
+                        <li>
+                            <div class="quiz-option"><input name="choice9" value="3"
+                                    type="radio" /><?php echo $questions['opt03']; ?></div>
+                        </li>
+                        <li>
+                            <div class="quiz-option"><input name="choice9" value="4"
+                                    type="radio" /><?php echo $questions['opt04']; ?></div>
+                        </li>
+                        <li>
+                            <div class="quiz-option"><input name="choice9" value="5"
+                                    type="radio" /><?php echo $questions['opt05']; ?></div>
+                        </li>
+
+                    </ul>
+
+                    <div class="question-btn">
+                        <button type="button" class="quiz-btn" id="next-quiz-btn"
+                            onclick="showNextDiv10()">Next</button>
+
+                    </div>
+                    <input type="hidden" name="questionNumber" value="<?php echo $_SESSION['questionNo']; ?>" />
+
+
+                </div>
+
+
+                <!-- 10 Div -->
+
+                <?php
+                $questions =  $rows[9];
+                ?>
+
+
+                <div class="model-quiz10">
+
+                    <div class="question-number current">
+                        Question 10 of 10
+                    </div>
+
+                    <div class="question-text">
+                        <p class="quiz-question"><?php echo $questions['question']; ?></p>
+                    </div>
+
+                    <!-- <form id="model-quiz-form" method="post"> -->
+
+                    <ul class="option-container choices">
+
+                        <li>
+                            <div class="quiz-option"><input name="choice10" value="1"
+                                    type="radio" /><?php echo $questions['opt01']; ?></div>
+                        </li>
+
+                        <li>
+                            <div class="quiz-option"><input name="choice10" value="2"
+                                    type="radio" /><?php echo $questions['opt02']; ?></div>
+                        </li>
+                        <li>
+                            <div class="quiz-option"><input name="choice10" value="3"
+                                    type="radio" /><?php echo $questions['opt03']; ?></div>
+                        </li>
+                        <li>
+                            <div class="quiz-option"><input name="choice10" value="4"
+                                    type="radio" /><?php echo $questions['opt04']; ?></div>
+                        </li>
+                        <li>
+                            <div class="quiz-option"><input name="choice10" value="5"
+                                    type="radio" /><?php echo $questions['opt05']; ?></div>
+                        </li>
+
+                    </ul>
+
+
+
+                    <div class="question-btn">
+                        <button class="quiz-btn" id="next-quiz-btn" name="submit" type="submit">Finish</button>
+
+                    </div>
+                    <input type="hidden" name="questionNumber" value="<?php echo $_SESSION['questionNo']; ?>" />
+
+                    </form>
+
+
+                </div>
+
+
+
 
             </div>
         </div>
@@ -756,7 +735,7 @@
     function showNextDiv10() {
         var div = document.querySelector('.model-quiz9'); // Get reference to the div element
         div.style.display = "none"; // Add the new class
-        var div = document.querySelector('.pp-quiz10'); // Get reference to the div element
+        var div = document.querySelector('.model-quiz10'); // Get reference to the div element
         div.style.display = "block";
     }
 
