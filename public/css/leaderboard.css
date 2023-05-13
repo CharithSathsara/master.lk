@@ -6,8 +6,16 @@
     overflow: hidden;
 }
 
-.leaderboard-container {
+#leaderboard-container {
     margin: 140px 40px 100px 30px;
+}
+
+#pastLeaderboardPlace-container {
+    display: none;
+}
+
+.modelLeaderboardPlace-container {
+    display: block;
 }
 
 /* .leaderboard {
