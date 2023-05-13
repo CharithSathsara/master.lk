@@ -14,7 +14,7 @@ class Question {
             $count = $data->fetch_assoc();
 
             if($count){
-                return $count['questionCount'] + 1000;
+                return $count['questionCount'];
             }else{
                 throw new Exception("Error: Unable to count questions");
             }
@@ -36,7 +36,7 @@ class Question {
             $count = $data->fetch_assoc();
 
             if($count){
-                return $count['questionCount'] + 500;
+                return $count['questionCount'];
             }else{
                 throw new Exception("Error: Unable to count questions");
             }
