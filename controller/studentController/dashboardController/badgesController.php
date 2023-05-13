@@ -155,17 +155,6 @@ class badgesController
     }
 
     public function specialOne(){
-        $badgePic = Badges::getBadgeImage($this->connection,8);
-
-        $to_echo = "<img src='data:image/jpg;charset=utf8;base64,";
-        $to_echo .= base64_encode($badgePic);
-        $to_echo .= "'/>";
-
-//        return $to_echo;
-        echo $to_echo;
-    }
-
-    public function specialTwo(){
         $badgePic = Badges::getBadgeImage($this->connection,7);
 
         $to_echo = "<img src='data:image/jpg;charset=utf8;base64,";
@@ -175,6 +164,17 @@ class badgesController
 //        return $to_echo;
         echo $to_echo;
     }
+
+//    public function specialTwo(){
+//        $badgePic = Badges::getBadgeImage($this->connection,7);
+//
+//        $to_echo = "<img src='data:image/jpg;charset=utf8;base64,";
+//        $to_echo .= base64_encode($badgePic);
+//        $to_echo .= "'/>";
+//
+////        return $to_echo;
+//        echo $to_echo;
+//    }
 
     public function getTopic($topicId){
 

@@ -713,7 +713,7 @@ select {
 
 .first-badgeDetails{
     min-height: 200px;
-    width: 350px;
+    width: 450px;
     height: auto;
     background-color: white;
     /*padding: 20px;*/
@@ -728,6 +728,15 @@ select {
 .main-detailOneDiv .header-firstBadge{
     height: 50px;
     /*background-color: #0b2e5e;*/
+    display: flex;
+    flex-direction: row;
+}
+
+.first-badgeDetails .header-firstBadge p{
+    width: 350px;
+    margin-left: 15px;
+    margin-top: 15px;
+    margin-bottom: 20px;
 }
 
 .main-detailOneDiv .header-firstBadge img{
@@ -737,6 +746,7 @@ select {
 
 .first-physicsTopic{
     /*background-color: #F4C430;*/
+    /*margin-top: 10px;*/
     padding-left: 35px;
     margin-bottom:10px ;
 }
@@ -753,7 +763,7 @@ select {
 }
 
 #detailOneDiv-close{
-    margin-left: 300px;
+    margin-left: 30px;
     margin-top: 15px;
 }
 

@@ -19,6 +19,8 @@ if(isset($_POST['addteacher-button'])) {
     $subject = validateInput($db_connection->getConnection(), $_POST['subjects']);
     $qualification = validateInput($db_connection->getConnection(), $_POST['qualification']);
 
+
+    $numberArray = str_split($number);
 //    $_SESSION['user']['firstName'] =$fname;
 //    $_SESSION['user']['lastName'] = $lname;
 //    $_SESSION['user']['addLine01'] = $address1;
@@ -118,13 +120,19 @@ if(isset($_POST['addteacher-button'])) {
 
         redirect("", "view/admin/adminDashboard.php");
 
+    }else if(!$numberArray[0]==0) {
+        unset($_POST['addteacher-button']);
+        $_SESSION['add_Teacher'] = "Invalid Mobile Number";
+
+        redirect("", "view/admin/adminDashboard.php");
+
     } else if(mysqli_num_rows($data_setEmail) == 1) {
-                $_SESSION['add_Teacher'] = 'Email is exist';
+                $_SESSION['add_Teacher'] = 'Email already exists';
 //
                 redirect("", "view/admin/adminDashboard.php");
 
             } else if (mysqli_num_rows($data_setUsername) == 1) {
-            $_SESSION['add_Teacher'] = 'User name is exist';
+            $_SESSION['add_Teacher'] = 'UserName already exists';
 //
             redirect("", "view/admin/adminDashboard.php");
         } else {

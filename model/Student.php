@@ -175,7 +175,7 @@ class Student {
 
     }
 
-    public static function giveSubjectAccess($connection, $studentId, $subjectId){
+    public static function giveSubjectAccessUsingId($connection, $studentId, $subjectId){
 
         try {
             $currentDate = date('Y-m-d');
@@ -197,7 +197,7 @@ class Student {
 
     }
 
-    public static function clearCart($connection, $cartId){
+    public static function clearCartUsingId($connection, $cartId){
 
         try {
 
