@@ -3,7 +3,6 @@ body{
     font-family: 'Open Sans', sans-serif;
 }
 
-
 #main-card{
     height: 80%;
     width: 90%;
@@ -92,7 +91,7 @@ button {
     color: black;
 }
 
-/* Body Section */
+/* Home Section */
 
 #join-us-sec{
     height: 80%;
@@ -158,9 +157,86 @@ button {
     right: 0;
     margin: auto;
     border-radius: 20px;
-    display: flex;
+    /* display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: center; */
     visibility: hidden;
 }
+
+#courses-sec{
+    margin: 0 35px 0 35px;
+}
+
+#subtitle{
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 0;
+    color: #0b2e5e;
+}
+
+#medium{
+    margin: 0;
+    font-style: italic;
+    color: #f49f0a;
+    font-weight: bold;
+}
+
+#subjects-sec{
+    display: flex;
+}
+
+.subject-description{
+    display: inline-block;
+    width: 48%;
+    text-align: justify;
+}
+
+#physics{
+    margin-right: 35px;
+}
+
+#institute-sec{
+    margin: 0 35px 0 35px;
+}
+
+.contact-box{
+    flex:1;
+    width: fit-content;
+
+}
+
+.contact-icon{
+    display: inline-block;
+    height: 40px;
+    vertical-align: middle;
+}
+
+#location-icon{
+    vertical-align: text-bottom;
+}
+
+.contact-text{
+    display: inline-block;
+    margin-left:15px;
+    vertical-align: middle;
+}
+
+.contact-title{
+    margin:0;
+    font-weight: bold;
+    color:#219ebc;
+}
+
+.info{
+    margin:0;
+}
+
+#info-container{
+    display: flex;
+    margin-top: 25px;
+
+}
+
+
 
