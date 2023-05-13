@@ -40,3 +40,14 @@ document.getElementById("close-form").addEventListener("click", function() {
     document.getElementById("update-question-form").style.display = "none";
     document.getElementById("page-mask-update-question").style.display = "none";
 });
+
+function getPwUpdatePopup(){
+    document.getElementById("page-mask-password").style.display = "block";
+}
+
+function closePwUpdatePopup(){
+    document.getElementById("page-mask-update-question").style.display = "none";
+    // document.getElementById("change-pw-error").innerHTML = null;
+    // document.getElementById("change-photo-error").innerHTML = null;
+    // document.getElementById("change-info-error").innerHTML = null;
+}

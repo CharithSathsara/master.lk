@@ -107,6 +107,7 @@ function renderForumTeacher(questions) {
         replyInput.name = 'answer_text';
         replyInput.id = 'answer_text';
         replyInput.placeholder = 'Enter your answer here';
+        replyInput.required = true;
         replyForm.appendChild(replyInput);
 
         // Add focus and blur event listeners to reply input

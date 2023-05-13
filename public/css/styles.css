@@ -120,11 +120,11 @@
 .main-card:hover, .card-01:hover, .card-02:hover{
     cursor: pointer;
 }
+
 #add-question-btn {
     padding: 10px;
-    font-weight: bold;
+    font-weight: normal;
     cursor: pointer;
-    transition-duration: 0.4s;
     width: 160px;
     height: 40px;
     left: 20px;
@@ -132,35 +132,33 @@
     background-color:#f49f0a;
     border-radius: 5px;
     color:#fff;
+    border: none;
 }
 
-.add-question-btn{
+#view-question-btn {
     padding: 10px;
-    font-weight: bold;
-    cursor: pointer;
-    transition-duration: 0.4s;
+    font-weight: normal;
     width: 160px;
     height: 40px;
     left: 20px;
     top: 20px;
-    background-color:#219ebc;
+    background-color: #219ebc;
     border-radius: 5px;
-    color:#fff;
+    color: #fff;
+    margin-top: 10px;
+    border: none;
+    cursor: pointer;
+    transition-duration: 0.4s;
 }
 
 input[type=submit]{
     color:black;
 }
 
-input[type=submit]:hover{
+input[type=submit]:hover, #view-question-btn:hover {
     background-color: black;
     color: white;
-    font-weight: bold;
-}
-
-#add-question-btn:hover{
-    background-color: black;
-    font-weight: bold;
+    border: 1px solid white;
 }
 
 input[type=text] {

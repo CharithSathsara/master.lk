@@ -19,9 +19,24 @@ class Teacher {
                           (SELECT subjectId From subject WHERE subjectTitle = '$subject'))";
 
             $data = $connection->query($query);
+            $questionId = $connection->insert_id;
 
             if($data){
-                return $data;
+
+                if($type === 'PASTQUESTION'){
+                    $queryToChild = "INSERT INTO `past_paper` (`questionId`, `year`) VALUES ($questionId, NULL)";
+                }else {
+                    $queryToChild = "INSERT INTO `model_paper` (`questionId`) VALUES ($questionId)";
+                }
+
+                $response = $connection->query($queryToChild);
+
+                if($response){
+                    return $response;
+                }else {
+                    throw new Exception("Error: Unable to add question to child table");
+                }
+
             }else{
                 throw new Exception("Error: Unable to add question");
             }

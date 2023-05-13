@@ -80,8 +80,8 @@ include_once '../../common/header.php';
                     <br><hr><br>
                     <p id="view-details-text">You can view quiz details about <?= $_SESSION['subject']; ?>:</p><br><br>
 
-                    <label for="topic">Select Topic :</label>
-                    <select name="topic">
+                    <label for="topic">Select Topic :&nbsp;&nbsp;</label>
+                    <select name="topic" id="select-topic">
 
                         <?php
 
@@ -95,8 +95,8 @@ include_once '../../common/header.php';
 
                     </select>
 
-                    <label for="type">Select Type :</label>
-                    <select name="type">
+                    <label for="type">Select Type :&nbsp;&nbsp;</label>
+                    <select name="type" id="select-type">
                         <option value="PASTPAPER">Past Paper</option>
                         <option value="MODELPAPER">Model Paper</option>
                     </select>

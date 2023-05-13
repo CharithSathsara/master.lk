@@ -84,12 +84,12 @@ option {
     margin-left: 10px;
     width: 10vw;
     height: 37px;
-    border-radius: 7px;
     cursor: pointer;
-    background-color: #0b2e5e;
-    font-weight: bold;
-    color: #DCDCDC;
+    background-color: #219ebc;
+    border-radius: 5px;
+    color: #fff;
     border: none;
+    font-weight: normal;
 }
 
 .options {

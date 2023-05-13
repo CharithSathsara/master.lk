@@ -10,16 +10,16 @@
 </head>
 <body>
 
-<div class="page-mask" id="page-mask-update-question" style="display:none;">
+<div class="page-mask" id="page-mask-update-question">
     <div id="update-question-form">
-        <b><p id="update-question-title">Update Question</p></b>
-        <button id="close-form" class="close-form">
+        <b><p id="update-photo-password-title">Update Question</p></b>
+        <button onclick="closePwUpdatePopup()" class="close-button">
             <img src="../../../public/icons/close.svg" class="close-icon">
-        </button><br><br>
+        </button><br>
         <form action="../../../controller/teacherController/questionController/updateQuestionController.php" id="update-form" method="post">
 
             <input type="hidden" id="question-id" name="questionId">
-            <textarea id="update-question" name="update-question" rows="5" cols="50"></textarea>
+            <textarea id="update-question" name="update-question" rows="3" cols="30"></textarea>
 
             <input type="text" id="update-option1" name="update-option1">
 
@@ -31,7 +31,7 @@
 
             <input type="text" id="update-option5" name="update-option5">
 
-            <label for="correctAnswer">Correct Answer </label>
+            <label for="correctAnswer">Correct Answer</label>
             <select name="correctAnswer">
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -40,16 +40,17 @@
                 <option value="5">5</option>
             </select>
 
-            <textarea id="update-description" rows="2" cols="50" name="updateDescription"></textarea>
+            <textarea id="update-description" rows="2" cols="30" name="updateDescription"></textarea>
 
             <div id="update-question-error">
                 <?php include "../../../controller/authController/message.php"?>
             </div>
 
             <div style="text-align: right;">
-                <input type="submit" value="UPDATE" name="submit-update-question">
+                <input type="submit" value="UPDATE" name="submit-update-question" id="submit-update-question">
             </div>
 
+        </form>
         </form>
     </div>
 </div>

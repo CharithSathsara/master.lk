@@ -33,9 +33,7 @@ include_once '../../common/header.php';
 
     <div class="main">
         <div id="container">
-
-            <p id="title"><b>Add New Question</b></p>
-
+            <b><p id="title"><a href="../../../view/teacher/teacherDashboard.php"><span id="dashboard-shortcut">Dashboard</span></a>&nbsp;&nbsp;>&nbsp;&nbsp;Add New Question</p></b>
             <p class="subheading">Question&nbsp;&nbsp;</p>
 
             <div class="form-container">
@@ -46,8 +44,8 @@ include_once '../../common/header.php';
 
                     <div class="form-inline">
 
-                        <label for="topicId" class="topic-selection">Select Topic :</label>
-                        <select name="topicId" style="margin-right: 8vw" class="type-selection" required>
+                        <label for="topicId" class="topic-selection">Select Topic :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <select name="topicId" style="margin-right: 14.5vw" class="type-selection" required>
 
                             <option value="" selected>-- Select a topic --</option>
                             <?php
@@ -62,7 +60,7 @@ include_once '../../common/header.php';
 
                         </select>
 
-                        <label for="type"  class="topic-selection">Select Type :</label>
+                        <label for="type"  class="topic-selection">Select Type : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                         <select name="type" class="type-selection" required>
                             <option value="" selected>-- Select a type --</option>
                             <option value="PASTQUESTION">Past Question</option>
@@ -71,13 +69,13 @@ include_once '../../common/header.php';
 
                     </div>
 
-                    <textarea name="question" rows="5" cols="93" placeholder="Enter the Question Here" required></textarea>
+                    <textarea name="question" rows="6" cols="93" placeholder="Enter the Question Here" required></textarea>
 
                     <div class="form-inline">
 
                         <input type="text" placeholder="Answer 1" name="answer1" required>
 
-                        <label for="correctAnswer" style="margin-left: 8vw" class="topic-selection">Correct Answer :</label>
+                        <label for="correctAnswer" style="margin-left: 10vw" class="topic-selection">Correct Answer :&nbsp;&nbsp;&nbsp;</label>
                         <select name="correctAnswer" required>
                             <option value="" selected>-- Select a answer --</option>
                             <option value="1">1</option>
@@ -89,22 +87,27 @@ include_once '../../common/header.php';
 
                     </div>
 
-                    <div class="answer-group" style="display: flex;flex-direction: column;">
+                    <div class="answer-group" style="display: flex;flex-direction: row;">
 
                         <input type="text" placeholder="Answer 2" name="answer2" required>
 
-                        <input type="text" placeholder="Answer 3" name="answer3" required>
+                        <input type="text" placeholder="Answer 3" name="answer3" style="margin-left: 10.5vw" required>
+
+
+                    </div>
+
+                    <div class="answer-group" style="display: flex;flex-direction: row;">
 
                         <input type="text" placeholder="Answer 4" name="answer4" required>
 
-                        <input type="text" placeholder="Answer 5" name="answer5" required>
+                        <input type="text" placeholder="Answer 5" name="answer5" style="margin-left: 10.5vw" required>
 
                     </div>
 
                     <textarea name="description" rows="4" cols="75" placeholder="Answer Description" required></textarea>
 
                     <div style="display:grid; justify-content: right">
-                        <input type="submit" name="add-question" value="Save">
+                        <input type="submit" name="add-question" value="Save" id="add-question">
                     </div>
 
                 </form>
