@@ -11,6 +11,66 @@ include_once $currentDir . '/../../model/User.php';
 
 $profilePhotoViewController = new profilePhotoViewController();
 
+//Navigation Bar Highlighting
+
+$current_url = $_SERVER['REQUEST_URI'];
+$page_name = basename(parse_url($current_url, PHP_URL_PATH));
+
+if (in_array($page_name, $_SESSION['teacherNavItems-dashboard'])){
+    echo "
+    <style>
+        #dashboard{
+            background-color:#edecec;
+        }
+    </style>
+    ";
+}
+else if (in_array($page_name, $_SESSION['teacherNavItems-quizDetails'])){
+    echo "
+    <style>
+        #quizDetails{
+            background-color:#edecec;
+        }
+    </style>
+    ";
+}
+else if (in_array($page_name, $_SESSION['teacherNavItems-studentDetails'])){
+    echo "
+    <style>
+        #studentDetails{
+            background-color:#edecec;
+        }
+    </style>
+    ";
+}
+else if (in_array($page_name, $_SESSION['teacherNavItems-qaForum'])){
+    echo "
+    <style>
+        #qaForum{
+            background-color:#edecec;
+        }
+    </style>
+    ";
+}
+else if (in_array($page_name, $_SESSION['teacherNavItems-feedbacks'])){
+    echo "
+    <style>
+        #feedbacks{
+            background-color:#edecec;
+        }
+    </style>
+    ";
+}
+else if (in_array($page_name, $_SESSION['teacherNavItems-profile'])){
+    echo "
+    <style>
+        #profile{
+            background-color:#edecec;
+        }
+    </style>
+    ";
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -63,7 +123,7 @@ $profilePhotoViewController = new profilePhotoViewController();
                         </div>
                     </a>
                 </li>
-                <li class="nav-item"  id="q&aForum">
+                <li class="nav-item"  id="qaForum">
                     <a href=<?= base_url('view/teacher/q_and_a_forum/forum_teacher.php') ?>>
                         <div class="list-item" >
                             <img src=<?= base_url('public/icons/q&a.svg') ?> class="list-icon">
@@ -92,5 +152,7 @@ $profilePhotoViewController = new profilePhotoViewController();
             </ul>
         </div>
     </div>
+
+    
 </body>
 </html>

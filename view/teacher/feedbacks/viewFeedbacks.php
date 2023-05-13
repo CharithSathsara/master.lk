@@ -132,7 +132,11 @@ $viewFeedbackController = new ViewFeedbackController();
                 echo "</table>";
 
             }else{
-                echo "<div style='color: orange;margin-left: 30vw'><br>No Feedbacks to View<br> <img style='width: 12vw;height: 25vh' src='../../../public/img/search.png' /></div>";
+                echo "<div style='color: orange;margin-left: 30vw; position: absolute;right: 0; left: 285px;top: 340px;'>
+                
+                <img style='width: 100px;margin-left: 28px;' src='../../../public/img/search.png' />
+                <p style='font-size:16px'>No Feedbacks to View</p>
+                </div>";
             }
         ?>
 

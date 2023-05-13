@@ -33,10 +33,10 @@ else if (in_array($page_name, $_SESSION['studentNavItems-newSubjects'])){
     </style>
     ";
 }
-else if (in_array($page_name, $_SESSION['studentNavItems-q&aForum'])){
+else if (in_array($page_name, $_SESSION['studentNavItems-qaForum'])){
     echo "
     <style>
-        #q&aForum{
+        #qaForum{
             background-color:#edecec;
         }
     </style>
@@ -96,7 +96,7 @@ else if (in_array($page_name, $_SESSION['studentNavItems-profile'])){
                         </div>
                     </a>
                 </li>
-                <li class="nav-item"  id="q&aForum">
+                <li class="nav-item"  id="qaForum">
                     <a href=<?= base_url('view/student/q_and_a_forum/forum_student.php') ?>>
                         <div class="list-item" >
                             <img src=<?= base_url('public/icons/q&a.svg') ?> class="list-icon">
@@ -117,7 +117,6 @@ else if (in_array($page_name, $_SESSION['studentNavItems-profile'])){
         </div>
     </div>
 
-    <script src=<?= base_url('public/js/navBar.js') ?>></script>
 
 </body>
 </html>

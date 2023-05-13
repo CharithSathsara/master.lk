@@ -17,7 +17,13 @@
 <?php
 
 include('./config/app.php');
-// redirect("", "view/authentication/index.php");
+include('./controller/studentController/newSubjectsController/subjectController.php');
+include('./controller/adminController/systemInformationController/systemInformationController.php');
+include('./model/Subject.php');
+include('./model/instituteDetails.php');
+
+$subjectController = new subjectController();
+$systemInformationController = new systemInformationController();
 
 ?>
 
@@ -30,7 +36,7 @@ include('./config/app.php');
             <div id="header-btn-sec">
                 <div id="btns">
                     <button class="header-btns" id="home" onclick="getHome()">Home</button>
-                    <button class="header-btns" id="about-courses" onclick="getCourses()">About Courses</button>
+                    <button class="header-btns" id="about-courses" onclick="getCourses()">About Us</button>
                     <a href="./view/authentication/index.php" class="header-btns" id="login-btn">Log In</a>
                 </div>
             </div>
@@ -56,7 +62,75 @@ include('./config/app.php');
     <!-- About Courses Section -->
 
     <div id="courses-div">
+        <div id="courses-sec">
+            <p id='subtitle'>Our Courses</p><br>
+            <p id='medium'>Sinhala Medium</p>
+            <div id='subjects-sec'>
+                <div class="subject-description" id="physics">
+                    <p class='sub-title'><b>Physics</b></p>
+                    <p class='sub-text'><?= $subjectController->getSubjectDescription("Physics") ; ?></p>
+                </div>
+                <div class="subject-description" id="chemistry">
+                    <p class='sub-title'><b>Chemistry</b></p>
+                    <p class='sub-text'><?= $subjectController->getSubjectDescription("Chemistry") ; ?></p>
+                </div>
+            </div>
+            <hr>
+        </div>
+        
+        <div id="institute-sec">
+            <p><b>Contact Us&nbsp;
+            <?php
+                $result = $systemInformationController->getAllDetailsInstitute();
+                foreach ($result as $institute){
+                    echo "
+                    -&nbsp;&nbsp;".$institute['instituteName']."</b></p>
+                    <div id='info-container'>
+                    <div id='email' class='contact-box'>
+                        <img src='./public/icons/mail.svg' class='contact-icon'>
+                        <div class='contact-text'>
+                            <p class='contact-title'>EMAIL</p>
+                            <p class='info'>".$institute['email']."</p>
+                        </div>
+                    </div>
+                    <div id='telephone' class='contact-box'>
+                        <img src='./public/icons/phone.svg' class='contact-icon'>
+                        <div class='contact-text'>
+                            <p class='contact-title'>TELEPHONE</p>
+                            <p class='info'>".$institute['number']."</p>
+                        </div>
+                    </div>";
+                    if($institute['fax'] != null){
+                        echo "
+                            <div id='fax' class='contact-box'>
+                                <img src='./public/icons/fax.svg' class='contact-icon'>
+                                <div class='contact-text'>
+                                    <p class='contact-title'>FAX</p>
+                                    <p class='info'>".$institute['fax']."</p>
+                                </div>
+                            </div>
+                        
+                        ";
+                    }
+                    if($institute['address01'] != null && $institute['address02'] != null){
+                        echo "
+                            <div id='location' class='contact-box'>
+                                <img src='./public/icons/location.svg' class='contact-icon' id='location-icon'>
+                                <div class='contact-text'>
+                                    <p class='contact-title'>LOCATION</p>
+                                    <p class='info'>".$institute['address01']."</p>
+                                    <p class='info'>".$institute['address02']."</p>
+                                </div>
+                            </div>
+                        </div>
+                        ";
+                    }   
+                    
+                }
+                
+            ?>
             
+        </div>
     </div>
 
     <script src="./public/js/homePage.js"></script>

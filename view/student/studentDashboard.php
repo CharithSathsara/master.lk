@@ -53,8 +53,8 @@ array_push($_SESSION['studentNavItems-dashboard'], 'Leaderboard.php', 'modelQuiz
 $_SESSION['studentNavItems-newSubjects'] = array();
 array_push($_SESSION['studentNavItems-newSubjects'], 'newSubjects.php', 'bankDeposit.php', 'cart.php','checkout.php');
 
-$_SESSION['studentNavItems-q&aForum'] = array();
-array_push($_SESSION['studentNavItems-q&aForum'], 'forum_student.php');
+$_SESSION['studentNavItems-qaForum'] = array();
+array_push($_SESSION['studentNavItems-qaForum'], 'forum_student.php');
 
 $_SESSION['studentNavItems-profile'] = array();
 array_push($_SESSION['studentNavItems-profile'], 'profile.php');

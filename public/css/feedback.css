@@ -34,6 +34,7 @@ table{
     width: 80%;
     margin-left: 10%;
     border-collapse: collapse;
+    margin-bottom: 100px;
 }
 
 tr {
@@ -54,7 +55,7 @@ td {
     padding: 10px;
     font-size: 16px;
     vertical-align: top;
-    background-color: #D9D9D9;
+    background-color: #edecec;
 }
 
 tr td:first-child  {

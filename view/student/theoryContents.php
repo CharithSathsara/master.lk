@@ -56,17 +56,27 @@ $_SESSION['current-topic'] = $_GET['topic'];
         
         <div id="thoery-container">
             <p class="sub-title">Theory&nbsp;&nbsp;</p><br>
+
+            <!-- Gets the relevant theory contents from the database  -->
+
             <div id="theory-sec">
                 <?=$theoryContentController->getTheoryContent($_SESSION['current-subject'],$_SESSION['current-lesson'],$_SESSION['current-topic']); ?>
-            </div>            
+            </div>     
+
         </div>
 
         <div id="test-question-container">
             <b><p class="sub-title">Test Questions&nbsp;&nbsp;&nbsp;</p></b><br>
+
+                <!-- Show gamified questions of the relevant topic according to its given type -->
+
                 <?php
+
                     $status = $gamifiedQuestionsController->getGamifiedQuestions($_SESSION['current-subject'],$_SESSION['current-lesson'],$_SESSION['current-topic']);
                     if($status){
+                        $q_count=0;
                         foreach($status as $gamified_question){
+                            $q_count++;
                             $question = $gamified_question['question'];
                             $opt01 = $gamified_question['opt01'];
                             $opt02 = $gamified_question['opt02'];
@@ -77,7 +87,11 @@ $_SESSION['current-topic'] = $_GET['topic'];
                             $description = $gamified_question['description'];
                             $type = $gamified_question['type'];
 
-                            // viewing options here
+                            // viewing options according to the type
+
+                            if($type=='flip_cards'){
+                                include('./flipCards.php');
+                            }
                         }
                     }else{
                         echo"
@@ -95,6 +109,6 @@ $_SESSION['current-topic'] = $_GET['topic'];
 
 </div>
 
-
+<script src="../../public/js/flipCards.js"></script>
 </body>
 </html>

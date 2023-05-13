@@ -7,6 +7,7 @@ require_once('../../model/User.php');
 // Set the response headers to indicate that the response is JSON
 header('Content-Type: application/json');
 
+
 // Handle the POST request to create a new question
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 

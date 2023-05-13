@@ -11,6 +11,47 @@ include_once $currentDir . '/../../model/User.php';
 
 $profilePhotoViewController = new profilePhotoViewController();
 
+//Navigation Bar Highlighting
+
+$current_url = $_SERVER['REQUEST_URI'];
+$page_name = basename(parse_url($current_url, PHP_URL_PATH));
+
+if (in_array($page_name, $_SESSION['adminNavItems-dashboard'])){
+    echo "
+    <style>
+        #dashboard{
+            background-color:#edecec;
+        }
+    </style>
+    ";
+}
+else if (in_array($page_name, $_SESSION['adminNavItems-payments'])){
+    echo "
+    <style>
+        #payments{
+            background-color:#edecec;
+        }
+    </style>
+    ";
+}
+else if (in_array($page_name, $_SESSION['adminNavItems-systemInfo'])){
+    echo "
+    <style>
+        #systemInfo{
+            background-color:#edecec;
+        }
+    </style>
+    ";
+}
+else if (in_array($page_name, $_SESSION['adminNavItems-profile'])){
+    echo "
+    <style>
+        #profile{
+            background-color:#edecec;
+        }
+    </style>
+    ";
+}
 
 ?>
 
@@ -59,11 +100,6 @@ $profilePhotoViewController = new profilePhotoViewController();
                 </a>
             </li>
 
-<!--            <li class="nav-item"  id="payments">-->
-<!--                <a href=--><?//= base_url('view/admin/systemInfo/systemInformation.php') ?><!-->
-<!--                    <div class="list-item" >-->
-<!--                        <img src="--><?//= base_url('public/icons/payments.svg') ?><!--" class="list-icon">-->
-
             <li class="nav-item"  id="systemInfo">
                 <a href=<?= base_url('view/admin/systemInfo/systemInformation.php') ?>>
                     <div class="list-item" >
@@ -85,7 +121,8 @@ $profilePhotoViewController = new profilePhotoViewController();
     </div>
 </div>
 
-<!-- <script src="../../public/js/navBar.js"></script> -->
+
+
 
 </body>
 </html>

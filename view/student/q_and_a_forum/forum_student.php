@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <link rel="stylesheet" href="../../../public/css/QandA_Forum.css?<?php echo time(); ?>">
     <title>Q&A Forum</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -15,6 +16,8 @@ include_once('../../../controller/authController/authorization/Authorization.php
 include_once('../../../config/app.php');
 include_once('../../../controller/q_and_a_controller/StudentForumController.php');
 include_once('../../common/header.php');
+
+
 
 //User Authentication
 Authentication::userAuthentication();
@@ -39,7 +42,7 @@ $studentForumController = new StudentForumController();
 
         <div class="form-container">
 
-            <form id="new-question-form">
+            <form id="new-question-form" accept-charset="UTF-8">
 
                 <select id="dropdown" name="dropdown">
 

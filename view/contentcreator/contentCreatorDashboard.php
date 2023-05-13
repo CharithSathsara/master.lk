@@ -60,6 +60,15 @@
     
     // Create an instance of the ViewTheoryContentController() Class
     $viewTheoryContentController = new ViewTheoryContentController();
+
+    $_SESSION['ccNavItems-dashboard'] = array();
+    array_push($_SESSION['ccNavItems-dashboard'], 'contentCreatorDashboard.php','addTheory.php','updateTheory.php');
+
+    $_SESSION['ccNavItems-theoryQuestions'] = array();
+    array_push($_SESSION['ccNavItems-theoryQuestions'], 'theoryQuestions.php');
+
+    $_SESSION['ccNavItems-profile'] = array();
+    array_push($_SESSION['ccNavItems-profile'], 'profile.php');
     
     // Include Header and Navigation Bar Files
     include_once '../common/header.php';
