@@ -3,10 +3,13 @@
 include_once('../../../config/app.php');
 include('../../../model/Quiz.php');
 
-$topicId = 2;
+
+$_SESSION['current-topic'] = 2;
+$topicId = $_SESSION['current-topic'];
+
 $result = Quiz::getModelQuizQuestions($topicId, $db_connection->getConnection());
 
-$_SESSION['topicId'] = 2;
+
 
 if (!isset($_SESSION['modelQuizScore'])) {
     $_SESSION['modelQuizScore'] = 0;

@@ -114,6 +114,7 @@
 
                         <div class="question-number current">
                             Question 1 of 10
+
                         </div>
 
                         <div class="question-text">

@@ -3,10 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Model Quiz Result</title>
+    <title>Past Paper Quiz Result</title>
     <link rel="stylesheet" href="../../../public/css/modelQuiz.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,8 +35,8 @@
 
 
 
-    // include_once '../../../view/common/header.php';
-    // @include '../../../view/common/navBar-Student.php';
+    include_once '../../../view/common/header.php';
+    @include '../../../view/common/navBar-Student.php';
 
 
 
@@ -48,7 +47,7 @@
     <div class="content">
         <div class="container">
             <div class="modelQuiz-container">
-                <div class="title-modelQuiz"><b>Model Quiz</b>
+                <div class="title-modelQuiz"><b>Past Paper Quiz</b>
                     <hr class="hr-line">
                 </div>
                 <div class="result-box custom-box ">
