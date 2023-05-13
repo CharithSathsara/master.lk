@@ -44,14 +44,14 @@
     display: grid;
     grid-template-columns: 180px 180px;
     grid-row: auto auto;
-    grid-column-gap: 120px;
+    grid-column-gap: 110px;
     grid-row-gap: 30px;
     padding-top: 10px;
     margin: 0 auto;
 }
 
 .form-Update-institute input[type='text'],.form-Update-institute input[type='email']{
-    background-color: #D9D9D9;
+    background-color: #edecec;
     border: none;
     border-radius: 10px;
     width: 230px;

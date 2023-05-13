@@ -330,6 +330,7 @@ th{
     border: none;
     height: 40px;
     border-radius: 10px;
+    background-color: #edecec;
 }
 
 .sub-UpdateContent{
@@ -350,6 +351,7 @@ th{
     height:40px ;
     margin-left: 13%;
     border: none;
+    background-color: #edecec;
 }
 
 .UpdateTeach-form{
@@ -382,7 +384,8 @@ input[type="email"],input[type="password"],input[type="text"],input[type="date"]
     padding:0 15px;
     border:none;
     border-radius: 10px;
-    background-color: rgba(117, 114, 114, 0.31);
+    /*background-color: rgba(117, 114, 114, 0.31);*/
+    background-color: #edecec;
 }
 textarea{
     width : 230px;
@@ -392,7 +395,9 @@ textarea{
     padding-left: 50px;
     border:none;
     border-radius: 6px;
-    background-color: rgba(117, 114, 114, 0.31);
+    /*background-color: rgba(117, 114, 114, 0.31);*/
+    background-color: #edecec;
+    resize: none;
 }
 
 .selectSub{
@@ -513,6 +518,7 @@ textarea{
 }
 #subject-teacher{
     width: 280px;
+    background-color: #edecec;
 }
 
 #label-selectUpdateTeacher{

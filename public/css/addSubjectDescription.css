@@ -63,19 +63,22 @@
 }
 
 .add-subjectDescription-form .description-details{
-    width: 100%;
+    width: 95%;
+    /*width: 95%;*/
     min-height: 130px;
-    height: auto;
-    background-color: #D9D9D9;
+    max-height: 200px;
+    background-color: #edecec;
     border: none;
     border-radius: 10px;
+    resize: none;
+    padding: 15px;
 
 }
 
 .add-subjectDescription-form .price-details{
     width: 200px;
     height: 40px;
-    background-color:#D9D9D9 ;
+    background-color:#edecec ;
     border: none;
     border-radius: 10px;
 }
