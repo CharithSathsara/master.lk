@@ -1,53 +1,13 @@
-const model_quiz = [
-    {
-        q: ' සරල ක්‍රියාකාරකම්‌ මඟින්‌ ද්‍රවයක නිදහස්‌ පෘෂ්ඨයේ හැසිරීම ආදර්ශනය කරයි?',
-        options: ['අන්තර්‌ අණුක බල', 'අණුක බල', 'නිදහස්‌ පෘෂ්ඨික ශක්තිය', 'පෘෂ්ඨික ශක්තිය', 'ශක්තිය'],
-        answer: 0
-    },
-    {
-        q: ' සරල ක්‍රියාකාරකම්‌ මඟින්‌ ද්‍රවයක නිදහස්‌ පෘෂ්ඨයේ හැසිරීම ආදර්ශනය කරයි?',
-        options: ['may', 'un', 'may', 'un', 'may'],
-        answer: 2
-    },
-    {
-        q: 'What is good?',
-        options: ['may', 'un', 'may', 'un', 'may'],
-        answer: 1
-    },
-    {
-        q: 'What is good?',
-        options: ['may', 'un', 'may', 'un', 'may'],
-        answer: 2
-    },
-    {
-        q: 'What is good?',
-        options: ['may', 'un', 'may', 'un', 'may'],
-        answer: 1
-    },
-    {
-        q: 'What is good?',
-        options: ['may', 'un', 'may', 'un', 'may'],
-        answer: 0
-    },
-    {
-        q: 'What is good?',
-        options: ['may', 'un', 'may', 'un', 'may'],
-        answer: 0
-    },
-    {
-        q: 'What is good?',
-        options: ['may', 'un', 'may', 'un', 'may'],
-        answer: 2
-    },
-    {
-        q: 'What is good?',
-        options: ['may', 'un', 'may', 'un', 'may'],
-        answer: 0
-    },
-    {
-        q: 'What is good?',
-        options: ['may', 'un', 'may', 'un', 'may'],
-        answer: 1
-    },
+var currentIndex = 0; // Global variable to keep track of current index
+var divs = document.querySelectorAll('#model-quiz'); // Get all the divs with class 'myDiv'
 
-]
+function showNextDiv() {
+    divs[currentIndex].style.display = 'none'; // Hide the current div
+    currentIndex++; // Increment the current index
+    if (currentIndex >= divs.length) {
+        currentIndex = 0; // If we've reached the end, loop back to the beginning
+    }
+    divs[currentIndex].style.display = 'block'; // Show the next div
+}
+
+document.querySelector('#nextButton').addEventListener('click', showNextDiv);

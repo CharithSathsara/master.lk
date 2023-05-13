@@ -22,59 +22,80 @@
     <?php
 
 
-include_once('../../controller/authController/authentication/Authentication.php');
-include_once('../../controller/authController/authorization/Authorization.php');
-include('../../controller/studentController/leaderBoardController/leaderBoardController.php');
+    include_once('../../controller/authController/authentication/Authentication.php');
+    include_once('../../controller/authController/authorization/Authorization.php');
+    include('../../controller/studentController/leaderBoardController/leaderBoardController.php');
 
 
-//check user authenticated or not
-//$authentication = new Authentication();
-//$authentication->authorizingAdmin();
+    //check user authenticated or not
+    //$authentication = new Authentication();
+    //$authentication->authorizingAdmin();
 
-//User Authentication
-Authentication::userAuthentication();
-//User Authorization
-Authorization::authorizingStudent();
+    //User Authentication
+    Authentication::userAuthentication();
+    //User Authorization
+    Authorization::authorizingStudent();
 
-$leaderBoardController = new LeaderBoardController();
+    $_SESSION['current-topic'] = $_GET['topic'];
 
-include_once '../common/header.php';
-@include '../common/navBar-Student.php';
+    $leaderBoardController = new LeaderBoardController();
 
-?>
+    include_once '../common/header.php';
+    @include '../common/navBar-Student.php';
+
+    ?>
     <div class="content">
-        <div class="container">
+        <div class="container" id="container">
             <?php
-        $_SESSION['selectedTopicId'] = 2;
-        $i = 0;
 
-        $leaderboard1 = $leaderBoardController->modelQuizLeaderBoard( $_SESSION['selectedTopicId']);
-        mysqli_data_seek($leaderboard1, 1); // move the pointer to the third row (0-based index)
-        $row = mysqli_fetch_assoc($leaderboard1);
-       
+            $i = 0;
 
-    
-        ?>
+            $leaderboard1 = $leaderBoardController->modelQuizLeaderBoard($_SESSION['current-topic']);
+            mysqli_data_seek($leaderboard1, 1); // move the pointer to the third row (0-based index)
+            $row = mysqli_fetch_assoc($leaderboard1);
+
+
+
+            ?>
+            <b>
+                <p id="title">
+                    <span id="subject-shortcut"><a
+                            href="studentDashboard.php"><?= $_SESSION['current-subject'] ?></a></span>&nbsp;&nbsp;>&nbsp;&nbsp;
+                    <span id="lesson-shortcut"><a
+                            href="topicsAndFeedbacks.php?subject=<?= $_SESSION['current-subject'] ?>&lesson=<?= $_SESSION['current-lesson'] ?>"><?= $_SESSION['current-lesson'] ?></a></span>&nbsp;&nbsp;>&nbsp;&nbsp;
+                    <span id="topic-shortcut"><a
+                            href="theoryContents.php?subject=<?= $_SESSION['current-subject'] ?>&lesson=<?= $_SESSION['current-lesson'] ?>&topic=<?= $_SESSION['current-topic'] ?>"><?= $_SESSION['current-topic'] ?></a></span>&nbsp;&nbsp;>&nbsp;&nbsp;
+                    Leaderboard
+                </p>
+            </b>
             <div class="title-leaderboard"><b>Leaderboard</b></div>
 
             <div class="sub-elements">
-                <p class="sub-title"><b>Model Paper Quiz Leaderboard</b></p>
-                <hr class="hr-line">
+                <a href="Leaderboard.php?topic=<?= $_SESSION['current-topic'] ?>"><button class="sub-title"
+                        id="sub-title" type=" button"><b>Model Paper Quiz
+                            Leaderboard</b></button></a>
+                <a href="ppLeaderboard.php?topic=<?= $_SESSION['current-topic'] ?>"><button class="sub-title"
+                        id="sub-title" type="button"><b>Past Paper Quiz
+                            Leaderboard</b></button></a>
             </div>
+
+            <!-- </div>
+            <hr class="hr-line">
+        </div> -->
+
             <br>
-            <div class="leaderboardPlace-container">
+            <div id="ModelLeaderboardPlace-container">
                 <div class="lbox-container">
                     <div class="lbox left">
                         <div class="circle-imgbox">
                             <?php
-                             if($row['image']!=null){
+                            if ($row['image'] != null) {
 
                                 $to_echo = "<img id='profile-pic' src='data:image/jpg;charset=utf8;base64,";
                                 $to_echo .= base64_encode($row['image']);
                                 $to_echo .= "'/>";
                                 echo $to_echo;
-                    
-                            }else{
+                            } else {
                                 echo "<img id='profile-pic' src='../../public/img/default-profPic.png'/>";
                             }
                             ?>
@@ -89,32 +110,31 @@ include_once '../common/header.php';
                             <p>
 
                                 <b>
-                                    <?=$row['firstName']?> <?=$row['lastName']?><br>
+                                    <?= $row['firstName'] ?> <?= $row['lastName'] ?><br>
 
-                                    <?=$row['score']?>% Marks </b>
+                                    <?= $row['score'] ?>% Marks </b>
                             </p>
                         </div>
                     </div>
                     <?php
-                
-                   
+
+
                     mysqli_data_seek($leaderboard1, 0); // move the pointer to the third row (0-based index)
                     $row = mysqli_fetch_assoc($leaderboard1);
-        
+
 
                     ?>
 
                     <div class="lbox bigger">
                         <div class="circle-imgbox-middle">
                             <?php
-                             if($row['image']!=null){
+                            if ($row['image'] != null) {
 
                                 $to_echo = "<img id='profile-pic' src='data:image/jpg;charset=utf8;base64,";
                                 $to_echo .= base64_encode($row['image']);
                                 $to_echo .= "'/>";
                                 echo $to_echo;
-                    
-                            }else{
+                            } else {
                                 echo "<img id='profile-pic' src='../../public/img/default-profPic.png'/>";
                             }
                             ?>
@@ -127,29 +147,28 @@ include_once '../common/header.php';
                             <p>
 
                                 <b>
-                                    <?=$row['firstName']?> <?=$row['lastName']?><br>
+                                    <?= $row['firstName'] ?> <?= $row['lastName'] ?><br>
 
-                                    <?=$row['score']?>% Marks </b></b>
+                                    <?= $row['score'] ?>% Marks </b></b>
 
                             </p>
                         </div>
                     </div>
                     <?php
                     mysqli_data_seek($leaderboard1, 2);
-                    $row = mysqli_fetch_assoc($leaderboard1);// move the pointer to the third row (0-based index)
-                
+                    $row = mysqli_fetch_assoc($leaderboard1); // move the pointer to the third row (0-based index)
+
                     ?>
                     <div class="lbox right">
                         <div class="circle-imgbox">
                             <?php
-                             if($row['image']!=null){
+                            if ($row['image'] != null) {
 
                                 $to_echo = "<img id='profile-pic' src='data:image/jpg;charset=utf8;base64,";
                                 $to_echo .= base64_encode($row['image']);
                                 $to_echo .= "'/>";
                                 echo $to_echo;
-                    
-                            }else{
+                            } else {
                                 echo "<img id='profile-pic' src='../../public/img/default-profPic.png'/>";
                             }
                             ?>
@@ -162,9 +181,9 @@ include_once '../common/header.php';
 
                             <p>
 
-                                <?=$row['firstName']?> <?=$row['lastName']?><br>
+                                <?= $row['firstName'] ?> <?= $row['lastName'] ?><br>
 
-                                <b> <?=$row['score']?>% Marks </b>
+                                <b> <?= $row['score'] ?>% Marks </b>
 
                             </p>
                         </div>
@@ -174,22 +193,76 @@ include_once '../common/header.php';
 
                 </div>
                 <?php
-                    // foreach($leaderboard1 as $row){
-                        ?>
+                // foreach($leaderboard1 as $row){
+                ?>
 
-                <?php 
+                <?php
                 // echo ($i+1);
-                    // i++;
-                    ?>
+                // i++;
+                ?>
 
                 <p> </p>
                 <br>
 
 
 
-
             </div>
+
+
+
+
+
+
+
+
+
+            <table id="modelPaperTable">
+
+
+
+                <tbody>
+                    <?php
+                    for ($i = 3; $i < mysqli_num_rows($leaderboard1); $i++) {
+
+
+                        mysqli_data_seek($leaderboard1, $i);
+                        $row = mysqli_fetch_assoc($leaderboard1); // move the pointer to the third row (0-based index)
+
+
+                    ?>
+                    <tr>
+                        <td id="winner">
+                            <?php echo $i;
+                                ?>
+                        </td>
+                        <td id="modelTableStudent">
+                            <p> <?= $row['firstName'] ?> <?= $row['lastName'] ?></p>
+                        </td>
+                        <td><?= $row['score'] ?></td>
+
+                    </tr>
+
+
+
+                </tbody>
+                <?php
+                    } ?>
+            </table>
+            <!-- <div class="gif-container">
+                        <img class="congratulations-gif" src="../../public/img/Congratulations.gif" alt="Animated GIF">
+                    </div> -->
+
         </div>
+
+
+
+
+
+
+
+    </div>
+    </div>
+    </div>
 
 </body>
 
