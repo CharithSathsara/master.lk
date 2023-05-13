@@ -285,6 +285,7 @@ cursor: pointer;}
     padding-left: 10px;
     margin-bottom: 10px;
     width:83.5%;
+    cursor: pointer;
 }
 
 #signup-error {
@@ -353,6 +354,7 @@ cursor: pointer;}
     padding-left: 10px;
     margin-bottom: 10px;
     width:97.5%;
+    cursor: pointer;
 }
 
 #forgot-pw-form-container p{
@@ -428,6 +430,11 @@ cursor: pointer;}
     display: inline-block;
     right: 0;
     position: absolute;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    font-size: 0;
+    cursor: pointer;
 }
 
 .close-icon{
