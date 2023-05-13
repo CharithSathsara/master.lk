@@ -25,8 +25,9 @@
         include_once ('../../../config/app.php');
         include_once('../../common/header.php');
         include_once('../../common/navBar-Admin.php');
-//        include_once ('../../../model/instituteDetails.php');
-//        include_once ('../../../model/BankDetails.php');
+        include_once ('../../../model/instituteDetails.php');
+        include_once ('../../../model/BankDetails.php');
+        include_once ('../../../model/Subject.php');
         include_once ('../../../controller/adminController/systemInformationController/systemInformationController.php');
 
 //    $institute = new systemInformationController();

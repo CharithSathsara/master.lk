@@ -1,12 +1,12 @@
 <?php
 
-$currentDir = __DIR__;
-
-include_once $currentDir.'\..\..\..\config\app.php';
-
-include_once ('../../../model/instituteDetails.php');
-include_once ('../../../model/BankDetails.php');
-include_once ('../../../model/Subject.php');
+//$currentDir = __DIR__;
+//
+//include_once $currentDir.'\..\..\..\config\app.php';
+//
+//include_once ('../../../model/instituteDetails.php');
+//include_once ('../../../model/BankDetails.php');
+//include_once ('../../../model/Subject.php');
 
 class systemInformationController
 {

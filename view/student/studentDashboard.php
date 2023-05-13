@@ -478,7 +478,7 @@ $timeUsageController = new timeUsageController();
                    $physicsArrayCount = count($physicsTopicOne);
                    $chemistryArrayCount = count($ChemistryTopicOne);
 
-                   if(count($physicsTopicOne) >= 2 || count($ChemistryTopicOne) >= 2){
+                   if(count($physicsTopicOne) >= 2 && count($ChemistryTopicOne) >= 2){
                        echo "<div class='BadgePicture'>";
                        ?>
                        <button onclick="openDescriptionOne()"><?php $badgeController->specialOne() ?></button>
