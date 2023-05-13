@@ -15,6 +15,9 @@ include_once('../../../model/User.php');
         $subject = validateInput($db_connection->getConnection(),$_POST['subjects']);
         $qualification = validateInput($db_connection->getConnection(),$_POST['subjects']);
 
+
+        $numberArray = str_split($number);
+
         $data_setEmail = User::checkEmailExist($db_connection->getConnection(), $email);
 
 
@@ -76,10 +79,17 @@ include_once('../../../model/User.php');
 
         redirect("", "view/admin/adminDashboard.php");
 
-    } else if(mysqli_num_rows($data_setEmail) == 1 && $email != $before_email) {
-        $_SESSION['update_Teacher'] = 'Email is exist';
+    }else if(!$numberArray[0]==0) {
+            unset($_POST['updateteacher-button']);
+            $_SESSION['update_Teacher'] = "Invalid Mobile Number";
 
-        redirect("", "view/admin/adminDashboard.php");
+            redirect("", "view/admin/adminDashboard.php");
+
+    }else if(mysqli_num_rows($data_setEmail) == 1 && $email != $before_email) {
+            unset($_POST['updateteacher-button']);
+            $_SESSION['update_Teacher'] = 'Email already exists';
+
+            redirect("", "view/admin/adminDashboard.php");
 
     }  else {
         $data = Teacher::updateTeacherDetails($fname, $lname, $address1, $address2, $number, $email, $userId, $subject, $db_connection->getConnection());

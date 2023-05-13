@@ -517,7 +517,7 @@ $timeUsageController = new timeUsageController();
                         $physicsArrayCount = count($physicsTopicOne);
                         $chemistryArrayCount = count($ChemistryTopicOne);
 
-                    if(count($physicsTopicOne) >= 2 && count($ChemistryTopicOne) >= 2){ ?>
+                    if(count($physicsTopicOne) >= 3 && count($ChemistryTopicOne) >= 3){ ?>
                     <div class="special-badge">
                         <div class="specialBadge-header">
                             <b><p class="subTitle-Badge">Special Badges&nbsp;&nbsp;&nbsp;</p></b>
@@ -539,11 +539,12 @@ $timeUsageController = new timeUsageController();
                             <div class="main-detailOneDiv" id="main-detailOneDiv">
                                 <div class="first-badgeDetails">
                                     <div class="header-firstBadge">
+                                        <b><p>The badge for winning first place of 3 or more topics from each subject</p></b>
                                         <button id="detailOneDiv-close"><img src="../../public/img/close.png"></button>
                                     </div>
                                     <?php
 
-                                    if($physicsArrayCount >=2 && $chemistryArrayCount >=2){ ?>
+                                    if($physicsArrayCount >=3 && $chemistryArrayCount >=3){ ?>
                                         <div class="first-physicsTopic">
                                             <P style="font-weight: bold; margin-top: 10px">Physics Topic</P>
                                             <ul>

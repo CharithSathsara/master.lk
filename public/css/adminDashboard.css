@@ -245,8 +245,9 @@ th{
 
 .error-message-add-teacher{
     color: red;
-    margin-left: 15px;
+    /*margin-left: -15px;*/
     height: 20px;
+    width: 300px;
     text-align: center;
     font-weight: bold;
     margin-top: 20px;

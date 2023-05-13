@@ -78,7 +78,7 @@ include_once('../../../model/User.php');
             redirect("", "view/admin/adminDashboard.php");
 
         } else if (mysqli_num_rows($data_setEmail) == 1 && $email != $before_email) {
-            $_SESSION['upp_Creator'] = 'Email is exist';
+            $_SESSION['upp_Creator'] = 'Email already exists';
 
             redirect("", "view/admin/adminDashboard.php");
 
