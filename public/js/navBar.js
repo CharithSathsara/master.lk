@@ -1,18 +1,9 @@
+// Get the maximum window width
+const maxWidth = window.screen.availWidth;
 
-function changeToDashboard(){
-    document.getElementById("dashboard").style.backgroundColor = "#EDECEC";
-    document.getElementById("newSubjects").style.backgroundColor = "#D9D9D9";
-    document.getElementById("profile").style.backgroundColor = "#D9D9D9";
-}
+// Calculate the width of the navigation bar
+const navWidth = Math.round(maxWidth * 0.15);
 
-function changeToNewSubjects(){
-    document.getElementById("dashboard").style.backgroundColor = "#D9D9D9";
-    document.getElementById("newSubjects").style.backgroundColor = "#EDECEC";
-    document.getElementById("profile").style.backgroundColor = "#D9D9D9";
-}
-
-function changeToProfile(){
-    document.getElementById("dashboard").style.backgroundColor = "#D9D9D9";
-    document.getElementById("newSubjects").style.backgroundColor = "#D9D9D9";
-    document.getElementById("profile").style.backgroundColor = "#EDECEC";
-}
+// Set the width of the navigation bar
+const nav = document.querySelector('.nav');
+nav.style.width = `${navWidth}px`;

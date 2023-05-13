@@ -67,7 +67,7 @@ button {
 #logout-confirm{
     width: 25%;
     background-color: white;
-    height: 15vh;
+    height: 15%;
     border-radius: 10px;
     z-index: 10;
     position: fixed;
