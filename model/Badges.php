@@ -38,7 +38,7 @@ class badges
 
     public static function getFirstThreeStudents($connection , $topicId){
 
-        $query = "SELECT studentId FROM quiz_details WHERE topicId = '$topicId' ORDER BY score DESC LIMIT 3";
+        $query = "SELECT studentId FROM quiz_details WHERE topicId = '$topicId' AND quizType = 'MODELPAPER' ORDER BY score DESC LIMIT 3";
 
         $result = $connection->query($query);
 

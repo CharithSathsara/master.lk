@@ -39,7 +39,7 @@
                     <!-- Teacher Add form -->
                     <div class="forms-div">
                         <form class="addTeach-form" action="<?= base_url('controller/adminController/dashboardController/addTeacherController.php') ?>" method="POST">
-                            <input type="text" name="fname" id="addTeacher-fname" placeholder="Full Name" >
+                            <input type="text" name="fname" id="addTeacher-fname" placeholder="First Name" >
                             <input type="text" name="lname" placeholder="Last Name" >
                             <input type="text" name="address1" placeholder="Address Line 1" >
                             <input type="text" name="address2" placeholder="Address Line 2" >
