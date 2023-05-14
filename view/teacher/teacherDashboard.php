@@ -89,5 +89,116 @@ include_once '../common/header.php';
     </div>
 </div>
 
+
+<div class="page-mask" id="page-mask-upload-question-success">
+
+    <div id="upload-success-popup">
+        <img id="success-icon" src="../../public/icons/success-yellow.svg">
+        <b><p id="upload-title">Updated Successfully!</p></b>
+        <button onclick="closeUpdatePopup()" class="close-button">
+            <img src="../../public/icons/close.svg" class="close-icon">
+        </button>
+        <p id="upload-success-text">Question has been updated successfully.</p>
+        <button id="ok-btn" onclick="closeUpdatePopup()">OK</button>
+    </div>
+
+</div>
+
+<div class="page-mask" id="page-mask-upload-question-fail">
+
+    <div id="upload-success-popup">
+        <img id="success-icon" src="../../public/icons/delete-alert.png">
+        <b><p id="upload-title">Question update failed!</p></b>
+        <button onclick="closeUploadFailPopup()" class="close-button">
+            <img src="../../public/icons/close.svg" class="close-icon">
+        </button>
+        <div id="question-upload-error">
+            <p><?= $_SESSION['question-update-fail']; ?></p>
+        </div>
+        <button id="ok-btn" onclick="closeUploadFailPopup()">OK</button>
+    </div>
+
+</div>
+
+<div class="page-mask" id="page-mask-delete-question-success">
+
+    <div id="upload-success-popup">
+        <img id="success-icon" src="../../public/icons/success-yellow.svg">
+        <b><p id="upload-title">Deleted Successfully!</p></b>
+        <button onclick="closeDeletePopup()" class="close-button">
+            <img src="../../public/icons/close.svg" class="close-icon">
+        </button>
+        <p id="upload-success-text">Question has been deleted successfully.</p>
+        <button id="ok-btn" onclick="closeDeletePopup()">OK</button>
+    </div>
+
+</div>
+
+<div class="page-mask" id="page-mask-delete-question-fail">
+
+    <div id="upload-success-popup">
+        <img id="success-icon" src="../../public/icons/delete-alert.png">
+        <b><p id="upload-title">Question update failed!</p></b>
+        <button onclick="closeDeletePopup()" class="close-button">
+            <img src="../../public/icons/close.svg" class="close-icon">
+        </button>
+        <div id="question-upload-error">
+            <p>Question was not deleted</p>
+        </div>
+        <button id="ok-btn" onclick="closeDeletePopup()">OK</button>
+    </div>
+
+</div>
+
+<script src="../../public/js/updateQuestion.js"></script>
+
+<?php
+
+if(isset($_SESSION['question-update-success'])){
+    echo"
+                <style>
+                        #page-mask-upload-question-success {
+                            display:block;
+                        }
+                </style>
+            ";
+    unset($_SESSION['question-update-success']);
+}
+
+if(isset($_SESSION['question-update-fail'])){
+    echo"
+                <style>
+                        #page-mask-upload-question-fail {
+                            display:block;
+                        }
+                </style>
+            ";
+    unset($_SESSION['question-update-fail']);
+}
+
+if(isset($_SESSION['question-delete-success'])){
+    echo"
+                <style>
+                        #page-mask-delete-question-success {
+                            display:block;
+                        }
+                </style>
+            ";
+    unset($_SESSION['question-delete-success']);
+}
+
+if(isset($_SESSION['question-delete-fail'])){
+    echo"
+                <style>
+                        #page-mask-delete-question-fail {
+                            display:block;
+                        }
+                </style>
+            ";
+    unset($_SESSION['question-delete-fail']);
+}
+
+?>
+
 </body>
 </html>

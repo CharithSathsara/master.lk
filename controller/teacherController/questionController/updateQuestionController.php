@@ -19,8 +19,10 @@ if(isset($_POST['submit-update-question'])){
                                     $updateOption5, $correctAnswer, $updateDescription);
 
     if($data){
+        $_SESSION['question-update-success'] = "update success";
         redirect("Question Updated Successfully","view/teacher/teacherDashboard.php");
     }else{
+        $_SESSION['question-update-fail'] = "Question update fail.";
         redirect("Something Went Wrong","view/teacher/teacherDashboard.php");
     }
 
