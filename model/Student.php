@@ -95,8 +95,8 @@ class Student {
                 // Get the last inserted paymentId
                 $paymentId = mysqli_insert_id($connection);
 
-                $queryToSlip = "INSERT INTO slip_payment (`paymentId`, `isVerified`, `slipImage`)
-                                VALUES ($paymentId, 0, '$slipContent')";
+                $queryToSlip = "INSERT INTO `slip_payment` (`paymentId`, `isVerified`, `slipImage` , `isCheck`) 
+                                VALUES ($paymentId, 0, '$slipContent', 0)";
 
                 $data = $connection->query($queryToSlip);
 

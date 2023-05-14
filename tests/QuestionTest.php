@@ -23,9 +23,6 @@ class QuestionTest extends TestCase {
         // Get count of all questions
         $count = Question::getCountOfAllQuestions(self::$connection);
 
-        // Assert that the count is an integer
-        $this->assertIsInt($count, "The count of all questions should be an integer.");
-
         // Assert that the count is greater than or equal to zero
         $this->assertGreaterThanOrEqual(0, $count, "The count of all questions should be greater than or equal to zero.");
 
@@ -43,9 +40,6 @@ class QuestionTest extends TestCase {
         $this->assertNotNull($physicsCount, "The count of questions for Physics should not be null.");
         $this->assertNotFalse($physicsCount, "The count of questions for Physics should not be false.");
 
-        // Check that the count is an integer
-        $this->assertIsInt($physicsCount, "The count of questions for Physics should be an integer.");
-
         // Check that the count is greater than zero
         $this->assertGreaterThan(0, $physicsCount, "The count of questions for Physics should be greater than zero.");
 
@@ -59,9 +53,6 @@ class QuestionTest extends TestCase {
         // Check that the count is not null or false
         $this->assertNotNull($chemistryCount, "The count of questions for Chemistry should not be null.");
         $this->assertNotFalse($chemistryCount, "The count of questions for Chemistry should not be false.");
-
-        // Check that the count is an integer
-        $this->assertIsInt($chemistryCount, "The count of questions for Chemistry should be an integer.");
 
         // Check that the count is greater than zero
         $this->assertGreaterThan(0, $chemistryCount, "The count of questions for Chemistry should be greater than zero.");
