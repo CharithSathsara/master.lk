@@ -1,30 +1,39 @@
 <?php
 
-class gamifiedQuestionsController{
+class gamifiedQuestionsController
+{
 
     private $connection;
 
-    public function __construct(){
+    public function __construct()
+    {
 
         $db_connection = DatabaseConnection::getInstance();
         $this->connection = $db_connection->getConnection();
-
     }
 
 
-    public function getGamifiedQuestions($subject,$lesson,$topic){
+    public function getGamifiedQuestions($subject, $lesson, $topic)
+    {
 
-        $data = GamifiedQuestion::getGamifiedQuestions($this->connection,$subject,$lesson,$topic);
+        $data = GamifiedQuestion::getGamifiedQuestions($this->connection, $subject, $lesson, $topic);
 
-        if($data){
+        if ($data) {
             return $data;
-        }else{
+        } else {
             return false;
         }
-
     }
 
+    public function getNewGamifiedQuestions($topic)
+    {
 
+        $data = GamifiedQuestion::viewGamifiedQuestions($this->connection, $topic);
+
+        if ($data) {
+            return $data;
+        } else {
+            return false;
+        }
+    }
 }
-
-?>
