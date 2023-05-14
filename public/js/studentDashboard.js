@@ -1,6 +1,8 @@
+document.addEventListener('DOMContentLoaded',function (){
+
 setTimeout(()=>{
 
-const btnSildesClass = document.querySelectorAll(".nav-btns");
+const btnSildesClass = document.querySelectorAll(".rec-nav-btns");
 const slidesClass = document.querySelector(".slides-list");
 const btnDotsClass = document.querySelector(".btn-dots");
 
@@ -74,4 +76,6 @@ function resetTimeout() {
 }
 
 },50)
+
+});
 
