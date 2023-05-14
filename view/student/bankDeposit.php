@@ -136,7 +136,7 @@ $viewCartController = new viewCartController();
     Bank : Commercial Bank PLC
     Branch : Kandy
     Account Holder's Name : Master.lk(Pvt) Ltd
-    Account Number : 200089768
+    Account Number : 8007514628
                 </pre>
                 <!-- upto here -->
 
