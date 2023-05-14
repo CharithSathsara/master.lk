@@ -59,7 +59,7 @@
 
 
                         <?php
-
+//get to all teacher
                         $adminDashboardController = new AdminDashboardController();
                         $teachers = $adminDashboardController->getAllTeachers();
                         ?>
@@ -67,15 +67,17 @@
                     <?php
                         if($teachers){
                             foreach($teachers as $teacher){
-
+//get all subject
                                 $teacherId = $teacher['userId'];
                                 $subject = $adminDashboardController->getTeacherSubject($teacherId);
                                 ?>
                                     <div class="oneTeacherTile">
                                         <div class="iconDiv">
+<!--                                            update teacher button-->
                                             <button class="Update-teacher" id="but-UpdateTeacher" onclick="showUpdateTeacherForm('<?php echo $teacher['userId']; ?>','<?php echo  $teacher['firstName']; ?>','<?php echo $teacher['lastName']; ?>','<?php echo  $teacher['addLine01']; ?>','<?php echo  $teacher['addLine02']; ?>','<?php echo  $teacher['mobile']; ?>','<?php echo  $teacher['email']; ?>')"><img src="../../public/img/update.svg"></button>
                                             <button class="delete-teacher" id="but-deleteTeacher" onclick="showDeleteTeacherForm('<?php echo $teacher['userId']; ?>')" ><img src="../../public/img/delete.svg"></button>
                                         </div>
+<!--   get the teacher profile photo-->
                                         <div class="profilePic">
                                             <div class="profilePicBorder">
                                                 <?php
