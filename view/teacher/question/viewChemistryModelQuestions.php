@@ -61,7 +61,7 @@ include_once '../../common/header.php';
 
                 </select>
 
-                <input type="submit" class="add-question-btn" name="view-questions" onclick="" value="Get Questions">
+                <input type="submit" id="view-questions" name="view-questions" onclick="" value="Get Questions">
 
             </form>
             <br>
@@ -75,39 +75,32 @@ include_once '../../common/header.php';
 
                     $questions = $viewQuestionController->viewQuestions("Chemistry", $_GET['topic'], "MODELQUESTION");
 
-                    echo "<th>Chemistry : {$_GET['topic']} : Model Questions</th>";
-
                     if(mysqli_num_rows($questions) > 0){
+
+                        echo "<th>Chemistry : {$_GET['topic']} : Model Questions</th>";
 
                         foreach($questions as $row){
                             ?>
 
                             <tr>
                                 <td>
-                                    <input type="hidden" name="questionId" value=<?=$row['questionId'] ?>><br>
-                                    Question : <p class="question"><?=$row['question'] ?></p>
-                                    <br>
-                                    <br>
-                                    1) <p class="option1"><?=$row['opt01'] ?></p>
-                                    <br>
-                                    2) <p class="option2"><?=$row['opt02'] ?></p>
-                                    <br>
-                                    3) <p class="option3"><?=$row['opt03'] ?></p>
-                                    <br>
-                                    4) <p class="option4"><?=$row['opt04'] ?></p>
-                                    <br>
-                                    5) <p class="option5"><?=$row['opt05'] ?></p>
-                                    <br>
-                                    <br>
-                                    Correct Answer : <p class="correct-answer"><?=$row['correctAnswer'] ?></p>
-                                    <br>
-                                    <br>
-                                    Description : <p class="description"><?=$row['answerDescription'] ?></p>
-                                    <br>
-                                    <br>
+                                    <input type="hidden" name="questionId" value="<?=$row['questionId'] ?>">
+                                    <p class="question"><?=$row['question'] ?></p>
+                                    <ol class="options">
+                                        <li class="option1"><?=$row['opt01'] ?></li>
+                                        <li class="option2"><?=$row['opt02'] ?></li>
+                                        <li class="option3"><?=$row['opt03'] ?></li>
+                                        <li class="option4"><?=$row['opt04'] ?></li>
+                                        <li class="option5"><?=$row['opt05'] ?></li>
+                                    </ol>
+                                    <div class="correct-answer">Correct Answer: <?=$row['correctAnswer'] ?></div>
+                                    <div class="description">Description: <?=$row['answerDescription'] ?></div>
                                     <div class="buttons">
                                         <input type="submit" class="update-button" name="update-question-btn" id="update-question-btn" value="Update">
-                                        <a href="../../../controller/teacherController/questionController/deleteQuestionController.php?question_id=<?php echo $row['questionId'] ?>">
+                                        <!--                                        <a href="../../../controller/teacherController/questionController/deleteQuestionController.php?question_id=--><?php //echo $row['questionId'] ?><!--&confirmed=false">-->
+                                        <!--                                            <input type="submit" id="delete-btn" name="delete-question" onclick="" value="Delete">-->
+                                        <!--                                        </a>-->
+                                        <a href="./viewPhysicsPastQuestions.php?topic=<?php echo $_GET['topic'] ?>&view-questions=Get Questions&question_id=<?php echo $row['questionId'] ?>&confirmed=false">
                                             <input type="submit" id="delete-btn" name="delete-question" onclick="" value="Delete">
                                         </a>
                                     </div>
@@ -142,13 +135,43 @@ include_once '../../common/header.php';
             <script src="../../../public/js/updateQuestionForm.js"></script>
 
         </div>
-
     </div>
-
     </div>
+</div>
+<div class="page-mask" id="page-mask-upload-question-success">
 
+    <div id="upload-success-popup">
+        <img id="success-icon" src="../../../public/icons/delete-alert.png">
+        <b><p id="upload-title">Do you want to delete!</p></b>
+        <button onclick="closeUpdatePopup()" class="close-button">
+            <img src="../../../public/icons/close.svg" class="close-icon">
+        </button>
+        <div id="question-upload-error">
+            <p>Are you sure you want to delete this question?</p>
+        </div>
+        <a href="../../../controller/teacherController/questionController/deleteQuestionController.php?question_id=<?php echo $_GET['question_id'] ?>&confirmed=true">
+            <button id="ok-btn" onclick="closeUpdatePopup()">Yes</button>
+        </a>
+        <button id="ok-btn" onclick="closeUpdatePopup()">No</button>
+    </div>
 
 </div>
+
+<script src="../../../public/js/updateQuestion.js"></script>
+
+<?php
+
+if(isset($_GET['confirmed']) && $_GET['confirmed'] == 'false'){
+    echo"
+                <style>
+                        #page-mask-upload-question-success {
+                            display:block;
+                        }
+                </style>
+            ";
+}
+
+?>
 
 </body>
 </html>
