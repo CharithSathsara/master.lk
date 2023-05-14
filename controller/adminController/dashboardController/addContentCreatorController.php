@@ -96,12 +96,12 @@ if (isset($_POST['addContentCreator-button'])) {
         redirect("", "view/admin/adminDashboard.php");
 
     } else if (mysqli_num_rows($data_setEmail) == 1) {
-        $_SESSION['add_Creator'] = 'Email is exist';
+        $_SESSION['add_Creator'] = 'Email already exists';
 //
         redirect("", "view/admin/adminDashboard.php");
 
     } else if (mysqli_num_rows($data_setUsername) == 1) {
-        $_SESSION['add_Creator'] = 'User name is exist';
+        $_SESSION['add_Creator'] = 'User name already exists';
 //
         redirect("", "view/admin/adminDashboard.php");
     } else {

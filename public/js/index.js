@@ -11,6 +11,7 @@ function getLogin(){
     document.getElementById("login-error").innerHTML = null;
     document.getElementById("verify-email-error").innerHTML = null;
     document.getElementById("password-reset-error").innerHTML = null;
+    document.getElementById("signup-error").innerHTML = null;
 }
 
 function getSignup(){
@@ -21,7 +22,7 @@ function getSignup(){
     document.getElementById("forgot-pw-card").style.visibility = "hidden";
 
     document.getElementById("signup-error").innerHTML = null;
-
+    document.getElementById("login-error").innerHTML = null;
 
 }
 

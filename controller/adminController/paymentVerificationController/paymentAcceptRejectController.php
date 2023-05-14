@@ -55,14 +55,14 @@ include_once $currentDir.'\..\..\..\model\Cart.php';
 
             if($subjects){
                 foreach ($subjects as $subject){
-                    Student::giveSubjectAccess($db_connection->getConnection(),$studentId,$subject['subjectId']);
+                    Student::giveSubjectAccessUsingId($db_connection->getConnection(),$studentId,$subject['subjectId']);
                 }
 
                 $cardIdSet = Cart::getCardId($db_connection->getConnection(),$studentId);
                 $Id = $cardIdSet->fetch_assoc();
                 $cardId = $Id['cartId'];
 
-                $data1 = Student::clearCart($db_connection->getConnection(),$cardId );
+                $data1 = Student::clearCartUsingId($db_connection->getConnection(),$cardId );
             }
 
         }

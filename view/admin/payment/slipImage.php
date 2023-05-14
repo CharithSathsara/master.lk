@@ -63,7 +63,7 @@
                                     $name = $object->getStudentName($userId);
                                     ?>
                                     <p>Student full name&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;<?php echo $name;?></p>
-                                    <p>Paid amount&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;Rs. <?php echo $detail['amount'];?></p>
+<!--                                    <p>Paid amount&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;Rs. --><?php //echo $detail['amount'];?><!--</p>-->
                                     <p>Submit date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp;&nbsp;&nbsp;&nbsp; <?php echo $detail['date'];?></p>
                                     <?php
                                         $subjectsId = $object->getAllSubjectByCart($userId);
@@ -75,7 +75,7 @@
                                             }
                                         }
                                     ?>
-                                    <p>To be Paid&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rs.  <?php echo $toBePaid;?></p>
+                                    <p>Course Amount&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rs.  <?php echo $toBePaid;?></p>
 
                                 <?php }
                                 ?>
