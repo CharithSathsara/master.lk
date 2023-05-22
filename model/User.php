@@ -51,6 +51,7 @@ class User {
         ];
         $_SESSION["cart-subjects"]=array();
         $_SESSION['start_time'] = time();
+        
 
     }
 
